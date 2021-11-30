@@ -15,7 +15,7 @@ So,
 and so on.
 \end{note}
 \begin{note}
-注意，我們有定義\ \(0 + m\) 是什麼，但我們沒有定義\ \(m + 0\) 是什麼，i.e. 需要證明他們兩個相等。
+注意，我們有定義\ \(0 + m\) 是什麼，但我們沒有定義\ \(m + 0\) 是什麼，i.e. 需要證明他們兩個相等。參考\ Lemma \ref{lem 2.2.2}。
 \end{note}
 \begin{note}
 這個定義因為符合數學歸納法(Axiom \ref{axm 2.5})，所以給定一個自然數\ \(m\)， 對於所有自然數\ \(n\)，我們都對\ \(n + m\) 做了定義
@@ -30,3 +30,31 @@ Base case: \(0 + m = m\) by Definition \ref{def 2.2.1}. But \(m\) is a natural n
 Inductive hypothesis: suppose \(n + m\) is a natural number. Wanted: \((n\INC) + m\) is a natural number. By definition \ref{def 2.2.1} \BLUE{\((n\INC) + m = (n + m)\INC\)}, but by inductive hypothesis, \(n + m\) is a natural number, and by Axiom \ref{axm 2.2}, \BLUE{\((n + m)\INC\)} is a natural number, so \BLUE{\((n\INC) + m\)} is a natural number. This closes the induction.
 \end{proof}
 \end{additional corollary}
+
+\begin{note}
+Definition \ref{def 2.2.1} 就可以讓我們推出所有以前就在使用的加法的規則了，例如交換律/結合律。
+\end{note}
+
+\begin{lemma}\label{lem 2.2.2}
+For any natural number \(n\), \(n + 0 = n\).
+\begin{proof} We use induction.
+
+The base case \(0 + \BLUE{0} = \BLUE{0}\) follows since we know(by definition \ref{def 2.2.1}) that \(0 + \BLUE{m} = \BLUE{m}\) for every natural number \(\BLUE{m}\), and \(\BLUE{0}\) is a natural number.
+
+Now suppose inductively that \(n + 0 = n\). We wish to show that \((n\INC)+0 = n\INC\). But by definition of addition, \((n\INC) + 0\) is equal to \((n + 0)\INC\), which is equal to \(n\INC\) since \(n + 0 = n\). This closes the induction.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}\label{lem 2.2.3} For any natural numbers \(n\) and \(m\), \(\BLUE{n + (m\INC)} = \GREEN{(n + m)\INC}\)
+\begin{note}
+這個\ lemma 內等號\ LHS 的\ operand 的順序又跟\ definition \ref{def 2.2.1} 相反，是\ \(\BLUE{n + (m\INC)}\) 而不是\  \((m\INC) + n\)，所以希望能從\ definition \ref{def 2.2.1} 推導\  LHS 也等於\ \(\GREEN{(n + m)\INC}\)，這樣就證明\ \(\BLUE{n + (m\INC)} = (m\INC) + n\) 了。
+\end{note}
+\begin{proof}
+\textcolor{red}{This shit not yet done}
+We induct on \(n\) (keeping \(m\) fixed).
+
+Base case: \(n = 0\). In this case we have to prove \(0 + (m\INC) = (0 + m)\INC\). But by definition \ref{def 2.2.1}, \(0 + (m\INC) = m\INC\) and \(0 + m = m\), so both sides are equal to \(m\INC\) and are thus equal to each other.
+
+Now we assume inductively that \(n + (m\INC) = (n + m)\INC\); we now have to show that \((n\INC) + (m\INC) = ((n\INC) + m)\INC\). The left-hand side is \((n + (m\INC))\INC\) by definition \ref{def 2.2.1}, which is equal to \(((n + m)\INC)\INC\) by the inductive hypothesis. Similarly, we have \((n\INC) + m =(n + m)\INC\) by the definition of addition, and so the right-hand side is also equal to \(((n + m)\INC)\INC\). Thus both sides are equal to each other, and we have closed the induction.
+\end{proof}
+\end{lemma}
