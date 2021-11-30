@@ -1,0 +1,66 @@
+\documentclass[12pt]{book}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{dirtytalk}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{parskip}
+
+\usepackage{CJKutf8} % 讓我寫中文
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+\urlstyle{same}
+
+\title{Analysis I}
+\author{ProFatXuanAll}
+
+\begin{document}
+\begin{CJK*}{UTF8}{bsmi}
+
+\maketitle
+
+\tableofcontents{}
+
+\theoremstyle{definition}
+\newtheorem{axiom}{Axiom}[chapter]
+\newtheorem{assumption}[axiom]{Assumption}
+\newtheorem{additional corollary}{Additional Corollary}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{note}{Note}
+
+\theoremstyle{remark}
+\newtheorem*{meta-proof}{Meta-proof}
+
+\renewcommand{\labelenumi}{\textnormal{(}\alph{enumi}\textnormal{)}}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\exercisesection}{
+    \begin{center}
+        --- Exercises ---
+    \end{center}
+}
+
+\input{1-introduction.tex}
+\input{2-natural-number}
+
+\end{CJK*}
+\end{document}

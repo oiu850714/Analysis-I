@@ -1,0 +1,106 @@
+\section{The Peano axioms}\label{sec 2.1}
+
+\begin{axiom}\label{axm 2.1}
+\( 0 \) is a natural number.
+\end{axiom}
+\begin{axiom}\label{axm 2.2}
+If \( n \) is a natural number, then \( n\INC \) is also a natural number
+\end{axiom}
+
+\setcounter{theorem}{2}
+\begin{definition}\label{def 2.1.3}
+We define \( 1 \) to be the number \( 0\INC \), \(2\) to be the number \( (0\INC)\INC \), 3 to be the number \( ((0\INC)\INC)\INC \), etc. In other words, \( 1 := 0\INC \), \( 2 := 1\INC \), \( 3 := 2\INC \), etc.
+\end{definition}
+
+\begin{note}
+In this text the author uses "\(x := y\)” to denote the statement that \(x\) is \emph{defined} to equal \(y\).
+\end{note}
+
+\begin{proposition}\label{prop 2.1.4}
+3 is a natural number
+\begin{proof}
+\( 3 = 2\INC = (1\INC)\INC = ((0\INC)\INC)\INC \) by definition of \(3\), \(2\) and \(1\). And by Axiom \ref{axm 2.1}, \(0\) is a natural number, so by Axiom \ref{axm 2.2}, \(0\INC\) is a natural number, and again by Axiom \ref{axm 2.2}, \((0\INC)\INC\) is a natural number, and again by Axiom \ref{axm 2.2}, \( ((0\INC)\INC)\INC \), which is equal to \(3\), is a natural number, so \(3\) is a natural number.
+\end{proof}
+\end{proposition}
+
+\begin{example}\label{example 2.1.5}
+這個就在嘴一個會 wrap around 的 number system (例如 32-bit 整數, 或者時鐘上的數字) 符合\ Axiom \ref{axm 2.1}\ 跟\ Axiom \ref{axm 2.2} 但不會是我們想要的
+\end{example}
+
+\begin{axiom}\label{axm 2.3}
+\(0\) is not the successor of any natural number; i.e. we have \(n\INC \neq 0\) for every natural number \(n\)
+\end{axiom}
+
+\begin{proposition}\label{prop 2.1.6}
+\(4\) is not equal to \(0\)
+\begin{proof}
+By definition, 4 = 3\INC. By Proposition \ref{prop 2.1.4} we know 3 is a natural number, and by Axiom \ref{axm 2.3} \(3\INC \neq 0\), so \(4 = 3\INC \neq 0\).
+\end{proof}
+\end{proposition}
+
+\begin{example}\label{example 2.1.7}
+這裡又舉兩個例子，符合\ Axiom \ref{axm 2.1} - \ref{axm 2.3}，但是一樣不是自然數。第一個是\ \(\{0,1,2,3,4\}\)，但\ \(4\INC = 4\)。另一種情形是 \(4\INC = 1\)，沒有\ wrap around 回\ 0。
+\end{example}
+
+\begin{axiom}\label{axm 2.4}
+Different natural numbers must have different successors; i.e. if \(n\), \(m\) are natural numbers and \(n \neq m\), then \(n\INC \neq m\INC\). Contrapositively, if \(n\INC = m\INC\), then \(n = m\).
+\end{axiom}
+
+\begin{note}
+Axiom \ref{axm 2.4} 的 \emph{converse}\ 也是成立的，i.e. if \(n = m\), then \(n++ = m++\)。但那是因為整數的"等號"滿足\ Axiom of substitution。請參考\ Appendix A.2 \ref{app A.2}。但是\dots書上好像沒有定義整數的等號是什麼意思，就參考\ \href{https://www.wikiwand.com/en/Peano_axioms#/Formulation}{wiki} 吧
+\end{note}
+
+\begin{proposition}\label{prop 2.1.8}
+6 is not equal to 2.
+\begin{proof}
+Suppose \( 6 = 2 \), then \( 5\INC = 6 = 2 = 1\INC \), so \(5\INC = 1\INC \), so by Axiom \ref{axm 2.4}, 5 = 1. Similarly, \(4\INC = 0\INC\), so by Axiom \ref{axm 2.4}, \(4 = 0\). But this contradicts Proposition \ref{prop 2.1.6}, so \(6 \neq 2\).
+\end{proof}
+\end{proposition}
+
+\begin{example}\label{example 2.1.9}(Informal, 因為實際上用到了實數)
+這題令\ \( \textup{N} = \{0, 0.5, 1, 1.5, 2, 2.5, ...\}\)，則\ \(\textup{N}\) 滿足\ Axiom \ref{axm 2.1}-\ref{axm 2.4}，但他肯定不是我們要的自然數
+\end{example}
+
+\begin{axiom}\label{axm 2.5} (Principle of mathematical induction). Let \(P(n)\) be any property pertaining to a natural number \(n\). Suppose that \(P(0)\) is true, and suppose that whenever \(P(n)\) is true, \(P(n\INC)\) is also true. Then \(P(n)\) is true for every natural number \(n\).
+\end{axiom}
+
+\begin{remark}\label{rmk 2.1.10} Axiom \ref{axm 2.5} 的敘述其實用了不少尚未定義的名詞，例如何謂\ property? 其實就是數理邏輯說的\ predicate。另外 Axiom \ref{axm 2.5} 實際上是 "Axiom schema"，有點像一種模板，可以生出任一個\  axiom :)。這必須去研究邏輯學。
+\end{remark}
+
+\begin{note}
+就算有了\ Axiom \ref{axm 2.1}-\ref{axm 2.5}，目前還是無法證明\  \ref{example 2.1.9} 的例子不是自然數；在目前這個階段，嚴格來說\ \ref{example 2.1.9} 對我們甚至根本就是\ ill-formed。
+\end{note}
+
+\begin{proposition}\label{prop 2.1.11}
+這題根本就只是用數學歸納法作證明時的流程而已
+\end{proposition}
+
+\begin{note}
+除了\ Proposition \ref{prop 2.1.11} 的流程，數學歸納法還有變形，如\ backward induction (看\ Exercise \ref{exercise 2.2.6})、strong induction (看\ Proposition \ref{prop 2.2.14})、還有\ transfinite induction(看\ Lemma \ref{lemma 8.5.15})；最後一個根本不是數學歸納法...
+\end{note}
+
+\begin{assumption}\label{assumption 2.6} (Informal)
+There exists a number system N, whose elements we will call natural numbers, for which Axiom \ref{axm 2.1}-\ref{axm 2.5} are true.
+\end{assumption}
+\begin{note}
+Assumption \ref{assumption 2.6} 的嚴謹定義實際上是\ Axiom \ref{axm 3.7}，這需要理解集合以及函數的定義後才有意義。這個\ Asssumption 的意義是保證存在一個\ "set"，滿足 Axiom \ref{axm 2.1}-\ref{axm 2.5}，也就是皮亞諾公理。
+\end{note}
+
+\begin{remark}\label{remark 2.1.12} Assumption \ref{assumption 2.6} 的 number system N 我們稱作 \emph{the} natural number system; i.e. 他是唯一的。其他的符合\ Axiom \ref{axm 2.1}-\ref{axm 2.5} 的\ number system 實際上都跟\ N \emph{同構}，請看\ Exercises \ref{exercise 3.5.13}。這邊的同構是指兩個\ set 存在\ 1-1 correspondence，並且這個\ 1-1 correspondence \emph{preserve} \INC\ operation。
+\end{remark}
+
+\begin{remark}\label{remark 2.1.13}
+這也是幹話，所有自然數都是有限的(可根據\ Axiom \ref{axm 2.5} 得到)，但是自然數這個\ number system 卻是"無限"的
+\end{remark}
+
+\begin{remark}\label{remark 2.1.14}
+我們目前定義自然數的方式是\ \emph{axiomatic}(用公理定出來的)，而非\ \emph{constructive}(建構出來的)。要用建構的方式兜出自然數也可以，去看公理化集合論。但這邊的重點就是我們假設某個集合存在，且符合皮亞諾公理，以這個為前提開始推導出各種性質。我們(暫時)不去探討為何那個集合存在。這就跟線性代數有點類似，至少在線代的課程本身，探討為何會存在集合(on a field)符合那二+八個\ vector space 的性質從來不是重點，而是一種前提。
+\end{remark}
+
+\begin{remark}\label{remark 2.1.15}
+這邊是說用公理化的方式來定義自然數其實是很近代的事情(就皮亞諾那個時代開始)。在這之前自然數(在哲學/直覺/etc 上?)都是依附在某種既有的物件上的概念(connected to some external concept)，例如某種物理量(如長度)等等。
+\end{remark}
+
+\begin{proposition}\label{prop 2.1.16}
+\textcolor{red}{I don't know all this shit} 這題我完全問號，連看懂都有問題；但他的目的應該是我們可以從自然數來定義\ sequence。可是這一頁的註腳也說這會扯到\ function 的概念，實際上要去看第三章(Exercise \ref{exercise 3.5.12})。但重點是這個\ forward reference 不會\ circular，因為 function 的定義不依賴皮亞諾公理。另外這題蠻多人問的，總之看完第三章之後要回來搞懂。
+\end{proposition}

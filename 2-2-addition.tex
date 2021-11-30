@@ -1,0 +1,32 @@
+\section{Addition}\label{sec 2.2}
+
+\newcommand{\BLUE}[1]{\textcolor{RoyalBlue}{#1}}
+\newcommand{\GREEN}[1]{\textcolor{YellowGreen}{#1}}
+
+\begin{definition} \label{def 2.2.1} (Addition of natural numbers). Let \(m\) be a natural number. To add zero to \(m\), we \emph{define} \(0 + m := m\). Now suppose \emph{inductively} that we have defined how to add \(n\) to \(m\). Then we can add \(n\INC \) to \(m\) by defining \((n\INC) + m\) := \((n + m)\INC\).
+\end{definition}
+\begin{note}
+So,
+\begin{align*}
+\BLUE{0 + m = m}\\
+1 + m = (0\INC) + m = \BLUE{(0 + m)}\INC = \BLUE{m}\INC \implies \GREEN{1 + m = m\INC} \\
+2 + m = (1\INC) + m = (\GREEN{1 + m})\INC = \GREEN{(m\INC)}\INC \implies 2 + m = (m\INC)\INC
+\end{align*}
+and so on.
+\end{note}
+\begin{note}
+注意，我們有定義\ \(0 + m\) 是什麼，但我們沒有定義\ \(m + 0\) 是什麼，i.e. 需要證明他們兩個相等。
+\end{note}
+\begin{note}
+這個定義因為符合數學歸納法(Axiom \ref{axm 2.5})，所以給定一個自然數\ \(m\)， 對於所有自然數\ \(n\)，我們都對\ \(n + m\) 做了定義
+\end{note}
+
+\begin{additional corollary}\label{ac 2.2.1} (see page. 24 below) Using Axioms 2.1, 2.2, and induction (Axiom 2.5), that the sum of two natural numbers is again a natural number 
+\begin{proof}
+Let \(m\) be a natural number.
+
+Base case: \(0 + m = m\) by Definition \ref{def 2.2.1}. But \(m\) is a natural number, so \(0 + m\) is a natural number. 
+
+Inductive hypothesis: suppose \(n + m\) is a natural number. Wanted: \((n\INC) + m\) is a natural number. By definition \ref{def 2.2.1} \BLUE{\((n\INC) + m = (n + m)\INC\)}, but by inductive hypothesis, \(n + m\) is a natural number, and by Axiom \ref{axm 2.2}, \BLUE{\((n + m)\INC\)} is a natural number, so \BLUE{\((n\INC) + m\)} is a natural number. This closes the induction.
+\end{proof}
+\end{additional corollary}
