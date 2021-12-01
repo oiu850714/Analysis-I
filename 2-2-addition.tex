@@ -2,8 +2,10 @@
 
 \newcommand{\BLUE}[1]{\textcolor{RoyalBlue}{#1}}
 \newcommand{\GREEN}[1]{\textcolor{YellowGreen}{#1}}
+\newcommand{\MAROON}[1]{\textcolor{Maroon}{#1}}
 
-\begin{definition} \label{def 2.2.1} (Addition of natural numbers). Let \(m\) be a natural number. To add zero to \(m\), we \emph{define} \(0 + m := m\). Now suppose \emph{inductively} that we have defined how to add \(n\) to \(m\). Then we can add \(n\INC \) to \(m\) by defining \((n\INC) + m\) := \((n + m)\INC\).
+\begin{definition} \label{def 2.2.1}
+(Addition of natural numbers). Let \(m\) be a natural number. To add zero to \(m\), we \emph{define} \(0 + m := m\). Now suppose \emph{inductively} that we have defined how to add \(n\) to \(m\). Then we can add \(n\INC \) to \(m\) by defining \((n\INC) + m\) := \((n + m)\INC\).
 \end{definition}
 \begin{note}
 So,
@@ -22,6 +24,7 @@ and so on.
 \end{note}
 
 \begin{additional corollary}\label{ac 2.2.1} (see page. 24 below) Using Axioms 2.1, 2.2, and induction (Axiom 2.5), that the sum of two natural numbers is again a natural number 
+\end{additional corollary}
 \begin{proof}
 Let \(m\) be a natural number.
 
@@ -29,32 +32,76 @@ Base case: \(0 + m = m\) by Definition \ref{def 2.2.1}. But \(m\) is a natural n
 
 Inductive hypothesis: suppose \(n + m\) is a natural number. Wanted: \((n\INC) + m\) is a natural number. By definition \ref{def 2.2.1} \BLUE{\((n\INC) + m = (n + m)\INC\)}, but by inductive hypothesis, \(n + m\) is a natural number, and by Axiom \ref{axm 2.2}, \BLUE{\((n + m)\INC\)} is a natural number, so \BLUE{\((n\INC) + m\)} is a natural number. This closes the induction.
 \end{proof}
-\end{additional corollary}
 
 \begin{note}
-Definition \ref{def 2.2.1} 就可以讓我們推出所有以前就在使用的加法的規則了，例如交換律/結合律。
+Definition \ref{def 2.2.1} 就可以讓我們推出所有以前就在使用的加法的規則了，例如交換律/結合律。之後都會證明。
 \end{note}
 
 \begin{lemma}\label{lem 2.2.2}
 For any natural number \(n\), \(n + 0 = n\).
+\end{lemma}
 \begin{proof} We use induction.
 
 The base case \(0 + \BLUE{0} = \BLUE{0}\) follows since we know(by definition \ref{def 2.2.1}) that \(0 + \BLUE{m} = \BLUE{m}\) for every natural number \(\BLUE{m}\), and \(\BLUE{0}\) is a natural number.
 
 Now suppose inductively that \(n + 0 = n\). We wish to show that \((n\INC)+0 = n\INC\). But by definition of addition, \((n\INC) + 0\) is equal to \((n + 0)\INC\), which is equal to \(n\INC\) since \(n + 0 = n\). This closes the induction.
 \end{proof}
-\end{lemma}
 
 \begin{lemma}\label{lem 2.2.3} For any natural numbers \(n\) and \(m\), \(\BLUE{n + (m\INC)} = \GREEN{(n + m)\INC}\)
+\end{lemma}
 \begin{note}
-這個\ lemma 內等號\ LHS 的\ operand 的順序又跟\ definition \ref{def 2.2.1} 相反，是\ \(\BLUE{n + (m\INC)}\) 而不是\  \((m\INC) + n\)，所以希望能從\ definition \ref{def 2.2.1} 推導\  LHS 也等於\ \(\GREEN{(n + m)\INC}\)，這樣就證明\ \(\BLUE{n + (m\INC)} = (m\INC) + n\) 了。
+這個\ lemma 內等號\ LHS 的\ operand 的順序又跟\ definition \ref{def 2.2.1} 相反，是\ \(\BLUE{n + (m\INC)}\) 而不是\  \((m\INC) + n\)，所以不能直接從\ definition \ref{def 2.2.1} 得知這個\ Lemma。
 \end{note}
 \begin{proof}
-\textcolor{red}{This shit not yet done}
 We induct on \(n\) (keeping \(m\) fixed).
 
-Base case: \(n = 0\). In this case we have to prove \(0 + (m\INC) = (0 + m)\INC\). But by definition \ref{def 2.2.1}, \(0 + (m\INC) = m\INC\) and \(0 + m = m\), so both sides are equal to \(m\INC\) and are thus equal to each other.
+Base case: \(n = 0\). In this case we have to prove \( \BLUE{0 + (m\INC)} = (\GREEN{0 + m})\INC\). But by definition \ref{def 2.2.1}, \(\BLUE{0 + (m\INC)} = m\INC\) and \(\GREEN{0 + m} = m\), so both sides are equal to \(m\INC\) and are thus equal to each other.
 
-Now we assume inductively that \(n + (m\INC) = (n + m)\INC\); we now have to show that \((n\INC) + (m\INC) = ((n\INC) + m)\INC\). The left-hand side is \((n + (m\INC))\INC\) by definition \ref{def 2.2.1}, which is equal to \(((n + m)\INC)\INC\) by the inductive hypothesis. Similarly, we have \((n\INC) + m =(n + m)\INC\) by the definition of addition, and so the right-hand side is also equal to \(((n + m)\INC)\INC\). Thus both sides are equal to each other, and we have closed the induction.
+Now we assume inductively that \(n + (m\INC) = (n + m)\INC\); we now have to show that \(\BLUE{(n\INC) + (m\INC)} = (\GREEN{(n\INC) + m})\INC\). The \BLUE{left-hand side} is \((n + (m\INC))\INC\) by definition \ref{def 2.2.1}, which is equal to \(((n + m)\INC)\INC\) by the inductive hypothesis. Similarly, we have \(\GREEN{(n\INC) + m} =(n + m)\INC\) by the definition of addition, and so the right-hand side is also equal to \(((n + m)\INC)\INC\). Thus both sides are equal to each other, and we have closed the induction.
 \end{proof}
-\end{lemma}
+
+\begin{additional corollary}\label{ac 2.2.2}(on page 26 above)\(n\INC = n +1\)
+\begin{note}
+我們可從\ definition \ref{def 2.2.1} 得知\ \(1 + n = n\INC\)，但不能得知\ \(n + 1 = n\INC\)
+\end{note}
+\begin{proof}
+    \begin{align*}
+        n\INC & = n\INC + 0 & \text{by Lemma \ref{lem 2.2.2}} \\
+              & = (n + 0)\INC & \text{by Definition \ref{def 2.2.1}} \\
+              & = n + (0\INC) & \text{by Lemma \ref{lem 2.2.3}} \\
+              & = n + 1
+    \end{align*}
+\end{proof}
+\end{additional corollary}
+
+\begin{proposition}\label{prop 2.2.4}(Addition is commutative). For any natural numbers \(n\) and \(m\), \(n + m = m + n\).
+\end{proposition}
+\begin{proof}
+We shall use induction on \(n\) (keeping \(m\) fixed).
+
+First we do the base case \(n = 0\), i.e., we show \(0 + m = m + 0\). By the definition \ref{def 2.2.1}, \(0 + m = m\), while by Lemma \ref{lem 2.2.2}, \(m + 0 = m\). Thus the base case is done.
+
+Now suppose inductively that \(n + m = m + n\), now we have to prove that \(\BLUE{(n\INC) + m} = \GREEN{m +(n\INC)}\) to close the induction. By the definition \ref{def 2.2.1}, \(\BLUE{(n\INC) + m} = (n + m)\INC\). By Lemma \ref{lem 2.2.3}, \(\GREEN{m + (n\INC)} = (m + n)\INC\), but this is equal to \((n + m)\INC\) by the inductive hypothesis \(n + m = m + n\). Thus \((n\INC) + m = m +(n\INC)\) and we have closed the induction.
+\end{proof}
+
+\begin{proposition}\label{prop  2.2.5} (Addition is associative). For any natural numbers \(a\), \(b\), \(c\), we have \((a + b) + c = a + (b + c)\).
+\end{proposition}
+\begin{proof}
+We induct on \(c\), keep a, b fixed.
+
+Let \(a\), \(b\) be particular but arbitrarily chosen natural numbers.
+
+Base case: for \(c = 0\), we want to prove \((a + b) + 0 = a + (b + 0))\). For the LHS, \((\BLUE{a + b}) + 0 = \BLUE{a + b}\) by Lemma \ref{lem 2.2.2}. For the RHS, \(a + \GREEN{(b + 0)} = a + \GREEN{b}\) by Lemma \ref{lem 2.2.2}. So both sides equal to \(a + b\) and thus equal to each other.
+
+Inductive hypothesis: suppose \((a + b) + c = a + (b + c)\), we want to prove \(\BLUE{(a + b) + (c\INC)} = \GREEN{a + (b + (c\INC))}\). By Lemma \ref{lem 2.2.3}, LHS = \(\BLUE{(a + b) + (c\INC)} = \MAROON{((a + b) + c)\INC}\). By Lemma \ref{lem 2.2.3}, RHS = \(\GREEN{a + (b + (c\INC))} = a + (b + c)\INC\), which again by Lemma \ref{lem 2.2.3} = \((a + (b + c))\INC\). But by inductive hypothesis, \((a + b) + c = a + (b + c)\), so \((a + (b + c))\INC = \MAROON{((a + b) + c)\INC}\), which equals to LHS. So RHS = LHS, so we closed the induction.
+\end{proof}
+
+\begin{note}
+Because of this associativity we can write sums such as \(a + b + c\) without having to worry about which order the numbers are being added together.
+\end{note}
+
+\begin{proposition} (Cancellation law). Let \(a\), \(b\), \(c\) be natural numbers such that \(a + b = a + c\). Then we have \(b = c\).
+\end{proposition}
+\begin{note}
+我們不能用任何「減法」或者是「負數」的概念來證明自然數消去法。事實上這本書就是用這個消去法來定義「虛擬減法」(virtual subtraction)，是一種「形式上」(formal)的減法，然後會進一步證明這跟整數減法等價。可參考第四章\ Definition \ref{def 4.1.1}。
+\end{note}
