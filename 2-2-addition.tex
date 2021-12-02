@@ -4,8 +4,7 @@
 \newcommand{\GREEN}[1]{\textcolor{YellowGreen}{#1}}
 \newcommand{\MAROON}[1]{\textcolor{Maroon}{#1}}
 
-\begin{definition} \label{def 2.2.1}
-(Addition of natural numbers). Let \(m\) be a natural number. To add zero to \(m\), we \emph{define} \(0 + m := m\). Now suppose \emph{inductively} that we have defined how to add \(n\) to \(m\). Then we can add \(n\INC \) to \(m\) by defining \((n\INC) + m\) := \((n + m)\INC\).
+\begin{definition} [Addition of natural numbers] \label{def 2.2.1} Let \(m\) be a natural number. To add zero to \(m\), we \emph{define} \(0 + m := m\). Now suppose \emph{inductively} that we have defined how to add \(n\) to \(m\). Then we can add \(n\INC \) to \(m\) by defining \((n\INC) + m\) := \((n + m)\INC\).
 \end{definition}
 \begin{note}
 So,
@@ -30,7 +29,7 @@ Let \(m\) be a natural number.
 
 Base case: \(0 + m = m\) by Definition \ref{def 2.2.1}. But \(m\) is a natural number, so \(0 + m\) is a natural number. 
 
-Inductive hypothesis: suppose \(n + m\) is a natural number. Wanted: \((n\INC) + m\) is a natural number. By definition \ref{def 2.2.1} \BLUE{\((n\INC) + m = (n + m)\INC\)}, but by inductive hypothesis, \(n + m\) is a natural number, and by Axiom \ref{axm 2.2}, \BLUE{\((n + m)\INC\)} is a natural number, so \BLUE{\((n\INC) + m\)} is a natural number. This closes the induction.
+Inductive hypothesis: suppose \(n + m\) is a natural number. Wanted: \((n\INC) + m\) is a natural number. By Definition \ref{def 2.2.1} \BLUE{\((n\INC) + m = (n + m)\INC\)}, but by inductive hypothesis, \(n + m\) is a natural number, and by Axiom \ref{axm 2.2}, \BLUE{\((n + m)\INC\)} is a natural number, so \BLUE{\((n\INC) + m\)} is a natural number. This closes the induction.
 \end{proof}
 
 \begin{note}
@@ -42,27 +41,27 @@ For any natural number \(n\), \(n + 0 = n\).
 \end{lemma}
 \begin{proof} We use induction.
 
-The base case \(0 + \BLUE{0} = \BLUE{0}\) follows since we know(by definition \ref{def 2.2.1}) that \(0 + \BLUE{m} = \BLUE{m}\) for every natural number \(\BLUE{m}\), and \(\BLUE{0}\) is a natural number.
+The base case \(0 + \BLUE{0} = \BLUE{0}\) follows since we know(by Definition \ref{def 2.2.1}) that \(0 + \BLUE{m} = \BLUE{m}\) for every natural number \(\BLUE{m}\), and \(\BLUE{0}\) is a natural number.
 
-Now suppose inductively that \(n + 0 = n\). We wish to show that \((n\INC)+0 = n\INC\). But by definition of addition, \((n\INC) + 0\) is equal to \((n + 0)\INC\), which is equal to \(n\INC\) since \(n + 0 = n\). This closes the induction.
+Now suppose inductively that \(n + 0 = n\). We wish to show that \((n\INC)+0 = n\INC\). But by Definition \ref{def 2.2.1}, \((n\INC) + 0\) is equal to \((n + 0)\INC\), which is equal to \(n\INC\) since \(n + 0 = n\). This closes the induction.
 \end{proof}
 
 \begin{lemma}\label{lem 2.2.3} For any natural numbers \(n\) and \(m\), \(\BLUE{n + (m\INC)} = \GREEN{(n + m)\INC}\)
 \end{lemma}
 \begin{note}
-這個\ lemma 內等號\ LHS 的\ operand 的順序又跟\ definition \ref{def 2.2.1} 相反，是\ \(\BLUE{n + (m\INC)}\) 而不是\  \((m\INC) + n\)，所以不能直接從\ definition \ref{def 2.2.1} 得知這個\ Lemma。
+這個\ lemma 內等號\ LHS 的\ operand 的順序又跟\ Definition \ref{def 2.2.1} 相反，是\ \(\BLUE{n + (m\INC)}\) 而不是\  \((m\INC) + n\)，所以不能直接從\ Definition \ref{def 2.2.1} 得知這個\ Lemma。
 \end{note}
 \begin{proof}
 We induct on \(n\) (keeping \(m\) fixed).
 
-Base case: \(n = 0\). In this case we have to prove \( \BLUE{0 + (m\INC)} = (\GREEN{0 + m})\INC\). But by definition \ref{def 2.2.1}, \(\BLUE{0 + (m\INC)} = m\INC\) and \(\GREEN{0 + m} = m\), so both sides are equal to \(m\INC\) and are thus equal to each other.
+Base case: \(n = 0\). In this case we have to prove \( \BLUE{0 + (m\INC)} = (\GREEN{0 + m})\INC\). But by Definition \ref{def 2.2.1}, \(\BLUE{0 + (m\INC)} = m\INC\) and \(\GREEN{0 + m} = m\), so both sides are equal to \(m\INC\) and are thus equal to each other.
 
-Now we assume inductively that \(n + (m\INC) = (n + m)\INC\); we now have to show that \(\BLUE{(n\INC) + (m\INC)} = (\GREEN{(n\INC) + m})\INC\). The \BLUE{left-hand side} is \((n + (m\INC))\INC\) by definition \ref{def 2.2.1}, which is equal to \(((n + m)\INC)\INC\) by the inductive hypothesis. Similarly, we have \(\GREEN{(n\INC) + m} =(n + m)\INC\) by the definition of addition, and so the right-hand side is also equal to \(((n + m)\INC)\INC\). Thus both sides are equal to each other, and we have closed the induction.
+Now we assume inductively that \(n + (m\INC) = (n + m)\INC\); we now have to show that \(\BLUE{(n\INC) + (m\INC)} = (\GREEN{(n\INC) + m})\INC\). The \BLUE{left-hand side} is \((n + (m\INC))\INC\) by Definition \ref{def 2.2.1}, which is equal to \(((n + m)\INC)\INC\) by the inductive hypothesis. Similarly, we have \(\GREEN{(n\INC) + m} =(n + m)\INC\) by the Definition \ref{def 2.2.1}, and so the right-hand side is also equal to \(((n + m)\INC)\INC\). Thus both sides are equal to each other, and we have closed the induction.
 \end{proof}
 
 \begin{additional corollary}\label{ac 2.2.2}(on page 26 above)\(n\INC = n +1\)
 \begin{note}
-我們可從\ definition \ref{def 2.2.1} 得知\ \(1 + n = n\INC\)，但不能得知\ \(n + 1 = n\INC\)
+我們可從\ Definition \ref{def 2.2.1} 得知\ \(1 + n = n\INC\)，但不能得知\ \(n + 1 = n\INC\)
 \end{note}
 \begin{proof}
     \begin{align*}
@@ -74,17 +73,17 @@ Now we assume inductively that \(n + (m\INC) = (n + m)\INC\); we now have to sho
 \end{proof}
 \end{additional corollary}
 
-\begin{proposition}\label{prop 2.2.4}(Addition is commutative). For any natural numbers \(n\) and \(m\), \(n + m = m + n\).
+\begin{proposition}[Addition is commutative]\label{prop 2.2.4} For any natural numbers \(n\) and \(m\), \(n + m = m + n\).
 \end{proposition}
 \begin{proof}
 We shall use induction on \(n\) (keeping \(m\) fixed).
 
-First we do the base case \(n = 0\), i.e., we show \(0 + m = m + 0\). By the definition \ref{def 2.2.1}, \(0 + m = m\), while by Lemma \ref{lem 2.2.2}, \(m + 0 = m\). Thus the base case is done.
+First we do the base case \(n = 0\), i.e., we show \(0 + m = m + 0\). By the Definition \ref{def 2.2.1}, \(0 + m = m\), while by Lemma \ref{lem 2.2.2}, \(m + 0 = m\). Thus the base case is done.
 
-Now suppose inductively that \(n + m = m + n\), now we have to prove that \(\BLUE{(n\INC) + m} = \GREEN{m +(n\INC)}\) to close the induction. By the definition \ref{def 2.2.1}, \(\BLUE{(n\INC) + m} = (n + m)\INC\). By Lemma \ref{lem 2.2.3}, \(\GREEN{m + (n\INC)} = (m + n)\INC\), but this is equal to \((n + m)\INC\) by the inductive hypothesis \(n + m = m + n\). Thus \((n\INC) + m = m +(n\INC)\) and we have closed the induction.
+Now suppose inductively that \(n + m = m + n\), now we have to prove that \(\BLUE{(n\INC) + m} = \GREEN{m +(n\INC)}\) to close the induction. By the Definition \ref{def 2.2.1}, \(\BLUE{(n\INC) + m} = (n + m)\INC\). By Lemma \ref{lem 2.2.3}, \(\GREEN{m + (n\INC)} = (m + n)\INC\), but this is equal to \((n + m)\INC\) by the inductive hypothesis \(n + m = m + n\). Thus \((n\INC) + m = m +(n\INC)\) and we have closed the induction.
 \end{proof}
 
-\begin{proposition}\label{prop  2.2.5} (Addition is associative). For any natural numbers \(a\), \(b\), \(c\), we have \((a + b) + c = a + (b + c)\).
+\begin{proposition}[Addition is associative]\label{prop  2.2.5} For any natural numbers \(a\), \(b\), \(c\), we have \((a + b) + c = a + (b + c)\).
 \end{proposition}
 \begin{proof}
 We induct on \(c\), keep a, b fixed.
@@ -100,8 +99,94 @@ Inductive hypothesis: suppose \((a + b) + c = a + (b + c)\), we want to prove \(
 Because of this associativity we can write sums such as \(a + b + c\) without having to worry about which order the numbers are being added together.
 \end{note}
 
-\begin{proposition} (Cancellation law). Let \(a\), \(b\), \(c\) be natural numbers such that \(a + b = a + c\). Then we have \(b = c\).
+\begin{proposition}[Cancellation law]\label{2.2.6} Let \(a\), \(b\), \(c\) be natural numbers such that \(a + b = a + c\). Then we have \(b = c\).
 \end{proposition}
 \begin{note}
 我們不能用任何「減法」或者是「負數」的概念來證明自然數消去法。事實上這本書就是用這個消去法來定義「虛擬減法」(virtual subtraction)，是一種「形式上」(formal)的減法，然後會進一步證明這跟整數減法等價。可參考第四章\ Definition \ref{def 4.1.1}。
+\end{note}
+\begin{proof}
+We proof this by induction on \(a\).
+
+Base case: let \(a = 0\), we have to prove \(0 + b = 0 + c\ \implies b = c\). But by Definition \ref{def 2.2.1}, \(0 + b = b\), and \(0 + c = c\), so \(b = 0 + b = 0 + c = c\), so \(b = c\).
+
+Inductive hypothesis: suppose \(a + b = a + c \implies b = c\), we have to prove \(\BLUE{(a\INC) + b} = \GREEN{(a\INC) + c} \implies b = c\). By Definition \ref{def 2.2.1}, \BLUE{LHS} = \((a + b)\INC\), \GREEN{RHS} = \((a + c)\INC\), so \((a + b)\INC = (a + c)\INC\), and by Axiom (of contrapositive of) \ref{axm 2.4}, \(a + b = a + c\), which by inductive hypothesis implies \(b = c\). This closes the induction.
+\end{proof}
+
+\begin{note}
+至此加法的基本規則都證明了，接下來要討論加法跟「正數」的關係。
+\end{note}
+
+\begin{definition}[Positive natural numbers] \label{def 2.2.7} A natural number \(n\) is said to be positive if and only if it is not equal to \(0\).
+\end{definition}
+\begin{note}
+沒錯，在自然數這個系統且定義包含了\ \(0\) 的情況下，「正數」的意思就是「不是\ \(0\) 的自然數」。
+\end{note}
+
+\begin{proposition}\label{prop 2.2.8} If \(a\) is a positive natural number and \(b\) is a natural number, then \(a + b\) is positive (and hence \(b + a\) is also, by Proposition \ref{prop 2.2.4}).
+\end{proposition}
+
+\begin{proof}
+We prove by induction on \(b\). Let \(a\) be a positive natural number.
+
+Base case: let \(b = 0\). Then
+\begin{align*}
+a + b & = a + 0 & \\
+      & = 0 + a & \text{by Proposition \ref{prop 2.2.4} (commutative law)} \\
+      & = a     & \text{by Definition \ref{def 2.2.1}}
+\end{align*}
+which by definition is a positive natural number.
+
+Inductive hypothesis: Suppose \(a + b\) is positive, we have to prove \(a + (b\INC)\) is positive. Then by Lemma \ref{lem 2.2.3}, \(a + (b\INC) = (a + b)\INC\). But by inductive hypothesis \(a + b\) is positive, which by Definition \ref{def 2.2.7} is not equal to \(0\), so by Axiom \ref{axm 2.3}, \((a + b)\INC\) is also not equal to \(0\), which again by Definition \ref{def 2.2.7} is positive. This closes the induction.
+\end{proof}
+
+\begin{corollary} \label{corollary 2.2.9}
+If \(a\) and \(b\) are natural numbers such that \(a + b = 0\), then \(a = 0\) and \(b = 0\).
+\end{corollary}
+
+\begin{proof}
+Suppose for the sake of contradiction that \(a + b = 0\) but \(a \neq 0\) or \(a \neq 0\). If \(a \neq 0\), then by Definition \ref{def 2.2.7} \(a\) is positive and then by Proposition \ref{prop 2.2.8} \(a + b\) is positive and by Definition \ref{def 2.2.7} cannot be \(0\), which contradicts \(a + b = 0\). If \(b \neq 0\), then similarly \(b\) is positive and \(b + a\) is positive, and by Proposition \ref{prop 2.2.4} \(= a + b\), so \(a + b\) is positive, again a contradiction. Thus both \(a\) and \(b\) must be \(0\).
+\end{proof}
+
+\begin{lemma}\label{lem 2.2.10}
+Let \(a\) be a positive natural number. Then there \emph{exists exactly one} natural number \(b\) such that \(b\INC = a\).
+\end{lemma}
+\begin{note}
+注意這是個\ imply 陳述，如果前提不成立(i.e. \(a\) 不是\ positive natural number)則會直接\ vacuously true!
+\end{note}
+\begin{proof}
+We prove by induction on \(a\).
+
+Base case: let \(a = 0\). But by Definition \ref{def 2.2.7} \(a\) is not positive. So this Lemma is vacuously true.
+
+Inductive hypothesis: suppose \(a\) is a positive natural number and \(b\) is the unique natural number such that \(b\INC = a\). We have to prove that there exists exact one natural number \(b'\) such that \(b'\INC = a\INC\). Let \(b' = b\INC\). Then by Axiom of Substitution \ref{axm a.7} \(b' = a\), and \(b'\INC = a\INC\) again by substitution, so the existence part is satisfied. Now we prove the unique part. Suppose there also exists a natural number \(c\) such that \(c\INC = a\INC\). Then by Axiom \ref{axm 2.4}, \(c = a\), and since \(b' = a\), so \(c = b'\), which means \(b'\) is unique. This closed the induction.
+\end{proof}
+
+\begin{note}
+現在有了加法的定義跟一些性質，以及正數的定義，我們可以來定義自然數的「order」了。
+\end{note}
+
+\begin{definition}[Ordering of the natural numbers] \label{def 2.2.11} Let \(n\) and \(m\) be natural numbers. We say that \(n\) is \emph{greater than or equal to} \(m\), and write \(n \geq m\) or \(m \leq n\), if and only if we have \(n = m + a\) for some natural number \(a\). We say that n is \emph{strictly greater than} \(m\), and write \(n > m\) or \(m < n\), if and only if \(n \geq m\) and \(n \neq m\).
+\end{definition}
+\begin{note}
+\(n \geq m\) 跟\ \(m \leq n\) 只有符號上的差別，他們在定義上是等價的。另外定義內的\ \(a\) 只需要是\ natural number 即可，不需要是\ "positive" natural number。
+\end{note}
+\begin{note}
+\(n\INC > n\) for any natural number \(n\)，因為\ (1) \(n\INC \neq n\)(否則會違反\ Axiom \ref{axm 2.4}) (2) \(n\INC \geq n\)，因為\ \(n\INC = n + 1\)(by Additional Corollary \ref{ac 2.2.2})，而\ \(1\) 就是個\ natural number。
+
+所以，這代表沒有最大的自然數。
+\end{note}
+
+\begin{proposition} [Basic properties of order for natural numbers] \label{prop 2.2.12}
+Let \(a\), \(b\), \(c\) be natural numbers. Then
+    \begin{enumerate}
+        \item (Order is reflexive) \(a \geq a\).
+        \item (Order is transitive) If \(a \geq b\) and \(b \geq c\), then \(a \geq c\).
+        \item (Order is \emph{anti}-symmetric) If \(a \geq b\) and \(b \geq a\),then \(a = b\). 
+        \item (Addition preserves order) \(a \geq b\) if and only if \(a + c \geq b + c\). 
+        \item \(a < b\) if and only if \(a\INC \leq b\).
+        \item \(a < b\) if and only if \(b = a + d\) for some \emph{positive} number \(d\).
+    \end{enumerate}
+\end{proposition}
+\begin{note}
+若忘了\ anti-symmetric 是什麼，可以回去翻離散課本講\ relation 的部分。
 \end{note}
