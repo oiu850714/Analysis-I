@@ -83,7 +83,7 @@ First we do the base case \(n = 0\), i.e., we show \(0 + m = m + 0\). By the Def
 Now suppose inductively that \(n + m = m + n\), now we have to prove that \(\BLUE{(n\INC) + m} = \GREEN{m +(n\INC)}\) to close the induction. By the Definition \ref{def 2.2.1}, \(\BLUE{(n\INC) + m} = (n + m)\INC\). By Lemma \ref{lem 2.2.3}, \(\GREEN{m + (n\INC)} = (m + n)\INC\), but this is equal to \((n + m)\INC\) by the inductive hypothesis \(n + m = m + n\). Thus \((n\INC) + m = m +(n\INC)\) and we have closed the induction.
 \end{proof}
 
-\begin{proposition}[Addition is associative]\label{prop  2.2.5} For any natural numbers \(a\), \(b\), \(c\), we have \((a + b) + c = a + (b + c)\).
+\begin{proposition}[Addition is associative]\label{prop 2.2.5} For any natural numbers \(a\), \(b\), \(c\), we have \((a + b) + c = a + (b + c)\).
 \end{proposition}
 \begin{proof}
 We induct on \(c\), keep a, b fixed.
@@ -99,7 +99,7 @@ Inductive hypothesis: suppose \((a + b) + c = a + (b + c)\), we want to prove \(
 Because of this associativity we can write sums such as \(a + b + c\) without having to worry about which order the numbers are being added together.
 \end{note}
 
-\begin{proposition}[Cancellation law]\label{2.2.6} Let \(a\), \(b\), \(c\) be natural numbers such that \(a + b = a + c\). Then we have \(b = c\).
+\begin{proposition}[Cancellation law]\label{prop 2.2.6} Let \(a\), \(b\), \(c\) be natural numbers such that \(a + b = a + c\). Then we have \(b = c\).
 \end{proposition}
 \begin{note}
 我們不能用任何「減法」或者是「負數」的概念來證明自然數消去法。事實上這本書就是用這個消去法來定義「虛擬減法」(virtual subtraction)，是一種「形式上」(formal)的減法，然後會進一步證明這跟整數減法等價。可參考第四章\ Definition \ref{def 4.1.1}。
@@ -158,7 +158,7 @@ We prove by induction on \(a\).
 
 Base case: let \(a = 0\). But by Definition \ref{def 2.2.7} \(a\) is not positive. So this Lemma is vacuously true.
 
-Inductive hypothesis: suppose \(a\) is a positive natural number and \(b\) is the unique natural number such that \(b\INC = a\). We have to prove that there exists exact one natural number \(b'\) such that \(b'\INC = a\INC\). Let \(b' = b\INC\). Then by Axiom of Substitution \ref{axm a.7} \(b' = a\), and \(b'\INC = a\INC\) again by substitution, so the existence part is satisfied. Now we prove the unique part. Suppose there also exists a natural number \(c\) such that \(c\INC = a\INC\). Then by Axiom \ref{axm 2.4}, \(c = a\), and since \(b' = a\), so \(c = b'\), which means \(b'\) is unique. This closed the induction.
+Inductive hypothesis: suppose \(a\) is a positive natural number and \(b\) is the unique natural number such that \(b\INC = a\). We have to prove that there exists exact one natural number \(b'\) such that \(b'\INC = a\INC\). Let \(b' = b\INC\). Then by Axiom of Substitution \ref{axm a.7.4} \(b' = a\), and \(b'\INC = a\INC\) again by substitution, so the existence part is satisfied. Now we prove the unique part. Suppose there also exists a natural number \(c\) such that \(c\INC = a\INC\). Then by Axiom \ref{axm 2.4}, \(c = a\), and since \(b' = a\), so \(c = b'\), which means \(b'\) is unique. This closed the induction.
 \end{proof}
 
 \begin{note}
@@ -190,3 +190,40 @@ Let \(a\), \(b\), \(c\) be natural numbers. Then
 \begin{note}
 若忘了\ anti-symmetric 是什麼，可以回去翻離散課本講\ relation 的部分。
 \end{note}
+\begin{proof}{(a)}
+Let \(a\) be a natural number. Then by Definition \ref{def 2.2.11}, \(\BLUE{a + 0} \geq \GREEN{a}\) because \(0\) is a natural number. But by Lemma \ref{lem 2.2.2}, \(\BLUE{a + 0} = \BLUE{a}\), so by Axiom of Substitution (\ref{axm a.7.4}), \(\BLUE{a} \geq \GREEN{a}\).
+\end{proof}
+
+\begin{proof}{(b)}
+Let \(a, b, c\) be natural numbers s.t. \(a \geq b\) and \(b \geq c\). Then by Definition \ref{def 2.2.11}, \(\exists\ \text{natural numbers}\ m, n\) such that \(a = b + m\) and \(b = c + n\). So
+\begin{align*}
+    a & = b + m & \\
+      & = (c + n) + m & \\
+      & = c + (n + m) & \text{by Proposition \ref{prop 2.2.5}}\\
+\end{align*}
+So \(a = c + (n + m)\) for some natural number \(n + \), so by Definition \ref{def 2.2.11}, \(a \geq c\)
+\end{proof}
+\begin{proof}{(c)}
+Let \(a, b\) be natural numbers s.t. \(a \geq b\) and \(b \geq a\). Then by Definition \ref{def 2.2.11}, \(\exists\ \text{natural numbers}\ m, n\) such that \(a = b + m\) and \(b = a + n\). So
+\begin{align*}
+    a & = b + m & \\
+      & = (a + n) + m & \\
+      & = a + (n + m) & \text{by Proposition \ref{prop 2.2.5}}\\
+\end{align*}
+But by Lemma \ref{lem 2.2.2}, \(a = a + 0\), so \(a + 0 = a + (n + m)\), and by Proposition \ref{prop 2.2.6} (cancellation law), \(0 = n + m\), and by Corollary \ref{corollary 2.2.9}, \(n = 0\) and \(m = 0\). In particular, \(m = 0\), so \(a = b + m = b + 0 = b\).
+\end{proof}
+\begin{proof}{(d)}
+Let \(a, b, c, d\) be natural numbers. Then
+\begin{align*}
+         & a \geq b \\
+    \iff & a = b + d             & \text{by Definition \ref{def 2.2.11}} \\
+    \iff & a + c = (b + d) + c   & \text{by Axiom of Substitution \ref{axm a.7.4}} \\ 
+    \iff & a + c = c + (b + d)   & \text{by Proposition(commutative law) \ref{prop 2.2.8} } \\
+    \iff & a + c = (c + b) + d   & \text{by Proposition(associative law) \ref{prop 2.2.5}} \\
+    \iff & a + c = (b + c) + d   & \text{by Proposition \ref{prop 2.2.4}} \\
+    \iff & a + c \geq b + c      & \text{by Definition \ref{def 2.2.11}}
+\end{align*}
+\end{proof}
+\begin{proof}{(e)}
+
+\end{proof}
