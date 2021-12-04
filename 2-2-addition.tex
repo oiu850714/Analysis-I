@@ -225,5 +225,29 @@ Let \(a, b, c, d\) be natural numbers. Then
 \end{align*}
 \end{proof}
 \begin{proof}{(e)}
+Let \(a, b\) be natural numbers.
 
+\(\Longrightarrow \): Suppose \(a < b\). Then by Definition \ref{def 2.2.11} \(a \leq b\) \BLUE{(1)} and \(a \neq b\) \BLUE{(2)}. \BLUE{(1)} implies \(a + m = b\) \MAROON{(1)} for some natural number \(m\), and with \BLUE{(2)} by Definition \ref{def 2.2.7} implies \(m\) is positive (otherwise \(b = a + m = a + 0 = a\) by Lemma \ref{lem 2.2.2}, contradicting \(a \neq b\)). Since \(m\) is positive, by Lemma \ref{lem 2.2.10}, \(m = n\INC\) \MAROON{(2)} for some natural number \(n\). So
+\begin{align*}
+    b & = a + m & \text{by \MAROON{(1)}}\\
+      & = a + n\INC & \text{by \MAROON{(2)}}\\
+      & = (a + n)\INC & \text{by Lemma \ref{lem 2.2.3}} \\
+      & = a\INC + n & \text{by Definition \ref{def 2.2.1}}
+\end{align*}
+which by Definition \ref{def 2.2.11} implies \(a\INC \leq b\).
+
+\( \Longleftarrow \): Suppose \(a\INC \leq b\). Then by Definition \ref{def 2.2.11} \(a\INC + m = b\) for some natural number \(m\), And
+\begin{align*}
+    & \BLUE{a\INC + m} \\
+    & = (a + m)\INC & by Definition \ref{def 2.2.1} \\
+    & = \BLUE{a + m\INC} & by Lemma \ref{lem 2.2.3}
+\end{align*}
+So \(\BLUE{a\INC + m = a + m\INC} = b\). By Axiom \ref{axm 2.3}, \(m\INC \neq 0\), so by Definition \ref{def 2.2.7} is positive, so \(a \neq b\). So \(a + m\INC = b\) for some natural number \(m\INC\) and \(a \neq b\), by Definition \ref{def 2.2.11}, \(a < b\).
+\end{proof}
+
+\begin{proof}{(f)}
+
+\( \Longrightarrow \): This was proved in the "if part" of (e); the \(m\) in there meets the condition.
+
+\( \Longleftarrow \): This was proved in the middle of the "only if part" of (e); the positive \(m\INC\) derived in the middle can be treated as \(d\) in (f), and the derivation in (e) derives \(a < b\).
 \end{proof}
