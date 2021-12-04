@@ -289,7 +289,7 @@ Let \(m_0\) be a natural number, and let \(P(m)\) be a property pertaining to an
 \begin{note}
 要仔細看這個\ proposition 是假設有什麼，然後有什麼結論。
 
-這個\ proposition 是說對於任一個(for all) \(\geq m_0\) 的自然數\ \(m\)，都滿足一個「包含了\ \(P\) 還有\ \(m_0\) 的\ if then 陳述句」；若這為真，則會\ implies 「對於所有\ \(\geq m_0\) 的自然數\ m，\(P(m)\) 都成立」，
+這個\ proposition 是說對於任一個(for all) \(\geq m_0\) 的自然數\ \(m\)，都滿足一個「包含了\ \(P\) 還有\ \(m_0\) 的\ if then 陳述句」；若這為真，則會\ implies 「對於所有\ \(\geq m_0\) 的自然數\ m，\(P(m)\) 都成立」。
 
 另外當\ \(m = m_0\) 時，那個「被包含的\ if then 陳述句」的\ hypothesis 是\ vacuously true，因為該\ hypothesis 是個\ for all statements，但是\ for all 作用的集合此時為空集合。而如果我們又證明了「那個被包含的\ if then 陳述句」是\ true，則\ (1) if then 陳述句是\ true，\ (2) if-part 也是\ true，這代表\ then part 也是\ true；現在在\ \(m = m_0\) 的情況下，then part 就是\ \(P(m_0)\) is true。而\ \(P(m_0)\) is true 其實就是傳統\ induction 的\ base case。換句話說這代表「整個\ strong induction 自己的\ if-part」內會\ implies base case，所以只要提供了\ strong induction 需要的那種\ if-part 就不需要證明\ base case is true 了。
 \end{note}
