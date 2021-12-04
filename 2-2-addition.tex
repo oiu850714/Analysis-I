@@ -3,6 +3,7 @@
 \newcommand{\BLUE}[1]{\textcolor{RoyalBlue}{#1}}
 \newcommand{\GREEN}[1]{\textcolor{YellowGreen}{#1}}
 \newcommand{\MAROON}[1]{\textcolor{Maroon}{#1}}
+\newcommand{\RED}[1]{\textcolor{Red}{#1}}
 
 \begin{definition} [Addition of natural numbers] \label{def 2.2.1} Let \(m\) be a natural number. To add zero to \(m\), we \emph{define} \(0 + m := m\). Now suppose \emph{inductively} that we have defined how to add \(n\) to \(m\). Then we can add \(n\INC \) to \(m\) by defining \((n\INC) + m\) := \((n + m)\INC\).
 \end{definition}
@@ -170,11 +171,11 @@ Inductive hypothesis: suppose \(a\) is a positive natural number and \(b\) is th
 \begin{note}
 \(n \geq m\) 跟\ \(m \leq n\) 只有符號上的差別，他們在定義上是等價的。另外定義內的\ \(a\) 只需要是\ natural number 即可，不需要是\ "positive" natural number。
 \end{note}
-\begin{note}
+\begin{additional corollary} \label{ac 2.2.3}
 \(n\INC > n\) for any natural number \(n\)，因為\ (1) \(n\INC \neq n\)(否則會違反\ Axiom \ref{axm 2.4}) (2) \(n\INC \geq n\)，因為\ \(n\INC = n + 1\)(by Additional Corollary \ref{ac 2.2.2})，而\ \(1\) 就是個\ natural number。
 
 所以，這代表沒有最大的自然數。
-\end{note}
+\end{additional corollary}
 
 \begin{proposition} [Basic properties of order for natural numbers] \label{prop 2.2.12}
 Let \(a\), \(b\), \(c\) be natural numbers. Then
@@ -251,3 +252,48 @@ So \(\BLUE{a\INC + m = a + m\INC} = b\). By Axiom \ref{axm 2.3}, \(m\INC \neq 0\
 
 \( \Longleftarrow \): This was proved in the middle of the "only if part" of (e); the positive \(m\INC\) derived in the middle can be treated as \(d\) in (f), and the derivation in (e) derives \(a < b\).
 \end{proof}
+
+\begin{proposition}[Trichotomy of order for natural numbers] \label{prop 2.2.13}
+Let \(a\) and \(b\) be natural numbers. Then exactly one of the following statements is true: \(a < b\), \(a = b\), or \(a > b\).
+\end{proposition}
+\begin{proof}
+The sketch: (1) at most one condition holds, (2) at least one condition holds; this implies exactly one condition holds.
+
+(1) at most one:
+    \begin{enumerate}
+        \item If \(a < b\) then by Definition \ref{def 2.2.11} \(a \neq b\). Now if \(a > b\) then we have \(a < b \land a > b\), which by Proposition \ref{prop 2.2.12}(c) (with some trivial implications i.e. \(a < b \implies a \leq b\)) implies \(a = b\), contradicting \(a \neq b\).
+        \item If \(a > b\) then by Definition \ref{def 2.2.11} \(a \neq b\). Now if \(a < b\) then we have \(a > b \land a < b\), which by Proposition \ref{prop 2.2.12}(c) (with some trivial implications i.e. \(a < b \implies a \leq b\)) implies \(a = b\), contradicting \(a \neq b\).
+        \item If \(a = b\) then by Definition \ref{def 2.2.11} \(a \not < b \) and \(b \not < a\).
+    \end{enumerate}
+
+(2) at least one: we use induction on \(a\) and keep \(b\) fixed.
+
+Base case: Let \(a = 0\). Then we have \(a = 0 \leq b\), because \(b = \GREEN{b} + 0 = \GREEN{b} + a\), so there exists a natural number \(\GREEN{b}\) s.t. \(b = \GREEN{b} + a\), which by Definition \ref{def 2.2.11} implies \(a \leq b\) (This is the first (why?)). And this implies \(a < b\) or \(a = b\).
+
+Inductive hypothesis: Suppose \(a\) satisfies the "at least one" proposition, i.e. at least one of \(a < b\), \(a = b\), or \(a > b\) is true. We have to prove \(a\INC\) satisfies the "at least one" proposition.
+    \begin{enumerate}
+        \item Suppose \(a < b\), then by Proposition \ref{prop 2.2.12}(e), \(a\INC \leq b\), which means \(a = b\) or \(a < b\).
+        \item Suppose \(a = b\), then \(a\INC = b\INC\) by Axiom of Substitution \ref{axm a.7.4}, and \(b\INC > b\) by Additional Corollary \ref{ac 2.2.3}, so \(a\INC > b\) (This is the third (why?))
+        \item Suppose \(a > b\). By Additional Corollary \ref{ac 2.2.3}, \(a\INC > a\). So we have \(a > b\) and \(a\INC > a\), which by Proposition \ref{prop 2.2.12}(b) implies \(a\INC \geq b\). Or more precisely \(a\INC > b\) because if \(a\INC = b\) that implies \(a + 1 = b\), which implies \(a < b\), which contradicts \(a > b\). (This is the second (why?))
+    \end{enumerate}
+So in either case \(a\INC\) satisfies at least one of the \(a\INC < b\), \(a\INC = b\) or \(a\INC > b\).
+\end{proof}
+
+\begin{note}
+上面這些\ order 的性質可以讓我們定義一個\ "stronger" version of induction. 把\ stronger 標起來只是因為它只是看起來比較強，但實際上跟數學歸納法等價。
+\end{note}
+
+\begin{proposition}[Strong principle of induction] \label{prop 2.2.14}
+Let \(m_0\) be a natural number, and let \(P(m)\) be a property pertaining to an arbitrary natural number \(m\). Suppose that \emph{for each} \(m \geq m_0\), \emph{we have the following implication}: if \(P(m')\) is true for all natural numbers \(m_0 \leq m' \RED{<}\ m\), then \(P(m)\) is also true. (In particular, this means that \(P(m_0)\) is true, since in this case the hypothesis is vacuous.) Then we can conclude that \(P(m)\) is true for all natural numbers \(m \geq m_0\).
+\end{proposition}
+\begin{note}
+要仔細看這個\ proposition 是假設有什麼，然後有什麼結論。
+
+這個\ proposition 是說對於任一個(for all) \(\geq m_0\) 的自然數\ \(m\)，都滿足一個「包含了\ \(P\) 還有\ \(m_0\) 的\ if then 陳述句」；若這為真，則會\ implies 「對於所有\ \(\geq m_0\) 的自然數\ m，\(P(m)\) 都成立」，
+
+另外當\ \(m = m_0\) 時，那個「被包含的\ if then 陳述句」的\ hypothesis 是\ vacuously true，因為該\ hypothesis 是個\ for all statements，但是\ for all 作用的集合此時為空集合。而如果我們又證明了「那個被包含的\ if then 陳述句」是\ true，則\ (1) if then 陳述句是\ true，\ (2) if-part 也是\ true，這代表\ then part 也是\ true；現在在\ \(m = m_0\) 的情況下，then part 就是\ \(P(m_0)\) is true。而\ \(P(m_0)\) is true 其實就是傳統\ induction 的\ base case。換句話說這代表「整個\ strong induction 自己的\ if-part」內會\ implies base case，所以只要提供了\ strong induction 需要的那種\ if-part 就不需要證明\ base case is true 了。
+\end{note}
+
+\begin{remark}\label{remark 2.2.15}
+In applications we usually use Proposition \ref{prop 2.2.14} with \(m_0 = 0\) or \(m_0 = 1\).
+\end{remark}
