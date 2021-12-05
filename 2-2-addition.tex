@@ -268,13 +268,13 @@ The sketch: (1) at most one condition holds, (2) at least one condition holds; t
 
 (2) at least one: we use induction on \(a\) and keep \(b\) fixed.
 
-Base case: Let \(a = 0\). Then we have \(a = 0 \leq b\), because \(b = \GREEN{b} + 0 = \GREEN{b} + a\), so there exists a natural number \(\GREEN{b}\) s.t. \(b = \GREEN{b} + a\), which by Definition \ref{def 2.2.11} implies \(a \leq b\) (This is the first (why?)). And this implies \(a < b\) or \(a = b\).
+Base case: Let \(a = 0\). Then we have \(a = 0 \leq b\), because \(b = \GREEN{b} + 0 = \GREEN{b} + a\), so there exists a natural number \(\GREEN{b}\) s.t. \(b = \GREEN{b} + a\), which by Definition \ref{def 2.2.11} implies \(a \leq b\) (\BLUE{This is the first (why?)}). And this implies \(a < b\) or \(a = b\).
 
 Inductive hypothesis: Suppose \(a\) satisfies the "at least one" proposition, i.e. at least one of \(a < b\), \(a = b\), or \(a > b\) is true. We have to prove \(a\INC\) satisfies the "at least one" proposition.
     \begin{enumerate}
         \item Suppose \(a < b\), then by Proposition \ref{prop 2.2.12}(e), \(a\INC \leq b\), which means \(a = b\) or \(a < b\).
-        \item Suppose \(a = b\), then \(a\INC = b\INC\) by Axiom of Substitution \ref{axm a.7.4}, and \(b\INC > b\) by Additional Corollary \ref{ac 2.2.3}, so \(a\INC > b\) (This is the third (why?))
-        \item Suppose \(a > b\). By Additional Corollary \ref{ac 2.2.3}, \(a\INC > a\). So we have \(a > b\) and \(a\INC > a\), which by Proposition \ref{prop 2.2.12}(b) implies \(a\INC \geq b\). Or more precisely \(a\INC > b\) because if \(a\INC = b\) that implies \(a + 1 = b\), which implies \(a < b\), which contradicts \(a > b\). (This is the second (why?))
+        \item Suppose \(a = b\), then \(a\INC = b\INC\) by Axiom of Substitution \ref{axm a.7.4}, and \(b\INC > b\) by Additional Corollary \ref{ac 2.2.3}, so \(a\INC > b\) (\BLUE{This is the third (why?)})
+        \item Suppose \(a > b\). By Additional Corollary \ref{ac 2.2.3}, \(a\INC > a\). So we have \(a > b\) and \(a\INC > a\), which by Proposition \ref{prop 2.2.12}(b) implies \(a\INC \geq b\). Or more precisely \(a\INC > b\) because if \(a\INC = b\) that implies \(a + 1 = b\), which implies \(a < b\), which contradicts \(a > b\). (\BLUE{This is the second (why?)})
     \end{enumerate}
 So in either case \(a\INC\) satisfies at least one of the \(a\INC < b\), \(a\INC = b\) or \(a\INC > b\).
 \end{proof}
@@ -284,16 +284,110 @@ So in either case \(a\INC\) satisfies at least one of the \(a\INC < b\), \(a\INC
 \end{note}
 
 \begin{proposition}[Strong principle of induction] \label{prop 2.2.14}
-Let \(m_0\) be a natural number, and let \(P(m)\) be a property pertaining to an arbitrary natural number \(m\). Suppose that \emph{for each} \(m \geq m_0\), \emph{we have the following implication}: if \(P(m')\) is true for all natural numbers \(m_0 \leq m' \RED{<}\ m\), then \(P(m)\) is also true. (In particular, this means that \(P(m_0)\) is true, since in this case the hypothesis is vacuous.) Then we can conclude that \(P(m)\) is true for all natural numbers \(m \geq m_0\).
+Let \(m_0\) be a natural number, and let \(P(m)\) be a property pertaining to an arbitrary natural number \(m\). Suppose that \emph{for each} \(m \geq m_0\), \emph{we have the following \RED{implication}} : if \(P(m')\) is true for all natural numbers \(m_0 \leq m' \RED{<}\ m\), then \(P(m)\) is also true. (In particular, this means that \(P(m_0)\) is true, since in this case the hypothesis is vacuous.) Then we can conclude that \(P(m)\) is true for all natural numbers \(m \geq m_0\).
 \end{proposition}
 \begin{note}
-要仔細看這個\ proposition 是假設有什麼，然後有什麼結論。
+要仔細看這個\ proposition 是假設有什麼，然後有什麼結論。他實際上是假設對於任何自然數，我們都有一個假設。所以整個陳述句是\ nested if-then，所以很該死。
 
-這個\ proposition 是說對於任一個(for all) \(\geq m_0\) 的自然數\ \(m\)，都滿足一個「包含了\ \(P\) 還有\ \(m_0\) 的\ if then 陳述句」；若這為真，則會\ implies 「對於所有\ \(\geq m_0\) 的自然數\ m，\(P(m)\) 都成立」。
+這個\ proposition 是說對於任一個\ \(\geq m_0\) 的自然數\ \(m\)，都滿足一個「包含了\ \(P\) 還有\ \(m_0\) 的\ if then 陳述句」；若這為真，則會\ implies 「對於所有\ \(\geq m_0\) 的自然數\ 
+\(m\)，\(P(m)\) 都成立」。
 
-另外當\ \(m = m_0\) 時，那個「被包含的\ if then 陳述句」的\ hypothesis 是\ vacuously true，因為該\ hypothesis 是個\ for all statements，但是\ for all 作用的集合此時為空集合。而如果我們又證明了「那個被包含的\ if then 陳述句」是\ true，則\ (1) if then 陳述句是\ true，\ (2) if-part 也是\ true，這代表\ then part 也是\ true；現在在\ \(m = m_0\) 的情況下，then part 就是\ \(P(m_0)\) is true。而\ \(P(m_0)\) is true 其實就是傳統\ induction 的\ base case。換句話說這代表「整個\ strong induction 自己的\ if-part」內會\ implies base case，所以只要提供了\ strong induction 需要的那種\ if-part 就不需要證明\ base case is true 了。
+另外當\ \(m = m_0\) 時，那個「被包含的\ if then 陳述句」的\ hypothesis 是\ vacuously true，因為該\ hypothesis 是個\ for all statements，但是\ for all 作用的集合此時為空集合。而如果我們又證明了「那個被包含的\ if then 陳述句」是\ true，則\ (1) if then 陳述句是\ true，\ (2) if-part 也是\ true，這代表\ then part 也是\ true
+
+講這件事情的用意是，現在在\ \(m = m_0\) 的情況下，then part 就是\ \(P(m_0)\) is true。而\ \(P(m_0)\) is true 其實就是傳統\ induction 的\ base case。換句話說這代表「整個\ strong induction 自己的\ if-part」內會\ implies base case，所以只要提供了\ strong induction 需要的那種\ if-part 就不需要證明\ base case is true 了。
 \end{note}
 
 \begin{remark}\label{remark 2.2.15}
 In applications we usually use Proposition \ref{prop 2.2.14} with \(m_0 = 0\) or \(m_0 = 1\).
 \end{remark}
+
+\begin{proof}
+Let \(m_0\) be a natural number, \(P(m)\) be a property satisfying the \RED{implication} in the Proposition, and we define \(Q(n)\) be the property that \(P(m)\) is true for all \(m_0 \leq m < n\). First we want to prove \(Q(n)\) is true for all natural number \(n\). If this for-all statement is true, then we can conclude \(P(m)\) is true for all natural number \(m \geq m_0\) (see the last step below). It can be proved by induction.
+
+Base case: Let \(n = \RED{0}\). We want to show \(Q(\RED{0})\) is true. That is, we want to show
+\begin{center}
+    \(P(m)\) is true for all \(m_0 \leq m\ \RED{< 0}\) \MAROON{(1)}.
+\end{center}
+But we have shown that \(0 \leq m_0\) (in "first (why?)" in Proposition \ref{prop 2.2.13}) for any natural number \(m_0\), so there are two cases: \(m_0 = 0\) or \(m_0 > 0\).
+\begin{enumerate}
+    \item If \(m_0 = 0\), then \MAROON{(1)} is
+        \begin{center}
+            \(P(m)\) is true for all \(\RED{0} \leq m < 0\),
+        \end{center}
+        which is vacuously true because the range \(0 \leq m < 0\) is empty(precisely, no natural number \(< 0\), otherwise it will contradict the "first (why?)" in Proposition \ref{prop 2.2.13}).
+    \item If \(m_0 > 0\), then \MAROON{(1)} is also vacuous because the range \(m_0 \leq m < 0\) is (also trivially) empty.
+\end{enumerate}
+So in both case, \MAROON{(1)} is true, that is, \(Q(0)\) is true.
+
+Inductive hypothesis: Suppose for some natural number \(n\) (and WLOG \(n \geq m_0\), or we need to prove some vacuous cases again), \(Q(\RED{n})\) is true, that is
+\begin{center}
+    \(P(m)\) is true for all \(m_0 \leq m < \RED{n}\) \MAROON{(2)},
+\end{center}
+we have to prove \(Q(\RED{n\INC})\) is true, that is
+\begin{center}
+    \(P(m)\) is true for all \(m_0 \leq m < \RED{n\INC}\) \MAROON{(3)}.
+\end{center}
+By \MAROON{(2)} and the \RED{implication} in the Proposition, it can be derived that \(P(n)\) is true. From this fact and \MAROON{(2)} we derive
+\begin{center}
+    \(P(m)\) is true for all \(m_0 \leq m\ \RED{\leq}\ n\) \MAROON{(4)}.
+\end{center}
+But by Proposition \ref{prop 2.2.12}(e), this is equivalent to \MAROON{(3)}, that is, \(Q(n\INC)\) is true. Thus we closed the induction and we conclude that \(Q(n)\) is true for all natural number \(n\).
+
+Now we have to prove that "\(Q(n)\) is true for all natural number \(n\)" implies "\(P(m)\) is true for all natural number \(m \geq m_0\)". So let \(m\) be a particular but arbitrarily chosen natural number \(\geq m_0\). then in particular of the statement "\(Q(n)\) is true for all natural number \(n\)", \(Q(m)\) is true, that is, \(P(m')\) is true for all \(m_0 \leq m' < m\). But again by the \RED{implication} in the Proposition, \(P(m)\) is true. Since \(m\) is arbitrarily chosen, this concludes \(P(m)\) is true for all natural number \(m \geq m_0\).
+\end{proof}
+
+\exercisesection
+
+\begin{exercise}\label{exercise 2.2.1}
+    Prove Proposition \ref{prop 2.2.5}.
+\end{exercise}
+\begin{proof}
+    See Proposition \ref{prop 2.2.5}.
+\end{proof}
+
+\begin{exercise}\label{exercise 2.2.2}
+    Prove Lemma \ref{lem 2.2.10}.
+\end{exercise}
+\begin{proof}
+    See Lemma \ref{lem 2.2.10}.
+\end{proof}
+
+\begin{exercise}\label{exercise 2.2.3}
+    Prove Proposition \ref{prop 2.2.12}.
+\end{exercise}
+\begin{proof}
+    See Proposition \ref{prop 2.2.12}.
+\end{proof}
+
+\begin{exercise}\label{exercise 2.2.4}
+    Justify the three statements marked (why?) in the proof of Proposition \ref{prop 2.2.13}.
+\end{exercise}
+\begin{proof}
+    See Proposition \ref{prop 2.2.13}.
+\end{proof}
+
+\begin{exercise}\label{exercise 2.2.5}
+    Prove Proposition \ref{prop 2.2.14}.
+\end{exercise}
+\begin{proof}
+    See Proposition \ref{prop 2.2.14}.
+\end{proof}
+
+\begin{exercise}[Principle of backwards induction]\label{exercise 2.2.6}
+    Let \(n\) be a natural number, and let \(P(m)\) be a property pertaining to the natural numbers such that \emph{whenever \(P(m++)\) is true, then \(P(m)\) is true}. Suppose that \(P(n)\) is also true. Prove that \(P(m)\) is true for all natural numbers \(m \leq n\); this is known as principle of backward induction (Hint: apply induction to the variable \(n\).)
+\end{exercise}
+\begin{proof}
+WIP
+\end{proof}
+
+\begin{note}
+我不知道為何作者的\ Errata 說要額外加的練習是\ 2.2.8 而非\ 2.2.7。
+\end{note}
+
+\setcounter{exercise}{7}
+\begin{exercise} \label{exercise 2.2.8}
+Let \(n\) be a natural number, and let \(P(m)\) be a property pertaining to the natural numbers such that whenever \(P(m)\) is true, \(P(m\INC)\) is true.  Show that if \(P(n)\) is true, then \(P(m)\) is true for all \(m \geq n\).  This principle is sometimes referred to as the \emph{principle of induction starting from the base case \(n\)}.
+\end{exercise}
+\begin{proof}
+WIP
+\end{proof}
