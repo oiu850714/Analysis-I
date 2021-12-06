@@ -374,10 +374,28 @@ Now we have to prove that "\(Q(n)\) is true for all natural number \(n\)" implie
 \end{proof}
 
 \begin{exercise}[Principle of backwards induction]\label{exercise 2.2.6}
-    Let \(n\) be a natural number, and let \(P(m)\) be a property pertaining to the natural numbers such that \emph{whenever \(P(m++)\) is true, then \(P(m)\) is true}. Suppose that \(P(n)\) is also true. Prove that \(P(m)\) is true for all natural numbers \(m \leq n\); this is known as principle of backward induction (Hint: apply induction to the variable \(n\).)
+Let \(n\) be a natural number, and let \(P(m)\) be a property pertaining to the natural numbers such that \RED{whenever \(P(m\INC)\) is true, then \(P(m)\) is true}. \emph{Suppose that \(P(n)\) is also true}. Prove that \(P(m)\) is true for all natural numbers \(m \leq n\); this is known as principle of backward induction (Hint: apply induction to the variable \(n\).)
 \end{exercise}
 \begin{proof}
-WIP
+Let \(n\) be a natural number, and \(P(m)\) be a property holding the \RED{implication} in the exercise's description.
+Wanted:
+    \begin{center}
+    If \(P(n)\) is true, then \(P(m)\) is true \(\forall m \leq n\) \MAROON{(1)}   
+    \end{center}
+
+Use induction on \(n\).
+
+Base case: Let \(n = 0\). Then \MAROON{(1)} becomes
+    \begin{center}
+    If \(P(\RED{0})\) is true, then \(P(m)\) is true \(\forall m \leq \RED{0}\) \MAROON{(2)}
+    \end{center}
+Now suppose \(P(0)\) is true, then the "then-part" of \MAROON{(2)} becomes trivial because the for-all range only has the natural number \(0\), and \(P(0)\) is supposed to be true. So the base case is true.
+
+Inductive hypothesis: Let \(n\) be a natural number. Suppose \MAROON{(1)} is true. We have to prove
+    \begin{center}
+    If \(P(n\INC)\) is true, then \(P(m)\) is true \(\forall m \leq n\INC\) \MAROON{(3)}   
+    \end{center}
+So suppose \GREEN{\(P(n\INC)\)} is true. By the \RED{implication}, \(P(n)\) is true. But by the inductive hypothesis, \BLUE{\(P(m)\) is true \(\forall m \leq n\)}. So we have \GREEN{\(P(n\INC)\)} is true and \BLUE{\(P(m)\) is true \(\forall m \leq n\)}, that is, \(P(m)\) is true \(\forall m \leq n\INC\). So we prove \MAROON{(3)}. This closes the induction.
 \end{proof}
 
 \begin{note}
@@ -386,8 +404,15 @@ WIP
 
 \setcounter{exercise}{7}
 \begin{exercise} \label{exercise 2.2.8}
-Let \(n\) be a natural number, and let \(P(m)\) be a property pertaining to the natural numbers such that whenever \(P(m)\) is true, \(P(m\INC)\) is true.  Show that if \(P(n)\) is true, then \(P(m)\) is true for all \(m \geq n\).  This principle is sometimes referred to as the \emph{principle of induction starting from the base case \(n\)}.
+Let \(n\) be a natural number, and let \(P(m)\) be a property pertaining to the natural numbers such that \RED{whenever \(P(m)\) is true, \(P(m\INC)\) is true}.  Show that
+    \begin{center}
+    If \(P(n)\) is true, then \(P(m)\) is true for all \(m \geq n\). \MAROON{(1)}
+    \end{center}
+This principle is sometimes referred to as the \emph{principle of induction starting from the base case \(n\)}.
 \end{exercise}
 \begin{proof}
-WIP
+Let \(n\) be a natural number, \(P(m)\) be a property holding the \RED{implication}. We first define \(Q(m) = P(m + n)\). Then it is trivial that     \begin{center}
+    whenever \(Q(m)\) is true, \(Q(m\INC)\) is true \MAROON{(1)}
+    \end{center}
+because of the \RED{implication} of \(P(m)\). Now suppose \(P(n)\) is true. Then \(P(\RED{0} + n)\) is true since \(n = 0 + n\) and by Axiom of Substitution \ref{axm a.7.4} \(P(n) = P(\RED{0} + n)\). But that just implies Q(\RED{0}) is true since we define \(Q(\RED{0}) = P(\RED{0} + n)\). So we have \(Q(0)\) is true and \MAROON{(1)}, they are base case and inductive hypothesis of principle of induction, and by Axiom \ref{axm 2.5}, \(Q(m)\) is true for all natural number \(m\), that is, \(P(m + n)\) is true for all natural number \(m + n\), or for all natural number \(\geq n\). (since \(m + n \geq n\) by Definition \ref{def 2.2.11}.)
 \end{proof}
