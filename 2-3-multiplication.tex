@@ -112,5 +112,25 @@ This closes the induction.
 Let \(n, m\) be natural numbers. Then \(n \X m = m \X n\).
 \end{lemma}
 \begin{proof}
+We use induction on \(n\).
 
+Base case: Let \(n = 0\). Then LHS \(= n \X m = 0 \X m = 0\) by Definition \ref{def 2.3.1}, RHS \(= m \X n = m \X 0 = 0\) by Additional Corollary \ref{ac 2.3.2}, so they are equal to \(0\) so equal to each other.
+
+Inductive hypothesis: Suppose \(n \X m = m \X n\), we have to prove
+\[(n\INC) \X m = m \X (n\INC).\]
+And
+\begin{align*}
+    \text{RHS} & = m \X (n\INC) \\
+               & = (m \X n) + m & \text{by Additional Corollary \ref{ac 2.3.3}} \\
+               & = (n \X m) + m & \text{by inductive hypothesis} \\
+               & = ((n\INC) \X m) & \text{by Definition \ref{def 2.3.1}} \\
+               & = \text{LHS.}
+\end{align*}
+This closes the induction.
 \end{proof}
+
+\begin{note}
+We will now abbreviate \(n \X m\) as \(nm\), and use the usual convention that \emph{multiplication takes precedence over addition}, thus for instance \(ab + c\) means \((a \X b)+ c\), not \(a \X (b + c)\).
+
+We will also use the usual notational conventions of precedence for the other arithmetic operations when they are defined later, to save on using parentheses all the time.
+\end{note}
