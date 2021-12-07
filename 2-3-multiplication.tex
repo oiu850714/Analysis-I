@@ -1,7 +1,116 @@
 \section{Multiplication}\label{sec 2.3}
 
+\newcommand{\X}{\times}
+
 \begin{note}
 這節會直接使用已知的自然數加法還有\ order 的性質，例如我們不會再證明\ \(a + b + c = c + b + a\).
 
 另外會定義自然數乘法。類似自然數加法是\ "iterated increment operation"(重複的增量運算)，自然數乘法是\ "iterated addition"(重複的加法運算)。
 \end{note}
+
+\begin{definition}[Multiplication of natural numbers]\label{def 2.3.1} Let \(m\) be a natural number. To multiply zero to \(m\), we \emph{define} \(0 \X m := 0\). Now suppose inductively that we have defined how to multiply \(n\) to \(m\). Then we can multiply \(n\INC\) to \(m\) by defining \((n\INC) \X m\) := \((n \X m) + m\).
+\end{definition}
+
+\begin{note}
+根據\ Definition \ref{def 2.3.1}
+    \begin{align*}
+    0 \X m & = & 0 \\
+    1 \X m & = (0\INC) \X m = (0 \X m) + m = 0 + m = & m \\
+    2 \X m & = (1\INC) \X m = (1 \X m) + m = 0 + m + m = & m + m
+    \end{align*}
+and so on；到此刻我們才正式定義了乘法跟加法的關聯，以及之後會證明的「乘對加有分配律」等等。
+\end{note}
+
+\begin{additional corollary}[on top of page 30] \label{ac 2.3.1}
+The product of two natural numbers is a natural number.
+\end{additional corollary}
+\begin{proof}
+Let \(m, n\) be natural numbers. We use induction on \(n\).
+
+Base case: Let \(n = 0\). Then
+\begin{align*}
+    n \X m & = 0 \X m & \\
+           & = m      & \text{by Definition \ref{def 2.3.1}}
+\end{align*}
+which is a natural number.
+
+Inductive hypothesis: Suppose \(n \X m\) is a natural number. We have to prove \((n\INC) \X m\) is also a natural number. But \((n\INC) \X m = (n \X m) + m.\) by Definition \ref{def 2.3.1}, and \(n \X m\) by inductive hypothesis is a natural number, \(m\) is also a natural number, so the sum(by Additional Corollary \ref{ac 2.2.1} is a natural number. This closes the induction.
+\end{proof}
+
+\begin{note}
+這邊會再多額外幾個\ Corollary，主要是為了證明\ Lemma \ref{lem 2.3.2}，其證明「流程」跟加法交換律很類似。
+\end{note}
+
+\begin{additional corollary} \label{ac 2.3.2}
+Let \(n\) be a natural number. Then \(n \X 0 = 0\). This can be compared to Lemma \ref{lem 2.2.2}.
+\end{additional corollary}
+\begin{note}
+類似於\ Lemma \ref{lem 2.2.2}，乘法的定義只有定義\ \(0 \X n\) 是什麼，並沒有定義\ \(n \X 0\) 是什麼，我們必須額外證明它等於\ 0。
+\end{note}
+\begin{proof}
+We use induction on \(n\).
+
+Base case: Let \(n = 0\). Then
+\begin{align*}
+    n \X 0 & = \BLUE{0} \X \GREEN{0} \\
+           & = \BLUE{0} & \text{by Definition \ref{def 2.3.1}}
+\end{align*}
+where \(\GREEN{0}\) corresponds to \(m\) in the Definition \ref{def 2.3.1}.
+
+Inductive hypothesis: Suppose \(n \X 0 = 0\). We have to prove \((n\INC) \X 0 = 0\). And
+\begin{align*}
+     & (n\INC) \X 0 \\
+     & = (n \X 0) + 0 & \text{by Definition \ref{def 2.3.1}} \\
+     & = 0 + 0 &  \text{by inductive hypothesis} \\
+     & = 0 &  \text{by Section \ref{sec 2.2}.}
+\end{align*}
+This closes the induction.
+\end{proof}
+
+\begin{additional corollary} \label{ac 2.3.3}
+Let \(n, m\) be natural numbers. Then \(n \X (m\INC)\) = \((n \X m) + n\). This can be compared to Lemma \ref{lem 2.2.3}.
+\end{additional corollary}
+\begin{note}
+類似於\ Lemma \ref{lem 2.2.3}，乘法的定義只有定義\ \((m\INC) \X n\) 是什麼，並沒有定義\ \(n \X (m\INC)\) 是什麼，我們必須額外證明它等於\ \((n \X m) + n\)。
+\end{note}
+\begin{proof}
+We use induction on \(n\), fix \(m\).
+
+Base case: Let \(n = 0\). Then
+\begin{align*}
+    \text{LHS} & = n \X (m\INC) \\
+               & = 0 \X (m\INC) & \text{since n = 0} \\
+               & = 0 & \text{by Definition \ref{def 2.3.1}}
+\end{align*}
+And
+\begin{align*}
+    \text{RHS} & = (n \X m) + n \\
+               & = (0 \X m) + 0 & \text{since n = 0} \\
+               & = 0 + 0 & \text{by Definition \ref{def 2.3.1}} \\
+               & = 0 & \text{by Section \ref{sec 2.2}}
+\end{align*}
+So both LHS and RHS equal to \(0\), so they are equal to each other.
+
+Inductive hypothesis: Suppose \(n \X (m\INC) = (n \X m) + n\). We have to prove
+\[(n\INC) \X (m\INC) = ((n\INC) \X m) + (n\INC).\]
+Then
+\begin{align*}
+    \text{LHS} & = (n\INC) \X (m\INC) \\
+               & = (n \X (m\INC)) + (m\INC) & \text{by Definition \ref{def 2.3.1}} \\
+               & = ((n \X m) + n) + (m\INC) & \text{by inductive hypothesis} \\
+               & = (n \X m) + (n + (m\INC)) & \text{by Proposition \ref{prop 2.2.5}} \\
+               & = (n \X m) + ((n\INC) + m) & \text{by Lemma \ref{lem 2.2.3} and Definition \ref{def 2.2.1}} \\
+               & = (n \X m) + (m + n\INC) & \text{by Proposition \ref{prop 2.2.4}} \\
+               & = ((n \X m) + m) + (n\INC) & \text{by Proposition \ref{prop 2.2.5}} \\
+               & = ((n\INC) \X m) + (n\INC) & \text{by Definition \ref{def 2.3.1}} \\
+               & = \text{RHS}
+\end{align*}
+This closes the induction.
+\end{proof}.
+
+\begin{lemma}[Multiplication is commutative]\label{lem 2.3.2}
+Let \(n, m\) be natural numbers. Then \(n \X m = m \X n\).
+\end{lemma}
+\begin{proof}
+
+\end{proof}
