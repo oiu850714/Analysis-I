@@ -134,3 +134,141 @@ We will now abbreviate \(n \X m\) as \(nm\), and use the usual convention that \
 
 We will also use the usual notational conventions of precedence for the other arithmetic operations when they are defined later, to save on using parentheses all the time.
 \end{note}
+
+\begin{lemma}[Positive natural numbers have no zero divisors]\label{lem 2.3.3}
+Let \(n, m\) be natural numbers. Then \(n \X m = 0\) if and only if at least one of \(n, m\) is equal to zero. In particular, if \(n\) and \(m\) are both positive, then \(nm\) is also positive.
+\end{lemma}
+\begin{note}
+Equivalent: \(n \X m\) is positive if and only if \(n\) and \(m\) are both positive.
+\end{note}
+\begin{proof}
+
+\(\Longrightarrow\): Suppose \(n \X m\) is positive, i.e. is not zero. Suppose for the sake of contradiction that \(n\) or \(m\) is not positive, i.e. is zero.
+\begin{enumerate}
+    \item If \(n = 0\) then \(n \X m = 0 \X m = 0\) by Definition \ref{def 2.3.1}, which contradicts the supposition that \(n \X m\) is positive.
+    \item If \(m = 0\) then
+    \begin{align*}
+        n \X m & = n \X 0 \\
+               & = 0 \X n & \text{by Lemma \ref{lem 2.3.2}} \\
+               & = 0 & \text{by Definition \ref{def 2.3.1}}
+    \end{align*}
+    again contradicting \(n \X m\) is positive.
+\end{enumerate}
+So both \(n, m\) are positive.
+
+\(\Longleftarrow\): Suppose \(n, m\) are positive, i.e. are not zero. Then by Lemma \ref{lem 2.2.10} there exist natural numbers \(c, d\) such that \(n = c\INC\) and \(m = d\INC\). So
+\begin{align*}
+    n \X m & = (c\INC) \X (d\INC) \\
+           & = (c \X (d\INC)) + d\INC & \text{by Definition \ref{def 2.3.1}} \\
+           & = (c \X m) + m & \text{since \(m = d\INC\)} \\
+\end{align*}
+which is positive by Proposition \ref{prop 2.2.8} because \(m\) is positive and \(c \X m\) is a natural number.
+\end{proof}
+
+\begin{proposition}[Distributive law]\label{prop 2.3.4}
+For any natural numbers \(a, b, c\), we have \(a(b + c)= ab + ac\) and \((b + c)a = ba + ca\).
+\end{proposition}
+
+\begin{proof}
+Since multiplication is commutative by Lemma \ref{lem 2.3.2} we only need to show the first identity \(a(b + c)= ab + ac\). Or
+\begin{align*}
+    (b + c)a & = a(b + c) & \text{by Lemma \ref{lem 2.3.2}} \\
+             & = ab + ac  & \text{to be proved} \\
+             & = ba + ac  & \text{by Lemma \ref{lem 2.3.2}} \\
+             & = ba + ca  & \text{by Lemma \ref{lem 2.3.2}}
+\end{align*}
+
+We keep \(a\) and \(b\) fixed, and use induction on \(c\).
+
+Base case: Let \(c = 0\), i.e., a(b + 0) = ab + a0. Then
+\begin{align*}
+    \text{LHS} & = a(b + 0) \\
+        & = ab & \text{by Lemma \ref{lem 2.2.2}}
+\end{align*}
+while
+\begin{align*}
+    \text{RHS} & = ab + a0 \\
+        & = ab + 0 & \text{by Lemma \ref{ac 2.3.2}} \\
+        & = ab & \text{by Lemma \ref{lem 2.2.2}}
+\end{align*}
+so we are done with the base case.
+
+Inductive hypothesis: Suppose that \(a(b + c) = ab + ac\), we have to prove that
+\[a(b + (c\INC)) = ab + a(c\INC)\].
+And
+\begin{align*}
+    \text{LHS} & = a(b + (c\INC)) \\
+               & = a((b + c)\INC) & \text{by Lemma \ref{lem 2.2.3}}\\
+               & = a(b + c) + a & \text{by Additional Corollary \ref{ac 2.3.3}} \\
+\end{align*}
+while
+\begin{align*}
+    \text{RHS} & = ab + a(c\INC) \\
+               & = ab + ac + a & \text{by Additional Corollary \ref{ac 2.3.3}} \\ 
+               & = a(b + c)+ a & \text{by the induction hypothesis,} 
+\end{align*}
+so LHS = RHS and we can close the induction.
+\end{proof}
+
+\begin{proposition}[Multiplication is associative] \label{prop 2.3.5}
+For any natural numbers \(a, b, c\), we have
+\[(a \X b) \X c = a \X (b \X c)\]
+\end{proposition}
+
+\begin{proof}
+We use induction on \(c\).
+
+Base case: Let \(c = 0\), then
+\begin{align*}
+    \text{LHS} & = (a \X b) \X c \\
+               & = (a \X b) \X 0 \\
+               & = 0 & \text{by Additional Corollary \ref{ac 2.3.2}}
+\end{align*}
+\begin{align*}
+    \text{RHS} & = a \X (b \X c) \\
+               & = a \X (b \X 0) \\
+               & = a \X 0 & \text{by Additional Corollary \ref{ac 2.3.2}} \\
+               & = 0 & \text{by Additional Corollary \ref{ac 2.3.2}}
+\end{align*}
+So LHS = RHS.
+
+Inductive hypothesis: Suppose \((a \X b) \X c = a \X (b \X c)\), we have to prove
+\[(a \X b) \X (c\INC) = a \X (b \X (c\INC))\]
+Then
+\begin{align*}
+    \text{LHS} & = (a \X b) \X (c\INC) \\
+               & = ((a \X b) \X c) + (a \X b) & \text{by Additional Corollary \ref{ac 2.3.3}} \\
+\end{align*}
+\begin{align*}
+    \text{RHS} & = a \X (b \X (c\INC)) \\
+               & = a \X ((b \X c) + b) & \text{by Additional Corollary \ref{ac 2.3.3}} \\
+               & = (a \X (b \X c)) + (a \X b) & \text{by Proposition \ref{prop 2.3.4}} \\
+               & = ((a \X b) \X c) + (a \X b) & \text{by the inductive hypothesis}.
+\end{align*}
+So LHS = RHS, and we can close the induction.
+\end{proof}
+
+\begin{proposition}[Multiplication preserves order]\label{prop 2.3.6}
+If \(a, b\) are natural numbers such that \(a < b\), and \(c\) is positive, then \(ac < bc\).
+\end{proposition}
+\begin{proof}
+Since \(a < b\), we have \(b = a + d\) for some \emph{positive} \(d\). Multiplying by \(c\) and using the distributive law we obtain \(bc = ac + dc\). Since \(d\) is positive, and \(c\) is positive, \(dc\) is positive, and hence \(ac < bc\) as desired.
+\end{proof}
+
+\begin{corollary}[Cancellation Law (for multiplication)] \label{corollary 2.3.7}
+Let (a, b, c) be natural numbers such that \(ac = bc\) and \(c\) is non-zero(i.e. positive). Then \(a = b\).
+\end{corollary}
+
+\begin{remark} \label{remark 2.3.8}
+Just as Proposition \ref{prop 2.2.6} will allow for a “virtual subtraction” which will eventually let us define genuine subtraction, this corollary provides a “virtual division” which will be needed to define genuine division later on.
+\end{remark}
+\begin{note}
+我們不能用任何「除法」或者是「有理數」的概念來證明自然數乘法消去法。事實上這本書就是用這個乘法消去法來定義「虛擬除法」(virtual division)，是一種「形式上」(formal)的除法，然後會進一步證明這跟有理數除法等價。可參考第四章\ Definition \ref{def 4.2.1}。
+\end{note}
+\begin{proof}
+By the trichotomy of order (Proposition \ref{prop 2.2.13}), we have three cases: \(a < b\), \(a = b\), \(a > b\). Suppose that \(a < b\), then by Proposition \ref{prop 2.3.6} we have \(ac < bc\), a contradiction. Suppose that \(a > b\), that is, \(b < a\), then by Proposition \ref{prop 2.3.6} we have \(bc < ac\), again a contradiction. Thus \(a = b\) must be true, as desired.
+\end{proof}
+
+\begin{note}
+到目前為止的\ propositions 已經可以讓我們推出各種常見的\ algebra equations 了，例如\ Exercise \ref{exercise 2.3.4} (\((a + b)^2 = a^2 +2ab + b^2\) for all natural numbers \(a, b\).) 另外從現在開始也不太會再直接用整數的\ increment 了，因為太原始(primitive)，例如直接寫\ \(n + 1\) 取代\ \(n\INC\)。
+\end{note}
