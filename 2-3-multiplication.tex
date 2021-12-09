@@ -165,6 +165,33 @@ So both \(n, m\) are positive.
 which is positive by Proposition \ref{prop 2.2.8} because \(m\) is positive and \(c \X m\) is a natural number.
 \end{proof}
 
+\begin{additional corollary}\label{ac 2.3.4}
+Let \(n\) be a natural number.
+Then \(n1 = 1n = n\).
+\end{additional corollary}
+
+\begin{proof}
+By Lemma \ref{lem 2.3.2} we know that \(n1 = 1n\), thus we only need to show that \(n1 = n\).
+We use induction on \(n\).
+
+Base case: Let \(n=0\), then
+\begin{align*}
+    n \X 1 & = 0 \X 1 \\
+           & = 0 & \text{by Definition \ref{def 2.3.1}} \\
+           & = n
+\end{align*}
+So the base case holds.
+
+Inductive hypothesis: Suppose \(n1 = n\), we have to prove \((n\INC) \X 1 = n\INC\). And
+\begin{align*}
+    & n\INC \X 1 \\
+    & = (n \X 1) + 1 & \text{by Definition \ref{def 2.3.1}} \\
+    & = n + 1 & \text{by inductive hypothesis} \\
+    & = n\INC & \text{since \(n + 1 = n\INC\) by Section \ref{sec 2.2}}
+\end{align*}
+This closes the induction.
+\end{proof}
+
 \begin{proposition}[Distributive law]\label{prop 2.3.4}
 For any natural numbers \(a, b, c\), we have \(a(b + c)= ab + ac\) and \((b + c)a = ba + ca\).
 \end{proposition}
@@ -272,3 +299,117 @@ By the trichotomy of order (Proposition \ref{prop 2.2.13}), we have three cases:
 \begin{note}
 到目前為止的\ propositions 已經可以讓我們推出各種常見的\ algebra equations 了，例如\ Exercise \ref{exercise 2.3.4} (\((a + b)^2 = a^2 +2ab + b^2\) for all natural numbers \(a, b\).) 另外從現在開始也不太會再直接用整數的\ increment 了，因為太原始(primitive)，例如直接寫\ \(n + 1\) 取代\ \(n\INC\)。
 \end{note}
+
+\begin{proposition}[Euclid’s division lemma, not Euclidean algorithm] \label{prop 2.3.9}
+Let \(n\) be a natural number, and let \(q\) be a \emph{positive} number. Then there exist natural numbers \(m, r\) such that \(0 \leq r < q\) and \(n = mq + r\).
+\end{proposition}
+
+\begin{remark} \label{remark 2.3.10}
+In other words, we can divide a natural number \(n\) by a positive number \(q\) to obtain a quotient \(m\) (which is another natural number) and a remainder \(r\) (which is less than \(q\)). This algorithm \emph{marks the beginning of number theory}, which is a beautiful and important subject but one which is beyond the scope of this text.
+\end{remark}
+
+\begin{proof}
+Wanted: Prove \(P(n)\) is true for all natural number \(n\), where \(P(n)\) is
+\begin{center}
+    For any \emph{positive} natural number \(q\), there exist natural numbers \(m, r\) such that \(0 \leq r < q\) and \(n = mq + r\).
+\end{center}
+
+We use induction on \(n\).
+
+Base case: Let \(n = 0\), then there exist \(m = 0\) and \(r = 0\) such that \(0 \leq 0 = r < q\) and \(n = mq + r\) because
+\begin{align*}
+    & n = mq + r \\
+    & \iff 0 = mq + r & \text{since \(n = 0\)} \\
+    & \iff 0 = 0 \X q + r & \text{since \(m = 0\)} \\
+    & \iff 0 = 0 \X q + 0 & \text{since \(r = 0\)} \\
+\end{align*}
+which is trivially true by previous properties.
+
+Inductive hypothesis: Suppose \(P(n)\) is true, i.e. \(0 \leq r < q\) and \(n = mq + r\) for some natural numbers \(m\) and \(r\). We have to prove \(P(n\INC)\) is true, i.e. there exist natural numbers \(m', r'\) such that \(0 \leq r' < q\) and \(n\INC = m'q + r'\).
+
+Then
+\begin{align*}
+    n\INC & = (mq + r)\INC & \text{by inductive hypothesis} \\
+          & = mq + r\INC   & \text{by Lemma \ref{lem 2.2.3}}
+\end{align*}
+Sine \(r < q\) by inductive hypothesis, we have \(r\INC \leq q\) by Proposition \ref{prop 2.2.12}(e). Then
+    \begin{itemize}
+        \item If \(r\INC < q\), then we find natural numbers \(m' = m\) and \(r' = r\INC\) satisfying \(0 \leq r < r' < q\) and \(n\INC = mq + r\INC = m'q + r'\).
+        \item If \(r\INC = q\), then we find natural numbers \(m' = m + 1\) and 
+        \(r' = 0\) satisfying \(0 \leq r' < q\) and \(n\INC = m'q + r'\) since
+        \begin{align*}
+            n\INC & = mq + r\INC \\
+                  & = mq + q     & \text{since \(r\INC = q\)} \\
+                  & = (m + 1)q     & \text{by Proposition \ref{prop 2.3.4}} \\
+                  & = (m + 1)q + 0 & \text{by Lemma \ref{lem 2.2.2}} \\
+                  & = m'q + r'   & \text{since \(m' = m + 1\) and \(r' = 0\)}
+        \end{align*}
+    \end{itemize}
+In both cases we can find \(m', r'\) satisfying the \(P(n\INC)\). This closes the induction.
+\end{proof}
+
+\begin{note}
+現在換定義自然數的指數；定義方式跟「加法是重複的增量」以及「乘法是重複的相加」類似，指數就是「重複的乘」。
+\end{note}
+
+\begin{definition}[Exponentiation for natural numbers] \label{def 2.3.11}
+Let \(m\) be a natural number. To raise \(m\) to the power \(0\), we \emph{define} \(m^0 := 1\); in particular, we define \(0^0 := 1\). Now suppose recursively that \(m^n\) has been defined for some natural number \(n\), then we define \(m^{n\INC} := (m^n \X m)\).
+\end{definition}
+
+\begin{example}\label{example 2.3.12}
+Thus for instance \(x^1 = x^0 \X x = 1 \X x = x\); \(x^2 = x^1 \X x = x \X x\); \(x^3 = x^2 \X x = x \X x \X x\); and so forth. By induction we see that this recursive definition defines \(x^n\) for all natural numbers \(n\).
+\end{example}
+\begin{note}
+上個例子最後一句話，作者在定義加法時有做類似的說明(p. 24 加法定義後面文字)，但是在定義乘法的時候沒有，可能忘了吧。另外指數乘法這裡不會探討太多，會在第四章定義完整數跟有理數後再繼續討論，可參考\ Proposition \ref{prop 4.3.10} and \ref{prop 4.3.12}。
+\end{note}
+
+\exercisesection
+
+\begin{exercise}\label{exercise 2.3.1}
+    Prove Lemma \ref{lem 2.3.2}.
+\end{exercise}
+\begin{proof}
+    See Lemma \ref{lem 2.3.2}
+\end{proof}
+
+\begin{exercise}\label{exercise 2.3.2}
+    Prove Lemma \ref{lem 2.3.3}
+\end{exercise}
+\begin{proof}
+    See Lemma \ref{lem 2.3.3}
+\end{proof}
+
+\begin{exercise}\label{exercise 2.3.3}
+    Prove Proposition \ref{prop 2.3.5}
+\end{exercise}
+\begin{proof}
+    See Proposition \ref{prop 2.3.5}
+\end{proof}
+
+\begin{exercise}\label{exercise 2.3.4}
+Prove the identity \((a + b)^2 = a^2 + 2ab + b^2\) for all natural numbers \(a\), \(b\).
+\end{exercise}
+\begin{proof}
+\begin{align*}
+    (a + b)^2 & = (a + b)^{1\INC} & \text{since \(2 = 1\INC\)} \\
+              & = (a + b)^1 \X (a + b) & \text{by Definition \ref{def 2.3.11}} \\
+              & = (a + b)^{0\INC} \X (a + b) & \text{since \(1 = 0\INC\)} \\
+              & = (a + b)^0 \X (a + b) \X (a + b) & \text{by Definition \ref{def 2.3.11}} \\
+              & = 1 \X (a + b) \X (a + b) & \text{by Definition \ref{def 2.3.11}} \\
+              & = (a + b) \X (a + b) & \text{by Additional Corollary \ref{ac 2.3.4}} \\
+              & = a(a + b) + b(a + b) & \text{by Proposition \ref{prop 2.3.4}} \\
+              & = aa + ab + ba + bb & \text{by Proposition \ref{prop 2.3.4}} \\
+              & = a^2 + ab + ba + b^2 & \text{by Definition \ref{def 2.3.11}} \\
+              & = a^2 + ab + ab + b^2 & \text{by Lemma \ref{lem 2.3.2}} \\
+              & = a^2 + 1ab + 1ab + b^2 & \text{by Additional Corollary \ref{ac 2.3.4}} \\
+              & = a^2 + (1 + 1)ab + b^2 & \text{by Proposition \ref{prop 2.3.4}} \\
+              & = a^2 + 2ab + b^2 & \text{since \(1 + 1 = 2\) by Definition \ref{def 2.2.1}, \(2\), and increment}
+\end{align*}
+\end{proof}
+
+\begin{exercise}\label{exercise 2.3.5}
+    Prove Proposition \ref{prop 2.3.9}
+\end{exercise}
+\begin{proof}
+    See Proposition \ref{prop 2.3.9}
+\end{proof}
