@@ -12,7 +12,7 @@ So,
 and so on.
 \end{note}
 \begin{note}
-注意，我們有定義\ \(0 + m\) 是什麼，但我們沒有定義\ \(m + 0\) 是什麼，i.e. 需要證明他們兩個相等。參考\ Lemma \ref{lem 2.2.2}。
+注意，我們有定義\ \(0 + m\) 是什麼，但我們沒有定義\ \(m + 0\) 是什麼，i.e. 需要證明他們兩個相等。參考\ \LEM{2.2.2}。
 \end{note}
 \begin{note}
 這個定義因為符合數學歸納法(Axiom \ref{axm 2.5})，所以給定一個自然數\ \(m\)， 對於所有自然數\ \(n\)，我們都對\ \(n + m\) 做了定義
@@ -23,13 +23,13 @@ and so on.
 \begin{proof}
 Let \(m\) be a natural number.
 
-Base case: \(0 + m = m\) by Definition \ref{def 2.2.1}. But \(m\) is a natural number, so \(0 + m\) is a natural number. 
+Base case: \(0 + m = m\) by \DEF{2.2.1}. But \(m\) is a natural number, so \(0 + m\) is a natural number. 
 
-Inductive hypothesis: suppose \(n + m\) is a natural number. Wanted: \((n\INC) + m\) is a natural number. By Definition \ref{def 2.2.1} \BLUE{\((n\INC) + m = (n + m)\INC\)}, but by inductive hypothesis, \(n + m\) is a natural number, and by Axiom \ref{axm 2.2}, \BLUE{\((n + m)\INC\)} is a natural number, so \BLUE{\((n\INC) + m\)} is a natural number. This closes the induction.
+Inductive hypothesis: suppose \(n + m\) is a natural number. Wanted: \((n\INC) + m\) is a natural number. By \DEF{2.2.1} \BLUE{\((n\INC) + m = (n + m)\INC\)}, but by inductive hypothesis, \(n + m\) is a natural number, and by Axiom \ref{axm 2.2}, \BLUE{\((n + m)\INC\)} is a natural number, so \BLUE{\((n\INC) + m\)} is a natural number. This closes the induction.
 \end{proof}
 
 \begin{note}
-Definition \ref{def 2.2.1} 就可以讓我們推出所有以前就在使用的加法的規則了，例如交換律/結合律。之後都會證明。
+\DEF{2.2.1} 就可以讓我們推出所有以前就在使用的加法的規則了，例如交換律/結合律。之後都會證明。
 \end{note}
 
 \begin{lemma}\label{lem 2.2.2}
@@ -37,33 +37,33 @@ For any natural number \(n\), \(n + 0 = n\).
 \end{lemma}
 \begin{proof} We use induction.
 
-The base case \(0 + \BLUE{0} = \BLUE{0}\) follows since we know(by Definition \ref{def 2.2.1}) that \(0 + \BLUE{m} = \BLUE{m}\) for every natural number \(\BLUE{m}\), and \(\BLUE{0}\) is a natural number.
+The base case \(0 + \BLUE{0} = \BLUE{0}\) follows since we know(by \DEF{2.2.1}) that \(0 + \BLUE{m} = \BLUE{m}\) for every natural number \(\BLUE{m}\), and \(\BLUE{0}\) is a natural number.
 
-Now suppose inductively that \(n + 0 = n\). We wish to show that \((n\INC)+0 = n\INC\). But by Definition \ref{def 2.2.1}, \((n\INC) + 0\) is equal to \((n + 0)\INC\), which is equal to \(n\INC\) since \(n + 0 = n\). This closes the induction.
+Now suppose inductively that \(n + 0 = n\). We wish to show that \((n\INC)+0 = n\INC\). But by \DEF{2.2.1}, \((n\INC) + 0\) is equal to \((n + 0)\INC\), which is equal to \(n\INC\) since \(n + 0 = n\). This closes the induction.
 \end{proof}
 
 \begin{lemma}\label{lem 2.2.3} For any natural numbers \(n\) and \(m\), \(\BLUE{n + (m\INC)} = \GREEN{(n + m)\INC}\)
 \end{lemma}
 \begin{note}
-這個\ lemma 內等號\ LHS 的\ operand 的順序又跟\ Definition \ref{def 2.2.1} 相反，是\ \(\BLUE{n + (m\INC)}\) 而不是\  \((m\INC) + n\)，所以不能直接從\ Definition \ref{def 2.2.1} 得知這個\ Lemma。
+這個\ lemma 內等號\ LHS 的\ operand 的順序又跟\ \DEF{2.2.1} 相反，是\ \(\BLUE{n + (m\INC)}\) 而不是\  \((m\INC) + n\)，所以不能直接從\ \DEF{2.2.1} 得知這個\ Lemma。
 \end{note}
 \begin{proof}
 We induct on \(n\) (keeping \(m\) fixed).
 
-Base case: \(n = 0\). In this case we have to prove \( \BLUE{0 + (m\INC)} = (\GREEN{0 + m})\INC\). But by Definition \ref{def 2.2.1}, \(\BLUE{0 + (m\INC)} = m\INC\) and \(\GREEN{0 + m} = m\), so both sides are equal to \(m\INC\) and are thus equal to each other.
+Base case: \(n = 0\). In this case we have to prove \( \BLUE{0 + (m\INC)} = (\GREEN{0 + m})\INC\). But by \DEF{2.2.1}, \(\BLUE{0 + (m\INC)} = m\INC\) and \(\GREEN{0 + m} = m\), so both sides are equal to \(m\INC\) and are thus equal to each other.
 
-Now we assume inductively that \(n + (m\INC) = (n + m)\INC\); we now have to show that \(\BLUE{(n\INC) + (m\INC)} = (\GREEN{(n\INC) + m})\INC\). The \BLUE{left-hand side} is \((n + (m\INC))\INC\) by Definition \ref{def 2.2.1}, which is equal to \(((n + m)\INC)\INC\) by the inductive hypothesis. Similarly, we have \(\GREEN{(n\INC) + m} =(n + m)\INC\) by the Definition \ref{def 2.2.1}, and so the right-hand side is also equal to \(((n + m)\INC)\INC\). Thus both sides are equal to each other, and we have closed the induction.
+Now we assume inductively that \(n + (m\INC) = (n + m)\INC\); we now have to show that \(\BLUE{(n\INC) + (m\INC)} = (\GREEN{(n\INC) + m})\INC\). The \BLUE{left-hand side} is \((n + (m\INC))\INC\) by \DEF{2.2.1}, which is equal to \(((n + m)\INC)\INC\) by the inductive hypothesis. Similarly, we have \(\GREEN{(n\INC) + m} =(n + m)\INC\) by the \DEF{2.2.1}, and so the right-hand side is also equal to \(((n + m)\INC)\INC\). Thus both sides are equal to each other, and we have closed the induction.
 \end{proof}
 
 \begin{additional corollary}\label{ac 2.2.2}(on page 26 above)\(n\INC = n +1\)
 \begin{note}
-我們可從\ Definition \ref{def 2.2.1} 得知\ \(1 + n = n\INC\)，但不能得知\ \(n + 1 = n\INC\)
+我們可從\ \DEF{2.2.1} 得知\ \(1 + n = n\INC\)，但不能得知\ \(n + 1 = n\INC\)
 \end{note}
 \begin{proof}
     \begin{align*}
-        n\INC & = n\INC + 0 & \text{by Lemma \ref{lem 2.2.2}} \\
-              & = (n + 0)\INC & \text{by Definition \ref{def 2.2.1}} \\
-              & = n + (0\INC) & \text{by Lemma \ref{lem 2.2.3}} \\
+        n\INC & = n\INC + 0 & \text{by \LEM{2.2.2}} \\
+              & = (n + 0)\INC & \text{by \DEF{2.2.1}} \\
+              & = n + (0\INC) & \text{by \LEM{2.2.3}} \\
               & = n + 1
     \end{align*}
 \end{proof}
@@ -74,9 +74,9 @@ Now we assume inductively that \(n + (m\INC) = (n + m)\INC\); we now have to sho
 \begin{proof}
 We shall use induction on \(n\) (keeping \(m\) fixed).
 
-First we do the base case \(n = 0\), i.e., we show \(0 + m = m + 0\). By the Definition \ref{def 2.2.1}, \(0 + m = m\), while by Lemma \ref{lem 2.2.2}, \(m + 0 = m\). Thus the base case is done.
+First we do the base case \(n = 0\), i.e., we show \(0 + m = m + 0\). By the \DEF{2.2.1}, \(0 + m = m\), while by \LEM{2.2.2}, \(m + 0 = m\). Thus the base case is done.
 
-Now suppose inductively that \(n + m = m + n\), now we have to prove that \(\BLUE{(n\INC) + m} = \GREEN{m +(n\INC)}\) to close the induction. By the Definition \ref{def 2.2.1}, \(\BLUE{(n\INC) + m} = (n + m)\INC\). By Lemma \ref{lem 2.2.3}, \(\GREEN{m + (n\INC)} = (m + n)\INC\), but this is equal to \((n + m)\INC\) by the inductive hypothesis \(n + m = m + n\). Thus \((n\INC) + m = m +(n\INC)\) and we have closed the induction.
+Now suppose inductively that \(n + m = m + n\), now we have to prove that \(\BLUE{(n\INC) + m} = \GREEN{m +(n\INC)}\) to close the induction. By the \DEF{2.2.1}, \(\BLUE{(n\INC) + m} = (n + m)\INC\). By \LEM{2.2.3}, \(\GREEN{m + (n\INC)} = (m + n)\INC\), but this is equal to \((n + m)\INC\) by the inductive hypothesis \(n + m = m + n\). Thus \((n\INC) + m = m +(n\INC)\) and we have closed the induction.
 \end{proof}
 
 \begin{proposition}[Addition is associative]\label{prop 2.2.5} For any natural numbers \(a\), \(b\), \(c\), we have \((a + b) + c = a + (b + c)\).
@@ -86,9 +86,9 @@ We induct on \(c\), keep a, b fixed.
 
 Let \(a\), \(b\) be particular but arbitrarily chosen natural numbers.
 
-Base case: for \(c = 0\), we want to prove \((a + b) + 0 = a + (b + 0))\). For the LHS, \((\BLUE{a + b}) + 0 = \BLUE{a + b}\) by Lemma \ref{lem 2.2.2}. For the RHS, \(a + \GREEN{(b + 0)} = a + \GREEN{b}\) by Lemma \ref{lem 2.2.2}. So both sides equal to \(a + b\) and thus equal to each other.
+Base case: for \(c = 0\), we want to prove \((a + b) + 0 = a + (b + 0))\). For the LHS, \((\BLUE{a + b}) + 0 = \BLUE{a + b}\) by \LEM{2.2.2}. For the RHS, \(a + \GREEN{(b + 0)} = a + \GREEN{b}\) by \LEM{2.2.2}. So both sides equal to \(a + b\) and thus equal to each other.
 
-Inductive hypothesis: suppose \((a + b) + c = a + (b + c)\), we want to prove \(\BLUE{(a + b) + (c\INC)} = \GREEN{a + (b + (c\INC))}\). By Lemma \ref{lem 2.2.3}, LHS = \(\BLUE{(a + b) + (c\INC)} = \MAROON{((a + b) + c)\INC}\). By Lemma \ref{lem 2.2.3}, RHS = \(\GREEN{a + (b + (c\INC))} = a + (b + c)\INC\), which again by Lemma \ref{lem 2.2.3} = \((a + (b + c))\INC\). But by inductive hypothesis, \((a + b) + c = a + (b + c)\), so \((a + (b + c))\INC = \MAROON{((a + b) + c)\INC}\), which equals to LHS. So RHS = LHS, so we closed the induction.
+Inductive hypothesis: suppose \((a + b) + c = a + (b + c)\), we want to prove \(\BLUE{(a + b) + (c\INC)} = \GREEN{a + (b + (c\INC))}\). By \LEM{2.2.3}, LHS = \(\BLUE{(a + b) + (c\INC)} = \MAROON{((a + b) + c)\INC}\). By \LEM{2.2.3}, RHS = \(\GREEN{a + (b + (c\INC))} = a + (b + c)\INC\), which again by \LEM{2.2.3} = \((a + (b + c))\INC\). But by inductive hypothesis, \((a + b) + c = a + (b + c)\), so \((a + (b + c))\INC = \MAROON{((a + b) + c)\INC}\), which equals to LHS. So RHS = LHS, so we closed the induction.
 \end{proof}
 
 \begin{note}
@@ -98,14 +98,14 @@ Because of this associativity we can write sums such as \(a + b + c\) without ha
 \begin{proposition}[Cancellation law]\label{prop 2.2.6} Let \(a\), \(b\), \(c\) be natural numbers such that \(a + b = a + c\). Then we have \(b = c\).
 \end{proposition}
 \begin{note}
-我們不能用任何「減法」或者是「負數」的概念來證明自然數加法消去法。事實上這本書就是用這個消去法來定義「虛擬減法」(virtual subtraction)，是一種「形式上」(formal)的減法，然後會進一步證明這跟整數減法等價。可參考第四章\ Definition \ref{def 4.1.1}。
+我們不能用任何「減法」或者是「負數」的概念來證明自然數加法消去法。事實上這本書就是用這個消去法來定義「虛擬減法」(virtual subtraction)，是一種「形式上」(formal)的減法，然後會進一步證明這跟整數減法等價。可參考第四章\ \DEF{4.1.1}。
 \end{note}
 \begin{proof}
 We proof this by induction on \(a\).
 
-Base case: let \(a = 0\), we have to prove \(0 + b = 0 + c\ \implies b = c\). But by Definition \ref{def 2.2.1}, \(0 + b = b\), and \(0 + c = c\), so \(b = 0 + b = 0 + c = c\), so \(b = c\).
+Base case: let \(a = 0\), we have to prove \(0 + b = 0 + c\ \implies b = c\). But by \DEF{2.2.1}, \(0 + b = b\), and \(0 + c = c\), so \(b = 0 + b = 0 + c = c\), so \(b = c\).
 
-Inductive hypothesis: suppose \(a + b = a + c \implies b = c\), we have to prove \(\BLUE{(a\INC) + b} = \GREEN{(a\INC) + c} \implies b = c\). By Definition \ref{def 2.2.1}, \BLUE{LHS} = \((a + b)\INC\), \GREEN{RHS} = \((a + c)\INC\), so \((a + b)\INC = (a + c)\INC\), and by Axiom (of contrapositive of) \ref{axm 2.4}, \(a + b = a + c\), which by inductive hypothesis implies \(b = c\). This closes the induction.
+Inductive hypothesis: suppose \(a + b = a + c \implies b = c\), we have to prove \(\BLUE{(a\INC) + b} = \GREEN{(a\INC) + c} \implies b = c\). By \DEF{2.2.1}, \BLUE{LHS} = \((a + b)\INC\), \GREEN{RHS} = \((a + c)\INC\), so \((a + b)\INC = (a + c)\INC\), and by Axiom (of contrapositive of) \ref{axm 2.4}, \(a + b = a + c\), which by inductive hypothesis implies \(b = c\). This closes the induction.
 \end{proof}
 
 \begin{note}
@@ -118,7 +118,7 @@ Inductive hypothesis: suppose \(a + b = a + c \implies b = c\), we have to prove
 沒錯，在自然數這個系統且定義包含了\ \(0\) 的情況下，「正數」的意思就是「不是\ \(0\) 的自然數」。
 \end{note}
 
-\begin{proposition}\label{prop 2.2.8} If \(a\) is a positive natural number and \(b\) is a natural number, then \(a + b\) is positive (and hence \(b + a\) is also, by Proposition \ref{prop 2.2.4}).
+\begin{proposition}\label{prop 2.2.8} If \(a\) is a positive natural number and \(b\) is a natural number, then \(a + b\) is positive (and hence \(b + a\) is also, by \PROP{2.2.4}).
 \end{proposition}
 
 \begin{proof}
@@ -127,12 +127,12 @@ We prove by induction on \(b\). Let \(a\) be a positive natural number.
 Base case: let \(b = 0\). Then
 \begin{align*}
 a + b & = a + 0 & \\
-      & = 0 + a & \text{by Proposition \ref{prop 2.2.4} (commutative law)} \\
-      & = a     & \text{by Definition \ref{def 2.2.1}}
+      & = 0 + a & \text{by \PROP{2.2.4} (commutative law)} \\
+      & = a     & \text{by \DEF{2.2.1}}
 \end{align*}
 which by definition is a positive natural number.
 
-Inductive hypothesis: Suppose \(a + b\) is positive, we have to prove \(a + (b\INC)\) is positive. Then by Lemma \ref{lem 2.2.3}, \(a + (b\INC) = (a + b)\INC\). But by inductive hypothesis \(a + b\) is positive, which by Definition \ref{def 2.2.7} is not equal to \(0\), so by Axiom \ref{axm 2.3}, \((a + b)\INC\) is also not equal to \(0\), which again by Definition \ref{def 2.2.7} is positive. This closes the induction.
+Inductive hypothesis: Suppose \(a + b\) is positive, we have to prove \(a + (b\INC)\) is positive. Then by \LEM{2.2.3}, \(a + (b\INC) = (a + b)\INC\). But by inductive hypothesis \(a + b\) is positive, which by \DEF{2.2.7} is not equal to \(0\), so by Axiom \ref{axm 2.3}, \((a + b)\INC\) is also not equal to \(0\), which again by \DEF{2.2.7} is positive. This closes the induction.
 \end{proof}
 
 \begin{corollary} \label{corollary 2.2.9}
@@ -140,7 +140,7 @@ If \(a\) and \(b\) are natural numbers such that \(a + b = 0\), then \(a = 0\) a
 \end{corollary}
 
 \begin{proof}
-Suppose for the sake of contradiction that \(a + b = 0\) but \(a \neq 0\) or \(a \neq 0\). If \(a \neq 0\), then by Definition \ref{def 2.2.7} \(a\) is positive and then by Proposition \ref{prop 2.2.8} \(a + b\) is positive and by Definition \ref{def 2.2.7} cannot be \(0\), which contradicts \(a + b = 0\). If \(b \neq 0\), then similarly \(b\) is positive and \(b + a\) is positive, and by Proposition \ref{prop 2.2.4} \(= a + b\), so \(a + b\) is positive, again a contradiction. Thus both \(a\) and \(b\) must be \(0\).
+Suppose for the sake of contradiction that \(a + b = 0\) but \(a \neq 0\) or \(a \neq 0\). If \(a \neq 0\), then by \DEF{2.2.7} \(a\) is positive and then by \PROP{2.2.8} \(a + b\) is positive and by \DEF{2.2.7} cannot be \(0\), which contradicts \(a + b = 0\). If \(b \neq 0\), then similarly \(b\) is positive and \(b + a\) is positive, and by \PROP{2.2.4} \(= a + b\), so \(a + b\) is positive, again a contradiction. Thus both \(a\) and \(b\) must be \(0\).
 \end{proof}
 
 \begin{lemma}\label{lem 2.2.10}
@@ -152,7 +152,7 @@ Let \(a\) be a positive natural number. Then there \emph{exists exactly one} nat
 \begin{proof}
 We prove by induction on \(a\).
 
-Base case: let \(a = 0\). But by Definition \ref{def 2.2.7} \(a\) is not positive. So this Lemma is vacuously true.
+Base case: let \(a = 0\). But by \DEF{2.2.7} \(a\) is not positive. So this Lemma is vacuously true.
 
 Inductive hypothesis: suppose \(a\) is a positive natural number and \(b\) is the unique natural number such that \(b\INC = a\). We have to prove that there exists exact one natural number \(b'\) such that \(b'\INC = a\INC\). Let \(b' = b\INC\). Then by Axiom of Substitution \ref{axm a.7.4} \(b' = a\), and \(b'\INC = a\INC\) again by substitution, so the existence part is satisfied. Now we prove the unique part. Suppose there also exists a natural number \(c\) such that \(c\INC = a\INC\). Then by Axiom \ref{axm 2.4}, \(c = a\), and since \(b' = a\), so \(c = b'\), which means \(b'\) is unique. This closed the induction.
 \end{proof}
@@ -167,7 +167,7 @@ Inductive hypothesis: suppose \(a\) is a positive natural number and \(b\) is th
 \(n \geq m\) 跟\ \(m \leq n\) 只有符號上的差別，他們在定義上是等價的。另外定義內的\ \(a\) 只需要是\ natural number 即可，不需要是\ "positive" natural number。
 \end{note}
 \begin{additional corollary} \label{ac 2.2.3}
-\(n\INC > n\) for any natural number \(n\)，因為\ (1) \(n\INC \neq n\)(否則會違反\ Axiom \ref{axm 2.4}) (2) \(n\INC \geq n\)，因為\ \(n\INC = n + 1\)(by Additional Corollary \ref{ac 2.2.2})，而\ \(1\) 就是個\ natural number。
+\(n\INC > n\) for any natural number \(n\)，因為\ (1) \(n\INC \neq n\)(否則會違反\ Axiom \ref{axm 2.4}) (2) \(n\INC \geq n\)，因為\ \(n\INC = n + 1\)(by \AC{2.2.2})，而\ \(1\) 就是個\ natural number。
 
 所以，這代表沒有最大的自然數。
 \end{additional corollary}
@@ -187,58 +187,58 @@ Let \(a\), \(b\), \(c\) be natural numbers. Then
 若忘了\ anti-symmetric 是什麼，可以回去翻離散課本講\ relation 的部分。
 \end{note}
 \begin{proof}{(a)}
-Let \(a\) be a natural number. Then by Definition \ref{def 2.2.11}, \(\BLUE{a + 0} \geq \GREEN{a}\) because \(0\) is a natural number. But by Lemma \ref{lem 2.2.2}, \(\BLUE{a + 0} = \BLUE{a}\), so by Axiom of Substitution (\ref{axm a.7.4}), \(\BLUE{a} \geq \GREEN{a}\).
+Let \(a\) be a natural number. Then by \DEF{2.2.11}, \(\BLUE{a + 0} \geq \GREEN{a}\) because \(0\) is a natural number. But by \LEM{2.2.2}, \(\BLUE{a + 0} = \BLUE{a}\), so by Axiom of Substitution (\ref{axm a.7.4}), \(\BLUE{a} \geq \GREEN{a}\).
 \end{proof}
 
 \begin{proof}{(b)}
-Let \(a, b, c\) be natural numbers s.t. \(a \geq b\) and \(b \geq c\). Then by Definition \ref{def 2.2.11}, \(\exists\ \text{natural numbers}\ m, n\) such that \(a = b + m\) and \(b = c + n\). So
+Let \(a, b, c\) be natural numbers s.t. \(a \geq b\) and \(b \geq c\). Then by \DEF{2.2.11}, \(\exists\ \text{natural numbers}\ m, n\) such that \(a = b + m\) and \(b = c + n\). So
 \begin{align*}
     a & = b + m & \\
       & = (c + n) + m & \\
-      & = c + (n + m) & \text{by Proposition \ref{prop 2.2.5}}\\
+      & = c + (n + m) & \text{by \PROP{2.2.5}}\\
 \end{align*}
-So \(a = c + (n + m)\) for some natural number \(n + \), so by Definition \ref{def 2.2.11}, \(a \geq c\)
+So \(a = c + (n + m)\) for some natural number \(n + \), so by \DEF{2.2.11}, \(a \geq c\)
 \end{proof}
 \begin{proof}{(c)}
-Let \(a, b\) be natural numbers s.t. \(a \geq b\) and \(b \geq a\). Then by Definition \ref{def 2.2.11}, \(\exists\ \text{natural numbers}\ m, n\) such that \(a = b + m\) and \(b = a + n\). So
+Let \(a, b\) be natural numbers s.t. \(a \geq b\) and \(b \geq a\). Then by \DEF{2.2.11}, \(\exists\ \text{natural numbers}\ m, n\) such that \(a = b + m\) and \(b = a + n\). So
 \begin{align*}
     a & = b + m & \\
       & = (a + n) + m & \\
-      & = a + (n + m) & \text{by Proposition \ref{prop 2.2.5}}\\
+      & = a + (n + m) & \text{by \PROP{2.2.5}}\\
 \end{align*}
-But by Lemma \ref{lem 2.2.2}, \(a = a + 0\), so \(a + 0 = a + (n + m)\), and by Proposition \ref{prop 2.2.6} (cancellation law), \(0 = n + m\), and by Corollary \ref{corollary 2.2.9}, \(n = 0\) and \(m = 0\). In particular, \(m = 0\), so \(a = b + m = b + 0 = b\).
+But by \LEM{2.2.2}, \(a = a + 0\), so \(a + 0 = a + (n + m)\), and by \PROP{2.2.6} (cancellation law), \(0 = n + m\), and by Corollary \ref{corollary 2.2.9}, \(n = 0\) and \(m = 0\). In particular, \(m = 0\), so \(a = b + m = b + 0 = b\).
 \end{proof}
 \begin{proof}{(d)}
 Let \(a, b, c, d\) be natural numbers. Then
 \begin{align*}
          & a \geq b \\
-    \iff & a = b + d             & \text{by Definition \ref{def 2.2.11}} \\
+    \iff & a = b + d             & \text{by \DEF{2.2.11}} \\
     \iff & a + c = (b + d) + c   & \text{by Axiom of Substitution \ref{axm a.7.4}} \\ 
-    \iff & a + c = c + (b + d)   & \text{by Proposition(commutative law) \ref{prop 2.2.8} } \\
-    \iff & a + c = (c + b) + d   & \text{by Proposition(associative law) \ref{prop 2.2.5}} \\
-    \iff & a + c = (b + c) + d   & \text{by Proposition \ref{prop 2.2.4}} \\
-    \iff & a + c \geq b + c      & \text{by Definition \ref{def 2.2.11}}
+    \iff & a + c = c + (b + d)   & \text{by \PROP{2.2.8}(commutative law)} \\
+    \iff & a + c = (c + b) + d   & \text{by \PROP{2.2.5}(associative law)} \\
+    \iff & a + c = (b + c) + d   & \text{by \PROP{2.2.4}} \\
+    \iff & a + c \geq b + c      & \text{by \DEF{2.2.11}}
 \end{align*}
 \end{proof}
 \begin{proof}{(e)}
 Let \(a, b\) be natural numbers.
 
-\(\Longrightarrow \): Suppose \(a < b\). Then by Definition \ref{def 2.2.11} \(a \leq b\) \BLUE{(1)} and \(a \neq b\) \BLUE{(2)}. \BLUE{(1)} implies \(a + m = b\) \MAROON{(1)} for some natural number \(m\), and with \BLUE{(2)} by Definition \ref{def 2.2.7} implies \(m\) is positive (otherwise \(b = a + m = a + 0 = a\) by Lemma \ref{lem 2.2.2}, contradicting \(a \neq b\)). Since \(m\) is positive, by Lemma \ref{lem 2.2.10}, \(m = n\INC\) \MAROON{(2)} for some natural number \(n\). So
+\(\Longrightarrow \): Suppose \(a < b\). Then by \DEF{2.2.11} \(a \leq b\) \BLUE{(1)} and \(a \neq b\) \BLUE{(2)}. \BLUE{(1)} implies \(a + m = b\) \MAROON{(1)} for some natural number \(m\), and with \BLUE{(2)} by \DEF{2.2.7} implies \(m\) is positive (otherwise \(b = a + m = a + 0 = a\) by \LEM{2.2.2}, contradicting \(a \neq b\)). Since \(m\) is positive, by \LEM{2.2.10}, \(m = n\INC\) \MAROON{(2)} for some natural number \(n\). So
 \begin{align*}
     b & = a + m & \text{by \MAROON{(1)}}\\
       & = a + n\INC & \text{by \MAROON{(2)}}\\
-      & = (a + n)\INC & \text{by Lemma \ref{lem 2.2.3}} \\
-      & = a\INC + n & \text{by Definition \ref{def 2.2.1}}
+      & = (a + n)\INC & \text{by \LEM{2.2.3}} \\
+      & = a\INC + n & \text{by \DEF{2.2.1}}
 \end{align*}
-which by Definition \ref{def 2.2.11} implies \(a\INC \leq b\).
+which by \DEF{2.2.11} implies \(a\INC \leq b\).
 
-\( \Longleftarrow \): Suppose \(a\INC \leq b\). Then by Definition \ref{def 2.2.11} \(a\INC + m = b\) for some natural number \(m\), And
+\( \Longleftarrow \): Suppose \(a\INC \leq b\). Then by \DEF{2.2.11} \(a\INC + m = b\) for some natural number \(m\), And
 \begin{align*}
     & \BLUE{a\INC + m} \\
-    & = (a + m)\INC & by Definition \ref{def 2.2.1} \\
-    & = \BLUE{a + m\INC} & by Lemma \ref{lem 2.2.3}
+    & = (a + m)\INC & by \DEF{2.2.1} \\
+    & = \BLUE{a + m\INC} & by \LEM{2.2.3}
 \end{align*}
-So \(\BLUE{a\INC + m = a + m\INC} = b\). By Axiom \ref{axm 2.3}, \(m\INC \neq 0\), so by Definition \ref{def 2.2.7} is positive, so \(a \neq b\). So \(a + m\INC = b\) for some natural number \(m\INC\) and \(a \neq b\), by Definition \ref{def 2.2.11}, \(a < b\).
+So \(\BLUE{a\INC + m = a + m\INC} = b\). By Axiom \ref{axm 2.3}, \(m\INC \neq 0\), so by \DEF{2.2.7} is positive, so \(a \neq b\). So \(a + m\INC = b\) for some natural number \(m\INC\) and \(a \neq b\), by \DEF{2.2.11}, \(a < b\).
 \end{proof}
 
 \begin{proof}{(f)}
@@ -256,20 +256,20 @@ The sketch: (1) at most one condition holds, (2) at least one condition holds; t
 
 (1) at most one:
     \begin{enumerate}
-        \item If \(a < b\) then by Definition \ref{def 2.2.11} \(a \neq b\). Now if \(a > b\) then we have \(a < b \land a > b\), which by Proposition \ref{prop 2.2.12}(c) (with some trivial implications i.e. \(a < b \implies a \leq b\)) implies \(a = b\), contradicting \(a \neq b\).
-        \item If \(a > b\) then by Definition \ref{def 2.2.11} \(a \neq b\). Now if \(a < b\) then we have \(a > b \land a < b\), which by Proposition \ref{prop 2.2.12}(c) (with some trivial implications i.e. \(a < b \implies a \leq b\)) implies \(a = b\), contradicting \(a \neq b\).
-        \item If \(a = b\) then by Definition \ref{def 2.2.11} \(a \not < b \) and \(b \not < a\).
+        \item If \(a < b\) then by \DEF{2.2.11} \(a \neq b\). Now if \(a > b\) then we have \(a < b \land a > b\), which by \PROP{2.2.12}(c) (with some trivial implications i.e. \(a < b \implies a \leq b\)) implies \(a = b\), contradicting \(a \neq b\).
+        \item If \(a > b\) then by \DEF{2.2.11} \(a \neq b\). Now if \(a < b\) then we have \(a > b \land a < b\), which by \PROP{2.2.12}(c) (with some trivial implications i.e. \(a < b \implies a \leq b\)) implies \(a = b\), contradicting \(a \neq b\).
+        \item If \(a = b\) then by \DEF{2.2.11} \(a \not < b \) and \(b \not < a\).
     \end{enumerate}
 
 (2) at least one: we use induction on \(a\) and keep \(b\) fixed.
 
-Base case: Let \(a = 0\). Then we have \(a = 0 \leq b\), because \(b = \GREEN{b} + 0 = \GREEN{b} + a\), so there exists a natural number \(\GREEN{b}\) s.t. \(b = \GREEN{b} + a\), which by Definition \ref{def 2.2.11} implies \(a \leq b\) (\BLUE{This is the first (why?)}). And this implies \(a < b\) or \(a = b\).
+Base case: Let \(a = 0\). Then we have \(a = 0 \leq b\), because \(b = \GREEN{b} + 0 = \GREEN{b} + a\), so there exists a natural number \(\GREEN{b}\) s.t. \(b = \GREEN{b} + a\), which by \DEF{2.2.11} implies \(a \leq b\) (\BLUE{This is the first (why?)}). And this implies \(a < b\) or \(a = b\).
 
 Inductive hypothesis: Suppose \(a\) satisfies the "at least one" proposition, i.e. at least one of \(a < b\), \(a = b\), or \(a > b\) is true. We have to prove \(a\INC\) satisfies the "at least one" proposition.
     \begin{enumerate}
-        \item Suppose \(a < b\), then by Proposition \ref{prop 2.2.12}(e), \(a\INC \leq b\), which means \(a = b\) or \(a < b\).
-        \item Suppose \(a = b\), then \(a\INC = b\INC\) by Axiom of Substitution \ref{axm a.7.4}, and \(b\INC > b\) by Additional Corollary \ref{ac 2.2.3}, so \(a\INC > b\) (\BLUE{This is the third (why?)})
-        \item Suppose \(a > b\). By Additional Corollary \ref{ac 2.2.3}, \(a\INC > a\). So we have \(a > b\) and \(a\INC > a\), which by Proposition \ref{prop 2.2.12}(b) implies \(a\INC \geq b\). Or more precisely \(a\INC > b\) because if \(a\INC = b\) that implies \(a + 1 = b\), which implies \(a < b\), which contradicts \(a > b\). (\BLUE{This is the second (why?)})
+        \item Suppose \(a < b\), then by \PROP{2.2.12}(e), \(a\INC \leq b\), which means \(a = b\) or \(a < b\).
+        \item Suppose \(a = b\), then \(a\INC = b\INC\) by Axiom of Substitution \ref{axm a.7.4}, and \(b\INC > b\) by \AC{2.2.3}, so \(a\INC > b\) (\BLUE{This is the third (why?)})
+        \item Suppose \(a > b\). By \AC{2.2.3}, \(a\INC > a\). So we have \(a > b\) and \(a\INC > a\), which by \PROP{2.2.12}(b) implies \(a\INC \geq b\). Or more precisely \(a\INC > b\) because if \(a\INC = b\) that implies \(a + 1 = b\), which implies \(a < b\), which contradicts \(a > b\). (\BLUE{This is the second (why?)})
     \end{enumerate}
 So in either case \(a\INC\) satisfies at least one of the \(a\INC < b\), \(a\INC = b\) or \(a\INC > b\).
 \end{proof}
@@ -293,7 +293,7 @@ Let \(m_0\) be a natural number, and let \(P(m)\) be a property pertaining to an
 \end{note}
 
 \begin{remark}\label{remark 2.2.15}
-In applications we usually use Proposition \ref{prop 2.2.14} with \(m_0 = 0\) or \(m_0 = 1\).
+In applications we usually use \PROP{2.2.14} with \(m_0 = 0\) or \(m_0 = 1\).
 \end{remark}
 
 \begin{proof}
@@ -303,13 +303,13 @@ Base case: Let \(n = \RED{0}\). We want to show \(Q(\RED{0})\) is true. That is,
 \begin{center}
     \(P(m)\) is true for all \(m_0 \leq m\ \RED{< 0}\) \MAROON{(1)}.
 \end{center}
-But we have shown that \(0 \leq m_0\) (in "first (why?)" in Proposition \ref{prop 2.2.13}) for any natural number \(m_0\), so there are two cases: \(m_0 = 0\) or \(m_0 > 0\).
+But we have shown that \(0 \leq m_0\) (in "first (why?)" in \PROP{2.2.13}) for any natural number \(m_0\), so there are two cases: \(m_0 = 0\) or \(m_0 > 0\).
 \begin{enumerate}
     \item If \(m_0 = 0\), then \MAROON{(1)} is
         \begin{center}
             \(P(m)\) is true for all \(\RED{0} \leq m < 0\),
         \end{center}
-        which is vacuously true because the range \(0 \leq m < 0\) is empty(precisely, no natural number \(< 0\), otherwise it will contradict the "first (why?)" in Proposition \ref{prop 2.2.13}).
+        which is vacuously true because the range \(0 \leq m < 0\) is empty(precisely, no natural number \(< 0\), otherwise it will contradict the "first (why?)" in \PROP{2.2.13}).
     \item If \(m_0 > 0\), then \MAROON{(1)} is also vacuous because the range \(m_0 \leq m < 0\) is (also trivially) empty.
 \end{enumerate}
 So in both case, \MAROON{(1)} is true, that is, \(Q(0)\) is true.
@@ -326,7 +326,7 @@ By \MAROON{(2)} and the \RED{implication} in the Proposition, it can be derived 
 \begin{center}
     \(P(m)\) is true for all \(m_0 \leq m\ \RED{\leq}\ n\) \MAROON{(4)}.
 \end{center}
-But by Proposition \ref{prop 2.2.12}(e), this is equivalent to \MAROON{(3)}, that is, \(Q(n\INC)\) is true. Thus we closed the induction and we conclude that \(Q(n)\) is true for all natural number \(n\).
+But by \PROP{2.2.12}(e), this is equivalent to \MAROON{(3)}, that is, \(Q(n\INC)\) is true. Thus we closed the induction and we conclude that \(Q(n)\) is true for all natural number \(n\).
 
 Now we have to prove that "\(Q(n)\) is true for all natural number \(n\)" implies "\(P(m)\) is true for all natural number \(m \geq m_0\)". So let \(m\) be a particular but arbitrarily chosen natural number \(\geq m_0\). then in particular of the statement "\(Q(n)\) is true for all natural number \(n\)", \(Q(m)\) is true, that is, \(P(m')\) is true for all \(m_0 \leq m' < m\). But again by the \RED{implication} in the Proposition, \(P(m)\) is true. Since \(m\) is arbitrarily chosen, this concludes \(P(m)\) is true for all natural number \(m \geq m_0\).
 \end{proof}
@@ -334,38 +334,38 @@ Now we have to prove that "\(Q(n)\) is true for all natural number \(n\)" implie
 \exercisesection
 
 \begin{exercise}\label{exercise 2.2.1}
-    Prove Proposition \ref{prop 2.2.5}.
+    Prove \PROP{2.2.5}.
 \end{exercise}
 \begin{proof}
-    See Proposition \ref{prop 2.2.5}.
+    See \PROP{2.2.5}.
 \end{proof}
 
 \begin{exercise}\label{exercise 2.2.2}
-    Prove Lemma \ref{lem 2.2.10}.
+    Prove \LEM{2.2.10}.
 \end{exercise}
 \begin{proof}
-    See Lemma \ref{lem 2.2.10}.
+    See \LEM{2.2.10}.
 \end{proof}
 
 \begin{exercise}\label{exercise 2.2.3}
-    Prove Proposition \ref{prop 2.2.12}.
+    Prove \PROP{2.2.12}.
 \end{exercise}
 \begin{proof}
-    See Proposition \ref{prop 2.2.12}.
+    See \PROP{2.2.12}.
 \end{proof}
 
 \begin{exercise}\label{exercise 2.2.4}
-    Justify the three statements marked (why?) in the proof of Proposition \ref{prop 2.2.13}.
+    Justify the three statements marked (why?) in the proof of \PROP{2.2.13}.
 \end{exercise}
 \begin{proof}
-    See Proposition \ref{prop 2.2.13}.
+    See \PROP{2.2.13}.
 \end{proof}
 
 \begin{exercise}\label{exercise 2.2.5}
-    Prove Proposition \ref{prop 2.2.14}.
+    Prove \PROP{2.2.14}.
 \end{exercise}
 \begin{proof}
-    See Proposition \ref{prop 2.2.14}.
+    See \PROP{2.2.14}.
 \end{proof}
 
 \begin{exercise}[Principle of backwards induction]\label{exercise 2.2.6}
@@ -409,5 +409,5 @@ This principle is sometimes referred to as the \emph{principle of induction star
 Let \(n\) be a natural number, \(P(m)\) be a property holding the \RED{implication}. We first define \(Q(m) = P(m + n)\). Then it is trivial that     \begin{center}
     whenever \(Q(m)\) is true, \(Q(m\INC)\) is true \MAROON{(1)}
     \end{center}
-because of the \RED{implication} of \(P(m)\). Now suppose \(P(n)\) is true. Then \(P(\RED{0} + n)\) is true since \(n = 0 + n\) and by Axiom of Substitution \ref{axm a.7.4} \(P(n) = P(\RED{0} + n)\). But that just implies Q(\RED{0}) is true since we define \(Q(\RED{0}) = P(\RED{0} + n)\). So we have \(Q(0)\) is true and \MAROON{(1)}, they are base case and inductive hypothesis of principle of induction, and by Axiom \ref{axm 2.5}, \(Q(m)\) is true for all natural number \(m\), that is, \(P(m + n)\) is true for all natural number \(m + n\), or for all natural number \(\geq n\). (since \(m + n \geq n\) by Definition \ref{def 2.2.11}.)
+because of the \RED{implication} of \(P(m)\). Now suppose \(P(n)\) is true. Then \(P(\RED{0} + n)\) is true since \(n = 0 + n\) and by Axiom of Substitution \ref{axm a.7.4} \(P(n) = P(\RED{0} + n)\). But that just implies Q(\RED{0}) is true since we define \(Q(\RED{0}) = P(\RED{0} + n)\). So we have \(Q(0)\) is true and \MAROON{(1)}, they are base case and inductive hypothesis of principle of induction, and by Axiom \ref{axm 2.5}, \(Q(m)\) is true for all natural number \(m\), that is, \(P(m + n)\) is true for all natural number \(m + n\), or for all natural number \(\geq n\). (since \(m + n \geq n\) by \DEF{2.2.11}.)
 \end{proof}

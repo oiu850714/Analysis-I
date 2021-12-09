@@ -12,7 +12,7 @@
 \end{definition}
 
 \begin{note}
-根據\ Definition \ref{def 2.3.1}
+根據\ \DEF{2.3.1}
     \begin{align*}
     0 \X m & = & 0 \\
     1 \X m & = (0\INC) \X m = (0 \X m) + m = 0 + m = & m \\
@@ -30,22 +30,22 @@ Let \(m, n\) be natural numbers. We use induction on \(n\).
 Base case: Let \(n = 0\). Then
 \begin{align*}
     n \X m & = 0 \X m & \\
-           & = m      & \text{by Definition \ref{def 2.3.1}}
+           & = m      & \text{by \DEF{2.3.1}}
 \end{align*}
 which is a natural number.
 
-Inductive hypothesis: Suppose \(n \X m\) is a natural number. We have to prove \((n\INC) \X m\) is also a natural number. But \((n\INC) \X m = (n \X m) + m.\) by Definition \ref{def 2.3.1}, and \(n \X m\) by inductive hypothesis is a natural number, \(m\) is also a natural number, so the sum(by Additional Corollary \ref{ac 2.2.1} is a natural number. This closes the induction.
+Inductive hypothesis: Suppose \(n \X m\) is a natural number. We have to prove \((n\INC) \X m\) is also a natural number. But \((n\INC) \X m = (n \X m) + m.\) by \DEF{2.3.1}, and \(n \X m\) by inductive hypothesis is a natural number, \(m\) is also a natural number, so the sum(by \AC{2.2.1} is a natural number. This closes the induction.
 \end{proof}
 
 \begin{note}
-這邊會再多額外幾個\ Corollary，主要是為了證明\ Lemma \ref{lem 2.3.2}，其證明「流程」跟加法交換律很類似。
+這邊會再多額外幾個\ Corollary，主要是為了證明\ \LEM{2.3.2}，其證明「流程」跟加法交換律很類似。
 \end{note}
 
 \begin{additional corollary} \label{ac 2.3.2}
-Let \(n\) be a natural number. Then \(n \X 0 = 0\). This can be compared to Lemma \ref{lem 2.2.2}.
+Let \(n\) be a natural number. Then \(n \X 0 = 0\). This can be compared to \LEM{2.2.2}.
 \end{additional corollary}
 \begin{note}
-類似於\ Lemma \ref{lem 2.2.2}，乘法的定義只有定義\ \(0 \X n\) 是什麼，並沒有定義\ \(n \X 0\) 是什麼，我們必須額外證明它等於\ 0。
+類似於\ \LEM{2.2.2}，乘法的定義只有定義\ \(0 \X n\) 是什麼，並沒有定義\ \(n \X 0\) 是什麼，我們必須額外證明它等於\ 0。
 \end{note}
 \begin{proof}
 We use induction on \(n\).
@@ -53,14 +53,14 @@ We use induction on \(n\).
 Base case: Let \(n = 0\). Then
 \begin{align*}
     n \X 0 & = \BLUE{0} \X \GREEN{0} \\
-           & = \BLUE{0} & \text{by Definition \ref{def 2.3.1}}
+           & = \BLUE{0} & \text{by \DEF{2.3.1}}
 \end{align*}
-where \(\GREEN{0}\) corresponds to \(m\) in the Definition \ref{def 2.3.1}.
+where \(\GREEN{0}\) corresponds to \(m\) in the \DEF{2.3.1}.
 
 Inductive hypothesis: Suppose \(n \X 0 = 0\). We have to prove \((n\INC) \X 0 = 0\). And
 \begin{align*}
      & (n\INC) \X 0 \\
-     & = (n \X 0) + 0 & \text{by Definition \ref{def 2.3.1}} \\
+     & = (n \X 0) + 0 & \text{by \DEF{2.3.1}} \\
      & = 0 + 0 &  \text{by inductive hypothesis} \\
      & = 0 &  \text{by Section \ref{sec 2.2}.}
 \end{align*}
@@ -68,10 +68,10 @@ This closes the induction.
 \end{proof}
 
 \begin{additional corollary} \label{ac 2.3.3}
-Let \(n, m\) be natural numbers. Then \(n \X (m\INC)\) = \((n \X m) + n\). This can be compared to Lemma \ref{lem 2.2.3}.
+Let \(n, m\) be natural numbers. Then \(n \X (m\INC)\) = \((n \X m) + n\). This can be compared to \LEM{2.2.3}.
 \end{additional corollary}
 \begin{note}
-類似於\ Lemma \ref{lem 2.2.3}，乘法的定義只有定義\ \((m\INC) \X n\) 是什麼，並沒有定義\ \(n \X (m\INC)\) 是什麼，我們必須額外證明它等於\ \((n \X m) + n\)。
+類似於\ \LEM{2.2.3}，乘法的定義只有定義\ \((m\INC) \X n\) 是什麼，並沒有定義\ \(n \X (m\INC)\) 是什麼，我們必須額外證明它等於\ \((n \X m) + n\)。
 \end{note}
 \begin{proof}
 We use induction on \(n\), fix \(m\).
@@ -80,13 +80,13 @@ Base case: Let \(n = 0\). Then
 \begin{align*}
     \text{LHS} & = n \X (m\INC) \\
                & = 0 \X (m\INC) & \text{since n = 0} \\
-               & = 0 & \text{by Definition \ref{def 2.3.1}}
+               & = 0 & \text{by \DEF{2.3.1}}
 \end{align*}
 And
 \begin{align*}
     \text{RHS} & = (n \X m) + n \\
                & = (0 \X m) + 0 & \text{since n = 0} \\
-               & = 0 + 0 & \text{by Definition \ref{def 2.3.1}} \\
+               & = 0 + 0 & \text{by \DEF{2.3.1}} \\
                & = 0 & \text{by Section \ref{sec 2.2}}
 \end{align*}
 So both LHS and RHS equal to \(0\), so they are equal to each other.
@@ -96,13 +96,13 @@ Inductive hypothesis: Suppose \(n \X (m\INC) = (n \X m) + n\). We have to prove
 Then
 \begin{align*}
     \text{LHS} & = (n\INC) \X (m\INC) \\
-               & = (n \X (m\INC)) + (m\INC) & \text{by Definition \ref{def 2.3.1}} \\
+               & = (n \X (m\INC)) + (m\INC) & \text{by \DEF{2.3.1}} \\
                & = ((n \X m) + n) + (m\INC) & \text{by inductive hypothesis} \\
-               & = (n \X m) + (n + (m\INC)) & \text{by Proposition \ref{prop 2.2.5}} \\
-               & = (n \X m) + ((n\INC) + m) & \text{by Lemma \ref{lem 2.2.3} and Definition \ref{def 2.2.1}} \\
-               & = (n \X m) + (m + n\INC) & \text{by Proposition \ref{prop 2.2.4}} \\
-               & = ((n \X m) + m) + (n\INC) & \text{by Proposition \ref{prop 2.2.5}} \\
-               & = ((n\INC) \X m) + (n\INC) & \text{by Definition \ref{def 2.3.1}} \\
+               & = (n \X m) + (n + (m\INC)) & \text{by \PROP{2.2.5}} \\
+               & = (n \X m) + ((n\INC) + m) & \text{by \LEM{2.2.3} and \DEF{2.2.1}} \\
+               & = (n \X m) + (m + n\INC) & \text{by \PROP{2.2.4}} \\
+               & = ((n \X m) + m) + (n\INC) & \text{by \PROP{2.2.5}} \\
+               & = ((n\INC) \X m) + (n\INC) & \text{by \DEF{2.3.1}} \\
                & = \text{RHS}
 \end{align*}
 This closes the induction.
@@ -114,16 +114,16 @@ Let \(n, m\) be natural numbers. Then \(n \X m = m \X n\).
 \begin{proof}
 We use induction on \(n\).
 
-Base case: Let \(n = 0\). Then LHS \(= n \X m = 0 \X m = 0\) by Definition \ref{def 2.3.1}, RHS \(= m \X n = m \X 0 = 0\) by Additional Corollary \ref{ac 2.3.2}, so they are equal to \(0\) so equal to each other.
+Base case: Let \(n = 0\). Then LHS \(= n \X m = 0 \X m = 0\) by \DEF{2.3.1}, RHS \(= m \X n = m \X 0 = 0\) by \AC{2.3.2}, so they are equal to \(0\) so equal to each other.
 
 Inductive hypothesis: Suppose \(n \X m = m \X n\), we have to prove
 \[(n\INC) \X m = m \X (n\INC).\]
 And
 \begin{align*}
     \text{RHS} & = m \X (n\INC) \\
-               & = (m \X n) + m & \text{by Additional Corollary \ref{ac 2.3.3}} \\
+               & = (m \X n) + m & \text{by \AC{2.3.3}} \\
                & = (n \X m) + m & \text{by inductive hypothesis} \\
-               & = ((n\INC) \X m) & \text{by Definition \ref{def 2.3.1}} \\
+               & = ((n\INC) \X m) & \text{by \DEF{2.3.1}} \\
                & = \text{LHS.}
 \end{align*}
 This closes the induction.
@@ -145,24 +145,24 @@ Equivalent: \(n \X m\) is positive if and only if \(n\) and \(m\) are both posit
 
 \(\Longrightarrow\): Suppose \(n \X m\) is positive, i.e. is not zero. Suppose for the sake of contradiction that \(n\) or \(m\) is not positive, i.e. is zero.
 \begin{enumerate}
-    \item If \(n = 0\) then \(n \X m = 0 \X m = 0\) by Definition \ref{def 2.3.1}, which contradicts the supposition that \(n \X m\) is positive.
+    \item If \(n = 0\) then \(n \X m = 0 \X m = 0\) by \DEF{2.3.1}, which contradicts the supposition that \(n \X m\) is positive.
     \item If \(m = 0\) then
     \begin{align*}
         n \X m & = n \X 0 \\
-               & = 0 \X n & \text{by Lemma \ref{lem 2.3.2}} \\
-               & = 0 & \text{by Definition \ref{def 2.3.1}}
+               & = 0 \X n & \text{by \LEM{2.3.2}} \\
+               & = 0 & \text{by \DEF{2.3.1}}
     \end{align*}
     again contradicting \(n \X m\) is positive.
 \end{enumerate}
 So both \(n, m\) are positive.
 
-\(\Longleftarrow\): Suppose \(n, m\) are positive, i.e. are not zero. Then by Lemma \ref{lem 2.2.10} there exist natural numbers \(c, d\) such that \(n = c\INC\) and \(m = d\INC\). So
+\(\Longleftarrow\): Suppose \(n, m\) are positive, i.e. are not zero. Then by \LEM{2.2.10} there exist natural numbers \(c, d\) such that \(n = c\INC\) and \(m = d\INC\). So
 \begin{align*}
     n \X m & = (c\INC) \X (d\INC) \\
-           & = (c \X (d\INC)) + d\INC & \text{by Definition \ref{def 2.3.1}} \\
+           & = (c \X (d\INC)) + d\INC & \text{by \DEF{2.3.1}} \\
            & = (c \X m) + m & \text{since \(m = d\INC\)} \\
 \end{align*}
-which is positive by Proposition \ref{prop 2.2.8} because \(m\) is positive and \(c \X m\) is a natural number.
+which is positive by \PROP{2.2.8} because \(m\) is positive and \(c \X m\) is a natural number.
 \end{proof}
 
 \begin{additional corollary}\label{ac 2.3.4}
@@ -171,13 +171,13 @@ Then \(n1 = 1n = n\).
 \end{additional corollary}
 
 \begin{proof}
-By Lemma \ref{lem 2.3.2} we know that \(n1 = 1n\), thus we only need to show that \(n1 = n\).
+By \LEM{2.3.2} we know that \(n1 = 1n\), thus we only need to show that \(n1 = n\).
 We use induction on \(n\).
 
 Base case: Let \(n=0\), then
 \begin{align*}
     n \X 1 & = 0 \X 1 \\
-           & = 0 & \text{by Definition \ref{def 2.3.1}} \\
+           & = 0 & \text{by \DEF{2.3.1}} \\
            & = n
 \end{align*}
 So the base case holds.
@@ -185,7 +185,7 @@ So the base case holds.
 Inductive hypothesis: Suppose \(n1 = n\), we have to prove \((n\INC) \X 1 = n\INC\). And
 \begin{align*}
     & n\INC \X 1 \\
-    & = (n \X 1) + 1 & \text{by Definition \ref{def 2.3.1}} \\
+    & = (n \X 1) + 1 & \text{by \DEF{2.3.1}} \\
     & = n + 1 & \text{by inductive hypothesis} \\
     & = n\INC & \text{since \(n + 1 = n\INC\) by Section \ref{sec 2.2}}
 \end{align*}
@@ -197,12 +197,12 @@ For any natural numbers \(a, b, c\), we have \(a(b + c)= ab + ac\) and \((b + c)
 \end{proposition}
 
 \begin{proof}
-Since multiplication is commutative by Lemma \ref{lem 2.3.2} we only need to show the first identity \(a(b + c)= ab + ac\). Or
+Since multiplication is commutative by \LEM{2.3.2} we only need to show the first identity \(a(b + c)= ab + ac\). Or
 \begin{align*}
-    (b + c)a & = a(b + c) & \text{by Lemma \ref{lem 2.3.2}} \\
+    (b + c)a & = a(b + c) & \text{by \LEM{2.3.2}} \\
              & = ab + ac  & \text{to be proved} \\
-             & = ba + ac  & \text{by Lemma \ref{lem 2.3.2}} \\
-             & = ba + ca  & \text{by Lemma \ref{lem 2.3.2}}
+             & = ba + ac  & \text{by \LEM{2.3.2}} \\
+             & = ba + ca  & \text{by \LEM{2.3.2}}
 \end{align*}
 
 We keep \(a\) and \(b\) fixed, and use induction on \(c\).
@@ -210,13 +210,13 @@ We keep \(a\) and \(b\) fixed, and use induction on \(c\).
 Base case: Let \(c = 0\), i.e., a(b + 0) = ab + a0. Then
 \begin{align*}
     \text{LHS} & = a(b + 0) \\
-        & = ab & \text{by Lemma \ref{lem 2.2.2}}
+        & = ab & \text{by \LEM{2.2.2}}
 \end{align*}
 while
 \begin{align*}
     \text{RHS} & = ab + a0 \\
-        & = ab + 0 & \text{by Lemma \ref{ac 2.3.2}} \\
-        & = ab & \text{by Lemma \ref{lem 2.2.2}}
+        & = ab + 0 & \text{by \AC{2.3.2}} \\
+        & = ab & \text{by \LEM{2.2.2}}
 \end{align*}
 so we are done with the base case.
 
@@ -225,13 +225,13 @@ Inductive hypothesis: Suppose that \(a(b + c) = ab + ac\), we have to prove that
 And
 \begin{align*}
     \text{LHS} & = a(b + (c\INC)) \\
-               & = a((b + c)\INC) & \text{by Lemma \ref{lem 2.2.3}}\\
-               & = a(b + c) + a & \text{by Additional Corollary \ref{ac 2.3.3}} \\
+               & = a((b + c)\INC) & \text{by \LEM{2.2.3}}\\
+               & = a(b + c) + a & \text{by \AC{2.3.3}} \\
 \end{align*}
 while
 \begin{align*}
     \text{RHS} & = ab + a(c\INC) \\
-               & = ab + ac + a & \text{by Additional Corollary \ref{ac 2.3.3}} \\ 
+               & = ab + ac + a & \text{by \AC{2.3.3}} \\ 
                & = a(b + c)+ a & \text{by the induction hypothesis,} 
 \end{align*}
 so LHS = RHS and we can close the induction.
@@ -249,13 +249,13 @@ Base case: Let \(c = 0\), then
 \begin{align*}
     \text{LHS} & = (a \X b) \X c \\
                & = (a \X b) \X 0 \\
-               & = 0 & \text{by Additional Corollary \ref{ac 2.3.2}}
+               & = 0 & \text{by \AC{2.3.2}}
 \end{align*}
 \begin{align*}
     \text{RHS} & = a \X (b \X c) \\
                & = a \X (b \X 0) \\
-               & = a \X 0 & \text{by Additional Corollary \ref{ac 2.3.2}} \\
-               & = 0 & \text{by Additional Corollary \ref{ac 2.3.2}}
+               & = a \X 0 & \text{by \AC{2.3.2}} \\
+               & = 0 & \text{by \AC{2.3.2}}
 \end{align*}
 So LHS = RHS.
 
@@ -264,12 +264,12 @@ Inductive hypothesis: Suppose \((a \X b) \X c = a \X (b \X c)\), we have to prov
 Then
 \begin{align*}
     \text{LHS} & = (a \X b) \X (c\INC) \\
-               & = ((a \X b) \X c) + (a \X b) & \text{by Additional Corollary \ref{ac 2.3.3}} \\
+               & = ((a \X b) \X c) + (a \X b) & \text{by \AC{2.3.3}} \\
 \end{align*}
 \begin{align*}
     \text{RHS} & = a \X (b \X (c\INC)) \\
-               & = a \X ((b \X c) + b) & \text{by Additional Corollary \ref{ac 2.3.3}} \\
-               & = (a \X (b \X c)) + (a \X b) & \text{by Proposition \ref{prop 2.3.4}} \\
+               & = a \X ((b \X c) + b) & \text{by \AC{2.3.3}} \\
+               & = (a \X (b \X c)) + (a \X b) & \text{by \PROP{2.3.4}} \\
                & = ((a \X b) \X c) + (a \X b) & \text{by the inductive hypothesis}.
 \end{align*}
 So LHS = RHS, and we can close the induction.
@@ -287,13 +287,13 @@ Let (a, b, c) be natural numbers such that \(ac = bc\) and \(c\) is non-zero(i.e
 \end{corollary}
 
 \begin{remark} \label{remark 2.3.8}
-Just as Proposition \ref{prop 2.2.6} will allow for a “virtual subtraction” which will eventually let us define genuine subtraction, this corollary provides a “virtual division” which will be needed to define genuine division later on.
+Just as \PROP{2.2.6} will allow for a “virtual subtraction” which will eventually let us define genuine subtraction, this corollary provides a “virtual division” which will be needed to define genuine division later on.
 \end{remark}
 \begin{note}
-我們不能用任何「除法」或者是「有理數」的概念來證明自然數乘法消去法。事實上這本書就是用這個乘法消去法來定義「虛擬除法」(virtual division)，是一種「形式上」(formal)的除法，然後會進一步證明這跟有理數除法等價。可參考第四章\ Definition \ref{def 4.2.1}。
+我們不能用任何「除法」或者是「有理數」的概念來證明自然數乘法消去法。事實上這本書就是用這個乘法消去法來定義「虛擬除法」(virtual division)，是一種「形式上」(formal)的除法，然後會進一步證明這跟有理數除法等價。可參考第四章\ \DEF{4.2.1}。
 \end{note}
 \begin{proof}
-By the trichotomy of order (Proposition \ref{prop 2.2.13}), we have three cases: \(a < b\), \(a = b\), \(a > b\). Suppose that \(a < b\), then by Proposition \ref{prop 2.3.6} we have \(ac < bc\), a contradiction. Suppose that \(a > b\), that is, \(b < a\), then by Proposition \ref{prop 2.3.6} we have \(bc < ac\), again a contradiction. Thus \(a = b\) must be true, as desired.
+By the trichotomy of order (\PROP{2.2.13}), we have three cases: \(a < b\), \(a = b\), \(a > b\). Suppose that \(a < b\), then by \PROP{2.3.6} we have \(ac < bc\), a contradiction. Suppose that \(a > b\), that is, \(b < a\), then by \PROP{2.3.6} we have \(bc < ac\), again a contradiction. Thus \(a = b\) must be true, as desired.
 \end{proof}
 
 \begin{note}
@@ -330,9 +330,9 @@ Inductive hypothesis: Suppose \(P(n)\) is true, i.e. \(0 \leq r < q\) and \(n = 
 Then
 \begin{align*}
     n\INC & = (mq + r)\INC & \text{by inductive hypothesis} \\
-          & = mq + r\INC   & \text{by Lemma \ref{lem 2.2.3}}
+          & = mq + r\INC   & \text{by \LEM{2.2.3}}
 \end{align*}
-Sine \(r < q\) by inductive hypothesis, we have \(r\INC \leq q\) by Proposition \ref{prop 2.2.12}(e). Then
+Sine \(r < q\) by inductive hypothesis, we have \(r\INC \leq q\) by \PROP{2.2.12}(e). Then
     \begin{itemize}
         \item If \(r\INC < q\), then we find natural numbers \(m' = m\) and \(r' = r\INC\) satisfying \(0 \leq r < r' < q\) and \(n\INC = mq + r\INC = m'q + r'\).
         \item If \(r\INC = q\), then we find natural numbers \(m' = m + 1\) and 
@@ -340,8 +340,8 @@ Sine \(r < q\) by inductive hypothesis, we have \(r\INC \leq q\) by Proposition 
         \begin{align*}
             n\INC & = mq + r\INC \\
                   & = mq + q     & \text{since \(r\INC = q\)} \\
-                  & = (m + 1)q     & \text{by Proposition \ref{prop 2.3.4}} \\
-                  & = (m + 1)q + 0 & \text{by Lemma \ref{lem 2.2.2}} \\
+                  & = (m + 1)q     & \text{by \PROP{2.3.4}} \\
+                  & = (m + 1)q + 0 & \text{by \LEM{2.2.2}} \\
                   & = m'q + r'   & \text{since \(m' = m + 1\) and \(r' = 0\)}
         \end{align*}
     \end{itemize}
@@ -360,30 +360,30 @@ Let \(m\) be a natural number. To raise \(m\) to the power \(0\), we \emph{defin
 Thus for instance \(x^1 = x^0 \X x = 1 \X x = x\); \(x^2 = x^1 \X x = x \X x\); \(x^3 = x^2 \X x = x \X x \X x\); and so forth. By induction we see that this recursive definition defines \(x^n\) for all natural numbers \(n\).
 \end{example}
 \begin{note}
-上個例子最後一句話，作者在定義加法時有做類似的說明(p. 24 加法定義後面文字)，但是在定義乘法的時候沒有，可能忘了吧。另外指數乘法這裡不會探討太多，會在第四章定義完整數跟有理數後再繼續討論，可參考\ Proposition \ref{prop 4.3.10} and \ref{prop 4.3.12}。
+上個例子最後一句話，作者在定義加法時有做類似的說明(p. 24 加法定義後面文字)，但是在定義乘法的時候沒有，可能忘了吧。另外指數乘法這裡不會探討太多，會在第四章定義完整數跟有理數後再繼續討論，可參考\ \PROP{4.3.10} and \ref{prop 4.3.12}。
 \end{note}
 
 \exercisesection
 
 \begin{exercise}\label{exercise 2.3.1}
-    Prove Lemma \ref{lem 2.3.2}.
+    Prove \LEM{2.3.2}.
 \end{exercise}
 \begin{proof}
-    See Lemma \ref{lem 2.3.2}
+    See \LEM{2.3.2}
 \end{proof}
 
 \begin{exercise}\label{exercise 2.3.2}
-    Prove Lemma \ref{lem 2.3.3}
+    Prove \LEM{2.3.3}
 \end{exercise}
 \begin{proof}
-    See Lemma \ref{lem 2.3.3}
+    See \LEM{2.3.3}
 \end{proof}
 
 \begin{exercise}\label{exercise 2.3.3}
-    Prove Proposition \ref{prop 2.3.5}
+    Prove \PROP{2.3.5}
 \end{exercise}
 \begin{proof}
-    See Proposition \ref{prop 2.3.5}
+    See \PROP{2.3.5}
 \end{proof}
 
 \begin{exercise}\label{exercise 2.3.4}
@@ -392,24 +392,24 @@ Prove the identity \((a + b)^2 = a^2 + 2ab + b^2\) for all natural numbers \(a\)
 \begin{proof}
 \begin{align*}
     (a + b)^2 & = (a + b)^{1\INC} & \text{since \(2 = 1\INC\)} \\
-              & = (a + b)^1 \X (a + b) & \text{by Definition \ref{def 2.3.11}} \\
+              & = (a + b)^1 \X (a + b) & \text{by \DEF{2.3.11}} \\
               & = (a + b)^{0\INC} \X (a + b) & \text{since \(1 = 0\INC\)} \\
-              & = (a + b)^0 \X (a + b) \X (a + b) & \text{by Definition \ref{def 2.3.11}} \\
-              & = 1 \X (a + b) \X (a + b) & \text{by Definition \ref{def 2.3.11}} \\
-              & = (a + b) \X (a + b) & \text{by Additional Corollary \ref{ac 2.3.4}} \\
-              & = a(a + b) + b(a + b) & \text{by Proposition \ref{prop 2.3.4}} \\
-              & = aa + ab + ba + bb & \text{by Proposition \ref{prop 2.3.4}} \\
-              & = a^2 + ab + ba + b^2 & \text{by Definition \ref{def 2.3.11}} \\
-              & = a^2 + ab + ab + b^2 & \text{by Lemma \ref{lem 2.3.2}} \\
-              & = a^2 + 1ab + 1ab + b^2 & \text{by Additional Corollary \ref{ac 2.3.4}} \\
-              & = a^2 + (1 + 1)ab + b^2 & \text{by Proposition \ref{prop 2.3.4}} \\
-              & = a^2 + 2ab + b^2 & \text{since \(1 + 1 = 2\) by Definition \ref{def 2.2.1}, \(2\), and increment}
+              & = (a + b)^0 \X (a + b) \X (a + b) & \text{by \DEF{2.3.11}} \\
+              & = 1 \X (a + b) \X (a + b) & \text{by \DEF{2.3.11}} \\
+              & = (a + b) \X (a + b) & \text{by \AC{2.3.4}} \\
+              & = a(a + b) + b(a + b) & \text{by \PROP{2.3.4}} \\
+              & = aa + ab + ba + bb & \text{by \PROP{2.3.4}} \\
+              & = a^2 + ab + ba + b^2 & \text{by \DEF{2.3.11}} \\
+              & = a^2 + ab + ab + b^2 & \text{by \LEM{2.3.2}} \\
+              & = a^2 + 1ab + 1ab + b^2 & \text{by \AC{2.3.4}} \\
+              & = a^2 + (1 + 1)ab + b^2 & \text{by \PROP{2.3.4}} \\
+              & = a^2 + 2ab + b^2 & \text{since \(1 + 1 = 2\) by \DEF{2.2.1}, \(2\), and increment}
 \end{align*}
 \end{proof}
 
 \begin{exercise}\label{exercise 2.3.5}
-    Prove Proposition \ref{prop 2.3.9}
+    Prove \PROP{2.3.9}
 \end{exercise}
 \begin{proof}
-    See Proposition \ref{prop 2.3.9}
+    See \PROP{2.3.9}
 \end{proof}
