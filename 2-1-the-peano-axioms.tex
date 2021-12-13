@@ -20,7 +20,7 @@ In this text the author uses "\(x := y\)” to denote the statement that \(x\) i
 3 is a natural number
 \end{proposition}
 \begin{proof}
-\( 3 = 2\INC = (1\INC)\INC = ((0\INC)\INC)\INC \) by definition of \(3\), \(2\) and \(1\). And by Axiom \ref{axm 2.1}, \(0\) is a natural number, so by Axiom \ref{axm 2.2}, \(0\INC\) is a natural number, and again by Axiom \ref{axm 2.2}, \((0\INC)\INC\) is a natural number, and again by Axiom \ref{axm 2.2}, \( ((0\INC)\INC)\INC \), which is equal to \(3\), is a natural number, so \(3\) is a natural number.
+\( 3 = 2\INC = (1\INC)\INC = ((0\INC)\INC)\INC \) by definition of \(3\), \(2\) and \(1\). And by \AXM{2.1}, \(0\) is a natural number, so by \AXM{2.2}, \(0\INC\) is a natural number, and again by \AXM{2.2}, \((0\INC)\INC\) is a natural number, and again by \AXM{2.2}, \( ((0\INC)\INC)\INC \), which is equal to \(3\), is a natural number, so \(3\) is a natural number.
 \end{proof}
 
 \begin{example}\label{example 2.1.5}
@@ -35,7 +35,7 @@ In this text the author uses "\(x := y\)” to denote the statement that \(x\) i
 \(4\) is not equal to \(0\)
 \end{proposition}
 \begin{proof}
-By definition, 4 = 3\INC. By Proposition \ref{prop 2.1.4} we know 3 is a natural number, and by Axiom \ref{axm 2.3} \(3\INC \neq 0\), so \(4 = 3\INC \neq 0\).
+By definition, 4 = 3\INC. By Proposition \ref{prop 2.1.4} we know 3 is a natural number, and by \AXM{2.3} \(3\INC \neq 0\), so \(4 = 3\INC \neq 0\).
 \end{proof}
 
 \begin{example}\label{example 2.1.7}
@@ -54,7 +54,7 @@ Axiom \ref{axm 2.4} 的\ \emph{converse}\ 也是成立的，i.e. if \(n = m\), t
 6 is not equal to 2.
 \end{proposition}
 \begin{proof}
-Suppose \( 6 = 2 \), then \( 5\INC = 6 = 2 = 1\INC \), so \(5\INC = 1\INC \), so by Axiom \ref{axm 2.4}, 5 = 1. Similarly, \(4\INC = 0\INC\), so by Axiom \ref{axm 2.4}, \(4 = 0\). But this contradicts Proposition \ref{prop 2.1.6}, so \(6 \neq 2\).
+Suppose \( 6 = 2 \), then \( 5\INC = 6 = 2 = 1\INC \), so \(5\INC = 1\INC \), so by \AXM{2.4}, 5 = 1. Similarly, \(4\INC = 0\INC\), so by \AXM{2.4}, \(4 = 0\). But this contradicts Proposition \ref{prop 2.1.6}, so \(6 \neq 2\).
 \end{proof}
 
 \begin{example}\label{example 2.1.9}(Informal, 因為實際上用到了實數)

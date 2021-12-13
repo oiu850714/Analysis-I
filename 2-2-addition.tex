@@ -25,7 +25,7 @@ Let \(m\) be a natural number.
 
 Base case: \(0 + m = m\) by \DEF{2.2.1}. But \(m\) is a natural number, so \(0 + m\) is a natural number. 
 
-Inductive hypothesis: suppose \(n + m\) is a natural number. Wanted: \((n\INC) + m\) is a natural number. By \DEF{2.2.1} \BLUE{\((n\INC) + m = (n + m)\INC\)}, but by inductive hypothesis, \(n + m\) is a natural number, and by Axiom \ref{axm 2.2}, \BLUE{\((n + m)\INC\)} is a natural number, so \BLUE{\((n\INC) + m\)} is a natural number. This closes the induction.
+Inductive hypothesis: suppose \(n + m\) is a natural number. Wanted: \((n\INC) + m\) is a natural number. By \DEF{2.2.1} \BLUE{\((n\INC) + m = (n + m)\INC\)}, but by inductive hypothesis, \(n + m\) is a natural number, and by \AXM{2.2}, \BLUE{\((n + m)\INC\)} is a natural number, so \BLUE{\((n\INC) + m\)} is a natural number. This closes the induction.
 \end{proof}
 
 \begin{note}
@@ -105,7 +105,7 @@ We proof this by induction on \(a\).
 
 Base case: let \(a = 0\), we have to prove \(0 + b = 0 + c\ \implies b = c\). But by \DEF{2.2.1}, \(0 + b = b\), and \(0 + c = c\), so \(b = 0 + b = 0 + c = c\), so \(b = c\).
 
-Inductive hypothesis: suppose \(a + b = a + c \implies b = c\), we have to prove \(\BLUE{(a\INC) + b} = \GREEN{(a\INC) + c} \implies b = c\). By \DEF{2.2.1}, \BLUE{LHS} = \((a + b)\INC\), \GREEN{RHS} = \((a + c)\INC\), so \((a + b)\INC = (a + c)\INC\), and by Axiom (of contrapositive of) \ref{axm 2.4}, \(a + b = a + c\), which by inductive hypothesis implies \(b = c\). This closes the induction.
+Inductive hypothesis: suppose \(a + b = a + c \implies b = c\), we have to prove \(\BLUE{(a\INC) + b} = \GREEN{(a\INC) + c} \implies b = c\). By \DEF{2.2.1}, \BLUE{LHS} = \((a + b)\INC\), \GREEN{RHS} = \((a + c)\INC\), so \((a + b)\INC = (a + c)\INC\), and by contrapositive of \AXM{2.4}, \(a + b = a + c\), which by inductive hypothesis implies \(b = c\). This closes the induction.
 \end{proof}
 
 \begin{note}
@@ -132,7 +132,7 @@ a + b & = a + 0 & \\
 \end{align*}
 which by definition is a positive natural number.
 
-Inductive hypothesis: Suppose \(a + b\) is positive, we have to prove \(a + (b\INC)\) is positive. Then by \LEM{2.2.3}, \(a + (b\INC) = (a + b)\INC\). But by inductive hypothesis \(a + b\) is positive, which by \DEF{2.2.7} is not equal to \(0\), so by Axiom \ref{axm 2.3}, \((a + b)\INC\) is also not equal to \(0\), which again by \DEF{2.2.7} is positive. This closes the induction.
+Inductive hypothesis: Suppose \(a + b\) is positive, we have to prove \(a + (b\INC)\) is positive. Then by \LEM{2.2.3}, \(a + (b\INC) = (a + b)\INC\). But by inductive hypothesis \(a + b\) is positive, which by \DEF{2.2.7} is not equal to \(0\), so by \AXM{2.3}, \((a + b)\INC\) is also not equal to \(0\), which again by \DEF{2.2.7} is positive. This closes the induction.
 \end{proof}
 
 \begin{corollary} \label{corollary 2.2.9}
@@ -154,7 +154,7 @@ We prove by induction on \(a\).
 
 Base case: let \(a = 0\). But by \DEF{2.2.7} \(a\) is not positive. So this Lemma is vacuously true.
 
-Inductive hypothesis: suppose \(a\) is a positive natural number and \(b\) is the unique natural number such that \(b\INC = a\). We have to prove that there exists exact one natural number \(b'\) such that \(b'\INC = a\INC\). Let \(b' = b\INC\). Then by Axiom of Substitution \ref{axm a.7.4} \(b' = a\), and \(b'\INC = a\INC\) again by substitution, so the existence part is satisfied. Now we prove the unique part. Suppose there also exists a natural number \(c\) such that \(c\INC = a\INC\). Then by Axiom \ref{axm 2.4}, \(c = a\), and since \(b' = a\), so \(c = b'\), which means \(b'\) is unique. This closed the induction.
+Inductive hypothesis: suppose \(a\) is a positive natural number and \(b\) is the unique natural number such that \(b\INC = a\). We have to prove that there exists exact one natural number \(b'\) such that \(b'\INC = a\INC\). Let \(b' = b\INC\). Then by Axiom of Substitution \AXM{a.7.4} \(b' = a\), and \(b'\INC = a\INC\) again by substitution, so the existence part is satisfied. Now we prove the unique part. Suppose there also exists a natural number \(c\) such that \(c\INC = a\INC\). Then by \AXM{2.4}, \(c = a\), and since \(b' = a\), so \(c = b'\), which means \(b'\) is unique. This closed the induction.
 \end{proof}
 
 \begin{note}
@@ -187,7 +187,7 @@ Let \(a\), \(b\), \(c\) be natural numbers. Then
 若忘了\ anti-symmetric 是什麼，可以回去翻離散課本講\ relation 的部分。
 \end{note}
 \begin{proof}{(a)}
-Let \(a\) be a natural number. Then by \DEF{2.2.11}, \(\BLUE{a + 0} \geq \GREEN{a}\) because \(0\) is a natural number. But by \LEM{2.2.2}, \(\BLUE{a + 0} = \BLUE{a}\), so by Axiom of Substitution (\ref{axm a.7.4}), \(\BLUE{a} \geq \GREEN{a}\).
+Let \(a\) be a natural number. Then by \DEF{2.2.11}, \(\BLUE{a + 0} \geq \GREEN{a}\) because \(0\) is a natural number. But by \LEM{2.2.2}, \(\BLUE{a + 0} = \BLUE{a}\), so by Axiom of Substitution \AXM{a.7.4}, \(\BLUE{a} \geq \GREEN{a}\).
 \end{proof}
 
 \begin{proof}{(b)}
@@ -213,7 +213,7 @@ Let \(a, b, c, d\) be natural numbers. Then
 \begin{align*}
          & a \geq b \\
     \iff & a = b + d             & \text{by \DEF{2.2.11}} \\
-    \iff & a + c = (b + d) + c   & \text{by Axiom of Substitution \ref{axm a.7.4}} \\ 
+    \iff & a + c = (b + d) + c   & \text{by Axiom of Substitution \AXM{a.7.4}} \\ 
     \iff & a + c = c + (b + d)   & \text{by \PROP{2.2.8}(commutative law)} \\
     \iff & a + c = (c + b) + d   & \text{by \PROP{2.2.5}(associative law)} \\
     \iff & a + c = (b + c) + d   & \text{by \PROP{2.2.4}} \\
@@ -268,7 +268,7 @@ Base case: Let \(a = 0\). Then we have \(a = 0 \leq b\), because \(b = \GREEN{b}
 Inductive hypothesis: Suppose \(a\) satisfies the "at least one" proposition, i.e. at least one of \(a < b\), \(a = b\), or \(a > b\) is true. We have to prove \(a\INC\) satisfies the "at least one" proposition.
     \begin{enumerate}
         \item Suppose \(a < b\), then by \PROP{2.2.12}(e), \(a\INC \leq b\), which means \(a = b\) or \(a < b\).
-        \item Suppose \(a = b\), then \(a\INC = b\INC\) by Axiom of Substitution \ref{axm a.7.4}, and \(b\INC > b\) by \AC{2.2.3}, so \(a\INC > b\) (\BLUE{This is the third (why?)})
+        \item Suppose \(a = b\), then \(a\INC = b\INC\) by Axiom of Substitution \AXM{a.7.4}, and \(b\INC > b\) by \AC{2.2.3}, so \(a\INC > b\) (\BLUE{This is the third (why?)})
         \item Suppose \(a > b\). By \AC{2.2.3}, \(a\INC > a\). So we have \(a > b\) and \(a\INC > a\), which by \PROP{2.2.12}(b) implies \(a\INC \geq b\). Or more precisely \(a\INC > b\) because if \(a\INC = b\) that implies \(a + 1 = b\), which implies \(a < b\), which contradicts \(a > b\). (\BLUE{This is the second (why?)})
     \end{enumerate}
 So in either case \(a\INC\) satisfies at least one of the \(a\INC < b\), \(a\INC = b\) or \(a\INC > b\).
@@ -409,5 +409,5 @@ This principle is sometimes referred to as the \emph{principle of induction star
 Let \(n\) be a natural number, \(P(m)\) be a property holding the \RED{implication}. We first define \(Q(m) = P(m + n)\). Then it is trivial that     \begin{center}
     whenever \(Q(m)\) is true, \(Q(m\INC)\) is true \MAROON{(1)}
     \end{center}
-because of the \RED{implication} of \(P(m)\). Now suppose \(P(n)\) is true. Then \(P(\RED{0} + n)\) is true since \(n = 0 + n\) and by Axiom of Substitution \ref{axm a.7.4} \(P(n) = P(\RED{0} + n)\). But that just implies Q(\RED{0}) is true since we define \(Q(\RED{0}) = P(\RED{0} + n)\). So we have \(Q(0)\) is true and \MAROON{(1)}, they are base case and inductive hypothesis of principle of induction, and by Axiom \ref{axm 2.5}, \(Q(m)\) is true for all natural number \(m\), that is, \(P(m + n)\) is true for all natural number \(m + n\), or for all natural number \(\geq n\). (since \(m + n \geq n\) by \DEF{2.2.11}.)
+because of the \RED{implication} of \(P(m)\). Now suppose \(P(n)\) is true. Then \(P(\RED{0} + n)\) is true since \(n = 0 + n\) and by Axiom of Substitution \AXM{a.7.4} \(P(n) = P(\RED{0} + n)\). But that just implies Q(\RED{0}) is true since we define \(Q(\RED{0}) = P(\RED{0} + n)\). So we have \(Q(0)\) is true and \MAROON{(1)}, they are base case and inductive hypothesis of principle of induction, and by \AXM{2.5}, \(Q(m)\) is true for all natural number \(m\), that is, \(P(m + n)\) is true for all natural number \(m + n\), or for all natural number \(\geq n\). (since \(m + n \geq n\) by \DEF{2.2.11}.)
 \end{proof}

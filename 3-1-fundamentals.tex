@@ -1,0 +1,97 @@
+\section{Fundamentals}\label{sec 3.1}
+
+For pedagogical reasons, we will use a \emph{somewhat overcomplete list of axioms} for set theory, in the sense that some of the axioms can be used to deduce others, but there is no real harm in doing this.
+
+\begin{note}
+就好像你可以說正整數除了滿足皮亞諾公理也自動滿足\ \(a + b = b + a\)，但後者用皮亞諾就可證明。
+\end{note}
+
+\begin{definition}[\emph{Informal}] \label{def 3.1.1}
+We define a set \(A\) to be any \emph{unordered collection} of objects, e.g., \( \{3, 8, 5, 2\} \) is a set. If \(x\) is an object, we say that \(x\) \emph{is an element of} \(A\) or \(x \in A\) if \(x\) lies in the collection; otherwise we say that \(x \notin A\). For instance, \(3 \in \{1, 2, 3, 4, 5\} \) but \(7 \notin \{1, 2, 3, 4, 5\} \).
+\end{definition}
+
+\begin{note}
+\DEF{3.1.1} 有很多問題沒有回答，例如「哪些\ collection」 才能被稱作集合，兩個集合怎麼判斷是否相等，怎麼對集合作操作(聯集、交集等等)，集合可以做什麼，以及集合的元素(element)可以做什麼。
+\end{note}
+
+\begin{axiom}[Sets are objects]\label{axm 3.1}
+If \(A\) is a set, then \(A\) is \emph{also an object}. In particular, given two sets \(A\) and \(B\), it is meaningful to ask whether \(A\) is also an element of \(B\).
+\end{axiom}
+
+\begin{example}[Informal]\label{example 3.1.2}
+這個例子舉例\ \( \{3, \{3, 4\}, 4\} \) 裡面有一個元素也是集合，但敘述方式不嚴謹，要去看\ \SEC{3.6}
+\end{example}
+
+\begin{remark}\label{remark 3.1.3}
+這裡在探討是否需要把所有\ object 都當成\  set。在邏輯的角度，這樣推論過程比較簡單，因為只需要處理一種物件，就是\ set，但是從概念上來看，將某些\ object 視為「不是\ set」則會比較單純，比方說給定一個自然數\ \(2\)，將他視為一個集合(在\ Analysis 的範疇)沒什麼進一步的應用。是否將所有\ object 都當成集合，\ more or less 是等價的，所以，we shall take an agnostic position as to whether all objects are sets or not.
+\end{remark}
+
+\begin{note}
+若已知\ \(x\) 是一個\ object 且\ \(A\) 是一個\ set，則要馬\ \(x \in A\) 為真，要馬\ \(x \notin A\) 為真。而若\ \(A\) 不是\ set，則我們視\ \(x \in A\) 為\ undefined。
+\end{note}
+
+\begin{definition}[Equality of sets] \label{def 3.1.4} 
+Two sets \(A\) and \(B\) are equal, \(A = B\), if and only if every element of \(A\) is an element of \(B\) and vice versa. To put it another way, \(A = B\) if and only if every element \(x\) of \(A\) belongs also to \(B\), and every element \(y\) of \(B\) belongs also to \(A\). Or equivalently,
+\[
+  \forall\ x : x \in A \iff x \in B
+\]
+\end{definition}
+
+\begin{example}
+嘴砲。
+\end{example}
+
+\begin{note}
+One can easily verify that this notion of equality is reflexive, symmetric, and transitive (See \EXEC{3.1.1}).
+\end{note}
+
+\begin{additional corollary}\label{ac 3.1.1}
+The definition of equality in \DEF{3.1.4} is reflexive, symmetric and transitive.
+\end{additional corollary}
+
+\begin{proof}
+
+Reflexive: Suppose \(A\) is a set. Then \(\GREEN{A} = \BLUE{A}\) because if \(x \in \GREEN{A}\), then \(x \in \BLUE{A}\), and if \(y \in \BLUE{A}\), then \(y \in \GREEN{A}\).
+
+Symmetric: Suppose \(A, B\) are sets and \(A = B\), then by \DEF{3.1.4},
+\[
+  \forall\ x : x \in A \iff x \in B
+\]
+But this statement is just equivalent to
+\[
+  \forall\ x : x \in B \iff x \in A
+\]
+and this by \DEF{3.1.4} implies \(B = A\).
+
+Transitive: Suppose \(A, B, C\) are sets and \(A = B\) and \(B = C\). Then by \DEF{3.1.4}
+\[
+  \forall\ x : x \in A \iff x \in B
+\]
+\[
+  \forall\ x : x \in B \iff x \in C
+\]
+And this implies
+\[
+  \forall\ x : x \in A \iff x \in B \iff x \in C
+\]
+And by logic this implies
+\[
+  \forall\ x : x \in A \iff x \in C
+\]
+By \DEF{3.1.4}, \(A = C\).
+\end{proof}
+
+\begin{note}
+"is an element of" relation \(\in\) 符合\ Axiom of Substitution \AXM{a.7.4}，因為
+\begin{center}
+    if \(x \in A\) and \(A = B\), then \(x \in B\), by \DEF{3.1.4}.
+\end{center}
+這也代表那些完全以\ \(\in\) 定義的新的集合操作會自動符合\ Axiom of Substitution \AXM{a.7.4}。真的要說的話這一節剩下的所有\ operations 都是用\ \(\in\) 來定義的。
+\end{note}
+\begin{note}
+接著\ \RMK{3.1.3}，我們繼續來探討什麼\ object 是\ set，什麼不是。有點類似我們定哪些東西為自然數，哪些不是(\AXM{2.1}，\(0\) 是自然數，然後用 \AXM{2.2} 來擴增/建構其他的自然數)。這邊在集合論就是先假設存在一個集合，叫「空集合」，然後再定義一些在集合上的操作來建構其他的集合。
+\end{note}
+
+\begin{axiom}[Empty set] \label{axm 3.2}
+There exists a set \(\emptyset\), known as \emph{the} empty set, which \emph{contains no elements}, i.e., for every object \(x\) we have \(x \notin \emptyset\).
+\end{axiom}
