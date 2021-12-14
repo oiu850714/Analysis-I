@@ -204,6 +204,13 @@ below.
 \end{align*}
 \end{proof}
 
+\begin{example} \label{example 3.1.10}
+Since \(\emptyset\) is a set (and hence an object), so is singleton set \(\{ \emptyset \}\), i.e., the set whose only element is \( \emptyset \), is a set (and it is not the same set as \( \emptyset \), \( \{ \emptyset \} \neq  \emptyset \) (why? See \EXEC{3.1.2}). Similarly, the singleton set \( \{ \{ \emptyset \} \} \) and the pair set \( \{ \emptyset, \{ \emptyset \} \} \) are also sets. These three sets are not equal to each other (\EXEC{3.1.2}).
+\end{example}
+
+\begin{note}
+現在有的三個公理已經可以讓我們建構出一堆集合了，但是他們的元素都不超過兩個，雖然元素本身可能長得很複雜。
+\end{note}
 
 \begin{axiom} [Pairwise union] \label{axm 3.4}
 Given any two sets \(A, B\), there exists a set \(A \cup B\), called the \emph{union} \(A \cup B\) of \(A\) and \(B\), whose elements consists of all the elements which belong to \(A\) or \(B\) or both. In other words, for any object \(x\),
@@ -211,3 +218,140 @@ Given any two sets \(A, B\), there exists a set \(A \cup B\), called the \emph{u
     x \in A \cup B \iff (x \in A \lor x \in B)
 \].
 \end{axiom}
+
+\begin{note}
+注意\ Union 的定義完全是由\ \( \in \) (還有\ or) 兜出來的，所以符合替換公理。
+\end{note}
+
+\begin{example}
+很廢。\( \{1, 2\} \cup \{ 2, 3 \} = \{ 1, 2, 3 \} \)
+\end{example}
+
+\begin{remark} \label{remark 3.1.12}
+If \(A, B\) are sets, \(A'\) is also a set which is equal to \(A\), then \(A \cup B\) is equal to \(A' \cup B\) (why? \MAROON{(1)} One needs to use \AXM{3.4} and \DEF{3.1.4}). Similarly if \(B'\) is a set which is equal to \(B\), then \(A \cup B\) is equal to \(A \cup B'\). Thus the operation of union \emph{obeys the axiom of substitution}, and is thus well-defined on sets.
+\end{remark}
+
+\begin{proof}
+\MAROON{(1)}: Suppose \(A, B, A'\) are sets such that \(A = A'\). Then given any object \(x\),
+\begin{align*}
+         & x \in A \cup B \\
+    \iff & x \in A \lor x \in B & \text{by \AXM{3.4}} \\
+    \iff & x \in A' \lor x \in B & \text{since \(A = A'\) and \(=\) satisfies \AXM{a.7.4}} \\
+    \iff & x \in A' \cup B & \text{by \AXM{3.4}} \\
+\end{align*}
+So \(\forall x, x \in A \cup B \iff x \in A' \cup B\), so by \DEF{3.1.4} \(A \cup B = A' \cup B\).
+
+Now suppose \(B' = B\), Then given any object \(x\),
+\begin{align*}
+         & x \in A \cup B \\
+    \iff & x \in A \lor x \in B & \text{by \AXM{3.4}} \\
+    \iff & x \in A \lor x \in B' & \text{since \(B = B'\) and \(=\) satisfies \AXM{a.7.4}} \\
+    \iff & x \in A \cup B' & \text{by \AXM{3.4}} \\
+\end{align*}
+So similarly \(A \cup B = A \cup B'\).
+\end{proof}
+
+\begin{lemma} \label{lem 3.1.13}
+If \(a\) and \(b\) are objects, then \( \{a, b\} = \{ a \} \cup \{ b \} \). If \(A, B, C\) are sets, then the \emph{union operation is commutative} (i.e., \(A \cup B = B \cup A\)) and \emph{associative} (i.e., \((A \cup B) \cup C = A \cup (B \cup C)\)). Also, we have \(A \cup A = A \cup \emptyset = \emptyset \cup A = A\).
+\end{lemma}
+
+\begin{proof}
+\( \{a, b\} = \{ a \} \cup \{ b \} \): for any object \(x\),
+\begin{align*}
+         & x \in \{a, b\} \\
+    \iff & x = a \lor x = b & \text{by \AXM{3.3}, pair-part} \\
+    \iff & x \in \{a\} \lor x \in \{b\} & \text{by \AXM{3.3}, singleton-part} \\
+    \iff & x \in \{a\} \cup \{b\} & \text{by \AXM{3.4}} \\
+\end{align*}
+So \(\forall x, x \in \{a, b\} \iff x \in \{a\} \cup \{b\} \), so \(\{a, b\} = \{a\} \cup \{b\} \) by \DEF{3.1.4}.
+
+\(A \cup B = B \cup A\): for any object \(x\),
+\begin{align*}
+         & x \in A \cup B \\
+    \iff & x \in A \lor x \in B & \text{by \AXM{3.4}} \\
+    \iff & x \in B \lor x \in A & \text{by logic} \\
+    \iff & x \in B \cup A & \text{by \AXM{3.4}}
+\end{align*}
+
+\((A \cup B) \cup C = A \cup (B \cup C)\): for any object \(x\),
+\begin{align*}
+         & x \in (A \cup B) \cup C \\
+         \iff & x \in (A \cup B) \lor x \in C & \text{by \AXM{3.4}} \\
+         \iff & (x \in A \lor x \in B) \lor x \in C & \text{by \AXM{3.4}} \\
+         \iff & x \in A \lor (x \in B \lor x \in C) & \text{by logic} \\
+         \iff & x \in A \lor (x \in B \cup C) & \text{by \AXM{3.4}} \\
+         \iff & x \in A \cup (x \in B \cup C) & \text{by \AXM{3.4}} \\
+\end{align*}
+So first statement if and only if last statement, so \((A \cup B) \cup C = A \cup (B \cup C)\).
+
+\(A \cup A = A \cup \emptyset = \emptyset \cup A = A\): for any object \(x\),
+\begin{align*}
+         & x \in A \cup A \\
+    \iff & x \in A \lor x \in A & \text{by logic} \\
+    \iff & x \in A & \text{by simplifying logic} \\
+    \iff & \MAROON{A \cup A = A} & \text{by \DEF{3.1.4}} \\
+    \iff & x \in A \lor x \in \emptyset & \text{by logic, something \(\lor\) something false = something} \\
+    \iff & x \in A \cup \emptyset & \text{by \AXM{3.4}} \\
+    \iff & \MAROON{A \cup A = A \cup \emptyset} & \text{by \DEF{3.1.4}} \\
+    \iff & \MAROON{A \cup A = \emptyset \cup A} & \text{already proved commutative law}
+\end{align*}
+\end{proof}
+
+\begin{remark}
+幹話。
+\end{remark}
+
+\begin{note}
+We are not yet in a position to define sets consisting of \(n\) objects for any given natural numbers \(n\). 老實說我不是很理解為什麼，文中敘述是說我們還沒有定義「做\ \(n\) 次操作」是什麼意思"(require iterating the above construction “\(n\) times”, but the concept of \(n\)-fold iteration has not yet been rigorously defined). 類似任意有限個元素的情況，我們目前也無法給出有無限個元素的集合的定義。這需要其他的公理。現在我們先定義什麼是「子集合」。
+\end{note}
+
+\begin{definition}[Subsets] \label{def 3.1.15}
+Let \(A, B\) be sets. We say that \(A\) is a subset of \(B\), denoted \(A \subseteq B\), if and only if every element of \(A\) is also an element of \(B\), i.e. For any object \(x\), \(x \in A \implies x \in B\). We say that \(A\) is a proper subset of \(B\), denoted \(A \subsetneq B\), if \(A \subseteq B\) and \(A \neq B\).
+\end{definition}
+
+\begin{remark} \label{remark 3.1.16}
+Because these definition\textbf{s}(both \(\subseteq\) and \(\subsetneq\)) involve only the notions of (set) equality and the “is an element of” relation, both of which already obey the axiom of substitution \AXM{a.7.4}, the notion of subset also automatically obeys the axiom of substitution. Thus for instance if \(A \subseteq B\) and \(A = A'\), then \(A' \subseteq B\).
+\end{remark}
+
+\begin{example} \label{example 3.1.17}
+前面幹話。Given any set \(A\), we always have \(A \subseteq A\) (why?) and \(\emptyset \subseteq A\) (why?).
+\end{example}
+
+\begin{proof}
+Let \(x\) be arbitrarily chosen object. Then if \(x \in A\) then \(x \in A\) is trivially true. By \DEF{3.1.15}, \(A \subseteq A\).
+
+Let \(x\) be arbitrarily chosen object. Then if \(x \in \emptyset\) then \(x \in A\) is vacuously true. By \DEF{3.1.15}, \(\emptyset \subseteq A\).
+\end{proof}
+
+\begin{note}
+下面的\ Proposition 要參考\ \DEF{8.5.1}，旨在說明\ "set-inclusion" 這個\ relation 是\ partially ordered。也就是要證明它是\ reflexive(by \EXAMPLE{3.1.17}), anti-symmetric, transitive。
+\end{note}
+
+\begin{proposition} [Sets are partially ordered by set inclusion] \label{prop 3.1.18}
+Let \(A, B, C\) be sets. If \(A \subseteq B\) and \(B \subsetneq C\) then \(A \subseteq C\). If \(A \subseteq B\) and \(B \subseteq A\), then \(A = B\). Finally, if \(A \subsetneq B\) and \(B \subsetneq C\) then \(A \subsetneq C\).
+\end{proposition}
+
+\begin{proof}
+Transitive: Let \(A, B, C\) be sets such that \(A \subseteq B\) \MAROON{(1)} and \(B \subseteq C\) \MAROON{(2)}. Suppose object \(x \in A\), wanted: \(x \in C\). Then by \MAROON{(1)}, \(x \in B\), which with \MAROON{(2)} implies \(x \in C\).
+
+Anti-Symmetric: Let \(A, B\) be sets such that \(A \subseteq B \land B \subseteq A\). Wanted: \(A = B\). Then we have
+\begin{align*}
+     & A \subseteq B \land B \subseteq A \\
+\iff & (\forall\ x : x \in A \implies x \in B) \land (\forall\ x : x \in B \implies x \in A) & \text{by \DEF{3.1.15}} \\
+\iff & (\forall\ x : x \in A \iff x \in B) & \text{by trivially simplifying logic} \\
+\iff & A = B. & \text{by \DEF{3.1.4}}
+\end{align*}
+\end{proof}
+
+Transitive for proper-inclusion: Let \(A, B, C\) be sets such that \(A \subsetneq B\) \MAROON{(1)} and \(B \subsetneq C\) \MAROON{(2)}. Wanted: \(A \subsetneq C\), that is,
+\[
+    A \subseteq C \land A \neq C
+\] The former is trivially true since \(A \subsetneq B\) by definition implies \(A \subseteq B\) and \(B \subsetneq C\) by definition implies \(B \subseteq C\), and by transitivity of set-inclusion \(A \subseteq B\) and \(B \subseteq C\) implies \(A \subseteq C\). For the latter, suppose for the sake of contradiction that \(A = C\). Then by \MAROON{(1)} and Axiom of Substitution \AXM{a.7.4}, we have \(C \subsetneq B\), but that implies \(C \subseteq B\) and we have known \(B \subseteq C\), together implies \(B = C\) by anti-symmetry of set-inclusion. But this contradicts \(B \subsetneq C\) because that implies \(B \neq C\).
+
+\begin{note}
+根據本書的脈絡，我們直到\ \PROP{3.1.18} 才能用\ \(A \subseteq B \land B \subseteq A\) 的方法來證明\ \(A = B\)。
+\end{note}
+
+\begin{remark} \label{remark 3.1.19}
+There is a relationship between subsets and unions: see for instance \EXEC{3.1.7}. 這就頭腦體操。
+\end{remark}
