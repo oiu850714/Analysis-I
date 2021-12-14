@@ -1,6 +1,6 @@
 \section{Fundamentals}\label{sec 3.1}
 
-For pedagogical reasons, we will use a \emph{somewhat overcomplete list of axioms} for set theory, in the sense that some of the axioms can be used to deduce others, but there is no real harm in doing this.
+For pedagogical reasons, we will use a \emph{somewhat overcomplete list of axioms} for set theory, in the sense that some of the axioms can be used to deduce others, but there is \emph{no real harm} in doing this.
 
 \begin{note}
 就好像你可以說正整數除了滿足皮亞諾公理也自動滿足\ \(a + b = b + a\)，但後者用皮亞諾就可證明。
@@ -11,7 +11,7 @@ We define a set \(A\) to be any \emph{unordered collection} of objects, e.g., \(
 \end{definition}
 
 \begin{note}
-\DEF{3.1.1} 有很多問題沒有回答，例如「哪些\ collection」 才能被稱作集合，兩個集合怎麼判斷是否相等，怎麼對集合作操作(聯集、交集等等)，集合可以做什麼，以及集合的元素(element)可以做什麼。
+\DEF{3.1.1} 有很多問題沒有回答，例如「什麼樣的\ collection」 才能被稱作集合，兩個集合怎麼判斷是否相等，怎麼對集合作操作(聯集、交集等等)，集合可以做什麼，以及集合的元素(element)可以做什麼。
 \end{note}
 
 \begin{axiom}[Sets are objects]\label{axm 3.1}
@@ -23,7 +23,7 @@ If \(A\) is a set, then \(A\) is \emph{also an object}. In particular, given two
 \end{example}
 
 \begin{remark}\label{remark 3.1.3}
-這裡在探討是否需要把所有\ object 都當成\  set。在邏輯的角度，這樣推論過程比較簡單，因為只需要處理一種物件，就是\ set，但是從概念上來看，將某些\ object 視為「不是\ set」則會比較單純，比方說給定一個自然數\ \(2\)，將他視為一個集合(在\ Analysis 的範疇)沒什麼進一步的應用。是否將所有\ object 都當成集合，\ more or less 是等價的，所以，we shall take an agnostic position as to whether all objects are sets or not.
+這裡在探討是否需要把所有\ object 都當成\  set。在邏輯的角度，這樣推論過程比較簡單，因為需要的東西的類型就只有一種，就是\ set，但是從概念上來看，將某些\ object 視為「不是\ set」則會比較單純，比方說給定一個自然數\ \(2\)，將他視為一個集合(在\ Analysis 的範疇)沒什麼進一步的應用。是否將所有\ object 都當成集合，\ more or less 是等價的，所以，we shall take an agnostic position as to whether all objects are sets or not.
 \end{remark}
 
 \begin{note}
@@ -51,7 +51,7 @@ The definition of equality in \DEF{3.1.4} is reflexive, symmetric and transitive
 
 \begin{proof}
 
-Reflexive: Suppose \(A\) is a set. Then \(\GREEN{A} = \BLUE{A}\) because if \(x \in \GREEN{A}\), then \(x \in \BLUE{A}\), and if \(y \in \BLUE{A}\), then \(y \in \GREEN{A}\).
+Reflexive: Suppose \(A\) is a set. Then given any object \(x\), if \(x \in \GREEN{A}\), then \(x \in \BLUE{A}\), and given any object \(y\), if \(y \in \BLUE{A}\), then \(y \in \GREEN{A}\). So by \DEF{3.1.4}, \(\GREEN{A} = \BLUE{A}\).
 
 Symmetric: Suppose \(A, B\) are sets and \(A = B\), then by \DEF{3.1.4},
 \[
@@ -82,11 +82,11 @@ By \DEF{3.1.4}, \(A = C\).
 \end{proof}
 
 \begin{note}
-"is an element of" relation \(\in\) 符合\ Axiom of Substitution \AXM{a.7.4}，因為
+``is an element of'' relation \(\in\) 符合\ Axiom of Substitution \AXM{a.7.4}，因為
 \begin{center}
     if \(x \in A\) and \(A = B\), then \(x \in B\), by \DEF{3.1.4}.
 \end{center}
-這也代表那些完全以\ \(\in\) 定義的新的集合操作會自動符合\ Axiom of Substitution \AXM{a.7.4}。真的要說的話這一節剩下的所有\ operations 都是用\ \(\in\) 來定義的。
+這也代表那些完全以\ \(\in\) 定義的新的集合操作會自動符合\ Axiom of Substitution \AXM{a.7.4}。例如這一節剩下的所有\ operations 都是用\ \(\in\) 來定義的。
 \end{note}
 \begin{note}
 接著\ \RMK{3.1.3}，我們繼續來探討什麼\ object 是\ set，什麼不是。有點類似我們定哪些東西為自然數，哪些不是(\AXM{2.1}，\(0\) 是自然數，然後用 \AXM{2.2} 來擴增/建構其他的自然數)。這邊在集合論就是先假設存在一個集合，叫「空集合」，然後再定義一些在集合上的操作來建構其他的集合。
@@ -94,4 +94,120 @@ By \DEF{3.1.4}, \(A = C\).
 
 \begin{axiom}[Empty set] \label{axm 3.2}
 There exists a set \(\emptyset\), known as \emph{the} empty set, which \emph{contains no elements}, i.e., for every object \(x\) we have \(x \notin \emptyset\).
+\end{axiom}
+
+\begin{note}
+\emph{The} empty set is also denoted \(\{\}\). Note that there can only be \textbf{one} empty set.
+\end{note}
+
+\begin{additional corollary} [The empty set is unique] \label{ac 3.1.2}
+If there were two sets \(\emptyset\) and \(\emptyset'\) which were both empty, then by \DEF{3.1.4} they would be equal to each other.
+\end{additional corollary}
+\begin{proof}
+Suppose \(\emptyset'\) is also empty. Then the statement
+\[
+  \forall\ x : x \in \emptyset' \implies x \in \emptyset
+\]
+is vacuously true because by \AXM{3.2} empty set contains no elements. And again by \AXM{3.2}, the statement
+\[
+  \forall\ x : x \in \emptyset \implies x \in \emptyset'
+\]
+is also vacuous. These imply
+\[
+  \forall\ x : (x \in \emptyset' \implies x \in \emptyset) \land (x \in \emptyset \implies x \in \emptyset')
+\]
+that is,
+\[
+  \forall\ x : x \in \emptyset' \iff x \in \emptyset
+\]
+by \DEF{3.1.4}, \(\emptyset' = \emptyset\)
+\end{proof}
+
+\begin{note}
+If a set is not equal to the empty set, we call it \emph{non-empty}.
+\end{note}
+
+\begin{lemma}[Single choice]\label{lem 3.1.6}
+Let \(A\) be a \emph{non-empty} set. Then there exists an object \(x\) such that \(x \in A\).
+\end{lemma}
+\begin{proof}
+Suppose for the sake of contradiction that \(A\) be a non-empty set and for all object \(x\), \(x \notin A\). And by \AXM{3.2}, \(x \notin \emptyset\). Then similarly as \AC{3.1.2}, we can derive \(A = \emptyset\), which contradicts that \(A\) is \emph{non-empty}.
+\end{proof}
+
+\begin{remark}\label{remark 3.1.7}
+\LEM{3.1.6} asserts that given any non-empty set \(A\), we are allowed to \emph{``choose''} an element \(x\) of \(A\) which demonstrates this non-emptyness. Later on (in \LEM{3.5.12}) we will show that given any \textbf{finite} number of non-empty sets, say \(A_1, \dots, A_n\), it is possible to choose one element \(x_1, \dots, x_n\) from each set \(A_1, \dots, A_n\); this is known as ``finite choice''. However, in order to choose elements from an \textbf{infinite} number of sets, we need an additional axiom, the \emph{axiom of choice} (\AXM{8.1}).
+\end{remark}
+
+\begin{note}
+\RMK{3.1.7} 在講\ ``finite choice'' 的部分，看起來是說要被選的集合是有限個，但是沒有規定個別集合的元素數量要有限個，目前還不確定這意味著什麼。
+\end{note}
+
+\begin{remark} \label{remark 3.1.8}
+Note that the empty set is not the same thing as the natural number \(0\). One is a set; the other is a number. However, it is true that the \emph{cardinality} of the empty set is \(0\); see \SEC{3.6}.
+\end{remark}
+
+We now present further axioms to enrich the class of sets available.
+
+\begin{axiom}[Singleton sets and pair sets]\label{axm 3.3}
+If \(a\) is an object, then there exists a set \( \{a\} \) whose \emph{only} element is \(a\), i.e., for every object \(y\), we have \(y \in \{a\}\) if and only if \(y = a\); we refer to \( \{a\} \) as the \emph{singleton set} whose element is \(a\). Furthermore, if \(a\) and \(b\) are objects, then there exists a set \( \{a, b\} \) whose only elements are \(a\) and \(b\); i.e., for every object \(y\), we have \( y \in \{a, b\} \) if and only if \(y = a\) or \(y = b\); we refer to this set as the \emph{pair set} formed by \(a\) and \(b\).
+\end{axiom}
+
+\begin{note}
+\href{https://www.wikiwand.com/en/Axiom_of_pairing#/Consequences}{參考}: 這個公理實際說的是，給定兩個集合(這邊暫時當作所有物件都是集合)\ \(x\) 和\ \(y\)，我們可以找到一個集合\ \(A\) ，它的成員就是\ \(x\) 和\ \(y\)。
+\end{note}
+
+\begin{note}
+前方高能注意: \RMK{3.1.9} 在解釋\ \AXM{3.3} 裡面的\ singleton、\ pair，還有\ \AXM{3.4} 這三者，若假設``其中一部分''是公理，則剩下的可以從那個部分直接推得，不用當作是公理，i.e. 剩下的只須為定理，不用是公理。這種\ redundant\ 在本節開頭有講過，便於推導，but does no real harm。BTW 這個\ remark 裡面有一堆\ (why?) 全部都要自己推導。
+\end{note}
+
+\begin{remark} \label{remark 3.1.9}
+
+Just as there is only one empty set, there is only one singleton set for each object \(a\), thanks to \DEF{3.1.4} (why? \MAROON{(1)}).
+
+Similarly, given any two objects \(a\) and \(b\), there is only one pair set formed by \(a\) and \(b\).
+
+Also, \DEF{3.1.4} also ensures that \( \{a, b\} = \{b, a\} \) (why? \MAROON{(2)}) and \( \{a, a\} = \{a\} \) (why? \MAROON{(3)}). Thus the \textbf{singleton} set axiom is in fact redundant, being \textbf{a consequence of} the \textbf{pair} set axiom.
+
+\emph{Conversely}, the \textbf{pair set} axiom will \textbf{follow from} the \textbf{singleton} set axiom \textbf{and} the \textbf{pairwise union axiom \AXM{3.4}} (see  \LEM{3.1.13}).
+
+One may wonder why we don’t go further and create triplet axioms, quadruplet axioms, etc.; however there will be no need for this once we introduce the pairwise union axiom
+below.
+\end{remark}
+
+\begin{proof}
+\MAROON{(1)}: given any object \(a\), suppose there exist two sets \(A\) and \(A'\) which are singleton sets of \(a\). Then we have:
+\begin{align*}
+         & (\forall\ x : x \in A \iff x = a) \land (\forall\ x : x \in A' \iff x = a) & \text{by \AXM{3.3}} \\
+    \iff & (\forall\ x : x \in A \iff x = a) \land (\forall\ x : x = a \iff x \in A') & \text{by logic} \\
+    \iff & (\forall\ x : x \in A \iff x = a \iff x \in A')                            & \text{by logic} \\
+    \iff & (\forall\ x : x \in A \iff x \in A')                                       & \text{by simplifying logic} \\
+    \iff & A = A'                                                                     & \text{by \DEF{3.1.4}}
+\end{align*}
+
+\MAROON{(2)}: given any objects \(a, b\), then
+\begin{align*}
+    & (x \in \{a, b\} \iff (x = a \lor x = b)) & \text{by \AXM{3.3}} \\
+    \iff & (x \in \{a, b\} \iff (x = a \lor x = b) \iff (x = b \lor x = a)) & \text{by logic} \\
+    \iff & (x \in \{a, b\} \iff (x = b \lor x = a)) & \text{by simplifying logic} \\
+    \iff & (x \in \{a, b\} \iff (x = b \lor x = a) \iff x \in \{b, a\}) & \text{by \AXM{3.3}} \\
+    \iff & (x \in \{a, b\} \iff x \in \{b, a\}) & \text{by simplifying logic} \\
+    \iff & \{a, b\} = \{b, a\} & \text{by \DEF{3.1.4}}
+\end{align*}
+
+\MAROON{(3)}: given any object \(a\), then
+\begin{align*}
+    & (x \in \{a, a\} \iff (x = a \lor x = a)) & \text{by \AXM{3.3}} \\
+    \iff & (x \in \{a, a\} \iff (x = a)) & \text{by logic} \\
+    \iff & (x \in \{a, a\} \iff (x = a) \iff x \in \{a\})& \text{by \AXM{3.3}} \\
+    \iff & (x \in \{a, a\} \iff x \in \{a\})& \text{by simplifying logic} \\
+    \iff & \{a, a\} = \{a\} & \text{by \DEF{3.1.4}}
+\end{align*}
+\end{proof}
+
+
+\begin{axiom} [Pairwise union] \label{axm 3.4}
+Given any two sets \(A, B\), there exists a set \(A \cup B\), called the \emph{union} \(A \cup B\) of \(A\) and \(B\), whose elements consists of all the elements which belong to \(A\) or \(B\) or both. In other words, for any object \(x\),
+\[
+    x \in A \cup B \iff (x \in A \lor x \in B)
+\].
 \end{axiom}

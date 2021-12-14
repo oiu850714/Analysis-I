@@ -164,7 +164,7 @@ Inductive hypothesis: suppose \(a\) is a positive natural number and \(b\) is th
 \begin{definition}[Ordering of the natural numbers] \label{def 2.2.11} Let \(n\) and \(m\) be natural numbers. We say that \(n\) is \emph{greater than or equal to} \(m\), and write \(n \geq m\) or \(m \leq n\), if and only if we have \(n = m + a\) for some natural number \(a\). We say that n is \emph{strictly greater than} \(m\), and write \(n > m\) or \(m < n\), if and only if \(n \geq m\) and \(n \neq m\).
 \end{definition}
 \begin{note}
-\(n \geq m\) 跟\ \(m \leq n\) 只有符號上的差別，他們在定義上是等價的。另外定義內的\ \(a\) 只需要是\ natural number 即可，不需要是\ "positive" natural number。
+\(n \geq m\) 跟\ \(m \leq n\) 只有符號上的差別，他們在定義上是等價的。另外定義內的\ \(a\) 只需要是\ natural number 即可，不需要是\ ``positive'' natural number''。
 \end{note}
 \begin{additional corollary} \label{ac 2.2.3}
 \(n\INC > n\) for any natural number \(n\)，因為\ (1) \(n\INC \neq n\)(否則會違反\ Axiom \ref{axm 2.4}) (2) \(n\INC \geq n\)，因為\ \(n\INC = n + 1\)(by \AC{2.2.2})，而\ \(1\) 就是個\ natural number。
@@ -243,9 +243,9 @@ So \(\BLUE{a\INC + m = a + m\INC} = b\). By Axiom \ref{axm 2.3}, \(m\INC \neq 0\
 
 \begin{proof}{(f)}
 
-\( \Longrightarrow \): This was proved in the "if part" of (e); the \(m\) in there meets the condition.
+\( \Longrightarrow \): This was proved in the ``if part'' of (e); the \(m\) in there meets the condition.
 
-\( \Longleftarrow \): This was proved in the middle of the "only if part" of (e); the positive \(m\INC\) derived in the middle can be treated as \(d\) in (f), and the derivation in (e) derives \(a < b\).
+\( \Longleftarrow \): This was proved in the middle of the ``only if part'' of (e); the positive \(m\INC\) derived in the middle can be treated as \(d\) in (f), and the derivation in (e) derives \(a < b\).
 \end{proof}
 
 \begin{proposition}[Trichotomy of order for natural numbers] \label{prop 2.2.13}
@@ -265,7 +265,7 @@ The sketch: (1) at most one condition holds, (2) at least one condition holds; t
 
 Base case: Let \(a = 0\). Then we have \(a = 0 \leq b\), because \(b = \GREEN{b} + 0 = \GREEN{b} + a\), so there exists a natural number \(\GREEN{b}\) s.t. \(b = \GREEN{b} + a\), which by \DEF{2.2.11} implies \(a \leq b\) (\BLUE{This is the first (why?)}). And this implies \(a < b\) or \(a = b\).
 
-Inductive hypothesis: Suppose \(a\) satisfies the "at least one" proposition, i.e. at least one of \(a < b\), \(a = b\), or \(a > b\) is true. We have to prove \(a\INC\) satisfies the "at least one" proposition.
+Inductive hypothesis: Suppose \(a\) satisfies the ``at least one'' proposition, i.e. at least one of \(a < b\), \(a = b\), or \(a > b\) is true. We have to prove \(a\INC\) satisfies the ``at least one'' proposition.
     \begin{enumerate}
         \item Suppose \(a < b\), then by \PROP{2.2.12}(e), \(a\INC \leq b\), which means \(a = b\) or \(a < b\).
         \item Suppose \(a = b\), then \(a\INC = b\INC\) by Axiom of Substitution \AXM{a.7.4}, and \(b\INC > b\) by \AC{2.2.3}, so \(a\INC > b\) (\BLUE{This is the third (why?)})
@@ -275,7 +275,7 @@ So in either case \(a\INC\) satisfies at least one of the \(a\INC < b\), \(a\INC
 \end{proof}
 
 \begin{note}
-上面這些\ order 的性質可以讓我們定義一個\ "stronger" version of induction. 把\ stronger 標起來只是因為它只是看起來比較強，但實際上跟數學歸納法等價。
+上面這些\ order 的性質可以讓我們定義一個\ ``stronger'' version of induction''. 把\ stronger 標起來只是因為它只是看起來比較強，但實際上跟數學歸納法等價。
 \end{note}
 
 \begin{proposition}[Strong principle of induction] \label{prop 2.2.14}
@@ -303,13 +303,13 @@ Base case: Let \(n = \RED{0}\). We want to show \(Q(\RED{0})\) is true. That is,
 \begin{center}
     \(P(m)\) is true for all \(m_0 \leq m\ \RED{< 0}\) \MAROON{(1)}.
 \end{center}
-But we have shown that \(0 \leq m_0\) (in "first (why?)" in \PROP{2.2.13}) for any natural number \(m_0\), so there are two cases: \(m_0 = 0\) or \(m_0 > 0\).
+But we have shown that \(0 \leq m_0\) (in ``first (why?)'' in \PROP{2.2.13}) for any natural number \(m_0\), so there are two cases: \(m_0 = 0\) or \(m_0 > 0\).
 \begin{enumerate}
     \item If \(m_0 = 0\), then \MAROON{(1)} is
         \begin{center}
             \(P(m)\) is true for all \(\RED{0} \leq m < 0\),
         \end{center}
-        which is vacuously true because the range \(0 \leq m < 0\) is empty(precisely, no natural number \(< 0\), otherwise it will contradict the "first (why?)" in \PROP{2.2.13}).
+        which is vacuously true because the range \(0 \leq m < 0\) is empty(precisely, no natural number \(< 0\), otherwise it will contradict the ``first (why?)'' in \PROP{2.2.13}).
     \item If \(m_0 > 0\), then \MAROON{(1)} is also vacuous because the range \(m_0 \leq m < 0\) is (also trivially) empty.
 \end{enumerate}
 So in both case, \MAROON{(1)} is true, that is, \(Q(0)\) is true.
@@ -328,7 +328,7 @@ By \MAROON{(2)} and the \RED{implication} in the Proposition, it can be derived 
 \end{center}
 But by \PROP{2.2.12}(e), this is equivalent to \MAROON{(3)}, that is, \(Q(n\INC)\) is true. Thus we closed the induction and we conclude that \(Q(n)\) is true for all natural number \(n\).
 
-Now we have to prove that "\(Q(n)\) is true for all natural number \(n\)" implies "\(P(m)\) is true for all natural number \(m \geq m_0\)". So let \(m\) be a particular but arbitrarily chosen natural number \(\geq m_0\). then in particular of the statement "\(Q(n)\) is true for all natural number \(n\)", \(Q(m)\) is true, that is, \(P(m')\) is true for all \(m_0 \leq m' < m\). But again by the \RED{implication} in the Proposition, \(P(m)\) is true. Since \(m\) is arbitrarily chosen, this concludes \(P(m)\) is true for all natural number \(m \geq m_0\).
+Now we have to prove that ``\(Q(n)\) is true for all natural number \(n\)'' implies ``\(P(m)\) is true for all natural number \(m \geq m_0\)''. So let \(m\) be a particular but arbitrarily chosen natural number \(\geq m_0\). then in particular of the statement ``\(Q(n)\) is true for all natural number \(n\)'', \(Q(m)\) is true, that is, \(P(m')\) is true for all \(m_0 \leq m' < m\). But again by the \RED{implication} in the Proposition, \(P(m)\) is true. Since \(m\) is arbitrarily chosen, this concludes \(P(m)\) is true for all natural number \(m \geq m_0\).
 \end{proof}
 
 \exercisesection
@@ -384,7 +384,7 @@ Base case: Let \(n = 0\). Then \MAROON{(1)} becomes
     \begin{center}
     If \(P(\RED{0})\) is true, then \(P(m)\) is true \(\forall m \leq \RED{0}\) \MAROON{(2)}
     \end{center}
-Now suppose \(P(0)\) is true, then the "then-part" of \MAROON{(2)} becomes trivial because the for-all range only has the natural number \(0\), and \(P(0)\) is supposed to be true. So the base case is true.
+Now suppose \(P(0)\) is true, then the ``then-part'' of \MAROON{(2)} becomes trivial because the for-all range only has the natural number \(0\), and \(P(0)\) is supposed to be true. So the base case is true.
 
 Inductive hypothesis: Let \(n\) be a natural number. Suppose \MAROON{(1)} is true. We have to prove
     \begin{center}
