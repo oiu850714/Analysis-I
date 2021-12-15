@@ -355,3 +355,92 @@ Transitive for proper-inclusion: Let \(A, B, C\) be sets such that \(A \subsetne
 \begin{remark} \label{remark 3.1.19}
 There is a relationship between subsets and unions: see for instance \EXEC{3.1.7}. 這就頭腦體操。
 \end{remark}
+
+\begin{remark} [Difference between the subset relation \(\subsetneq\) and the less than relation \(<\)] \label{remark 3.1.20}
+根據自然數\ \(<\) 的三一律(\PROP{2.2.13})，若兩自然數\ \(a, b\) 不相等，則要馬\ \(a < b\) 要馬\ \(b < a\)。但任兩不相等集合\ \(A, B\)，\(A \subsetneq B\) 跟\ \(B \subsetneq A\) 可以都不成立。根據\ \DEF{8.5.1}，\DEF{8.5.3}，自然數(這個集合)配上\ \(<\) relation 是\ totally ordered，而(所有的；這個形容詞實際上「目前」還不精確，別忘了我們還沒列完公理)集合配上\ \(\subsetneq\) 是\ partially ordered。
+\end{remark}
+
+\begin{remark} [Subset relation and element relation] \label{remark 3.1.21}
+\(2 \in \{1, 2, 3\}\), but \(2 \not \subseteq \{1, 2, 3\}\). \(\{2\} \subseteq \{1, 2, 3\}\), but \(\{2\} \notin \{1, 2, 3\}\). The point is that the number \(2\) and the set \(\{2\}\) are distinct objects.
+
+BTW, It is important to distinguish sets from their elements, as \textbf{they can have different properties}. For instance, it is possible to have an \textbf{infinite set} consisting \textbf{of finite} numbers (the set \(\SET{N}\) of natural numbers is one such example), and it is also possible to have a finite set consisting of infinite objects (consider for instance the finite set \(\{ \SET{N}, \SET{Z} , \SET{Q} , \SET{R} \} \), which has four elements, all of which are infinite)
+\end{remark}
+
+\begin{note}
+上面\ remark 可參考 \href{https://math.stackexchange.com/questions/851599/why-set-of-natural-numbers-is-infinite-while-each-natural-number-is-finite}{這篇}，可用數學歸納法推得\ every natural number 是\ finite。但是「set 是 infinite」這點可能要先定義\ set 的\ cardinality? 我還不是很確定。
+\end{note}
+
+\begin{note}
+We now give an axiom which easily allows us to \emph{create subsets out of} larger sets.
+\end{note}
+
+\begin{axiom} [Axiom of specification] \label{axm 3.5}
+Let \(A\) be a set, and for each \(x \in A\), let \(P(x)\) be a \textbf{property} pertaining to \(x\) (i.e., \(P(x)\) is either a true statement or a false statement). Then \textbf{there exists} a set, called \( \{ x \in A : P(x) \text{\ is true} \} \) (or simply \( \{ x \in A : P(x) \} \) for short), whose elements are precisely the elements \(x\) in \(A\) for which \(P(x)\) is true. In other words, for any object \(y\),
+\[
+    y \in \{ x \in A : P(x) \text{\ is true} \} \iff (y \in A \text{\ and \(P(y)\) is true}).
+\]
+\end{axiom}
+
+\begin{note}
+This axiom is also known as the \emph{axiom of separation}. Note that \( \{ x \in A : P(x) \text{\ is true} \} \) is \textbf{always a subset} of \(A\) (why? \MAROON{(1)}), though it could be as large as \(A\) or as small as the empty set.
+
+One can verify that the axiom of substitution \emph{works for specification}, thus if \(A = A'\) then \( \{ x \in A : P(x) \} = \{ x \in A' : P(x) \} \) (why? \MAROON{(2)})
+\end{note}
+
+\begin{proof}
+\MAROON{(1)}: Let \(y\) be an arbitrary object such that \(y \in \{ x \in A : P(x) \text{\ is true} \} \). By \AXM{3.5}, we have \(y \in A \text{\ and \(P(y)\) is true}\). In particular, \(y \in A\). Since \(y\) is arbitrary, by \DEF{3.1.15}, \( \{ x \in A : P(x) \text{\ is true} \} \subseteq A \).
+
+\MAROON{(2)}:
+\begin{align*}
+         & y \in \{ x \in A : P(x) \} \\
+    \iff & (y \in A \land P(y)) & \text{by \AXM{3.5}} \\
+    \iff & (y \in A' \land P(y)) & \text{since A = A', and \(y \in A\) and \AXM{a.7.4}} \\
+    \iff & y \in \{ x \in A' : P(x) \} & \text{by \AXM{3.5}}
+\end{align*}
+\end{proof}
+
+\begin{example}
+幹話。
+\end{example}
+
+
+\begin{note}
+BTW，\AXM{3.5} 裡面的冒號\ ``:'' 常會改成\  ``\(\mid\)''，主要是冒號可能會拿來代表別的意思。例如標記\ function 的\ domain 和\ codomain \(f : X \xrightarrow{} Y\)。Function 的定義參考\ \SEC{3.3}。
+\end{note}
+
+\begin{note}
+接下來我們用\ \AXM{3.5} 來定義其它的\ set operation: 交集和補集(聯集已經在\ \AXM{3.4} 定義了。但蠻奇妙的，聯集是公理，但交集是從\ specification 進一步定義的)。
+\end{note}
+
+\begin{definition} [Intersections] \label{def 3.1.23}
+The intersection \(S_1 \cap S_2 \) of two sets is \emph{defined} to be the set
+\[
+    S_1 \cap S_2 := \{ x \in S_1 : x \in S_2 \}.
+\]
+\end{definition}
+
+\begin{note}
+注意這個定義看起來有點玄妙，我猜是因為目前用 \AXM{3.5}，你必須從一個已經是\ set 的\ object 做\ specification，所以一定要先說要從哪個集合拿元素(i.e. \(S_1\))，然後再說要符合什麼\ property(i.e. \(x \in S_2\))。
+
+實際上某種不精確的寫法\ \( \{ x : x \in S_1 \land x \in S_2 \} \) 是沒有定義的，而且還可能會遇到羅素悖論?
+\end{note}
+
+\begin{remark} \label{remark 3.1.24}
+Note that this definition is obeys the axiom of substitution \AXM{a.7.4} because it is defined in terms of more primitive operations which were already known to obey the axiom of substitution. Similar remarks apply to future definitions in this chapter and will usually not be mentioned explicitly again.
+\end{remark}
+
+\begin{example}
+幹話。
+\end{example}
+
+\begin{remark} \label{remark 3.1.26}
+這裡在講英文的\ "and" 根據情境有可能是\ "or"(union)，甚至是\ addition。但用在邏輯描述則一定是\ \(\land\)。
+\end{remark}
+
+\begin{note}
+Two set \(A, B\) are said to be \emph{disjoint} if \(A \cap B = \emptyset\). Meanwhile, the sets \(\emptyset\) and \(\emptyset\) are disjoint but not distinct (why?).
+\end{note}
+
+\begin{proof}
+It is trivially that for any set \(A\), \(A \cap \BLUE{\emptyset} = \emptyset\). In particular, \(\GREEN{\emptyset} \cap \BLUE{\emptyset} = \emptyset\), so by definition of disjoint, \(\GREEN{\emptyset}\) and \(\BLUE{\emptyset}\) are disjoint. But \(\GREEN{\emptyset} = \BLUE{\emptyset}\), so \(\GREEN{\emptyset}\) and \(\BLUE{\emptyset}\) are not distinct.
+\end{proof}
