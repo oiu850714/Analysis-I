@@ -314,7 +314,7 @@ Because these definition\textbf{s}(both \(\subseteq\) and \(\subsetneq\)) involv
 \end{remark}
 
 \begin{example} \label{example 3.1.17}
-前面幹話。Given any set \(A\), we always have \(A \subseteq A\) (why?) and \(\emptyset \subseteq A\) (why?).
+(Trivial blablabla...) Given any set \(A\), we always have \(A \subseteq A\) (why?) and \(\emptyset \subseteq A\) (why?).
 \end{example}
 
 \begin{proof}
@@ -420,7 +420,7 @@ The intersection \(S_1 \cap S_2 \) of two sets is \emph{defined} to be the set
 \end{definition}
 
 \begin{note}
-注意這個定義看起來有點玄妙，我猜是因為目前用 \AXM{3.5}，你必須從一個已經是\ set 的\ object 做\ specification，所以一定要先說要從哪個集合拿元素(i.e. \(S_1\))，然後再說要符合什麼\ property(i.e. \(x \in S_2\))。
+注意這個定義看起來有點玄妙，我猜是因為目前用\ \AXM{3.5}，你必須從一個已經是\ set 的\ object 做\ specification，所以一定要先說要從哪個集合拿元素(i.e. \(S_1\))，然後再說要符合什麼\ property(i.e. \(x \in S_2\))。
 
 實際上某種不精確的寫法\ \( \{ x : x \in S_1 \land x \in S_2 \} \) 是沒有定義的，而且還可能會遇到羅素悖論?
 \end{note}
@@ -434,7 +434,7 @@ Note that this definition is obeys the axiom of substitution \AXM{a.7.4} because
 \end{example}
 
 \begin{remark} \label{remark 3.1.26}
-這裡在講英文的\ "and" 根據情境有可能是\ "or"(union)，甚至是\ addition。但用在邏輯描述則一定是\ \(\land\)。
+這裡在講英文的\ ``and'' 根據情境有可能是\ ``or''(union)，甚至是\ addition。但用在邏輯描述則一定是\ \(\land\)。
 \end{remark}
 
 \begin{note}
@@ -443,4 +443,149 @@ Two set \(A, B\) are said to be \emph{disjoint} if \(A \cap B = \emptyset\). Mea
 
 \begin{proof}
 It is trivially that for any set \(A\), \(A \cap \BLUE{\emptyset} = \emptyset\). In particular, \(\GREEN{\emptyset} \cap \BLUE{\emptyset} = \emptyset\), so by definition of disjoint, \(\GREEN{\emptyset}\) and \(\BLUE{\emptyset}\) are disjoint. But \(\GREEN{\emptyset} = \BLUE{\emptyset}\), so \(\GREEN{\emptyset}\) and \(\BLUE{\emptyset}\) are not distinct.
+\end{proof}
+
+\begin{definition} [Difference sets] \label{def 3.1.27}
+Given two sets \(A\) and \(B\), we \emph{define} the set \(A − B\) or \(A \setminus B\) to be the set \(A\) with any elements of \(B\) removed:
+\[
+A \setminus B := \{ x \in A : x \notin B \}
+\]
+for instance, \( \{ 1, 2, 3, 4 \} \setminus \{ 2, 4, 6 \}  = \{ 1, 3 \} \). In many cases \(B\) will be a subset of \(A\), but not necessarily.
+\end{definition}
+
+\begin{note}
+Set difference 的定義跟\ set intersection 一樣都是從\ \AXM{3.5} 延伸的。
+\end{note}
+
+\begin{proposition} [Sets form a boolean algebra] \label{prop 3.1.28} 
+Let \(A, B, C\) be sets, and let \(X\) be a set containing \(A, B, C\) as subsets.
+\begin{enumerate}
+    \item (Minimal element) We have \(A \cup \emptyset = A\) and \(A \cap \emptyset = \emptyset\).
+    \item (Maximal element) We have \(A \cup X = X\) and \(A \cap X = A\).
+    \item (Identity) We have \(A \cap A = A\) and \(A \cup A = A\).
+    \item (Commutativity) We have \(A \cup B = B \cup A\) and \(A \cap B = B \cap A\).
+    \item (Associativity) We have \((A \cup B) \cup C = A \cup (B \cup C)\) and \((A \cap B) \cap C = A \cap (B \cap C)\).
+    \item (Distributivity) We have \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\) and \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\).
+    \item (Partition) We have \(A \cup (X \setminus A) = X\) and \(A \cap (X \setminus A) = \emptyset\).
+    \item (De Morgan laws) We have \(X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B) \) and \(X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B)\).
+\end{enumerate}
+\end{proposition}
+
+\begin{note}
+不知為何書中要用\ "containing" 來說\ \(X\) 是\ \(A, B, C\) 的宇集，對這個用詞感到奇怪。
+\end{note}
+
+\begin{remark}\label{remark 3.1.29}
+The de Morgan laws are named after the logician Augustus De Morgan (1806 \textemdash 1871), who identified them as one of the basic laws of set theory.
+\end{remark}
+
+\begin{proof}{(a)} Wanted: \(A \cup \emptyset = A\) and \(A \cap \emptyset = \emptyset\).
+
+From \LEM{3.1.13} we have shown that \(A \cup \emptyset = A\), so we only need to show \(A \cap \emptyset = \emptyset\). From \PROP{3.1.18}, we can prove by showing \(A \cap \emptyset \subseteq \emptyset\) and \(\emptyset \subseteq A \cap \emptyset\).
+
+Let \(x\) be an arbitrary object, then
+
+\(A \cap \emptyset \subseteq \emptyset\): 
+\begin{align*}
+         & x \in A \cap \emptyset \\
+    \implies & x \in A \land x \in \emptyset & \text{by \DEF{3.1.23}} \\
+    \implies & x \in \emptyset & \text{in particular by logic} \\
+    \implies & A \cap \emptyset \subseteq \emptyset & \text{by \DEF{3.1.15}}
+\end{align*}
+
+\(\emptyset \subseteq A \cap \emptyset\): This was shown by \EXAMPLE{3.1.17}.
+\end{proof}
+
+\begin{proof}{(b)} Wanted: \(A \cup X = X\) and \(A \cap X = A\).
+
+\(A \cup X = X\): Let \(x\) be an arbitrary object.
+\begin{itemize}
+    \item \(A \cup X \subseteq X\): Suppose \(x \in A \cup X\). Then by \AXM{3.4}, \BLUE{\(x \in A\)} or \GREEN{\(x \in X\)}. If \BLUE{\(x \in A\)}, then since \(A \subseteq X\) by definition of \(A\) and \(X\), \MAROON{\(x \in X\)} by \DEF{3.1.15}. If \GREEN{\(x \in X\)}, then of course \MAROON{\(x \in X\)}. So in both cases \MAROON{\(x \in X\)}, and by \DEF{3.1.15} \(A \cup X \subseteq X\).
+    \item \(X \subseteq A \cup X\): Suppose \(x \in X\). Then in particular by logic, \(x \in A\) or \(x \in X\). By \AXM{3.4}, \(x \in A \cup X\). So \(X \subseteq A \cup X\) by \DEF{3.1.15}.
+\end{itemize}
+
+\(A \cap X = A\).
+\begin{itemize}
+    \item \(A \cap X \subseteq A\): Suppose \(x \in A \cap X\). Then by \DEF{3.1.23}, \(x \in A\) and \(x \in X\). In particular, \(x \in A\),  and by \DEF{3.1.15} \(A \cup X \subseteq A\).
+    \item \(A \subseteq A \cap X\): Suppose \(x \in A\) \MAROON{(1)}. Then since \(A \subseteq X\) by definition of \(A\) and \(X\), \(x \in X\) \MAROON{(2)} by \DEF{3.1.15}. So by \MAROON{(1) (2)} and \DEF{3.1.23}, we have \(x \in A \cap X\), and by \DEF{3.1.15}, \(A \subseteq A \cap X\).
+\end{itemize}
+\end{proof}
+
+\begin{proof}{(c)} Wanted: \(A \cap A = A\) and \(A \cup A = A\). (This is trivially true by definition of \(\cup\) and \(\cap\).)
+\(A \cap A = A\): Let \(x\) be an arbitrary object. Then
+\begin{align*}
+         & x \in A \cap A \\
+    \iff & x \in A \land x \in A & \text{by \DEF{3.1.23}} \\
+    \iff & x \in A & \text{by simplifying logic}
+\end{align*}
+
+\(A \cup A = A\): This was proved in \LEM{3.1.13}.
+\end{proof}
+
+\begin{proof}{(d)} Wanted: \(A \cup B = B \cup A\): and \(A \cap B = B \cap A\). (This is trivially true by definition of \(\cup\) and \(\cap\).)
+
+\(A \cup B = B \cup A\): Let \(x\) be an arbitrary object. Then
+\begin{align*}
+         & x \in A \cup B \\
+    \iff & x \in A \lor x \in B & \text{by \AXM{3.4}} \\
+    \iff & x \in B \lor x \in A & \text{by logic} \\
+    \iff & x \in B \cup A & \text{by \AXM{3.4}} \\
+\end{align*}
+
+\(A \cap B = B \cap A\): Let \(x\) be an arbitrary object. Then
+\begin{align*}
+         & x \in A \cap B \\
+    \iff & x \in A \land x \in B & \text{by \DEF{3.1.23}} \\
+    \iff & x \in B \land x \in A & \text{by logic} \\
+    \iff & x \in B \cap A & \text{by \DEF{3.1.23}} \\
+\end{align*}
+\end{proof}
+
+
+\begin{proof}{(e)} Wanted: \((A \cup B) \cup C = A \cup (B \cup C)\) and \((A \cap B) \cap C = A \cap (B \cap C)\).
+
+\((A \cup B) \cup C = A \cup (B \cup C)\): This was shown in \LEM{3.1.13}.
+
+\((A \cap B) \cap C = A \cap (B \cap C)\): Let \(x\) be an arbitrary object. Then
+\begin{align*}
+         & x \in (A \cap B) \cap C \\
+    \iff & x \in (A \cap B) \land x \in C & \text{by \DEF{3.1.23}} \\
+    \iff & (x \in A \land x \in B) \land x \in C & \text{by \DEF{3.1.23}} \\
+    \iff & x \in A \land (x \in B \land x \in C) & \text{by logic} \\
+    \iff & x \in A \land (x \in B \cap C) & \text{by \DEF{3.1.23}} \\
+    \iff & x \in A \cap (x \in B \cap C) & \text{by \DEF{3.1.23}} \\
+\end{align*}
+\end{proof}
+
+\begin{proof}{(f)} Wanted: \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\) and \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\).
+
+\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\): Let \(x\) be an arbitrary object. Then
+\begin{align*}
+         & x \in A \cap (B \cup C) \\
+    \iff & x \in A \land x \in (B \cup C) & \text{by \DEF{3.1.23}} \\
+    \iff & x \in A \land (x \in B \lor x \in C) & \text{by \AXM{3.4}} \\
+    \iff & (x \in A \land x \in B) \lor (x \in A \land x \in C) & \text{by distributive law of \(\land\), \(\lor\)} \\
+    \iff & (x \in A \cap B) \lor (x \in A \land x \in C) & \text{by \DEF{3.1.23}} \\
+    \iff & (x \in A \cap B) \lor (x \in A \cap C) & \text{by \DEF{3.1.23}} \\
+    \iff & x \in (A \cap B) \cup (A \cap C) & \text{by \AXM{3.4}}
+\end{align*}
+
+\(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\): Let \(x\) be an arbitrary object. Then
+\begin{align*}
+         & x \in A \cup (B \cap C) \\
+    \iff & x \in A \lor x \in (B \cap C) & \text{by \AXM{3.4}} \\
+    \iff & x \in A \lor (x \in B \land x \in C) & \text{by \DEF{3.1.23}} \\
+    \iff & (x \in A \lor x \in B) \land (x \in A \lor x \in C) & \text{by distributive law of \(\land\), \(\lor\)} \\
+    \iff & (x \in A \cup B) \lor (x \in A \lor x \in C) & \text{by \AXM{3.4}} \\
+    \iff & (x \in A \cup B) \land (x \in A \cup C) & \text{by \AXM{3.4}} \\
+    \iff & x \in (A \cup B) \cap (A \cup C) & \text{by \DEF{3.1.23}}
+\end{align*}
+
+BTW the second part just swap \((\land, \lor)\), \((\cap, \cup)\), (\DEF{3.1.23}, \AXM{3.4}). This is guaranteed by the \emph{duality}, see \RMK{3.1.30}.
+\end{proof}
+
+\begin{proof}{(g)} Wanted: \(A \cup (X \setminus A) = X\) and \(A \cap (X \setminus A) = \emptyset\)
+\end{proof}
+
+\begin{proof}{(h)} Wanted: \(X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B) \) and \(X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B)\).
 \end{proof}
