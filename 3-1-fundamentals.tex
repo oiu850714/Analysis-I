@@ -302,7 +302,7 @@ So first statement if and only if last statement, so \((A \cup B) \cup C = A \cu
 \end{remark}
 
 \begin{note}
-We are not yet in a position to define sets consisting of \(n\) objects for any given natural numbers \(n\). 老實說我不是很理解為什麼，文中敘述是說我們還沒有定義「做\ \(n\) 次操作」是什麼意思"(require iterating the above construction “\(n\) times”, but the concept of \(n\)-fold iteration has not yet been rigorously defined). 類似任意有限個元素的情況，我們目前也無法給出有無限個元素的集合的定義。這需要其他的公理。現在我們先定義什麼是「子集合」。
+We are not yet in a position to define sets consisting of \(n\) objects for any given natural numbers \(n\). 老實說我不是很理解為什麼，文中敘述是說我們還沒有定義「做\ \(n\) 次操作」是什麼意思(require iterating the above construction ``\(n\) times'', but the concept of \(n\)-fold iteration has not yet been rigorously defined). 類似任意有限個元素的情況，我們目前也無法給出有無限個元素的集合的定義。這需要其他的公理。現在我們先定義什麼是「子集合」。
 \end{note}
 
 \begin{definition}[Subsets] \label{def 3.1.15}
@@ -324,7 +324,7 @@ Let \(x\) be arbitrarily chosen object. Then if \(x \in \emptyset\) then \(x \in
 \end{proof}
 
 \begin{note}
-下面的\ Proposition 要參考\ \DEF{8.5.1}，旨在說明\ "set-inclusion" 這個\ relation 是\ partially ordered。也就是要證明它是\ reflexive(by \EXAMPLE{3.1.17}), anti-symmetric, transitive。
+下面的\ Proposition 要參考\ \DEF{8.5.1}，旨在說明\ ``set-inclusion'' 這個\ relation 是\ partially ordered。也就是要證明它是\ reflexive(by \EXAMPLE{3.1.17}), anti-symmetric, transitive。
 \end{note}
 
 \begin{proposition} [Sets are partially ordered by set inclusion] \label{prop 3.1.18}
@@ -472,7 +472,7 @@ Let \(A, B, C\) be sets, and let \(X\) be a set containing \(A, B, C\) as subset
 \end{proposition}
 
 \begin{note}
-不知為何書中要用\ "containing" 來說\ \(X\) 是\ \(A, B, C\) 的宇集，對這個用詞感到奇怪。
+不知為何書中要用\ ``containing'' 來說\ \(X\) 是\ \(A, B, C\) 的宇集，對這個用詞感到奇怪。
 \end{note}
 
 \begin{remark}\label{remark 3.1.29}
@@ -581,11 +581,72 @@ Let \(x\) be an arbitrary object, then
     \iff & x \in (A \cup B) \cap (A \cup C) & \text{by \DEF{3.1.23}}
 \end{align*}
 
-BTW the second part just swap \((\land, \lor)\), \((\cap, \cup)\), (\DEF{3.1.23}, \AXM{3.4}). This is guaranteed by the \emph{duality}, see \RMK{3.1.30}.
 \end{proof}
 
 \begin{proof}{(g)} Wanted: \(A \cup (X \setminus A) = X\) and \(A \cap (X \setminus A) = \emptyset\)
+
+\(A \cup (X \setminus A) = X\): Let \(x\) be an arbitrary object. Then
+\begin{align*}
+         & x \in A \cup (X \setminus A) \\
+    \iff & x \in A \lor x \in (X \setminus A) & \text{by \AXM{3.4}} \\
+    \iff & x \in A \lor (x \in X \land x \notin A) & \text{by \DEF{3.1.27}} \\
+    \iff & (x \in A \lor x \in X) \land (x \in A \lor x \notin A) & \text{by distributive law of \(\land, \lor\)} \\
+    \iff & (x \in A \cup X) \land (x \in A \lor x \notin A) & \text{by \AXM{3.5}} \\
+    \iff & (x \in X) \land (x \in A \lor x \notin A) & \text{by \PROP{3.1.28}(b)} \\
+    \iff & (x \in X) \land (\text{true}) & \text{see the bottom of page 34} \\
+    \iff & x \in X & \text{by simplifying logic}
+\end{align*}
+
+\(A \cap (X \setminus A) = \emptyset\): Let \(x\) be an arbitrary object. Then
+\begin{align*}
+         & x \in A \cap (X \setminus A) \\
+    \iff & x \in A \land x \in (X \setminus A) & \text{by \DEF{3.1.23}} \\
+    \iff & x \in A \land (x \in X \land x \notin A) & \text{by \DEF{3.1.27}} \\
+    \iff & (x \in A \land x \in X) \land (x \in A \land x \notin A) & \text{clumsy, but valid, for the sake of duality} \\
+    \iff & (x \in A \cap X) \land (x \in A \land x \notin A) & \text{by \DEF{3.1.23}} \\
+    \iff & (x \in A) \land (x \in A \land x \notin A) & \text{by \PROP{3.1.28}(b)} \\
+    \iff & (x \in A) \land (\text{false}) & \text{see the bottom of page 34} \\
+    \iff & \text{false} & \text{by simplifying logic}
+\end{align*}
+This means given arbitrary object \(x\), \(x \notin A \cap (X \setminus A)\). By \AXM{3.2} and the uniqueness of \(\emptyset\)(\AC{3.1.2}), \(A \cap (X \setminus A) = \emptyset\).
 \end{proof}
 
 \begin{proof}{(h)} Wanted: \(X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B) \) and \(X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B)\).
+
+\(X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B) \): Let \(x\) be an arbitrary object. Then
+\begin{align*}
+         & x \in X \setminus (A \cup B) \\
+    \iff & x \in X \land x \notin (A \cup B) & \text{by \DEF{3.1.27}} \\
+    \iff & x \in X \land \lnot(x \in A \cup B) & \text{by the valid part of informal \DEF{3.1.1}} \\
+    \iff & x \in X \land \lnot(x \in A \lor x \in B) & \text{by \AXM{3.4}} \\
+    \iff & x \in X \land (\lnot(x \in A) \land \lnot(x \in B)) & \text{by De Morgan law of logic} \\
+    \iff & x \in X \land (x \notin A \land x \notin B) & \text{by \DEF{3.1.1} valid part} \\
+    \iff & (x \in X \land x \notin A) \land (x \in X \land x \notin B) & \text{clumsy, but valid} \\
+    \iff & x \in (X \setminus A) \land (x \in X \land x \notin B) & \text{by \DEF{3.1.27}} \\
+    \iff & x \in (X \setminus A) \land x \in (X \setminus B) & \text{by \DEF{3.1.27}} \\
+    \iff & x \in (X \setminus A) \cap (X \setminus B) & \text{by \DEF{3.1.23}}
+\end{align*}
+
+\(X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B) \): Let \(x\) be an arbitrary object. Then
+\begin{align*}
+         & x \in X \setminus (A \cap B) \\
+    \iff & x \in X \land x \notin (A \cap B) & \text{by \DEF{3.1.27}} \\
+    \iff & x \in X \land \lnot(x \in A \cap B) & \text{by the valid part of informal \DEF{3.1.1}} \\
+    \iff & x \in X \land \lnot(x \in A \land x \in B) & \text{by \DEF{3.1.23}} \\
+    \iff & x \in X \land (\lnot(x \in A) \lor \lnot(x \in B)) & \text{by De Morgan law of logic} \\
+    \iff & x \in X \land (x \notin A \lor x \notin B) & \text{by \DEF{3.1.1} valid part} \\
+    \iff & (x \in X \land x \notin A) \lor (x \in X \land x \notin B) & \text{by distributive law of \(\land, \lor\)} \\
+    \iff & x \in (X \setminus A) \lor (x \in X \land x \notin B) & \text{by \DEF{3.1.27}} \\
+    \iff & x \in (X \setminus A) \lor x \in (X \setminus B) & \text{by \DEF{3.1.27}} \\
+    \iff & x \in (X \setminus A) \cup (X \setminus B) & \text{by \AXM{3.4}}
+\end{align*}
 \end{proof}
+
+\begin{note}
+BTW in essential you can just swap \((\land, \lor)\), \((\cap, \cup)\), (\DEF{3.1.23}, \AXM{3.4}), \((\emptyset, X)\) from the first-part of each proof to get the second-part of each proof, although sometimes the result may be clumsy, but it is valid. This is guaranteed by the \emph{duality}, see \RMK{3.1.30}.
+\end{note}
+
+\begin{remark}
+The reader may observe \emph{a certain symmetry} in the above laws between \(\cup\) and \(\cap\), and between \(X\) and \(\emptyset\). This is an example of \href{https://www.wikiwand.com/en/Duality_(mathematics)}{\textbf{duality}} -- two distinct properties or objects being dual to each other. In this case, the duality is manifested by the complementation relation \(A \mapsto X \setminus A \); the de Morgan laws assert that this relation converts unions into intersections and vice versa. (It also interchanges \(X\) and the empty set.) The above laws are collectively known as \textbf{the laws of Boolean algebra}, after the mathematician George Boole (1815–1864), and are also applicable to a number of other objects other than sets; it plays a
+particularly important r\^{o}le in logic.
+\end{remark}
