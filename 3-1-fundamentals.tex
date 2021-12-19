@@ -737,7 +737,22 @@ See \AC{3.1.1}.
 Using only \DEF{3.1.4}, \AXM{3.1}, \AXM{3.2}, and \AXM{3.3}, prove that the sets \(\emptyset\), \( \{ \emptyset \} \), \( \{ \{ \emptyset \} \} \), and \( \{ \emptyset, \{ \emptyset \} \} \) are all distinct (i.e., no two of them are equal to each other).
 \end{exercise}
 
-\begin{proof}
+\begin{note}
+現在要證明有四個東西兩兩不相等，其實就是任挑兩個出來然後證明都不相等，所以有\ \(\binom{4}{2} = 6\) 種挑法
+\end{note}
+
+\begin{proof}$ $\newline
+\(\BLUE{\emptyset} \neq \MAROON{\{\emptyset\}} \): By \AXM{3.2} given any object \(x\), \(x \notin \BLUE{\emptyset}\). In particular, \(\GREEN{\emptyset}\) is also an object, so \(\GREEN{\emptyset} \notin \BLUE{\emptyset}\). But \(\GREEN{\emptyset} \in \MAROON{\{\emptyset\}}\). So we find an object \(\GREEN{\emptyset}\) such that \(\GREEN{\emptyset} \notin \BLUE{\emptyset}\) but \(\GREEN{\emptyset} \in \MAROON{\{\emptyset\}}\). By \DEF{3.1.4}, \(\BLUE{\emptyset} \neq \MAROON{\{\emptyset\}}\).
+
+\(\BLUE{\emptyset} \neq \MAROON{\{ \{ \emptyset \} \}} \): Same as above, we find an object \(\GREEN{\{\emptyset\}}\) such that \(\GREEN{\{\emptyset\}} \notin \BLUE{\emptyset}\) but \(\GREEN{\{\emptyset\}} \in \MAROON{\{\{\emptyset\}\}}\). By \DEF{3.1.4}, \(\BLUE{\emptyset} \neq \MAROON{\{\{\emptyset\}\}}\).
+
+\(\BLUE{\emptyset} \neq \MAROON{ \{ \emptyset, \{ \emptyset \} \} } \): Same as above, we find an object \(\GREEN{\emptyset}\) such that \(\GREEN{\emptyset} \notin \BLUE{\emptyset}\) but \(\GREEN{\emptyset} \in \MAROON{\{ \emptyset, \{ \emptyset \} \}} \). By \DEF{3.1.4}, \(\BLUE{\emptyset} \neq \MAROON{\{ \emptyset, \{ \emptyset \} \}}\).
+
+\( \BLUE{\{ \emptyset \}} \neq \MAROON{\{ \{ \emptyset \} \}} \): \( \GREEN{\{ \emptyset \}} \notin \BLUE{\{ \emptyset \}} \) because \( \BLUE{\{ \emptyset \}} \) only contains \(\emptyset\) and we have shown that \(\emptyset \neq \GREEN{\{ \emptyset \}} \). However, \( \GREEN{\{ \emptyset \}} \in \MAROON{\{ \{ \emptyset \} \}} \), because the latter is the singleton set of the former by \AXM{3.3}. So we found an object \(\GREEN{\{ \emptyset \}}\) that is not an element of \( \BLUE{\{\emptyset\}} \) but an element of \( \MAROON{\{\{ \emptyset \}\}} \). So \( \BLUE{\{ \emptyset \}} \neq \MAROON{\{ \{ \emptyset \} \}} \).
+
+\( \BLUE{\{ \emptyset \}} \neq \MAROON{\{ \emptyset, \{ \emptyset \} \}} \): Same as before, we found an object \(\GREEN{\{ \emptyset \}}\) that is not an element of \( \BLUE{\{\emptyset\}} \) but an element of \( \MAROON{\{\emptyset, \{ \emptyset \}\}} \). So \( \BLUE{\{ \emptyset \}} \neq \MAROON{\{\emptyset, \{ \emptyset \} \}} \).
+
+\( \BLUE{\{ \{ \emptyset \} \}} \neq \MAROON{\{ \emptyset, \{ \emptyset \} \}} \): \( \GREEN{\emptyset} \notin \BLUE{\{ \{ \emptyset \} \}} \) because \( \BLUE{\{ \{ \emptyset \} \}} \) only contains \( \{ \emptyset \}\) and we have shown that \( \{ \emptyset \} \neq \GREEN{\emptyset} \). However, \( \GREEN{\emptyset} \in \MAROON{\{\emptyset, \{ \emptyset \} \}} \). So we found an object \(\GREEN{\emptyset}\) that is not an element of \( \BLUE{\{ \{ \emptyset\} \}} \) but an element of \( \MAROON{\{\emptyset, \{ \emptyset \}\}} \). So \( \BLUE{\{ \{ \emptyset \} \}} \neq \MAROON{\{\emptyset, \{ \emptyset \} \}} \).
 \end{proof}
 
 \begin{exercise}\label{exercise 3.1.3}
@@ -760,7 +775,17 @@ See \PROP{3.1.18}.
 Let \(A, B\) be sets. Show that the three statements \(A \subseteq B\), \(A \cup B = B\), \(A \cap B = A\) are logically equivalent (any one of them implies the other two).
 \end{exercise}
 
-\begin{proof}
+\begin{proof} We prove by circular implication, i.e. \(A \subseteq B \implies A \cup B = B \implies A \cap B = A \implies A \subseteq B\).
+
+\(A \subseteq B \implies A \cup B = B\): Let \(A, B\) be sets such that \(A \subseteq B\). Then let \(X := B\). Now \(A\) and \(X\) satisfy the supposition in \PROP{3.1.28}, so they satisfy \PROP{3.1.28}(b), that is, \(A \cup X = X\). But \(X := B\), so by substitution(\AXM{a.7.4}), \(A \cup B = B\).
+
+\(A \cup B = B \implies A \cap B = A\): Let \(A, B\) be sets such that \(A \cup B = B\). Let \(x\) be an arbitrary object. Then
+\begin{itemize}
+    \item \(A \cap B \subseteq A\): Trivial by \DEF{3.1.23}
+    \item \(A \subseteq A \cap B\): Suppose \(x \in A\) \MAROON{(1)}. We have to prove \(x \in A \cap B\) to conclude \(A \subseteq A \cap B\). Then by logic, \(x \in A \lor x \in B\). Then by \AXM{3.4}, \(x \in A \cup B\). Then since \(A \cup B = B\) by supposition, \(x \in B\) \MAROON{(2)}. Then by \MAROON{(1) (2)} and \DEF{3.1.23}, \(x \in A \cap B\).
+\end{itemize}
+
+\(A \cap B = A \implies A \subseteq B\): Let \(A, B\) be sets such that \(A \cap B = A\) and suppose \(x\) is an arbitrary object and \(x \in A\). We have to prove \(x \in B\) to conclude \(A \subseteq B\). Then since \(A \cap B = A\), \(x \in A \cap B\). Then by \DEF{3.1.23}, \(x \in A \land x \in B\). In particular, \(x \in B\).
 \end{proof}
 
 \begin{exercise}\label{exercise 3.1.6}
@@ -776,20 +801,77 @@ Let \(A, B, C\) be sets. Show that \(A \cap B \subseteq A\) and \(A \cap B \subs
 \end{exercise}
 
 \begin{proof}
+\begin{itemize}
+    \item \(A \cap B \subseteq A\): Let \(x\) be arbitrary object. Then
+        \begin{align*}
+                     & x \in A \cap B \\
+            \implies & x \in A \land x \in B & \text{by \DEF{3.1.23}} \\
+            \implies & x \in A & \text{in particular by logic}.
+        \end{align*}
+        So \(A \cap B \subseteq A\).
+    \item \(A \cap B \subseteq B\): Similar as above.
+    \item \(C \subseteq A \land C \subseteq B \iff C \subseteq A \cap B\):
+        \begin{itemize}
+            \item \(C \subseteq A \land C \subseteq B \implies C \subseteq A \cap B\): Suppose \(C \subseteq A \land C \subseteq B\) and let \(x\) be an arbitrary object such that \(x \in C\). We have to prove \(x \in A \cap B\) to conclude \(C \subseteq A \cap B\). But \(x \in A\) \MAROON{(1)} since \(C \subseteq A\) and \(x \in B\) \MAROON{(2)} since \(C \subseteq B\). By \MAROON{(1) (2)} and \DEF{3.1.23}, \(x \in A \cap B\).
+            \item \(C \subseteq A \cap B \implies C \subseteq A \land C \subseteq B\): Suppose \(C \subseteq A \cap B\). Let \(x\) be an arbitrary object such that \(x \in C\). We have to prove \(x \in A\) and \(x \in B\) to conclude \(C \subseteq A \land C \subseteq B\). But \(x \in A \cap B\) \MAROON{(1)} since \(C \subseteq A \cap B\). And by \MAROON{(1)} and \DEF{3.1.23}, \(x \in A \land x \in B\).
+        \end{itemize}
+    \item \(A \subseteq A \cup B\): Let \(x\) be arbitrary object. Then
+        \begin{align*}
+                     & x \in A \\
+            \implies & x \in A \lor x \in B & \text{by logic} \\
+            \implies & x \in A \cup B & \text{by \AXM{3.4}}.
+        \end{align*}
+        So \(A \subseteq A \cup B\).
+    \item \(B \subseteq A \cup B\): Similar as above.
+    \item \(A \subseteq C \land B \subseteq C \iff A \cup B \subseteq C\):
+        \begin{itemize}
+            \item \(A \subseteq C \land B \subseteq C \implies A \cup B \subseteq C\): Suppose \(A \subseteq C \land B \subseteq C\). Let \(x\) be an arbitrary object such that \(x \in A \cup B\) \MAROON{(1)}. We have to prove \(x \in C\) to conclude \(A \cup B \subseteq C\). By \MAROON{(1)} and \AXM{3.4}, \(x \in A \lor x \in B\). If \(x \in A\), then since \(A \subseteq C\), \(x \in C\). If \(x \in B\), then and since \(B \subseteq C\), \(x \in C\). In both cases, \(x \in C\).
+            \item \(A \cup B \subseteq C \implies A \subseteq C \land B \subseteq C\): Suppose \(A \cup B \subseteq C\). Let \(x\) be an arbitrary object.
+            \begin{itemize}
+                \item If \(x \in A\), then by logic, \(x \in A \lor x \in B\), then since \(A \cup B \subseteq C\), \(x \in C\). So we conclude \(A \subseteq C\) \MAROON{(1)}.
+                \item If \(x \in B\), then by logic, \(x \in A \lor x \in B\), then since \(A \cup B \subseteq C\), \(x \in C\). So we conclude \(B \subseteq C\) \MAROON{(2)}.
+            \end{itemize}
+            So by \MAROON{(1) (2)}, \(A \subseteq C \land B \subseteq C\).
+        \end{itemize}
+\end{itemize}
 \end{proof}
 
 \begin{exercise}\label{exercise 3.1.8}
 Let \(A\), \(B\) be sets. Prove the \emph{absorption laws} \(A \cap (A \cup B) = A\) and \(A \cup (A \cap B) = A\).
 \end{exercise}
 
-\begin{proof}
+\begin{proof} First, from \EXEC{3.1.7} we have \(A \subseteq A \cup B\) and \(A \cap B \subseteq A\).
+
+\(A \cap (A \cup B) = A\): Let \(X := A \cup B\). Then now \(A, X\) satisfy the supposition of \PROP{3.1.28}, So by \PROP{3.1.28}(b), \(A \cap X = A\), that is, \(A \cap (A \cup B) = A\).
+
+\(A \cup (A \cap B) = A\): Let \(A' := A \cap B\) and \(X := A\). Then \(A', X\) satisfy \(A, X\) in \PROP{3.1.28}. So by \PROP{3.1.28}(b), \(X \cup A' = X\), that is, \(A \cup (A \cap B) = A\).
 \end{proof}
 
 \begin{exercise}\label{exercise 3.1.9}
-Let \(A, B, X\) be sets such that \(A \cup B = X\) and \(A \cap B = \emptyset\). (\href{https://www.wikiwand.com/en/Partition_of_a_set}{partition}) Show that \(A = X \setminus B\) and \(B = X \setminus A\).
+Let \(A, B, X\) be sets such that \(A \cup B = X\) and \(A \cap B = \emptyset\). (i.e. \href{https://www.wikiwand.com/en/Partition_of_a_set}{partition}) Show that \(A = X \setminus B\) and \(B = X \setminus A\).
 \end{exercise}
 
 \begin{proof}
+\(A = X \setminus B\):
+\begin{itemize}
+    \item \(A \subseteq X \setminus B\): Let \(x\) be an arbitrary object. Then
+        \begin{align*}
+                 & x \in A \\
+        \implies & x \in A \land x \notin B & \text{otherwise \(x \in A \cap B = \emptyset\), contradicting \AXM{3.2}} \\
+        \implies & x \in A \cup B \land x \notin B & \text{by logic} \\
+        \implies & x \in X \land x \notin B & \text{since \(A \cup B = X\)} \\
+        \implies & x \in X \setminus B & \text{by \DEF{3.1.27}}
+        \end{align*}
+        So \(A \subseteq X \setminus B\).
+    \item \(X \setminus B \subseteq A\): Let \(x\) be an arbitrary object. Then
+        \begin{align*}
+                 & x \in X \setminus B \\
+        \implies & x \in X \land x \notin B & \text{by \DEF{3.1.27}} \\
+        \end{align*}
+        Now suppose for the sake of contradiction that \(x \notin A\). Then we have \(x \notin A \land x \notin B\) and by De Morgan's Law of logic we have \(\lnot (x \in A \lor x \in B)\), that is, \(\lnot (x \in A \cup B)\), that is, \(x \notin A \cup B\), that is, \(x \notin X\), so we have \(x \in X \land x \notin X\), which is impossible. So \(x \in A\).
+\end{itemize}
+
+\(B = X \setminus A\): Swap \(A\) and \(B\) in the proof above.
 \end{proof}
 
 \begin{exercise}\label{exercise 3.1.10}
