@@ -650,3 +650,158 @@ BTW in essential you can just swap \((\land, \lor)\), \((\cap, \cup)\), (\DEF{3.
 The reader may observe \emph{a certain symmetry} in the above laws between \(\cup\) and \(\cap\), and between \(X\) and \(\emptyset\). This is an example of \href{https://www.wikiwand.com/en/Duality_(mathematics)}{\textbf{duality}} -- two distinct properties or objects being dual to each other. In this case, the duality is manifested by the complementation relation \(A \mapsto X \setminus A \); the de Morgan laws assert that this relation converts unions into intersections and vice versa. (It also interchanges \(X\) and the empty set.) The above laws are collectively known as \textbf{the laws of Boolean algebra}, after the mathematician George Boole (1815–1864), and are also applicable to a number of other objects other than sets; it plays a
 particularly important r\^{o}le in logic.
 \end{remark}
+
+\begin{note}
+One of the basic things we wish to do with a set is take each of the objects of that set, and somehow \textbf{transform each such object} into a new object; This is not something we can do directly using only the axioms we already have, so we need a new axiom.
+\end{note}
+
+\begin{axiom} [Replacement] \label{axm 3.6}
+Let \(A\) be a set. For any object \(x \in A\), and any object \(y\), suppose we have a statement \(P(x, y)\) pertaining to \(x\) and \(y\), such that for each \(x \in A\) there is \emph{at most one} \(y\) for which \(P(x, y)\) is true. Then there exists a set \( \{y : P(x, y) \text{is true for some \(x \in A\) \}} \), such that for any object \(z\),
+\begin{center}
+\(\MAROON{z} \in \{ y : P(x, y) \text{\ is true for some \(x \in A\) } \} \iff P(x, \MAROON{z}) \text{\ is true for some \(x \in A\) } \).
+\end{center}
+\end{axiom}
+
+\begin{note}
+\AXM{3.6} 跟\ \AXM{3.5} 有點類似，實際上\ \EXEC{3.1.11} 就要證明後者\ imply 前者。
+\end{note}
+
+\begin{example} \label{3.1.31}
+Let \(A := \{ 3, 5, 9 \} \), and let \(P(x, y)\) be the statement \(y = x\INC\), i.e., \(y\) is the successor of \(x\). Observe that for every \(x \in A\), there is exactly one \(y\) for which \(P(x, y)\) is true - specifically, the successor of \(x\). Thus the above axiom asserts that the set \( \{y : y = x\INC \text{\ for some \(x \in \{3, 5, 9 \} \) } \} \) exists; in this case, it is clearly the same set as \( \{4, 6, 10 \} \) (why?).
+\end{example}
+
+\begin{note}
+上個例子就是我們已經確定\ \(P(x, y)\) 滿足\ \AXM{3.6} 的條件，所以根據\ \AXM{3.6}，它保證的那個\ set 存在。
+\end{note}
+
+\begin{note}
+我不確定是不是我蠢，但是這本書好像目前沒有證明每個自然數的\ successor 是\ unique? 只有\ \AXM{2.4} 說若兩個自然數\ \(x, y\) 不同，則他們的\ successor 也不同；還有\ \LEM{2.2.10}，positive natural number has unique \emph{predecessor}。
+\end{note}
+
+\begin{proof} \RED{Warning: I don't know whether this proof is valid.}
+
+Wanted:
+\[
+\{y : y = x\INC \text{\ for some \(x \in \{3, 5, 9 \} \) }\} = \{4, 6, 10\}
+\]
+
+Then
+\begin{align*}
+         & z \in \text{LHS} \\
+    \iff & z = x\INC \text{\ for some\ } x \in \{ 3, 5, 9 \} \\
+    \iff & z = 4 \lor z = 6 \lor z = 10 & \text{successor is unique, and \(3\INC = 4,5\INC = 6,9\INC = 10\)} \\
+    \iff & z \in \{4, 6, 10\}
+\end{align*}
+
+\end{proof}
+
+\begin{example} \label{example 3.1.32}
+Let \(A = \{3, 5, 9\}\), and let \(P(x, y)\) be the statement \(y = 1\). Then again for every \(x \in A\), there is exactly one \(y\) for which \(P(x, y)\) is true - specifically, the number \(1\). In this case \( \{y : y = 1 \text{\ for some \(x \in \{3, 5, 9\}\) \} } \) is just the singleton set \(\{1\}\); we have replaced each element \(3, 5, 9\) of the original set \(A\) by the same object, namely \(1\). Thus this rather silly \textbf{shows that the set obtained by the above axiom can be ``smaller'' than the original set}.
+\end{example}
+
+\begin{note}
+\(P(x, y)\) 是\ \(y = 1\)，這是合法的，只是\ statement 本身跟\ \(x\) 是什麼一點關係都沒有。另外我猜測這個事實可以拿來證明\ \EXEC{3.1.11}。
+\end{note}
+
+\begin{note}
+我們會將以下的寫法
+\[
+    \{y : y = f(x) \text{\ for some \(x \in A\)}\}
+\]
+簡寫成\ \( \{f(x): x \in A \} \) 或者\ \( \{f(x) \mid x \in A \} \)。另外 \AXM{3.5} (specification) 跟 \AXM{3.6} (replacement) 可以搭配使用，例如\ \(\{f(x) : x \in A; P(x) \text{\ is true}\} \)，這時候就必須知道哪一段被簡寫；分號右邊是\ specification，分號左邊是\ replacement。而寫成這樣時要先 apply specification 再 apply replacement，例如: \( \{n\INC : n \in \{3, 5, 9\}; n < 6 \} = \{4, 6\} \)，先用\ specification apply \(n < 6\) 到\ \(\{3, 5, 9\}\) 上，變成\  \(\{5, 9\}\)，然後再用\ replacement \(n\INC\) 變成\ \(\{4, 6\}\)。
+\end{note}
+
+\begin{axiom} [Infinity] \label{axm 3.7}
+There exists a set \(\SET{N}\), whose elements are called natural numbers, as well as an object \(0\) in \(SET{N}\), and an object \(n\INC\) assigned to every natural number \(n \in \SET{N}\), such that \textbf{the Peano axioms Axioms \AXM{2.1} - \AXM{2.5}) hold.}
+\end{axiom}
+
+\begin{note}
+所以我們是用\ \AXM{3.7} 直接假設存在一個集合滿足皮亞諾公理要的五個條件的。另外它叫做\ axiom of ``infinity'' 是因為它假設(引入?)了一個最基本的有無限元素的集合。\textbf{注意，我們尚未定義\ finite 跟\ infinite，這要參考\  \SEC{3.6}}。也因為這個公理，我們知道\ \(3, 5, 7\) 是\ objects，所以我們可以用其他公理(e.g. \AXM{3.3}, \AXM{3.4}) 建構出\ \( \{ 3, 5, 7 \}\) 這種集合。
+\end{note}
+
+\begin{example} \label{example 3.1.33}
+TODO: used integer subtraction, skip now.
+\end{example}
+
+\exercisesection
+
+\begin{exercise}\label{exercise 3.1.1}
+Show that the definition of equality in \DEF{3.1.4} is reflexive, symmetric, and transitive.
+\end{exercise}
+
+\begin{proof}
+See \AC{3.1.1}.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.2}
+Using only \DEF{3.1.4}, \AXM{3.1}, \AXM{3.2}, and \AXM{3.3}, prove that the sets \(\emptyset\), \( \{ \emptyset \} \), \( \{ \{ \emptyset \} \} \), and \( \{ \emptyset, \{ \emptyset \} \} \) are all distinct (i.e., no two of them are equal to each other).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.3}
+    Prove the remaining claims in \LEM{3.1.13}.
+\end{exercise}
+
+\begin{proof}
+    See \LEM{3.1.13}.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.4}
+Prove the remaining claims in \PROP{3.1.18}.
+\end{exercise}
+
+\begin{proof}
+See \PROP{3.1.18}.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.5}
+Let \(A, B\) be sets. Show that the three statements \(A \subseteq B\), \(A \cup B = B\), \(A \cap B = A\) are logically equivalent (any one of them implies the other two).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.6}
+    Prove \PROP{3.1.28}.
+\end{exercise}
+
+\begin{proof}
+    See \PROP{3.1.28}.
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.7}
+Let \(A, B, C\) be sets. Show that \(A \cap B \subseteq A\) and \(A \cap B \subseteq B\). Furthermore, show that \(C \subseteq A\) and \(C \subseteq B\) if and only if \(C \subseteq A \cap B\). In a similar spirit, show that \(A \subseteq A \cup B\) and \(B \subseteq A \cup B\), and furthermore that \(A \subseteq C\) and \(B \subseteq C\) if and only if \(A \cup B \subseteq C\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.8}
+Let \(A\), \(B\) be sets. Prove the \emph{absorption laws} \(A \cap (A \cup B) = A\) and \(A \cup (A \cap B) = A\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.9}
+Let \(A, B, X\) be sets such that \(A \cup B = X\) and \(A \cap B = \emptyset\). (\href{https://www.wikiwand.com/en/Partition_of_a_set}{partition}) Show that \(A = X \setminus B\) and \(B = X \setminus A\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.10}
+Let \(A\) and \(B\) be sets. Show that the three sets \(A \setminus B\), \(A \cap B\), and \(B \setminus A\) are disjoint, and that their union is \(A \cup B\).
+\end{exercise}
+
+\begin{proof}
+\end{proof}
+
+\begin{exercise}\label{exercise 3.1.11}
+Show that the axiom of replacement \textbf{implies} the axiom of specification.
+\end{exercise}
+
+\begin{proof}
+\end{proof}
