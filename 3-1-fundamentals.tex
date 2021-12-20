@@ -306,7 +306,11 @@ We are not yet in a position to define sets consisting of \(n\) objects for any 
 \end{note}
 
 \begin{definition}[Subsets] \label{def 3.1.15}
-Let \(A, B\) be sets. We say that \(A\) is a subset of \(B\), denoted \(A \subseteq B\), if and only if every element of \(A\) is also an element of \(B\), i.e. For any object \(x\), \(x \in A \implies x \in B\). We say that \(A\) is a proper subset of \(B\), denoted \(A \subsetneq B\), if \(A \subseteq B\) and \(A \neq B\).
+Let \(A, B\) be sets. We say that \(A\) is a subset of \(B\), denoted \(A \subseteq B\), if and only if every element of \(A\) is also an element of \(B\), i.e.
+\begin{center}
+For any object \(x\), \(x \in A \implies x \in B\).
+\end{center}
+We say that \(A\) is a proper subset of \(B\), denoted \(A \subsetneq B\), if \(A \subseteq B\) and \(A \neq B\).
 \end{definition}
 
 \begin{remark} \label{remark 3.1.16}
@@ -879,6 +883,63 @@ Let \(A\) and \(B\) be sets. Show that the three sets \(A \setminus B\), \(A \ca
 \end{exercise}
 
 \begin{proof}
+Disjoint:
+\begin{itemize}
+    \item \((A \setminus B) \cap (A \cap B)\): Let \(x\) be an arbitrary object. Then
+        \begin{align*}
+             & x \in (A \setminus B) \cap (A \cap B) \\
+        \iff & x \in (A \setminus B) \land x \in (A \cap B) & \text{by \DEF{3.1.23}} \\
+        \iff & (x \in A \land x \notin B) \land x \in (A \cap B) & \text{by \DEF{3.1.27}} \\
+        \iff & (x \in A \land x \notin B) \land (x \in A \land x \in B) & \text{by \DEF{3.1.23}} \\
+        \iff & (x \in A \land x \in A) \land (x \notin B \land x \in B) & \text{by \PROP{3.1.28}(e), commutative} \\
+        \iff & (x \in A) \land (\text{false}) & \text{by simplifying logic} \\
+        \iff & \text{false} & \text{by simplifying logic} \\
+        \iff & x \in \emptyset & \text{by \AXM{3.2}}
+        \end{align*}
+        So \((A \setminus B) \cap (A \cap B) = \emptyset\).
+    \item \((A \setminus B) \cap (B \setminus A)\): Let \(x\) be an arbitrary object. Then
+        \begin{align*}
+             & x \in (A \setminus B) \cap (B \setminus A) \\
+        \iff & x \in (A \setminus B) \land x \in (B \setminus A) & \text{by \DEF{3.1.23}} \\
+        \iff & (x \in A \land x \notin B) \land x \in (B \setminus A) & \text{by \DEF{3.1.27}} \\
+        \iff & (x \in A \land x \notin B) \land (x \in B \land x \notin A) & \text{by \DEF{3.1.27}} \\
+        \iff & (x \in A \land x \notin A) \land (x \in B \land x \notin B) & \text{by \PROP{3.1.28}(e), commutative} \\
+        \iff & (\text{false}) \land (\text{false}) & \text{by simplifying logic} \\
+        \iff & \text{false} & \text{by simplifying logic} \\
+        \iff & x \in \emptyset & \text{by \AXM{3.2}}
+        \end{align*}
+        So \((A \setminus B) \cap (B \setminus A) = \emptyset\).
+    \item \((A \cap B) \cap (B \setminus A)\): We prove \((B \setminus A) \cap (A \cap B) = \emptyset\) and by commutative law the target holds. Let \(x\) be an arbitrary object. Then
+        \begin{align*}
+             & x \in (B \setminus A) \cap (A \cap B) \\
+        \iff & x \in (B \setminus A) \land x \in (A \cap B) & \text{by \DEF{3.1.23}} \\
+        \iff & (x \in B \land x \notin A) \land x \in (A \cap B) & \text{by \DEF{3.1.27}} \\
+        \iff & (x \in B \land x \notin A) \land (x \in A \land x \in B) & \text{by \DEF{3.1.23}} \\
+        \iff & (x \in B \land x \in B) \land (x \notin A \land x \in A) & \text{by \PROP{3.1.28}(e), commutative} \\
+        \iff & (x \in B) \land (\text{false}) & \text{by simplifying logic} \\
+        \iff & \text{false} & \text{by simplifying logic} \\
+        \iff & x \in \emptyset & \text{by \AXM{3.2}}
+        \end{align*}
+        So \((B \setminus A) \cap (A \cap B) = \emptyset\).
+\end{itemize}
+
+\((A \setminus B) \cup (A \cap B) \cup (B \setminus A) = A \cup B\): Let \(x\) be an arbitrary object.
+\begin{itemize}
+    \item \((A \setminus B) \cup (A \cap B) \cup (B \setminus A) \subseteq A \cup B\): Suppose \(x \in (A \setminus B) \cup (A \cap B) \cup (B \setminus A)\). Then there are three cases:
+        \begin{enumerate}
+            \item \(x \in A \setminus B\). Then \(x \in A \land x \notin B\) by \DEF{3.1.27}. In particular \(x \in A\). And by logic \(x \in A \lor x \in B\). By \AXM{3.4} \(x \in A \cup B\).
+            \item \(x \in A \cap B\). Then \(x \in A \land x \in B\) by \DEF{3.1.23}. In particular, \(x \in A \lor x \in B\). By \AXM{3.4} \(x \in A \cup B\).
+            \item \(x \in B \setminus A\). Then \(x \in B \land x \notin A\) by \DEF{3.1.27}. In particular \(x \in B\). And by logic \(x \in A \lor x \in B\). By \AXM{3.4} \(x \in A \cup B\).
+        \end{enumerate}
+        So in all cases, \(x \in A \cup B\), so \((A \setminus B) \cup (A \cap B) \cup (B \setminus A) \subseteq A \cup B\).
+    \item \(A \cup B \subseteq (A \setminus B) \cup (A \cap B) \cup (B \setminus A)\): Suppose \(x \in A \cup B\). Then there are three cases:
+        \begin{enumerate}
+            \item \(x \in A \land x \in B\): then by \DEF{3.1.23} \(x \in A \cap B\), and in particular \(x \in (A \setminus B) \cup (A \cap B) \cup (B \setminus A)\).
+            \item \(x \notin A \land x \in B\): then by \DEF{3.1.27} \(x \in B \setminus A\), and in particular \((A \setminus B) \cup (A \cap B) \cup (B \setminus A)\).
+            \item \(x \in A \land x \notin B\): then by \DEF{3.1.27} \(x \in A \setminus B\), and in particular \((A \setminus B) \cup (A \cap B) \cup (B \setminus A)\).
+        \end{enumerate}
+        So in all cases, \(x \in (A \setminus B) \cup (A \cap B) \cup (B \setminus A)\), so \(A \cup B \subseteq (A \setminus B) \cup (A \cap B) \cup (B \setminus A)\).
+\end{itemize}
 \end{proof}
 
 \begin{exercise}\label{exercise 3.1.11}
