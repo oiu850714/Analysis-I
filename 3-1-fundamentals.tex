@@ -660,14 +660,14 @@ One of the basic things we wish to do with a set is take each of the objects of 
 \end{note}
 
 \begin{axiom} [Replacement] \label{axm 3.6}
-Let \(A\) be a set. For any object \(x \in A\), and any object \(y\), suppose we have a statement \(P(x, y)\) pertaining to \(x\) and \(y\), such that for each \(x \in A\) there is \emph{at most one} \(y\) for which \(P(x, y)\) is true. Then there exists a set \( \{y : P(x, y) \text{is true for some \(x \in A\) \}} \), such that for any object \(z\),
-\begin{center}
-\(\MAROON{z} \in \{ y : P(x, y) \text{\ is true for some \(x \in A\) } \} \iff P(x, \MAROON{z}) \text{\ is true for some \(x \in A\) } \).
-\end{center}
+Let \(A\) be a set. For any object \(x \in A\), and any object \(y\), suppose we have a statement \(P(x, y)\) pertaining to \(x\) and \(y\), such that for each \(x \in A\) there is \emph{at most one} \(y\) for which \(P(x, y)\) is true. Then there exists a set \( \{y : P(x, y) \text{\ is true for some\ } x \in A \} \), such that for any object \(z\),
+\[
+\MAROON{z} \in \{ y : P(x, y) \text{\ is true for some\ } x \in A \} \iff P(x, \MAROON{z}) \text{\ is true for some \(x \in A\) }.
+\]
 \end{axiom}
 
 \begin{note}
-\AXM{3.6} 跟\ \AXM{3.5} 有點類似，實際上\ \EXEC{3.1.11} 就要證明後者\ imply 前者。
+\AXM{3.6} 跟\ \AXM{3.5} 有點類似，實際上\ \EXEC{3.1.11} 就要證明\ \AXM{3.6} imply \AXM{3.5}。
 \end{note}
 
 \begin{example} \label{3.1.31}
@@ -679,7 +679,7 @@ Let \(A := \{ 3, 5, 9 \} \), and let \(P(x, y)\) be the statement \(y = x\INC\),
 \end{note}
 
 \begin{note}
-我不確定是不是我蠢，但是這本書好像目前沒有證明每個自然數的\ successor 是\ unique? 只有\ \AXM{2.4} 說若兩個自然數\ \(x, y\) 不同，則他們的\ successor 也不同；還有\ \LEM{2.2.10}，positive natural number has unique \emph{predecessor}。
+我不確定是不是我蠢，但是這本書好像目前沒有證明每個自然數的\ successor 是\ unique? 只有\ \AXM{2.4} 說若兩個自然數\ \(x, y\) 不同，則他們的\ successor 也不同。還有\ \LEM{2.2.10}, positive natural number has unique \emph{predecessor}。
 \end{note}
 
 \begin{proof} \RED{Warning: I don't know whether this proof is valid.}
@@ -943,8 +943,30 @@ Disjoint:
 \end{proof}
 
 \begin{exercise}\label{exercise 3.1.11}
-Show that the axiom of replacement \textbf{implies} the axiom of specification.
+Show that the axiom of replacement \AXM{3.6} \textbf{implies} the axiom of specification \AXM{3.5}.
 \end{exercise}
 
 \begin{proof}
+Let \(A\) be a set, and for each \(x \in A\), let \(P(x)\) be a \textbf{property} pertaining to \(x\) (i.e., \(P(x)\) is either a true statement or a false statement). 
+
+Wanted: \textbf{there exists} a set, called \( \{ x \in A : P(x) \text{\ is true} \} \) (or simply \( \{ x \in A : P(x) \} \) for short), whose elements are precisely the elements \(x\) in \(A\) for which \(P(x)\) is true. In other words, for any object \(y\),
+\[
+    y \in \{ x \in A : P(x) \text{\ is true} \} \iff (y \in A \text{\ and \(P(y)\) is true}).
+\]
+
+First for each \(x \in A\) and for any object \(y\) we define
+\[
+    Q(x, y) = P(x) \land y = x.
+\]
+Then given any element \(x \in A\) and any object \(y\), \(Q(x, y)\) is true only when \(y = x\), i.e. the "at most one \(y\)" part is satisfied. So \(Q(x, y)\) satisfies the condition in \AXM{3.6}. Thus, there exists a set \( \{y : Q(x, y) \text{\ is true for some\ } x \in A \}\). But by definition of \(Q(x, y)\), the set is equivalent to \( \{y : P(x) \land y = x \text{\ for some\ } x \in A \} \). 
+
+But it is equivalent to \( \{x \in A : P(x) \land x = x \} \) (\RED{Warning}: see below), and trivially equals to \( \{x \in A : P(x)\} \)  because:
+\begin{itemize}
+    \item if \(z \in \{y : P(x) \land y = x \text{\ for some\ } x \in A \} \), then for some \(x \in A\), \(P(x)\) is true and \(z = x\). And from these facts we know \(z \in A\) \MAROON{(1)} and \(P(z)\) is true \MAROON{(2)}. And of course \(z = z\) \MAROON{(3)}. By definition of \( \{x \in A : P(x) \land x = x \} \) and \MAROON{(1) (2) (3)}, \(z \in \{x \in A : P(x) \land x = x \} \).
+    \item if \(z \in \{x \in A : P(x) \land x = x \} \), then \(z \in A\) and \(P(z)\) is true and \(z = z\). Now we let \(x = z\) \MAROON{(1)}. Then \(x \in A\) \MAROON{(2)} because \(z \in A\) and \(x = z\). And \(P(x)\) is true \MAROON{(3)} because \(P(z)\) is true and \(x = z\). So we have find \(x \in A\) by \MAROON{(2)} such that \(P(x)\) is true by \MAROON{(3)} and \(z = x\) by \MAROON{(1)}. By definition of \( \{y : P(x) \land y = x \text{\ for some\ } x \in A \} \), \(z \in \{y : P(x) \land y = x \text{\ for some\ } x \in A \} \).
+\end{itemize}
 \end{proof}
+
+\begin{note}
+\RED{Warning}: I feel this description may not be well defined because the "structure" of this equivalent "object" is what \AXM{3.5} guaranteed \textbf{to be a set}, but what we want to prove now is \AXM{3.5} itself. \href{https://math.stackexchange.com/questions/2107214/show-that-axiom-of-replacement-implies-from-the-axiom-of-specification-proof-ve}{Other site} says \( \{y : P(x) \land y = x \text{\ for some\ } x \in A \} \) is just by definition the same as \( \{x \in A : P(x) \land x = x \} \), but I feel it is not so trivial.
+\end{note}
