@@ -386,6 +386,10 @@ Let \(A\) be a set, and for each \(x \in A\), let \(P(x)\) be a \textbf{property
 \end{axiom}
 
 \begin{note}
+這個公理(axiom scheme)的前半部我看起來好像寫成「對於任意一個\ predicate \(P\) 使得對於所有\ \(x \in A\)，\(P(x)\) 要馬是\ true 要馬是\ false」好像比較準確\dots。原文看起來會感覺是對於每個\ \(x \in A\)，都存在一個\ predicate P，使得\ \(P(x)\) 要馬為\ true 要馬為\ false。這兩個應該是完全不同的意思。參考\href{https://math.stackexchange.com/questions/9542/how-can-i-write-the-axiom-of-specification-as-a-sentence}{這個}。之後的\ \AXM{3.6} 也是同理。
+\end{note}
+
+\begin{note}
 This axiom is also known as the \emph{axiom of separation}. Note that \( \{ x \in A : P(x) \text{\ is true} \} \) is \textbf{always a subset} of \(A\) (why? \MAROON{(1)}), though it could be as large as \(A\) or as small as the empty set.
 
 One can verify that the axiom of substitution \emph{works for specification}, thus if \(A = A'\) then \( \{ x \in A : P(x) \} = \{ x \in A' : P(x) \} \) (why? \MAROON{(2)})
@@ -716,7 +720,7 @@ Let \(A = \{3, 5, 9\}\), and let \(P(x, y)\) be the statement \(y = 1\). Then ag
 \end{note}
 
 \begin{axiom} [Infinity] \label{axm 3.7}
-There exists a set \(\SET{N}\), whose elements are called natural numbers, as well as an object \(0\) in \(SET{N}\), and an object \(n\INC\) assigned to every natural number \(n \in \SET{N}\), such that \textbf{the Peano axioms Axioms \AXM{2.1} - \AXM{2.5}) hold.}
+There exists a set \(\SET{N}\), whose elements are called natural numbers, as well as an object \(0\) in \(\SET{N}\), and an object \(n\INC\) assigned to every natural number \(n \in \SET{N}\), such that \textbf{the Peano axioms Axioms \AXM{2.1} - \AXM{2.5}) hold.}
 \end{axiom}
 
 \begin{note}
@@ -968,5 +972,5 @@ But it is equivalent to \( \{x \in A : P(x) \land x = x \} \) (\RED{Warning}: se
 \end{proof}
 
 \begin{note}
-\RED{Warning}: I feel this description may not be well defined because the "structure" of this equivalent "object" is what \AXM{3.5} guaranteed \textbf{to be a set}, but what we want to prove now is \AXM{3.5} itself. \href{https://math.stackexchange.com/questions/2107214/show-that-axiom-of-replacement-implies-from-the-axiom-of-specification-proof-ve}{Other site} says \( \{y : P(x) \land y = x \text{\ for some\ } x \in A \} \) is just by definition the same as \( \{x \in A : P(x) \land x = x \} \), but I feel it is not so trivial.
+\RED{Warning}: I feel this description may not be well defined because the "structure" of this equivalent "object" is what \AXM{3.5} guaranteed \textbf{to be a set}, but what we want to prove now is \AXM{3.5} itself. \href{https://math.stackexchange.com/questions/2107214/show-that-axiom-of-replacement-implies-from-the-axiom-of-specification-proof-ve}{Other site} says \( \{y : P(x) \land y = x \text{\ for some\ } x \in A \} \) is just by definition the same as \( \{x \in A : P(x) \land x = x \} \), but I feel it is not so trivial. Or refer to \href{https://www.wikiwand.com/en/Axiom_schema_of_specification#/Relation_to_the_axiom_schema_of_replacement}{wiki}.
 \end{note}
