@@ -74,12 +74,31 @@ Use the axiom of regularity, \AXM{3.9} (and the singleton set axiom, \AXM{3.3}) 
 \begin{proof}
 Again, we use \AXM{3.1}. So if \(A\) is a set, then \(A\) is an object, and by \AXM{3.3}, \(\{A\}\) is a singleton set.
 
-Now suppose for the sake of contradiction that there exists an object \(A\) such that \(A \in A\) \MAROON{(1)}. Then because \(A \in \{A\} \)  \MAROON{(2)}, by \MAROON{(1) (2)} we know \(\{A\} \cap A = \{A\} \neq \emptyset\), i.e. not disjoint. But since the singleton set \( \{A\} \) has only one object \(A\), it implies there is no object \(x\) of \(\{A\}\) such that \(x\) and \( \{A\}\) are disjoint, which contradicts \AXM{3.9}. So the supposition is false, so for any object \(A\), \(A \notin A\).
+Suppose for the sake of contradiction that there exists an object \(A\) such that \(A \in A\) \MAROON{(1)}. Then because \(A \in \{A\} \)  \MAROON{(2)}, by \MAROON{(1) (2)} we know \(\{A\} \cap A = \{A\} \neq \emptyset\), i.e. not disjoint. But since the singleton set \( \{A\} \) has only one object \(A\), it implies there is no object \(x\) of \(\{A\}\) such that \(x\) and \( \{A\}\) are disjoint, which contradicts \AXM{3.9}. So the supposition is false, so for any object \(A\), \(A \notin A\).
 
-New for any sets \(A, B\), WIP.
+Also, suppose for the sake of contradiction that there exist sets \(A, B\), such that
+\begin{center}
+    \(A \in B\) \MAROON{(1)} and \(B \in A\) \MAROON{(2)}.
+\end{center}
+Now consider the set \(\{A, B\}\) (which exists by pair set of \AXM{3.3}), it has two ``elements'' \BLUE{\(A\)} and \GREEN{\(B\)}. For element \BLUE{\(A\)}, since \(B \in \BLUE{A}\) by \MAROON{(2)} and \(B \in \{A, B\}\), \(B \in \BLUE{A} \cap \{A, B\}\), so \BLUE{\(A\)} and \(\{A, B\}\) are not disjoint. For element \GREEN{\(B\)}, since \(A \in \GREEN{B}\) by \MAROON{(1)} and \(A \in \{A, B\}\), \(A \in \GREEN{B} \cap \{A, B\}\), so \GREEN{\(B\)} and \(\{A, B\}\) are not disjoint. So for each element \(x \in \{A, B\}\), \(x\) and \(\{A, B\}\) is not disjoint, which contradicts with \AXM{3.9}.
 \end{proof}
 
 \begin{exercise} \label{exercise 3.2.3}
 Show (assuming the other axioms of set theory) that the universal specification axiom, \AXM{3.8}, is equivalent to an axiom postulating the existence of a ``universal set'' \(\Omega\) consisting of all objects (i.e., for all objects \(x\), we have \(x \in \Omega\)). In other words, if \AXM{3.8} is true, then a universal set exists, and conversely, if a universal set exists, then \AXM{3.8} is true. (This may explain why \AXM{3.8} is called the axiom of universal specification.) Note that if a universal set \(\Omega\) existed, then we would have \(\Omega \in \Omega\) by \AXM{3.1} (\(\Omega\) is a set by \AXM{3.8} or universal specification, therefore by \AXM{3.1} it is also an object, and any object is \(\in \Omega\), so \(\Omega \in \Omega\)), contradicting \EXEC{3.2.2}. Thus the axiom of foundation specifically rules out the axiom of universal specification.
 \end{exercise}
 
+\begin{proof}
+Suppose \AXM{3.8} is true. Then let \(P(x) := true\) for any object \(x\). Then by \AXM{3.8}, there exists at set \(\Omega := \{x : P(x) \text{ is true} \}\), and since \(P(x)\) is true for any object \(x\), \(x \in \Omega\).
+
+Suppose the universal set \(\Omega\) exists. Then given an arbitrary property \(P(x)\) satisfiying the hypothesis of \AXM{3.8}, and by \AXM{3.5} (specification), since \(\Omega\) is a set, there exists the set \(A := \{ x \in \Omega : P(x) \text{ is true} \}\). Now we have to show that for every object \(y\),
+\[
+    y \in \{x \in \Omega : P(x) \text{ is true} \} \iff P(y) \text{ is true \BLUE{(1)}}
+\]
+to show that \(y \in \{x \in \Omega : P(x) \text{ is true} \}\) is in fact \(y \in \{x : P(x) \text{ is true} \}\) whose existence is guaranteed by \AXM{3.8}.
+So let \(y\) be an object.
+\begin{itemize}
+    \item Suppose \(y \in \{x \in \Omega : P(x) \text{ is true} \). Then trivally \(P(y)\) is true.
+    \item Suppose \(P(y)\) is true \MAROON{(1)}. Then since \(y\) is an object, \(y \in \Omega\) \MAROON{(2)}. By \MAROON{(1) (2)}, \(y \in \{x \in \Omega : P(x) \text{ is true} \} \).
+\end{itemize}
+So \BLUE{(1)} is proved.
+\end{proof}

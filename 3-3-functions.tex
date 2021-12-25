@@ -1,0 +1,22 @@
+\section{Functions} \label{sec 3.3}
+
+\begin{definition} [Functions] \label{def 3.3.1}
+Let \(X, Y\) be sets, and let \(P(x, y)\) be a property pertaining to an object \(x \in X\) and an object \(y \in Y\), such that for every \(x \in X\), there is \textbf{exactly one} \(y \in Y\) for which \(P(x, y)\) is true (this is sometimes known as the \emph{vertical line test}). Then we define \emph{the function} \(f : X \longrightarrow Y\) \emph{defined by \(P\)} on the \textbf{domain} \(X\) and \textbf{codomain} \(Y\) to be the object which, given any input \(x \in X\), assigns an output \(f(x) \in Y\), defined to be the unique object \(f(x) \in Y\) for which \(P(x, f(x))\) is true. Thus, for any \(x \in X\) and \(y \in Y\),
+\[
+    y = f(x) \iff P(x, y) \text{ is true}.
+\]
+\end{definition}
+
+\begin{note}
+Functions are also referred to as \emph{maps} or \emph{transformations}, depending on the context. They are also sometimes called \emph{morphisms}, although to be more precise, a morphism refers to a more general class of object, which may or may not correspond to actual functions, depending on the context.
+
+Implicit in the \DEF{3.3.1} is the assumption that whenever one is given two sets \(X, Y\) and a property \(P\) obeying the vertical line test, one can form a function object. Strictly speaking, this assumption of the existence of the function as a mathematical object \emph{should be stated as an explicit axiom}; however we will not do so here, as it turns out to be redundant. (More precisely, in view of \EXEC{3.5.10} below, it is always possible to encode a function \(f\) as an \emph{ordered triple} \((X, Y, \{ (x,f(x)): x \in X \})\) consisting of the domain, codomain, and graph of the function, which gives a way to build functions as objects using the operations provided by the ``preceding'' axioms(axioms declared up to \EXEC{3.5.10}.)
+\end{note}
+
+\begin{note}
+\DEF{3.3.1} 看來可以跟\ \AXM{3.6} 比較一下?
+\end{note}
+
+\begin{example} \label{example 3.3.2}
+Let \(X = \SET{N}\), \(Y = \SET{N}\), and let \(P(x, y)\) be the property that \(y = x\INC\). Then for each \(x \in \SET{N}\) (or \(X\)) there is \textbf{exactly one} \(y \in \SET{N}\) (or \(Y\)) for which \(P(x, y)\) is true, namely \(y = x\INC\). Thus we can define a function \(f : X \longrightarrow Y\) associated to this property, so that \(f(x)= x\INC\) for all \(x \in X\); this is the \textbf{increment function} on \(\SET{N}\), which takes a natural number as input and returns its increment as output. Thus for instance \(f(4) = 5\), \(f(2n + 3)\) = \(2n + 4\) (assuming \(n\) is a natural number) and so forth. One might also \emph{hope} to define a decrement function \(g : N \longrightarrow N\) associated to the property \(Q(x, y)\) defined by \(y\INC = x\), i.e., \(g(x)\) would be the number whose increment is \(x\). Unfortunately this does \emph{not} define a function, because when \(x = 0\) there is \emph{no} natural number \(y\) whose increment is equal to \(x\) (by \AXM{2.3}). On the other hand, we can legitimately define a decrement function \(h : N \setminus \{0\} \longrightarrow N\) associated to the property \(Q\), because when \(x \in N \setminus \{0\}\) there is indeed exactly one natural number \(y\) such that \(y\INC = x\), thanks to \LEM{2.2.10}. Thus for instance \(h(4) = 3\) and \(h(2n +3) = 2n + 2\) (assuming \(n\) is a natural number), but \(h(0)\) is \emph{undefined} since \(0\) is not in the domain \(N \setminus \{0\}\).
+\end{example}
