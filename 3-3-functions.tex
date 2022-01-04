@@ -1,7 +1,7 @@
 \section{Functions} \label{sec 3.3}
 
 \begin{definition} [Functions] \label{def 3.3.1}
-Let \(X, Y\) be sets, and let \(P(x, y)\) be a property pertaining to an object \(x \in X\) and an object \(y \in Y\), such that for every \(x \in X\), there is \textbf{exactly one} \(y \in Y\) for which \(P(x, y)\) is true (this is sometimes known as the \emph{vertical line test}). Then we define \emph{the function} \(f : X \longrightarrow Y\) \emph{defined by \(P\)} on the \textbf{domain} \(X\) and \textbf{codomain} \(Y\) to be the object which, given any input \(x \in X\), assigns an output \(f(x) \in Y\), defined to be the unique object \(f(x) \in Y\) for which \(P(x, f(x))\) is true. Thus, for any \(x \in X\) and \(y \in Y\),
+Let \(X, Y\) be sets, and let \(P(x, y)\) be a property pertaining to an object \(x \in X\) and an object \(y \in Y\), such that for every \(x \in X\), there is \textbf{exactly one} \(y \in Y\) for which \(P(x, y)\) is true (this is sometimes known as the \emph{vertical line test}). Then we define \emph{the function} \(f : X \rightarrow Y\) \emph{defined by \(P\)} on the \textbf{domain} \(X\) and \textbf{codomain} \(Y\) to be the object which, given any input \(x \in X\), assigns an output \(f(x) \in Y\), defined to be the unique object \(f(x) \in Y\) for which \(P(x, f(x))\) is true. Thus, for any \(x \in X\) and \(y \in Y\),
 \[
     y = f(x) \iff P(x, y) \text{ is true}.
 \]
@@ -18,5 +18,207 @@ Implicit in the \DEF{3.3.1} is the assumption that whenever one is given two set
 \end{note}
 
 \begin{example} \label{example 3.3.2}
-Let \(X = \SET{N}\), \(Y = \SET{N}\), and let \(P(x, y)\) be the property that \(y = x\INC\). Then for each \(x \in \SET{N}\) (or \(X\)) there is \textbf{exactly one} \(y \in \SET{N}\) (or \(Y\)) for which \(P(x, y)\) is true, namely \(y = x\INC\). Thus we can define a function \(f : X \longrightarrow Y\) associated to this property, so that \(f(x)= x\INC\) for all \(x \in X\); this is the \textbf{increment function} on \(\SET{N}\), which takes a natural number as input and returns its increment as output. Thus for instance \(f(4) = 5\), \(f(2n + 3)\) = \(2n + 4\) (assuming \(n\) is a natural number) and so forth. One might also \emph{hope} to define a decrement function \(g : N \longrightarrow N\) associated to the property \(Q(x, y)\) defined by \(y\INC = x\), i.e., \(g(x)\) would be the number whose increment is \(x\). Unfortunately this does \emph{not} define a function, because when \(x = 0\) there is \emph{no} natural number \(y\) whose increment is equal to \(x\) (by \AXM{2.3}). On the other hand, we can legitimately define a decrement function \(h : N \setminus \{0\} \longrightarrow N\) associated to the property \(Q\), because when \(x \in N \setminus \{0\}\) there is indeed exactly one natural number \(y\) such that \(y\INC = x\), thanks to \LEM{2.2.10}. Thus for instance \(h(4) = 3\) and \(h(2n +3) = 2n + 2\) (assuming \(n\) is a natural number), but \(h(0)\) is \emph{undefined} since \(0\) is not in the domain \(N \setminus \{0\}\).
+Let \(X = \SET{N}\), \(Y = \SET{N}\), and let \(P(x, y)\) be the property that \(y = x\INC\). Then for each \(x \in \SET{N}\) (or \(X\)) there is \textbf{exactly one} \(y \in \SET{N}\) (or \(Y\)) for which \(P(x, y)\) is true, namely \(y = x\INC\). Thus we can define a function \(f : X \rightarrow Y\) associated to this property, so that \(f(x)= x\INC\) for all \(x \in X\); this is the \textbf{increment function} on \(\SET{N}\), which takes a natural number as input and returns its increment as output. Thus for instance \(f(4) = 5\), \(f(2n + 3)\) = \(2n + 4\) (assuming \(n\) is a natural number) and so forth. One might also \emph{hope} to define a decrement function \(g : N \rightarrow N\) associated to the property \(Q(x, y)\) defined by \(y\INC = x\), i.e., \(g(x)\) would be the number whose increment is \(x\). Unfortunately this does \emph{not} define a function, because when \(x = 0\) there is \emph{no} natural number \(y\) whose increment is equal to \(x\) (by \AXM{2.3}). On the other hand, we can legitimately define a decrement function \(h : N \setminus \{0\} \rightarrow N\) associated to the property \(Q\), because when \(x \in N \setminus \{0\}\) there is indeed exactly one natural number \(y\) such that \(y\INC = x\), thanks to \LEM{2.2.10}. Thus for instance \(h(4) = 3\) and \(h(2n +3) = 2n + 2\) (assuming \(n\) is a natural number), but \(h(0)\) is \emph{undefined} since \(0\) is not in the domain \(N \setminus \{0\}\).
 \end{example}
+
+\begin{example} [Informal]
+This example requires the real numbers \(\SET{R}\), which we will define in \CH{5}. One could try to define a \emph{square root function} \(\sqrt{} : \SET{R} \rightarrow \SET{R}\) by associating it to the property \(P(x, y)\) defined by \(y^2 = x\), i.e., we would want \(\sqrt{x}\) to be the number \(y\) such that \(y^2 = x\). Unfortunately there are \textbf{two problems} which prohibit this definition from actually creating a function. The first is that there exist real numbers \(x\) for which \(P(x, y)\) is never true, for instance if \(x = -1\) then there is no real number \(y\) such that \(y^2 = x\). This problem however can be solved by \textbf{restricting the domain} from \(\SET{R}\) to the right half-line \([0, +\infty)\). The second problem is that even when \(x \in [0, +\infty)\), it is possible for there to be \textbf{more than one} \(y\) in the range \(\SET{R}\) for which \(y^2 = x\), for instance if \(x = 4\) then both \(y = 2\) and \(y = -2\) obey the property \(P(x, y)\), i.e., both \(+2\) and \(-2\) are square roots of \(4\). This problem can however be solved by \textbf{restricting the range} of \(\SET{R}\) to \([0, +\infty)\). Once one does this, then one can correctly define a square root function \(\sqrt{} :[0, +\infty) \rightarrow [0, +\infty)\) using the relation \(y^2 = x\), thus \(\sqrt{x}\) is the unique number \(y \in [0, +\infty)\) such that \(y^2 = x\).
+\end{example}
+
+\begin{note}
+這邊提到，我們可以明確給出\ domain, codomain, 以及「從一個\ input 生出 output」的規則，來定義\ function，這叫做 \emph{explicit} definition。還有一種是只給出\ property \(P(x, y)\) 來表示\ input \(x\) 跟\ output \(f(x)\) 之間的關係，這叫做\ \emph{implicit} definition。後者只有在我們確定對於每個\ input 都只會\textbf{恰好有一個}\ output 時才合法。
+\end{note}
+
+\begin{note}
+比較(麻)煩的是，若上下文清楚，或者說「恰好有一個\ output」的性質是 trivial，則我們會用\ implicit definition；例如 \EXAMPLE{3.3.2} 我們可以只寫 the function \(f(x) := x\INC\)，甚至\  \(x\INC\)。\textbf{但是這種省略有時候很危險}，看到一個\ implicit definition 時要想清楚\ domain 跟\ codomain 到底是什麼。
+\end{note}
+
+\begin{note}
+We observe that functions \textbf{obey} the axiom of substitution \AXM{a.7.4}: if \(x = x'\), then \(f(x)= f(x')\) (why?). In other words, equal inputs imply equal outputs. On the other hand, unequal inputs do not necessarily ensure unequal outputs. For example, \emph{constant} function simply assign each input with the same output.
+\end{note}
+
+\begin{proof}
+Let \(f\) be a function, \(x, x'\) be elements of \(f\)'s domain such that \(x = x'\). Now \textbf{I suppose} the \(=\) for \(x\) and \(x'\) satisfies \AXM{a.7.4}. Then by \AXM{a.7.4}, \(g(x) = g(x')\) for all \emph{functions} or operations \(g\). In particular, \(f\) is just a function, so \(f(x) = f(x')\).
+\end{proof}
+
+\begin{example}
+Just give a constant function to show that different inputs can generate same output.
+\end{example}
+
+\begin{remark} \label{remark 3.3.5}
+We are now using parentheses \(()\) to \textbf{denote several different things} in mathematics; on one hand, we are using them to clarify the \textbf{order of operations} (compare for instance \(2 + (3 \X 4) = 14\) with \((2 + 3) \X 4 = 20\)), but on the other hand we also use parentheses to enclose the argument \(f(x)\) of a function or of a property such as \(P(x)\). However, the two usages of parentheses \textbf{usually are unambiguous from context}. For instance, if \(a\) is a number, then \(a(b + c)\) denotes the expression \(a \X (b + c)\), whereas if \(f\) is a function, then \(f(b + c)\) denotes the output of \(f\) when the input is \(b + c\). Sometimes the argument of a function is \textbf{denoted by subscripting} instead of parentheses; for instance, a \textbf{sequence} of natural numbers \(a_0, a_1, a_2, a_3, \dots\) is, strictly speaking, a function from \(\SET{N}\) to \(\SET{N}\), but is denoted by \(n \mapsto a_n\) rather than \(n \mapsto a(n)\).
+\end{remark}
+
+\begin{remark} \label{remark 3.3.6}
+Strictly speaking, \textbf{functions are not sets, and sets are not functions}; it does not make sense to ask whether an object \(x\) is an element of a function \(f\)(because \(f\) is not a set), and it does not make sense to apply a set \(A\) to an input \(x\) to create an output \(A(x)\) (because \(A\) is not a function). On the other hand, it is possible to start with a function \(f : X \rightarrow Y\) and \textbf{construct its graph} \(\{(x, f(x)) : x \in X\}\), which \textbf{describes} the function \textbf{completely}: see \SEC{3.5}.
+\end{remark}
+
+\begin{note}
+跟自然數類似，這本書也不認為\ function 是一個\ set。另外上個\ remark 內最後一行用到的括號\ \((x, f(x))\) 應該是\ ordered pair。參考\ \DEF{3.5.1}。
+\end{note}
+
+\begin{definition} [Equality of functions] \label{def 3.3.7}
+Two functions \(f: X \rightarrow Y\), \(g: X' \rightarrow Y'\) are said to be equal if and only if they have the same domain and codomain (i.e., \(X = X'\) and \(Y = Y'\)), and \(f(x) = g(x)\) for all \(x \in X\). (If \(f(x)\) and \(g(x)\) agree for some values of \(x\), but not others, then we do not consider \(f\) and \(g\) to be equal).
+\end{definition}
+
+\begin{example} \label{example 3.8.8}
+This example shows that the concept of equality of functions \textbf{can depend on the choice of domain}. The functions \(x \mapsto x\) and \(x \mapsto |x|\) are equal on the positive real axis, but \textbf{are not equal on \(\SET{R}\)}.
+\end{example}
+
+\begin{example}
+A rather boring example of a function is the empty function \(f : \emptyset \rightarrow X\) from the empty set to a given set \(X\). Since the empty set has no elements, we \emph{do not need to specify} what \(f\) does to any input. Nevertheless, just as the empty set is a set, \textbf{the empty function is a function}, albeit not a particularly interesting one. Note that for each set \(X\), there is only one function from \(\emptyset\) to \(X\), since \DEF{3.3.7} asserts that all functions from \(\emptyset\) to \(X\) are equal (why?).
+\end{example}
+
+\begin{proof}
+Given a set \(X\) and let \(f\) be a function from \(\emptyset\) to \(X\). Suppose \(g\) is also a function from \(\emptyset\) to \(X\). Then clearly \(f\) and \(g\) have same domain(i.e. \(\emptyset\)) and codomain(i.e. \(X\)). And ``\(f(x) = g(x)\ \forall x \in \emptyset\)'', in this case is \textbf{vacuously true}, because there is no \(x \in \emptyset\). So by \DEF{3.3.7}, \(g = f\).
+\end{proof}
+
+\begin{note}
+\DEF{3.3.7} 是個\ equivalence relation，看\ \EXEC{3.3.1}。接下來定義\ function composition。
+\end{note}
+
+\begin{definition} [Composition] \label{def 3.3.10}
+Let \(f : X \rightarrow Y\) and \(g : Y \rightarrow Z\) be two functions, such that the codomain of \(f\) is the same set as the domain of \(g\). We then \emph{define} the \emph{composition} \(g \circ f : X \rightarrow Z\) of the two functions \(g\) and \(f\) to be the function \textbf{defined explicitly by the formula}
+\[
+    (g \circ f)(x) := g(f(x)).
+\]
+If the codomain of \(f\) does not match the domain of \(g\), we leave the composition \(g \circ f\) undefined.
+\end{definition}
+
+\begin{note}
+Function composition 符合替換公理\ \AXM{a.7.4}。
+\end{note}
+
+\begin{example}
+This example shows function composition is \textbf{not} commutative. However function composition is still associative, see below.
+\end{example}
+
+\begin{lemma} [Composition is associative] \label{lem 3.3.12}
+Let \(f : Z \rightarrow W\), \(g : Y \rightarrow Z\), and \(h : X \rightarrow Y\) be functions. Then \(f \circ (g \circ h) = (f \circ g) \circ h\).
+\end{lemma}
+
+\begin{proof}
+Since \(g \circ h\) is a function from \(X\) to \(Z\), \(f \circ (g \circ h)\) is a function from \(X\) to \(W\). Similarly \(f \circ g\) is a function from \(Y\) to \(W\), and hence \((f \circ g) \circ h\) is a function from \(X\) to \(W\). Thus \(f \circ (g \circ h)\) and \((f \circ g) \circ h\) have the same domain and codomain.
+
+In order to check that they are equal, we see from \DEF{3.3.7} that we have to verify that \((f \circ (g \circ h))(x) = ((f \circ g) \circ h)(x)\) for all \(x \in X\). But by \DEF{3.3.10}
+\begin{align*}
+      & (f \circ (g \circ h))(x) \\
+    = & f((g \circ h)(x)) \\
+    = & f(g(h(x)) \\
+    = & (f \circ g)(h(x)) \\
+    = & ((f \circ g) \circ h)(x)
+\end{align*}
+As desired. (BTW, each step above can be derived from \DEF{3.3.10}.)
+\end{proof}
+
+\begin{remark} \label{remark 3.3.13}
+Note that while \(g\) appears to the left of \(f\) in the expression \(g \circ f\), the function \(g \circ f\) applies the \textbf{right-most} function \(f\)
+\textbf{first}, before applying \(g\). This is often confusing at first; it arises because we traditionally place a function \(f\) \textbf{to the left} of its input \(x\) rather than to the right.
+\end{remark}
+
+We now describe certain special types of functions: \emph{one-to-one} functions, \emph{onto} functions, and \emph{invertible} functions.
+
+\begin{definition} [One-to-one functions] \label{def 3.3.14}
+A function \(f\) is one-to-one (or injective) if \emph{different elements map to different elements}:
+\[
+x \neq x' \implies f(x) \neq f(x').
+\]
+Equivalently(contrapositively), a function is one-to-one if
+\[
+    f(x) = f(x') \implies x = x'.
+\]
+\end{definition}
+
+\begin{example} [Informal] \label{example 3.3.15}
+The function \(f : \SET{Z} \rightarrow \SET{Z}\) defined by \(f(n) := n^2\) is not one-to-one because the distinct elements \(-1, 1\) map to the same element \(1\). On the other hand, if we \emph{restrict} this function \emph{to the natural numbers}, defining the function \(g : \SET{N} \rightarrow \SET{Z}\) by \(g(n) := n^2\), then \(g\) is now a one-to-one function. Thus the notion of a one-to-one function \textbf{depends} not just on what the function does, but \textbf{also what its domain is}.
+\end{example}
+
+\begin{remark} \label{remark 3.3.16}.
+If a function \(f : X \rightarrow Y\) is not one-to-one, then one can find \emph{distinct} \(x and x'\) in the domain \(X\) such that \(f(x)= f(x')\), thus one can find two inputs which map to one output. Because of this, we say that \(f\) is two-to-one (many-to-one?) instead of one-to-one.
+\end{remark}
+
+\begin{definition} [Onto functions] \label{def 3.3.17}
+A function \(f\) is onto (or surjective) if \(f(X) = Y\), i.e., every element in \(Y\) comes from applying \(f\) to some element in \(X\):
+\begin{center}
+    For every \(y \in Y\), there exists \(x \in X\) such that \(f(x) = y\).    
+\end{center}
+\(f(X)\) is called \emph{image} of \(f\), see \DEF{3.4.1}
+\end{definition}
+
+\begin{note}
+注意\ \(f(X) = Y\) 這種寫法，實際上在下一節才會定義(\DEF{3.4.1})
+\end{note}
+
+\begin{example} [Informal] \label{example 3.3.18}
+The function \(f : \SET{Z} \rightarrow \SET{Z}\) defined by \(f(n) := n^2\) is not onto because the negative numbers are not in the \emph{image} of \(f\). However, if we restrict the codomain \(\SET{Z}\) to the set \(A := {n^2 : n \in Z}\) of square numbers, then the function \(g : \SET{Z} \rightarrow A\) defined by \(g(n) := n^2\) is now onto. Thus the notion of an onto function depends not just on what the function does, but also what its codomain is.
+\end{example}
+
+\begin{note}
+比較一下\ \EXAMPLE{3.3.15} 跟\ \EXAMPLE{3.3.18}，除了\ function 的\ formula 本身，function 是否\ one-to-one 還會受\ domain 影響，而\ function 是否\ onto 還會受\ codomain 影響。
+\end{note}
+
+\begin{remark} \label{remark 3.3.19}.
+The concepts of injectivity and surjectivity are in many ways \textbf{dual to} each other; see \EXEC{3.3.2}, \EXEC{3.3.4}, \EXEC{3.3.5} for some evidence of this.
+\end{remark}
+
+\begin{definition} [Bijective functions] \label{def 3.3.20}
+Functions \(f : X \rightarrow Y\) which are both one-to-one and onto are also called \emph{bijective} or \emph{invertible}.
+\end{definition}
+
+\begin{example} \label{example 3.3.21}
+Let \(f : \{0, 1, 2\} \rightarrow \{3, 4\} \) be the function \(f(0) := 3\), \(f(1) := 3\), \(f(2) := 4\). This function is not bijective because if we set \(y = 3\), then there is more than one \(x\) in \( \{0, 1, 2 \} \) such that \(f(x) = y\) (this is a failure of injectivity). Now let \(g : \{0, 1\} \rightarrow \{2, 3, 4\} \) be the function \(g(0) := 2\), \(g(1) := 3\); then \(g\) is not bijective because if we set \(y = 4\), then there is no \(x\) for which \(g(x) = y\) (this is a failure of surjectivity). Now let \(h : \{0, 1, 2\} \rightarrow \{3, 4, 5\} \) be the function \(h(0) := 3\), \(h(1) := 4\), \(h(2) := 5\). Then \(h\) is bijective, because each of the elements \(3, 4, 5\) comes from \emph{exactly one} element from \(0, 1, 2\).
+\end{example}
+
+\begin{example} \label{example 3.3.22}
+The function \(f : \SET{N} \rightarrow \SET{N} \setminus \{0\} \) defined by \(f(n) := n\INC\) is a bijection (in fact, this fact is simply restating \AXM{2.2}, \AXM{2.3}, \AXM{2.4}). On the other hand, the function \(g : \SET{N} \rightarrow \SET{N}\) defined by the same definition \(g(n) := n\INC\) is not a bijection. Thus the notion of a bijective function \textbf{depends} not just on what the function does, but \textbf{also what its codomain (and domain)} are.
+\end{example}
+
+\begin{remark} \label{remark 3.3.23}
+If a function \(x \mapsto f(x)\) is bijective, then we sometimes call \(f\) a \emph{perfect matching} or a \emph{one-to-one correspondence} (not to be confused with the notion of a one-to-one function), and \emph{denote} the action of \(f\) using the notation \(x \leftrightarrow f(x)\) instead of \(x \mapsto f(x)\). Thus for instance the function \(h\) in the above example is the one-to-one correspondence \(0 \leftrightarrow 3, 1 \leftrightarrow 4, 2 \leftrightarrow 5\).
+\end{remark}
+
+\begin{remark} \label{remark 3.3.24}
+A common error is to say that a function \(f : X \rightarrow Y\) is bijective iff ``for every \(x\) in \(X\), there is exactly one \(y\) in \(Y\) such that \(y = f(x)\).'' This is not what it means for \(f\) to be bijective; rather, this is merely stating what it means for \(f\) to be a function. A function cannot map one element to two different elements, for instance one cannot have a function \(f\) for which \(f(0) = 1\) and also \(f(0) = 2\). The functions \(f\), \(g\) given in the previous example are not bijective, but they are still functions, since each input still gives exactly one output.
+\end{remark}
+
+If \(f\) is bijective, then for every \(y \in Y\), there is exactly one \(x\) such that \(f(x) = y\) (there is \textbf{at least one because of surjectivity, and at most one because of injectivity}). This value of \(x\) is \textbf{denoted \(f^{-1}(y)\)}; thus \(f^{-1}\) is a function \textbf{from \(Y\) to \(X\)}. We call \(f^{-1}\) the \textbf{inverse} of \(f\).
+
+\exercisesection
+
+\begin{exercise} \label{exercise 3.3.1}
+Show that the definition of equality in \DEF{3.3.7} is reflexive, symmetric, and transitive. Also verify the substitution property: if \(f, \tilde{f} : X \rightarrow Y\) and \(g, \tilde{g} : Y \rightarrow Z\) are functions such that \(f = \tilde{f}\) and \(g = \tilde{g}\), then \(g \circ f = \tilde{g} \circ \tilde{f}\).
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.3.2}
+Let \(f : X \rightarrow Y\) and \(g : Y \rightarrow Z\) be functions. Show that if \(f\) and \(g\) are both injective, then so is \(g \circ f\); similarly, show that if \(f\) and \(g\) are both surjective, then so is \(g \circ f\).
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.3.3}
+When is the empty function injective? surjective? bijective?
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.3.4}
+In this section we give some \emph{cancellation laws for composition}. Let \(f : X \rightarrow Y\), \(\tilde{f} : X \rightarrow Y\), \(g : Y \rightarrow Z\), and \(\tilde{g} : Y \rightarrow Z\) be functions. Show that if \(g \circ f = g \circ \tilde{f}\) and \(g\) is injective, then \(f = \tilde{f}\). Is the same statement true if \(g\) is not injective? Show that if \(g \circ f = \tilde{g} \circ f\) and \(f\) is surjective, then \(g = \tilde{g}\). Is the same statement true if \(f\) is not surjective?
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.3.5}
+Let \(f : X \rightarrow Y\) and \(g : Y \rightarrow Z\) be functions. Show that if \(g \circ f\) is injective, then \(f\) must be injective. Is it true that \(g\) must also be injective? Show that if \(g \circ f\) is surjective, then \(g\) must be surjective. Is it true that \(f\) must also be surjective?
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.3.6}
+Let \(f : X \rightarrow Y\) be a bijective function, and let \(f^{-1} : Y \rightarrow X\) be its inverse. Verify the cancellation laws \(f^{-1}(f(x)) = x\) for all \(x \in X\) and \(f(f^{-1}(y)) = y\) for all \(y \in Y\). Conclude that \(f^{-1}\) is also invertible, and has \(f\) as its inverse (thus \( (f^{-1})^{-1} = f \) ).
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.3.7}
+Let \(f : X \rightarrow Y\) and \(g : Y \rightarrow Z\) be functions. Show that if \(f\) and \(g\) are bijective, then so is \(g \circ f\), and we have \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\).
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.3.8}
+If \(X\) is a subset of \(Y\), let \(\iota_{X \to Y} : X \to Y\) be the \emph{inclusion map from} \(X\) to \(Y\), defined by mapping \(x \mapsto x\) for all \(x \in X\), i.e., \(\iota_{X \to Y}(x) \coloneqq x\) for all \(x \in X\). The map \(\iota_{X \to X}\) is in particular called the \emph{identity map} on \(X\).
+    \begin{enumerate}
+        \item Show that if \(X \subseteq Y \subseteq Z\) then \(\iota_{Y \to Z} \circ \iota_{X \to Y} = \iota_{X \to Z}\).
+        \item Show that if \(f : A \to B\) is any function, then \(f = f \circ \iota_{A \to A} = \iota_{B \to B} \circ f\).
+        \item Show that if \(f : A \to B\) is a bijective function, then \(f \circ f^{-1} = \iota_{B \to B}\) and \(f^{-1} \circ f = \iota_{A \to A}\).
+        \item Show that if \(X\) and \(Y\) are disjoint sets, and \(f : X \to Z\) and \(g : Y \to Z\) are functions, then there is a unique function \(h : X \cup Y \to Z\) such that \(h \circ \iota_{X \to X \cup Y} = f\) and \(h \circ \iota_{Y \to X \cup Y} = g\).
+    \end{enumerate}
+\end{exercise}
