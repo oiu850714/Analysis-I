@@ -189,17 +189,93 @@ If \(f\) is bijective, then for every \(y \in Y\), there is exactly one \(x\) su
 Show that the definition of equality in \DEF{3.3.7} is reflexive, symmetric, and transitive. Also verify the substitution property: if \(f, \tilde{f} : X \rightarrow Y\) and \(g, \tilde{g} : Y \rightarrow Z\) are functions such that \(f = \tilde{f}\) and \(g = \tilde{g}\), then \(g \circ f = \tilde{g} \circ \tilde{f}\).
 \end{exercise}
 
+\begin{proof}
+First we prove \DEF{3.3.7} is an equivalence relation.
+
+BTW, by \EXEC{3.1.1}, we know set equality is an equivalence relation. And I just assume the definition of equality of elements' of a given set is also an equivalence relation.
+
+Reflexive: Let \(f\) be a function from \(X\) to \(Y\). Clearly \GREEN{\(f\)} and \BLUE{\(f\)} have the same domain and codomain, and given any element \(x \in X\), \(\GREEN{f(x)} = \BLUE{f(x)}\), so \(\GREEN{f} = \BLUE{f}\) by \DEF{3.3.7}
+
+Symmetric: Let \(f\) be a function from \(X\) to \(Y\) and \(g\) be a function from \(X'\) to \(Y'\), and suppose \(f = y\). Then by \DEF{3.3.7}, \(X = X'\) \MAROON{(1)}, \(Y = Y'\) \MAROON{(2)} and \(f(x) = g(x)\) for all \(x \in X\) \MAROON{(3)}. But by \MAROON{(1)} we can get \(X' = X\), by \MAROON{(2)} we can get \(Y' = Y\), by \MAROON{(3)} we can get \(g(x) = f(x)\) for all \(x \in X\), then again by \DEF{3.3.7}, \(g = f\).
+
+Transitive: Let \(f : X \rightarrow Y\), \(g : X' \rightarrow Y'\), \(h : X'' \rightarrow Y''\) be functions, and suppose \(f = g\) and \(g = h\). Then by \DEF{3.3.7}, we have \(X = X', Y = Y'\), \(X' = X'', Y' = Y''\) \(f(x) = g(x)\) for all \(x \in X\), \(g(x) = h(x)\) for all \(x \in X'\), then trivially by transitive of set equality and element equality, we have \(X = X''\), \(Y = Y''\), \(f(x) = h(x)\) for all \(x \in X\), so by \DEF{3.3.7}, \(f = h\).
+\end{proof}
+
+\begin{proof}
+Now we show Axiom of substitution \AXM{a.7.4} holds for function composition.
+
+Suppose \(f, \tilde{f}, g, \tilde{g}\) satisfy the conditions in the exercise. Now by \DEF{3.3.10}, \(g \circ f\) is from \(X\) to \(Z\), and also \(\tilde{g} \circ \tilde{f}\) is from \(X\) to \(Z\), so they have the same domain and codomain. Now we have to show \((g \circ f)(x) = (\tilde{g} \circ \tilde{f})(x)\) for all \(x \in X\). But given arbitrary \(x \in X\)
+\begin{align*}
+      & (g \circ f)(x) \\
+    = & g(f(x)) & \text{by \DEF{3.3.10}} \\
+    = & g(\tilde{f}(x)) & \text{since \(f = \tilde{f}\)} \\
+    = & \tilde{g}(\tilde{f}(x)) & \text{since \(g = \tilde{g}\)} \\
+    = & (\tilde{g} \circ \tilde{f})(x) & \text{by \DEF{3.3.10}}
+\end{align*}
+as desired.
+\end{proof}
+
 \begin{exercise} \label{exercise 3.3.2}
 Let \(f : X \rightarrow Y\) and \(g : Y \rightarrow Z\) be functions. Show that if \(f\) and \(g\) are both injective, then so is \(g \circ f\); similarly, show that if \(f\) and \(g\) are both surjective, then so is \(g \circ f\).
 \end{exercise}
 
+\begin{proof}
+Injective:
+
+Suppose \(f : X \rightarrow Y\) and, \(g : Y \rightarrow Z\) are both injective. Wanted: \(g \circ f\) is injective. So Let \(x, x'\) be arbitrary element in \(X\) and \(x \neq x'\), we have to show that \((g \circ f)(x) \neq g \circ f(x')\). Now, \(f(x) \neq f(x')\) since \(x \neq x'\) and \(f\) is injective; and \(g(f(x)) \neq g(f(x'))\) since we have shown \(f(x) \neq f(x')\) and \(g\) is injective. But by \DEF{3.3.10}, \(g(f(x)) = (g \circ f)(x)\), \(g(f(x')) = (g \circ f)(x')\), so \((g \circ f)(x) \neq (g \circ f)(x')\), as desired.
+
+
+Surjective:
+
+Suppose \(f : X \rightarrow Y\) and, \(g : Y \rightarrow Z\) are both surjective. Wanted: \(g \circ f\) is surjective. So Let \(z\) be arbitrary element in \(Z\), we have to show that there exists an element \(x \in X\) such that \((g \circ f)(x) = z\). Now, since \(g\) is surjective, there exists an element \(y \in Y\) such that \(g(y) = z\). But since \(y \in Y\) and \(f\) is surjective, there exists an element \(x \in X\) such that \(f(x) = y\). So,
+\begin{align*}
+      & (g \circ f)(x) \\
+    = & g(f(x)) & \text{by \DEF{3.3.10}} \\
+    = & g(y)    &\text{since \(f(x) = y\)} \\
+    = & z       & \text{since \(g(y) = z\)}
+\end{align*}
+So we have found \(x\) as desired.
+\end{proof}
+
 \begin{exercise} \label{exercise 3.3.3}
-When is the empty function injective? surjective? bijective?
+When is the the empty function into a given set \(X\) injective? surjective? bijective?
 \end{exercise}
+
+\begin{proof}
+For injective, given a codomain set \(X\), because there is no element in \(\emptyset\), the hypothesis in \DEF{3.3.14} is false, so the entire statement of \DEF{3.3.14} is vacuously true. So an empty function from a given codomain \(X\) is inherently injective.
+
+For surjective, \(X\) must be empty set, otherwise there is no element \(e\) from the domain \(\emptyset\) such that \(e\) maps to \(X\)'s element.
+
+For bijective, that means both injective and surjective, which by above means \(X\) must be empty set.
+\end{proof}
 
 \begin{exercise} \label{exercise 3.3.4}
 In this section we give some \emph{cancellation laws for composition}. Let \(f : X \rightarrow Y\), \(\tilde{f} : X \rightarrow Y\), \(g : Y \rightarrow Z\), and \(\tilde{g} : Y \rightarrow Z\) be functions. Show that if \(g \circ f = g \circ \tilde{f}\) and \(g\) is injective, then \(f = \tilde{f}\). Is the same statement true if \(g\) is not injective? Show that if \(g \circ f = \tilde{g} \circ f\) and \(f\) is surjective, then \(g = \tilde{g}\). Is the same statement true if \(f\) is not surjective?
 \end{exercise}
+
+\begin{proof}
+First we show injective-part.
+
+Suppose \(g \circ f = g \circ \tilde{f}\) and \(g\) is injective. We have to show \(f = \tilde{f}\). Let \(x\) be arbitrary element in \(X\). Then
+\begin{align*}
+         & (g \circ f)(x) = (g \circ \tilde{f})(x) \\
+    \iff & g(f(x)) = g(\tilde{f}(x)) & \text{by \DEF{3.3.10}} \\
+    \iff & f(x) = \tilde{f}(x)       & \text {since \(g\) is injective and by \DEF{3.3.14}}
+\end{align*}
+So we have shown that \(f(x) = \tilde{f}(x)\), so \(f = \tilde{f}\), as desired. And this is not true if \(g\) is not injective. You can give a trivial example(e.g. \(g\) is a constant function).
+
+Second we show surjective-part.
+
+Suppose \(g \circ f = \tilde{g} \circ f\) \MAROON{(1)} and \(f\) is surjective \MAROON{(2)}. We have to show \(g = \tilde{g}\). Let \(y\) be arbitrary element in \(Y\), we have to show \(g(y) = \tilde{g}(y)\). Then since \MAROON{(2)} and \DEF{3.3.17}, there exists \(x \in X\) such that \(f(x) = y\). But by \MAROON{(1)},
+\[
+    (g \circ f)(x) = (\tilde{g} \circ f)(x)
+\]
+which by \DEF{3.3.10} means,
+\[
+    g(f(x)) = \tilde{g}(f(x))
+\]
+but since \(f(x) = y\), we now have \(g(y) = \tilde{g}(y)\), as desired. This is not true if \(f\) is not surjective. For example, let \(X = \{1\}\), \(Y = \{2, 3, 4\}\), \(Z = \{5, 6, 7\}\), \(f(1) = 2\), \(g(2) = 5\), \(g(3) = 6\), \(g(4) = 7\), \(\tilde{g}(2) = 5\), \(\tilde{g}(3) = 7\), \(\tilde{g}(4) = 6\). Then \(f\) is not surjecttive, and \(g \circ f = \tilde{g} \circ f\), \textbf{but} \(g \neq \tilde{g}\).
+\end{proof}
 
 \begin{exercise} \label{exercise 3.3.5}
 Let \(f : X \rightarrow Y\) and \(g : Y \rightarrow Z\) be functions. Show that if \(g \circ f\) is injective, then \(f\) must be injective. Is it true that \(g\) must also be injective? Show that if \(g \circ f\) is surjective, then \(g\) must be surjective. Is it true that \(f\) must also be surjective?
