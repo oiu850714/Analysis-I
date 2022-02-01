@@ -20,7 +20,7 @@
 and so on；到此刻我們才正式定義了乘法跟加法的關聯，以及之後會證明的「乘對加有分配律」等等。
 \end{note}
 
-\begin{additional corollary}[on top of page 30] \label{ac 2.3.1}
+\begin{additional corollary}[on top of textbook page 30] \label{ac 2.3.1}
 The product of two natural numbers is a natural number.
 \end{additional corollary}
 \begin{proof}
@@ -33,19 +33,22 @@ Base case: Let \(n = 0\). Then
 \end{align*}
 which is a natural number.
 
-Inductive hypothesis: Suppose \(n \X m\) is a natural number. We have to prove \((n\INC) \X m\) is also a natural number. But \((n\INC) \X m = (n \X m) + m.\) by \DEF{2.3.1}, and \(n \X m\) by inductive hypothesis is a natural number, \(m\) is also a natural number, so the sum(by \AC{2.2.1} is a natural number. This closes the induction.
+Inductive hypothesis: Suppose \(n \X m\) is a natural number. We have to prove \((n\INC) \X m\) is also a natural number. But \((n\INC) \X m = (n \X m) + m\) by \DEF{2.3.1}, and \(n \X m\) by inductive hypothesis is a natural number, \(m\) is also a natural number, so the sum(by \AC{2.2.1}) is a natural number. This closes the induction.
 \end{proof}
 
 \begin{note}
-這邊會再多額外幾個\ Corollary，主要是為了證明\ \LEM{2.3.2}，其證明「流程」跟加法交換律很類似。
+這邊會再多額外幾個\ Corollary，主要是為了證明\ \LEM{2.3.2}，其證明「流程」跟加法交換律\ \PROP{2.2.4} 很類似。
 \end{note}
 
 \begin{additional corollary} \label{ac 2.3.2}
-Let \(n\) be a natural number. Then \(n \X 0 = 0\). This can be compared to \LEM{2.2.2}.
+Let \(n\) be a natural number. Then \(n \X 0 = 0\).
+This can be compared to \LEM{2.2.2}.
 \end{additional corollary}
+
 \begin{note}
 類似於\ \LEM{2.2.2}，乘法的定義只有定義\ \(0 \X n\) 是什麼，並沒有定義\ \(n \X 0\) 是什麼，我們必須額外證明它等於\ 0。
 \end{note}
+
 \begin{proof}
 We use induction on \(n\).
 
@@ -122,7 +125,7 @@ And
     \text{RHS} & = m \X (n\INC) \\
                & = (m \X n) + m & \text{by \AC{2.3.3}} \\
                & = (n \X m) + m & \text{by inductive hypothesis} \\
-               & = ((n\INC) \X m) & \text{by \DEF{2.3.1}} \\
+               & = (n\INC) \X m & \text{by \DEF{2.3.1}} \\
                & = \text{LHS.}
 \end{align*}
 This closes the induction.
@@ -196,7 +199,7 @@ For any natural numbers \(a, b, c\), we have \(a(b + c)= ab + ac\) and \((b + c)
 \end{proposition}
 
 \begin{proof}
-Since multiplication is commutative by \LEM{2.3.2} we only need to show the first identity \(a(b + c)= ab + ac\). Or
+Since multiplication is commutative by \LEM{2.3.2}, we only need to show the first identity \(a(b + c)= ab + ac\). Or
 \begin{align*}
     (b + c)a & = a(b + c) & \text{by \LEM{2.3.2}} \\
              & = ab + ac  & \text{to be proved} \\
@@ -206,7 +209,7 @@ Since multiplication is commutative by \LEM{2.3.2} we only need to show the firs
 
 We keep \(a\) and \(b\) fixed, and use induction on \(c\).
 
-Base case: Let \(c = 0\), i.e., a(b + 0) = ab + a0. Then
+Base case: Let \(c = 0\), i.e. we have to show a(b + 0) = ab + a0. Then
 \begin{align*}
     \text{LHS} & = a(b + 0) \\
         & = ab & \text{by \LEM{2.2.2}}
@@ -220,7 +223,7 @@ while
 so we are done with the base case.
 
 Inductive hypothesis: Suppose that \(a(b + c) = ab + ac\), we have to prove that
-\[a(b + (c\INC)) = ab + a(c\INC)\].
+\[a(b + (c\INC)) = ab + a(c\INC).\]
 And
 \begin{align*}
     \text{LHS} & = a(b + (c\INC)) \\
@@ -282,7 +285,7 @@ Since \(a < b\), we have \(b = a + d\) for some \emph{positive} \(d\). Multiplyi
 \end{proof}
 
 \begin{corollary}[Cancellation Law (for multiplication)] \label{corollary 2.3.7}
-Let (a, b, c) be natural numbers such that \(ac = bc\) and \(c\) is non-zero(i.e. positive). Then \(a = b\).
+Let \(a, b, c\) be natural numbers such that \(ac = bc\) and \(c\) is non-zero(i.e. positive). Then \(a = b\).
 \end{corollary}
 
 \begin{remark} \label{remark 2.3.8}
@@ -308,7 +311,7 @@ In other words, we can divide a natural number \(n\) by a positive number \(q\) 
 \end{remark}
 
 \begin{proof}
-Wanted: Prove \(P(n)\) is true for all natural number \(n\), where \(P(n)\) is
+We have to prove \(P(n)\) is true for all natural number \(n\), where \(P(n)\) is
 \begin{center}
     For any \emph{positive} natural number \(q\), there exist natural numbers \(m, r\) such that \(0 \leq r < q\) and \(n = mq + r\).
 \end{center}
@@ -356,10 +359,10 @@ Let \(m\) be a natural number. To raise \(m\) to the power \(0\), we \emph{defin
 \end{definition}
 
 \begin{example}\label{example 2.3.12}
-Thus for instance \(x^1 = x^0 \X x = 1 \X x = x\); \(x^2 = x^1 \X x = x \X x\); \(x^3 = x^2 \X x = x \X x \X x\); and so forth. By induction we see that this recursive definition defines \(x^n\) for all natural numbers \(n\).
+Thus for instance \(x^1 = x^{0\INC} = x^0 \X x = 1 \X x = x\); \(x^2 = x^1 \X x = x \X x\); \(x^3 = x^2 \X x = x \X x \X x\); and so forth. By induction we see that this recursive definition defines \(x^n\) for all natural numbers \(n\).
 \end{example}
 \begin{note}
-上個例子最後一句話，作者在定義加法時有做類似的說明(p. 24 加法定義後面文字)，但是在定義乘法的時候沒有，可能忘了吧。另外指數乘法這裡不會探討太多，會在第四章定義完整數跟有理數後再繼續討論，可參考\ \PROP{4.3.10} and \ref{prop 4.3.12}。
+上個例子最後一句話，作者在定義加法時有做類似的說明(p. 24 加法定義後面文字)，但是在定義乘法的時候沒有，可能忘了吧。另外指數乘法這裡不會探討太多，會在第四章定義完整數跟有理數後再繼續討論，可參考\ \PROP{4.3.10} and \PROP{4.3.12}。
 \end{note}
 
 \exercisesection
@@ -398,7 +401,7 @@ Prove the identity \((a + b)^2 = a^2 + 2ab + b^2\) for all natural numbers \(a\)
               & = (a + b) \X (a + b) & \text{by \AC{2.3.4}} \\
               & = a(a + b) + b(a + b) & \text{by \PROP{2.3.4}} \\
               & = aa + ab + ba + bb & \text{by \PROP{2.3.4}} \\
-              & = a^2 + ab + ba + b^2 & \text{by \DEF{2.3.11}} \\
+              & = a^2 + ab + ba + b^2 & \text{see \EXAMPLE{2.3.12}} \\
               & = a^2 + ab + ab + b^2 & \text{by \LEM{2.3.2}} \\
               & = a^2 + 1ab + 1ab + b^2 & \text{by \AC{2.3.4}} \\
               & = a^2 + (1 + 1)ab + b^2 & \text{by \PROP{2.3.4}} \\
