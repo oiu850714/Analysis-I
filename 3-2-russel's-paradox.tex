@@ -1,15 +1,18 @@
 \section{Russel's Paradox}\label{sec 3.2}
 
 \begin{axiom} [Universal specification] \label{axm 3.8} (\RED{Dangerous!})
-Suppose for every object \(x\) we have a property \(P(x)\) pertaining to \(x\) (so that for every \(x\), \(P(x)\) is either a true statement or a false statement). Then there exists a set \( \{x : P(x) \text{\ is true} \} \) such that for every object \(y\),
+Suppose for every object \(x\) we have a property \(P(x)\) pertaining to \(x\) (so that for every \(x\), \(P(x)\) is either a true statement or a false statement).
+Then there exists a set \( \{x : P(x) \text{\ is true} \} \) such that for every object \(y\),
 \[
     y \in \{x : P(x) \text{\ is true} \} \iff P(y) \text{\ is true}.
 \]
-This axiom is also called \emph{axiom of comprehension}. It asserts that \emph{every property corresponds to a set}. This axiom also implies most of the axioms in the previous section (\EXEC{3.2.1}, mind=blown).
+This axiom is also called \emph{axiom of comprehension}.
+It asserts that \emph{every property corresponds to a set}.
+This axiom also implies most of the axioms in the previous section (\EXEC{3.2.1}, mind=blown).
 \end{axiom}
 
 \begin{note}
-這條「公理」跟\ \AXM{3.5} \AXM{3.6} 的差別就是後兩個都是做用在一個\textbf{已知是集合}的東西上的。
+這條「公理」跟\ \AXM{3.5} \AXM{3.6} 的差別就是後兩個都作用用在一個\textbf{已知是集合}的東西上的。
 \end{note}
 
 \begin{note}
@@ -33,7 +36,8 @@ BTW, the description of \AXM{3.9} uses the term \emph{disjoint}, which depends o
 \end{note}
 
 \begin{note}
-One particular consequence of this axiom is that \textbf{sets are no longer allowed to contain themselves}. (\EXEC{3.2.2}) So if something contains itself, then it is not a set.
+One particular consequence of this axiom is that \textbf{sets are no longer allowed to contain themselves}.
+(\EXEC{3.2.2}) So if something contains itself, then it is not a set.
 \end{note}
 
 \begin{note}
@@ -43,23 +47,37 @@ This axiom(\AXM{3.9}) is never needed for the purposes of doing analysis.
 \exercisesection
 
 \begin{exercise} \label{exercise 3.2.1}
-Show that the universal specification axiom, \AXM{3.8}, if assumed to be true, would imply \AXM{3.2} (empty set), \AXM{3.3} (singleton and pair), \AXM{3.4} (union), \AXM{3.5} (specification), and \AXM{3.6} (replacement). (If we assume that all natural numbers are objects, we also obtain \AXM{3.7}.) Thus, this axiom, if permitted, would simplify the foundations of set theory tremendously (and can be viewed as one basis for an intuitive model of set theory known as ``\emph{naive set theory}''). Unfortunately, as we have seen, \AXM{3.8} is ``too good to be true''!
+Show that the universal specification axiom, \AXM{3.8}, if assumed to be true, would imply \AXM{3.2} (empty set), \AXM{3.3} (singleton and pair), \AXM{3.4} (union), \AXM{3.5} (specification), and \AXM{3.6} (replacement). (If we assume that all natural numbers are objects, we also obtain \AXM{3.7}.)
+Thus, this axiom, if permitted, would simplify the foundations of set theory tremendously (and can be viewed as one basis for an intuitive model of set theory known as ``\emph{naive set theory}'').
+Unfortunately, as we have seen, \AXM{3.8} is ``too good to be true''!
 \end{exercise}
 
 \begin{proof}
-First the exercise does not say \AXM{3.8} implies \AXM{3.1}, so it seems that \AXM{3.1} is also needed.
+First the exercise does not say \AXM{3.8} implies \AXM{3.1}, so I just assume that \AXM{3.1} is also needed.
 
-For \AXM{3.2}, we just let \(P(x) := \text{false}\) for any object \(x\). Then by \AXM{3.8} there exists a set \( \emptyset := \{ x : P(x) \} \). Then we must have \(\forall x : x \notin \emptyset\), otherwise if \(x \in \emptyset\) then by definition of \(\emptyset\), \(P(x)\) is true, which contradicts that \(P(x)\) is false.
+For \AXM{3.2}, we just let \(P(x) := \text{false}\) for any object \(x\). Then by \AXM{3.8} there exists a set \( \emptyset := \{ x : P(x) \} \).
+Then we must have \(\forall x : x \notin \emptyset\), otherwise if \(x \in \emptyset\) then by definition of \(\emptyset\), \(P(x)\) is true, which contradicts that \(P(x)\) is false.
 
-For \AXM{3.3}, given particular but arbitrary objects \(a, b\), we just let \(P(x) := x = a\) and \(Q(x) := x = a \lor x b\). Then by \AXM{3.8} there exist sets  \(A := \{ x : P(x) \} \) and \(B := \{ x : Q(x) \} \), i.e. \(A := \{ x : x = a \} \) and \(B := \{ x : x = a \lor x \ b \} \). Hence \AXM{3.3} (existence of singleton and pair set) is satisfied.
+For \AXM{3.3}, given particular but arbitrary objects \(a, b\), we just let \(P(x) := x = a\) and \(Q(x) := x = a \lor x  = b\).
+Then by \AXM{3.8} there exist sets  \(A := \{ x : P(x) \} \) and \(B := \{ x : Q(x) \} \), i.e. \(A := \{ x : x = a \} \) and \(B := \{ x : x = a \lor x = b \} \).
+Hence \AXM{3.3} (existence of singleton and pair set) is satisfied.
 
-For \AXM{3.4} Let \(A, B\) be particular but arbitrary sets. And Let \(P(x) := x \in A \lor x \in B\). Then by \AXM{3.8}, there exists a set \(C := \{x : P(x)\} \), that is, \(C := \{x : x \in A \lor x \in B\}\). Thus the union of \(A, B\) exists. Hence \AXM{3.4} is satisfied.
+For \AXM{3.4} Let \(A, B\) be particular but arbitrary sets. And Let \(P(x) := x \in A \lor x \in B\).
+Then by \AXM{3.8}, there exists a set \(C := \{x : P(x)\} \), that is, \(C := \{x : x \in A \lor x \in B\}\).
+Thus the union of \(A, B\) exists. Hence \AXM{3.4} is satisfied.
 
-For \AXM{3.5}. Let \(A\) be a particular but arbitrary set and \(P(x)\) be a particular but arbitrary statement that is either true or false for any object \(x \in A\). Then let \(Q(x) := x \in A \land P(x) \text{ is true}\). By \AXM{3.8}, there exists a set \(B := \{ x : Q(x) \} \), that is, \(B := \{x : x \in A \land P(x) \text{ is true}\}\). Thus the specification set \(B\) of \(A\) with statement \(P\) exists. Hence \AXM{3.5} is satisfied.
+For \AXM{3.5}. Let \(A\) be a particular but arbitrary set and \(P(x)\) be a particular but arbitrary statement that is either true or false for any object \(x \in A\).
+Then let \(Q(x) := x \in A \land P(x) \text{ is true}\).
+By \AXM{3.8}, there exists a set \(B := \{ x : Q(x) \} \), that is, \(B := \{x : x \in A \land P(x) \text{ is true}\}\).
+Thus the specification set \(B\) of \(A\) with the specification \(P\) exists. Hence \AXM{3.5} is satisfied.
 
-For \AXM{3.6}. Let \(A\) be a particular but arbitrary set and \(P(x, y)\) satisfy the hypothesis in \AXM{3.6}. By \AXM{3.8}, there exists a set \(B := \{y : P(x, y) \text{ is true}\} \land x \in A\), that is, \(B := \{y : P(x, y) \text{ is true for some \(x \in A\)} \} \). So B is the replacement set of \(A\). Hence \AXM{3.6} is satisfied.
+For \AXM{3.6}. Let \(A\) be a particular but arbitrary set and \(P(x, y)\) satisfies the hypothesis in \AXM{3.6}.
+By \AXM{3.8}, there exists a set \(B := \{y : P(x, y) \text{ is true}\} \land x \in A\), that is, \(B := \{y : P(x, y) \text{ is true for some \(x \in A\)} \} \).
+So B is the replacement set of \(A\). Hence \AXM{3.6} is satisfied.
 
-Finally, for \AXM{3.7}, suppose all natural numbers are objects. Then let \(P(x)\) := ``\(x\) is a natural number'' :). Then there exists a set \( \SET{N} := \{ x : P(x) \} \).
+Finally, for \AXM{3.7}, suppose all natural numbers are objects.
+Then let \(P(x)\) := ``\(x\) is a natural number'' :).
+Then there exists a set \( \SET{N} := \{ x : P(x) \} \).
 
 \end{proof}
 
@@ -68,36 +86,50 @@ The proof of implication of \AXM{3.7} is not rigorous(or escape the detail of th
 \end{note}
 
 \begin{exercise} \label{exercise 3.2.2}
-Use the axiom of regularity, \AXM{3.9} (and the singleton set axiom, \AXM{3.3}) to show that if \(A\) is a set, then \(A \notin A\). Furthermore, show that if \(A\) and \(B\) are two sets, then either \(A \notin B\) or \(B \notin A\) (or both).
+Use the axiom of regularity, \AXM{3.9} (and the singleton set axiom, \AXM{3.3}) to show that if \(A\) is a set, then \(A \notin A\).
+Furthermore, show that if \(A\) and \(B\) are two sets, then either \(A \notin B\) or \(B \notin A\) (or both).
 \end{exercise}
 
 \begin{proof}
-Again, we use \AXM{3.1}. So if \(A\) is a set, then \(A\) is an object, and by \AXM{3.3}, \(\{A\}\) is a singleton set.
+Again, we also use \AXM{3.1}. So if \(A\) is a set, then \(A\) is an object, and by \AXM{3.3}, \(\{A\}\) is a singleton set.
 
-Suppose for the sake of contradiction that there exists an object \(A\) such that \(A \in A\) \MAROON{(1)}. Then because \(A \in \{A\} \)  \MAROON{(2)}, by \MAROON{(1) (2)} we know \(\{A\} \cap A = \{A\} \neq \emptyset\), i.e. not disjoint. But since the singleton set \( \{A\} \) has only one object \(A\), it implies there is no object \(x\) of \(\{A\}\) such that \(x\) and \( \{A\}\) are disjoint, which contradicts \AXM{3.9}. So the supposition is false, so for any object \(A\), \(A \notin A\).
+Suppose for the sake of contradiction that there exists an object \(A\) such that \(A \in A\) \MAROON{(1)}.
+Then because \(A \in \{A\} \) \MAROON{(2)}, by \MAROON{(1) (2)} we know \(\{A\} \cap A = \{A\} \neq \emptyset\), i.e. not disjoint.
+But since the singleton set \( \{A\} \) has only one object \(A\), it implies there is no object \(x\) of \(\{A\}\) such that \(x\) and \( \{A\}\) are disjoint, which contradicts \AXM{3.9}.
+So the supposition is false, so for any object \(A\), \(A \notin A\).
 
 Also, suppose for the sake of contradiction that there exist sets \(A, B\), such that
 \begin{center}
     \(A \in B\) \MAROON{(1)} and \(B \in A\) \MAROON{(2)}.
 \end{center}
-Now consider the set \(\{A, B\}\) (which exists by pair set of \AXM{3.3}), it has two ``elements'' \BLUE{\(A\)} and \GREEN{\(B\)}. For element \BLUE{\(A\)}, since \(B \in \BLUE{A}\) by \MAROON{(2)} and \(B \in \{A, B\}\), \(B \in \BLUE{A} \cap \{A, B\}\), so \BLUE{\(A\)} and \(\{A, B\}\) are not disjoint. For element \GREEN{\(B\)}, since \(A \in \GREEN{B}\) by \MAROON{(1)} and \(A \in \{A, B\}\), \(A \in \GREEN{B} \cap \{A, B\}\), so \GREEN{\(B\)} and \(\{A, B\}\) are not disjoint. So for each element \(x \in \{A, B\}\), \(x\) and \(\{A, B\}\) is not disjoint, which contradicts with \AXM{3.9}.
+Now consider the set \(\{A, B\}\) (which exists by pair set of \AXM{3.3}), it has two ``elements'' \BLUE{\(A\)} and \GREEN{\(B\)}.
+For element \BLUE{\(A\)}, since \(B \in \BLUE{A}\) by \MAROON{(2)} and \(B \in \{A, B\}\), \(B \in \BLUE{A} \cap \{A, B\}\), so \BLUE{\(A\)} and \(\{A, B\}\) are not disjoint.
+For element \GREEN{\(B\)}, since \(A \in \GREEN{B}\) by \MAROON{(1)} and \(A \in \{A, B\}\), \(A \in \GREEN{B} \cap \{A, B\}\), so \GREEN{\(B\)} and \(\{A, B\}\) are not disjoint.
+So for each element \(x \in \{A, B\}\), \(x\) and \(\{A, B\}\) is not disjoint, which contradicts with \AXM{3.9}.
 \end{proof}
 
 \begin{exercise} \label{exercise 3.2.3}
-Show (assuming the other axioms of set theory) that the universal specification axiom, \AXM{3.8}, is equivalent to an axiom postulating the existence of a ``universal set'' \(\Omega\) consisting of all objects (i.e., for all objects \(x\), we have \(x \in \Omega\)). In other words, if \AXM{3.8} is true, then a universal set exists, and conversely, if a universal set exists, then \AXM{3.8} is true. (This may explain why \AXM{3.8} is called the axiom of universal specification.) Note that if a universal set \(\Omega\) existed, then we would have \(\Omega \in \Omega\) by \AXM{3.1} (\(\Omega\) is a set by \AXM{3.8} or universal specification, therefore by \AXM{3.1} it is also an object, and any object is \(\in \Omega\), so \(\Omega \in \Omega\)), contradicting \EXEC{3.2.2}. Thus the axiom of foundation specifically rules out the axiom of universal specification.
+Show (assuming the other axioms of set theory) that the universal specification axiom, \AXM{3.8}, is equivalent to an axiom postulating the existence of a ``universal set'' \(\Omega\) consisting of all objects (i.e., for all objects \(x\), we have \(x \in \Omega\)).
+In other words, if \AXM{3.8} is true, then a universal set exists, and conversely, if a universal set exists, then \AXM{3.8} is true.
+(This may explain why \AXM{3.8} is called the axiom of universal specification.)
+Note that if a universal set \(\Omega\) existed, then we would have \(\Omega \in \Omega\) by \AXM{3.1} (\(\Omega\) is a set by \AXM{3.8} or universal specification, therefore by \AXM{3.1} it is also an object, and any object is \(\in \Omega\), so \(\Omega \in \Omega\)), contradicting \EXEC{3.2.2}.
+Thus the axiom of foundation specifically rules out the axiom of universal specification.
 \end{exercise}
 
 \begin{proof}
-Suppose \AXM{3.8} is true. Then let \(P(x) := true\) for any object \(x\). Then by \AXM{3.8}, there exists at set \(\Omega := \{x : P(x) \text{ is true} \}\), and since \(P(x)\) is true for any object \(x\), \(x \in \Omega\).
+Suppose \AXM{3.8} is true. Then let \(P(x) := true\) for any object \(x\).
+Then by \AXM{3.8}, there exists at set \(\Omega := \{x : P(x) \text{ is true} \}\), and since \(P(x)\) is true for any object \(x\), \(x \in \Omega\).
 
-Suppose the universal set \(\Omega\) exists. Then given an arbitrary property \(P(x)\) satisfiying the hypothesis of \AXM{3.8}, and by \AXM{3.5} (specification), since \(\Omega\) is a set, there exists the set \(A := \{ x \in \Omega : P(x) \text{ is true} \}\). Now we have to show that for every object \(y\),
+Suppose the universal set \(\Omega\) exists.
+Then given an arbitrary property \(P(x)\) satisfying the hypothesis of \AXM{3.8}, and  \AXM{3.5} (specification), since \(\Omega\) is a set, there exists the set \(A := \{ x \in \Omega : P(x) \text{ is true} \}\).
+Now we have to show that for every object \(y\),
 \[
     y \in \{x \in \Omega : P(x) \text{ is true} \} \iff P(y) \text{ is true \BLUE{(1)}}
 \]
-to show that \(y \in \{x \in \Omega : P(x) \text{ is true} \}\) is in fact \(y \in \{x : P(x) \text{ is true} \}\) whose existence is guaranteed by \AXM{3.8}.
+to show that \(\{x \in \Omega : P(x) \text{ is true} \}\) is in fact equivalent to \(\{x : P(x) \text{ is true} \}\) since \(y \in \) ``that set'' if and only if \(P(y)\) is true, this is what \AXM{3.8} required.
 So let \(y\) be an object.
 \begin{itemize}
-    \item Suppose \(y \in \{x \in \Omega : P(x) \text{ is true} \). Then trivally \(P(y)\) is true.
+    \item Suppose \(y \in \{x \in \Omega : P(x) \text{ is true} \} \). Then trivially \(P(y)\) is true.
     \item Suppose \(P(y)\) is true \MAROON{(1)}. Then since \(y\) is an object, \(y \in \Omega\) \MAROON{(2)}. By \MAROON{(1) (2)}, \(y \in \{x \in \Omega : P(x) \text{ is true} \} \).
 \end{itemize}
 So \BLUE{(1)} is proved.

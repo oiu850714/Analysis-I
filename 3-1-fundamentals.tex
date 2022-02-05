@@ -70,10 +70,6 @@ Transitive: Suppose \(A, B, C\) are sets and \(A = B\) and \(B = C\). Then by \D
 \[
   \forall\ x : x \in B \iff x \in C
 \]
-And this implies
-\[
-  \forall\ x : x \in A \iff x \in B \iff x \in C
-\]
 And by logic this implies
 \[
   \forall\ x : x \in A \iff x \in C
@@ -135,11 +131,13 @@ Suppose for the sake of contradiction that \(A\) be a non-empty set and for all 
 \end{proof}
 
 \begin{remark}\label{remark 3.1.7}
-\LEM{3.1.6} asserts that given any non-empty set \(A\), we are allowed to \emph{``choose''} an element \(x\) of \(A\) which demonstrates this non-emptyness. Later on (in \LEM{3.5.12}) we will show that given any \textbf{finite} number of non-empty sets, say \(A_1, \dots, A_n\), it is possible to choose one element \(x_1, \dots, x_n\) from each set \(A_1, \dots, A_n\); this is known as ``finite choice''. However, in order to choose elements from an \textbf{infinite} number of sets, we need an additional axiom, the \emph{axiom of choice} (\AXM{8.1}).
+\LEM{3.1.6} asserts that given any non-empty set \(A\), we are allowed to \emph{``choose''} an element \(x\) of \(A\) which demonstrates this non-emptyness. 
+Later on (in \LEM{3.5.12}) we will show that given any \textbf{finite} number of non-empty sets, say \(A_1, \dots, A_n\), it is possible to choose one element \(x_1, \dots, x_n\) from each set \(A_1, \dots, A_n\); this is known as ``finite choice''. 
+However, in order to choose elements from an \textbf{infinite} number of sets, we need an additional axiom, the \emph{axiom of choice} (\AXM{8.1}).
 \end{remark}
 
 \begin{note}
-\RMK{3.1.7} 在講\ ``finite choice'' 的部分，看起來是說要被選的集合是有限個，但是沒有規定個別集合的元素數量要有限個，目前還不確定這意味著什麼。
+\RMK{3.1.7} 在講\ ``finite choice'' 的部分，看起來是說要被選的集合是有限個，但是沒有規定個別集合的元素「數量」(Cardinality?)要有限個，目前還不確定這意味著什麼。
 \end{note}
 
 \begin{remark} \label{remark 3.1.8}
@@ -149,7 +147,8 @@ Note that the empty set is not the same thing as the natural number \(0\). One i
 We now present further axioms to enrich the class of sets available.
 
 \begin{axiom}[Singleton sets and pair sets]\label{axm 3.3}
-If \(a\) is an object, then there exists a set \( \{a\} \) whose \emph{only} element is \(a\), i.e., for every object \(y\), we have \(y \in \{a\}\) if and only if \(y = a\); we refer to \( \{a\} \) as the \emph{singleton set} whose element is \(a\). Furthermore, if \(a\) and \(b\) are objects, then there exists a set \( \{a, b\} \) whose only elements are \(a\) and \(b\); i.e., for every object \(y\), we have \( y \in \{a, b\} \) if and only if \(y = a\) or \(y = b\); we refer to this set as the \emph{pair set} formed by \(a\) and \(b\).
+If \(a\) is an object, then there exists a set \( \{a\} \) whose \emph{only} element is \(a\), i.e., for every object \(y\), we have \(y \in \{a\}\) if and only if \(y = a\); we refer to \( \{a\} \) as the \emph{singleton set} whose element is \(a\). 
+Furthermore, if \(a\) and \(b\) are objects, then there exists a set \( \{a, b\} \) whose only elements are \(a\) and \(b\); i.e., for every object \(y\), we have \( y \in \{a, b\} \) if and only if \(y = a\) or \(y = b\); we refer to this set as the \emph{pair set} formed by \(a\) and \(b\).
 \end{axiom}
 
 \begin{note}
@@ -157,7 +156,7 @@ If \(a\) is an object, then there exists a set \( \{a\} \) whose \emph{only} ele
 \end{note}
 
 \begin{note}
-前方高能注意: \RMK{3.1.9} 在解釋\ \AXM{3.3} 裡面的\ singleton、\ pair，還有\ \AXM{3.4} 這三者，若假設``其中一部分''是公理，則剩下的可以從那個部分直接推得，不用當作是公理，i.e. 剩下的只須為定理，不用是公理。這種\ redundant\ 在本節開頭有講過，便於推導，but does no real harm。BTW 這個\ remark 裡面有一堆\ (why?) 全部都要自己推導。
+前方高能注意: \RMK{3.1.9} 在解釋\ \AXM{3.3} 裡面的\ singleton、\ pair，還有\ \AXM{3.4} 這三者，若假設``其中一部分''是公理，則剩下的可以從那個部分直接推得，不用當作是公理，i.e. 剩下的只須為定理，不用是公理。這種\ redundant\ 在本節開頭有講過，目的是便於推導，but does no real harm。BTW 這個\ remark 裡面有一堆\ (why?) 全部都要自己推導。
 \end{note}
 
 \begin{remark} \label{remark 3.1.9}
@@ -170,8 +169,7 @@ Also, \DEF{3.1.4} also ensures that \( \{a, b\} = \{b, a\} \) (why? \MAROON{(2)}
 
 \emph{Conversely}, the \textbf{pair set} axiom will \textbf{follow from} the \textbf{singleton} set axiom \textbf{and} the \textbf{pairwise union axiom \AXM{3.4}} (see  \LEM{3.1.13}).
 
-One may wonder why we don’t go further and create triplet axioms, quadruplet axioms, etc.; however there will be no need for this once we introduce the pairwise union axiom
-below.
+One may wonder why we don’t go further and create triplet axioms, quadruplet axioms, etc.; however there will be no need for this once we introduce the pairwise union axiom below.
 \end{remark}
 
 \begin{proof}
@@ -205,22 +203,24 @@ below.
 \end{proof}
 
 \begin{example} \label{example 3.1.10}
-Since \(\emptyset\) is a set (and hence an object), so is singleton set \(\{ \emptyset \}\), i.e., the set whose only element is \( \emptyset \), is a set (and it is not the same set as \( \emptyset \), \( \{ \emptyset \} \neq  \emptyset \) (why? See \EXEC{3.1.2}). Similarly, the singleton set \( \{ \{ \emptyset \} \} \) and the pair set \( \{ \emptyset, \{ \emptyset \} \} \) are also sets. These three sets are not equal to each other (\EXEC{3.1.2}).
+Since \(\emptyset\) is a set (and hence an object), so is singleton set \(\{ \emptyset \}\), i.e., the set whose only element is \( \emptyset \), is a set (and it is not the same set as \( \emptyset \), \( \{ \emptyset \} \neq  \emptyset \) (why? See \EXEC{3.1.2}).
+Similarly, the singleton set \( \{ \{ \emptyset \} \} \) and the pair set \( \{ \emptyset, \{ \emptyset \} \} \) are also sets.
+These three sets are not equal to each other (\EXEC{3.1.2}).
 \end{example}
 
 \begin{note}
-現在有的三個公理已經可以讓我們建構出一堆集合了，但是他們的元素都不超過兩個，雖然元素本身可能長得很複雜。
+現在有的三個公理已經可以讓我們建構出一堆集合了，但是他們的元素都不超過兩個，雖然元素本身可能長得很複雜，所以接下來引入聯集的概念。
 \end{note}
 
 \begin{axiom} [Pairwise union] \label{axm 3.4}
 Given any two sets \(A, B\), there exists a set \(A \cup B\), called the \emph{union} \(A \cup B\) of \(A\) and \(B\), whose elements consists of all the elements which belong to \(A\) or \(B\) or both. In other words, for any object \(x\),
 \[
-    x \in A \cup B \iff (x \in A \lor x \in B)
-\].
+    x \in A \cup B \iff (x \in A \lor x \in B).
+\]
 \end{axiom}
 
 \begin{note}
-注意\ Union 的定義完全是由\ \( \in \) (還有\ or) 兜出來的，所以符合替換公理。
+注意\ Union 的定義完全是由\ \( \in \) (還有\ logic or) 兜出來的，所以符合替換公理。
 \end{note}
 
 \begin{example}
@@ -228,7 +228,9 @@ Given any two sets \(A, B\), there exists a set \(A \cup B\), called the \emph{u
 \end{example}
 
 \begin{remark} \label{remark 3.1.12}
-If \(A, B\) are sets, \(A'\) is also a set which is equal to \(A\), then \(A \cup B\) is equal to \(A' \cup B\) (why? \MAROON{(1)} One needs to use \AXM{3.4} and \DEF{3.1.4}). Similarly if \(B'\) is a set which is equal to \(B\), then \(A \cup B\) is equal to \(A \cup B'\). Thus the operation of union \emph{obeys the axiom of substitution}, and is thus well-defined on sets.
+If \(A, B\) are sets, \(A'\) is also a set which is equal to \(A\), then \(A \cup B\) is equal to \(A' \cup B\) (why? \MAROON{(1)} One needs to use \AXM{3.4} and \DEF{3.1.4}). 
+Similarly if \(B'\) is a set which is equal to \(B\), then \(A \cup B\) is equal to \(A \cup B'\).
+Thus the operation of union \emph{obeys the axiom of substitution}, and is thus well-defined on sets.
 \end{remark}
 
 \begin{proof}
@@ -280,9 +282,9 @@ So \(\forall x, x \in \{a, b\} \iff x \in \{a\} \cup \{b\} \), so \(\{a, b\} = \
          \iff & (x \in A \lor x \in B) \lor x \in C & \text{by \AXM{3.4}} \\
          \iff & x \in A \lor (x \in B \lor x \in C) & \text{by logic} \\
          \iff & x \in A \lor (x \in B \cup C) & \text{by \AXM{3.4}} \\
-         \iff & x \in A \cup (x \in B \cup C) & \text{by \AXM{3.4}} \\
+         \iff & x \in A \cup (B \cup C) & \text{by \AXM{3.4}} \\
 \end{align*}
-So first statement if and only if last statement, so \((A \cup B) \cup C = A \cup (B \cup C)\).
+So the first statement is true if and only if the last statement, so \((A \cup B) \cup C = A \cup (B \cup C)\).
 
 \(A \cup A = A \cup \emptyset = \emptyset \cup A = A\): for any object \(x\),
 \begin{align*}
@@ -310,7 +312,7 @@ Let \(A, B\) be sets. We say that \(A\) is a subset of \(B\), denoted \(A \subse
 \begin{center}
 For any object \(x\), \(x \in A \implies x \in B\).
 \end{center}
-We say that \(A\) is a proper subset of \(B\), denoted \(A \subsetneq B\), if \(A \subseteq B\) and \(A \neq B\).
+We say that \(A\) is a \emph{proper subset} of \(B\), denoted \(A \subsetneq B\), if \(A \subseteq B\) and \(A \neq B\).
 \end{definition}
 
 \begin{remark} \label{remark 3.1.16}
@@ -322,9 +324,9 @@ Because these definition\textbf{s}(both \(\subseteq\) and \(\subsetneq\)) involv
 \end{example}
 
 \begin{proof}
-Let \(x\) be arbitrarily chosen object. Then if \(x \in A\) then \(x \in A\) is trivially true. By \DEF{3.1.15}, \(A \subseteq A\).
+Let \(x\) be arbitrarily chosen object. Then ``if \(x \in A\) then \(x \in A\)'' is trivially true. By \DEF{3.1.15}, \(A \subseteq A\).
 
-Let \(x\) be arbitrarily chosen object. Then if \(x \in \emptyset\) then \(x \in A\) is vacuously true. By \DEF{3.1.15}, \(\emptyset \subseteq A\).
+Let \(x\) be arbitrarily chosen object. Then ``if \(x \in \emptyset\) then \(x \in A\)'' is \emph{vacuously} true. By \DEF{3.1.15}, \(\emptyset \subseteq A\).
 \end{proof}
 
 \begin{note}
@@ -332,25 +334,30 @@ Let \(x\) be arbitrarily chosen object. Then if \(x \in \emptyset\) then \(x \in
 \end{note}
 
 \begin{proposition} [Sets are partially ordered by set inclusion] \label{prop 3.1.18}
-Let \(A, B, C\) be sets. If \(A \subseteq B\) and \(B \subsetneq C\) then \(A \subseteq C\). If \(A \subseteq B\) and \(B \subseteq A\), then \(A = B\). Finally, if \(A \subsetneq B\) and \(B \subsetneq C\) then \(A \subsetneq C\).
+Let \(A, B, C\) be sets.
+If \(A \subseteq B\) and \(B \subseteq C\) then \(A \subseteq C\).
+If \(A \subseteq B\) and \(B \subseteq A\), then \(A = B\).
+Finally, if \(A \subsetneq B\) and \(B \subsetneq C\) then \(A \subsetneq C\).
 \end{proposition}
 
 \begin{proof}
-Transitive: Let \(A, B, C\) be sets such that \(A \subseteq B\) \MAROON{(1)} and \(B \subseteq C\) \MAROON{(2)}. Suppose object \(x \in A\), wanted: \(x \in C\). Then by \MAROON{(1)}, \(x \in B\), which with \MAROON{(2)} implies \(x \in C\).
+Transitive: Let \(A, B, C\) be sets such that \(A \subseteq B\) \MAROON{(1)} and \(B \subseteq C\) \MAROON{(2)}. Suppose object \(x \in A\), we have to show \(x \in C\). Then by \MAROON{(1)}, \(x \in B\), which with \MAROON{(2)} implies \(x \in C\).
 
-Anti-Symmetric: Let \(A, B\) be sets such that \(A \subseteq B \land B \subseteq A\). Wanted: \(A = B\). Then we have
+Anti-Symmetric: Let \(A, B\) be sets such that \(A \subseteq B \land B \subseteq A\), we have to show \(A = B\). Then we have
 \begin{align*}
      & A \subseteq B \land B \subseteq A \\
 \iff & (\forall\ x : x \in A \implies x \in B) \land (\forall\ x : x \in B \implies x \in A) & \text{by \DEF{3.1.15}} \\
 \iff & (\forall\ x : x \in A \iff x \in B) & \text{by trivially simplifying logic} \\
 \iff & A = B. & \text{by \DEF{3.1.4}}
 \end{align*}
-\end{proof}
 
-Transitive for proper-inclusion: Let \(A, B, C\) be sets such that \(A \subsetneq B\) \MAROON{(1)} and \(B \subsetneq C\) \MAROON{(2)}. Wanted: \(A \subsetneq C\), that is,
+Transitive for proper-inclusion: Let \(A, B, C\) be sets such that \(A \subsetneq B\) \MAROON{(1)} and \(B \subsetneq C\) \MAROON{(2)}, we have to show \(A \subsetneq C\), that is,
 \[
-    A \subseteq C \land A \neq C
-\] The former is trivially true since \(A \subsetneq B\) by definition implies \(A \subseteq B\) and \(B \subsetneq C\) by definition implies \(B \subseteq C\), and by transitivity of set-inclusion \(A \subseteq B\) and \(B \subseteq C\) implies \(A \subseteq C\). For the latter, suppose for the sake of contradiction that \(A = C\). Then by \MAROON{(1)} and Axiom of Substitution \AXM{a.7.4}, we have \(C \subsetneq B\), but that implies \(C \subseteq B\) and we have known \(B \subseteq C\), together implies \(B = C\) by anti-symmetry of set-inclusion. But this contradicts \(B \subsetneq C\) because that implies \(B \neq C\).
+    A \subseteq C \land A \neq C.
+\]
+The former is trivially true since \(A \subsetneq B\) by definition implies \(A \subseteq B\) and \(B \subsetneq C\) by definition implies \(B \subseteq C\), and by transitivity of set-inclusion \(A \subseteq B\) and \(B \subseteq C\) implies \(A \subseteq C\).
+For the latter, suppose for the sake of contradiction that \(A = C\). Then by \MAROON{(1)} and Axiom of Substitution \AXM{a.7.4}, we have \(C \subsetneq B\), but that implies \(C \subseteq B\) and we have known \(B \subseteq C\), together implies \(B = C\) by anti-symmetry of set-inclusion. But this contradicts \(B \subsetneq C\) because that implies \(B \neq C\).
+\end{proof}
 
 \begin{note}
 根據本書的脈絡，我們直到\ \PROP{3.1.18} 才能用\ \(A \subseteq B \land B \subseteq A\) 的方法來證明\ \(A = B\)。
@@ -361,7 +368,9 @@ There is a relationship between subsets and unions: see for instance \EXEC{3.1.7
 \end{remark}
 
 \begin{remark} [Difference between the subset relation \(\subsetneq\) and the less than relation \(<\)] \label{remark 3.1.20}
-根據自然數\ \(<\) 的三一律(\PROP{2.2.13})，若兩自然數\ \(a, b\) 不相等，則要馬\ \(a < b\) 要馬\ \(b < a\)。但任兩不相等集合\ \(A, B\)，\(A \subsetneq B\) 跟\ \(B \subsetneq A\) 可以都不成立。根據\ \DEF{8.5.1}，\DEF{8.5.3}，自然數(這個集合)配上\ \(<\) relation 是\ totally ordered，而(所有的；這個形容詞實際上「目前」還不精確，別忘了我們還沒列完公理)集合配上\ \(\subsetneq\) 是\ partially ordered。
+根據自然數\ \(<\) 的三一律(\PROP{2.2.13})，若兩自然數\ \(a, b\) 不相等，則要馬\ \(a < b\) 要馬\ \(b < a\)。
+但任兩不相等集合\ \(A, B\)，\(A \subsetneq B\) 跟\ \(B \subsetneq A\) 可以都不成立。
+根據\ \DEF{8.5.1} 和\ \DEF{8.5.3}，自然數(這個集合)配上\ \(<\) relation 是\ totally ordered，而「所有的」(這個形容詞實際上「目前」還不精確，別忘了我們還沒列完公理)集合配上\ \(\subsetneq\) 是\ partially ordered。
 \end{remark}
 
 \begin{remark} [Subset relation and element relation] \label{remark 3.1.21}
@@ -371,22 +380,22 @@ BTW, It is important to distinguish sets from their elements, as \textbf{they ca
 \end{remark}
 
 \begin{note}
-上面\ remark 可參考 \href{https://math.stackexchange.com/questions/851599/why-set-of-natural-numbers-is-infinite-while-each-natural-number-is-finite}{這篇}，可用數學歸納法推得\ every natural number 是\ finite。但是「set 是 infinite」這點可能要先定義\ set 的\ cardinality? 我還不是很確定。
+上面\ remark 可參考 \href{https://math.stackexchange.com/questions/851599/why-set-of-natural-numbers-is-infinite-while-each-natural-number-is-finite}{這篇}，可用數學歸納法推得\ every natural number 是\ finite。但是「set 是\ infinite」這點可能要先定義\ set 的\ cardinality? 我還不是很確定。
 \end{note}
 
-\begin{note}
 We now give an axiom which easily allows us to \emph{create subsets out of} larger sets.
-\end{note}
 
 \begin{axiom} [Axiom of specification] \label{axm 3.5}
-Let \(A\) be a set, and for each \(x \in A\), let \(P(x)\) be a \textbf{property} pertaining to \(x\) (i.e., \(P(x)\) is either a true statement or a false statement). Then \textbf{there exists} a set, called \( \{ x \in A : P(x) \text{\ is true} \} \) (or simply \( \{ x \in A : P(x) \} \) for short), whose elements are precisely the elements \(x\) in \(A\) for which \(P(x)\) is true. In other words, for any object \(y\),
+Let \(A\) be a set, and for each \(x \in A\), let \(P(x)\) be a \textbf{property} pertaining to \(x\) (i.e., \(P(x)\) is either a true statement or a false statement).
+Then \textbf{there exists} a set, called \( \{ x \in A : P(x) \text{\ is true} \} \) (or simply \( \{ x \in A : P(x) \} \) for short), whose elements are precisely the elements \(x\) in \(A\) for which \(P(x)\) is true. In other words, for any object \(y\),
 \[
     y \in \{ x \in A : P(x) \text{\ is true} \} \iff (y \in A \text{\ and \(P(y)\) is true}).
 \]
 \end{axiom}
 
 \begin{note}
-這個公理(axiom scheme)的前半部我看起來好像寫成「對於任意一個\ predicate \(P\) 使得對於所有\ \(x \in A\)，\(P(x)\) 要馬是\ true 要馬是\ false」好像比較準確\dots。原文看起來會感覺是對於每個\ \(x \in A\)，都存在一個\ predicate P，使得\ \(P(x)\) 要馬為\ true 要馬為\ false。這兩個應該是完全不同的意思。參考\href{https://math.stackexchange.com/questions/9542/how-can-i-write-the-axiom-of-specification-as-a-sentence}{這個}。之後的\ \AXM{3.6} 也是同理。
+這個公理(axiom scheme)的前半部我看起來好像寫成「對於任意一個\ predicate \(P\) 使得對於所有\ \(x \in A\)，\(P(x)\) 要馬是\ true 要馬是\ false」好像比較準確\dots。原文看起來會感覺是對於每個\ \(x \in A\)，都存在一個\ predicate \(P\)，使得\ \(P(x)\) 要馬為\ true 要馬為\ false。
+這兩個應該是完全不同的意思。參考\href{https://math.stackexchange.com/questions/9542/how-can-i-write-the-axiom-of-specification-as-a-sentence}{這個}。之後的\ \AXM{3.6} 也是同理。
 \end{note}
 
 \begin{note}
@@ -396,13 +405,15 @@ One can verify that the axiom of substitution \emph{works for specification}, th
 \end{note}
 
 \begin{proof}
-\MAROON{(1)}: Let \(y\) be an arbitrary object such that \(y \in \{ x \in A : P(x) \text{\ is true} \} \). By \AXM{3.5}, we have \(y \in A \text{\ and \(P(y)\) is true}\). In particular, \(y \in A\). Since \(y\) is arbitrary, by \DEF{3.1.15}, \( \{ x \in A : P(x) \text{\ is true} \} \subseteq A \).
+\MAROON{(1)}: Let \(y\) be an arbitrary object such that \(y \in \{ x \in A : P(x) \text{\ is true} \} \).
+By \AXM{3.5}, we have \(y \in A \text{\ and \(P(y)\) is true}\). In particular, \(y \in A\).
+Since \(y\) is arbitrary, by \DEF{3.1.15}, \( \{ x \in A : P(x) \text{\ is true} \} \subseteq A \).
 
 \MAROON{(2)}:
 \begin{align*}
          & y \in \{ x \in A : P(x) \} \\
     \iff & (y \in A \land P(y)) & \text{by \AXM{3.5}} \\
-    \iff & (y \in A' \land P(y)) & \text{since A = A', and \(y \in A\) and \AXM{a.7.4}} \\
+    \iff & (y \in A' \land P(y)) & \text{since \(A = A'\), and \(y \in A\) and \AXM{a.7.4}} \\
     \iff & y \in \{ x \in A' : P(x) \} & \text{by \AXM{3.5}}
 \end{align*}
 \end{proof}
@@ -417,7 +428,8 @@ BTW，\AXM{3.5} 裡面的冒號\ ``:'' 常會改成\  ``\(\mid\)''，主要是�
 \end{note}
 
 \begin{note}
-接下來我們用\ \AXM{3.5} 來定義其它的\ set operation: 交集和補集(聯集已經在\ \AXM{3.4} 定義了。但蠻奇妙的，聯集是公理，但交集是從\ specification 進一步定義的)。
+接下來我們用\ \AXM{3.5} 來定義其它的\ set operation: 交集和補集(聯集已經在\ \AXM{3.4} 定義了。
+但蠻奇妙的，聯集是公理，但交集是從\ specification 進一步定義的)。
 \end{note}
 
 \begin{definition} [Intersections] \label{def 3.1.23}
@@ -428,13 +440,14 @@ The intersection \(S_1 \cap S_2 \) of two sets is \emph{defined} to be the set
 \end{definition}
 
 \begin{note}
-注意這個定義看起來有點玄妙，我猜是因為目前用\ \AXM{3.5}，你必須從一個已經是\ set 的\ object 做\ specification，所以一定要先說要從哪個集合拿元素(i.e. \(S_1\))，然後再說要符合什麼\ property(i.e. \(x \in S_2\))。
-
+注意這個定義看起來有點玄妙，我猜是因為目前用\ \AXM{3.5} 來定義的關係。
+你必須從一個\textbf{已經是\ set} 的\ object 做\ specification，所以一定要先說要從哪個集合拿元素(i.e. \(S_1\))，然後再說要符合什麼\ property(i.e. \(x \in S_2\))。
 實際上某種不精確的寫法\ \( \{ x : x \in S_1 \land x \in S_2 \} \) 是沒有定義的，而且還可能會遇到羅素悖論?
 \end{note}
 
 \begin{remark} \label{remark 3.1.24}
-Note that this definition is obeys the axiom of substitution \AXM{a.7.4} because it is defined in terms of more primitive operations which were already known to obey the axiom of substitution. Similar remarks apply to future definitions in this chapter and will usually not be mentioned explicitly again.
+Note that this definition is obeys the axiom of substitution \AXM{a.7.4} because it is defined in terms of more primitive operations which were already known to obey the axiom of substitution.
+Similar remarks apply to future definitions in this chapter and will usually not be mentioned explicitly again.
 \end{remark}
 
 \begin{example}
@@ -446,15 +459,16 @@ Note that this definition is obeys the axiom of substitution \AXM{a.7.4} because
 \end{remark}
 
 \begin{note}
-Two set \(A, B\) are said to be \emph{disjoint} if \(A \cap B = \emptyset\). Meanwhile, the sets \(\emptyset\) and \(\emptyset\) are disjoint but not distinct (why?).
+Two set \(A, B\) are said to be \emph{disjoint} if \(A \cap B = \emptyset\).
+Meanwhile, the sets \(\emptyset\) and \(\emptyset\) are disjoint but not distinct (why?).
 \end{note}
 
 \begin{proof}
-It is trivially that for any set \(A\), \(A \cap \BLUE{\emptyset} = \emptyset\). In particular, \(\GREEN{\emptyset} \cap \BLUE{\emptyset} = \emptyset\), so by definition of disjoint, \(\GREEN{\emptyset}\) and \(\BLUE{\emptyset}\) are disjoint. But \(\GREEN{\emptyset} = \BLUE{\emptyset}\), so \(\GREEN{\emptyset}\) and \(\BLUE{\emptyset}\) are not distinct.
+It is trivial that for any set \(A\), \(A \cap \BLUE{\emptyset} = \emptyset\). In particular, \(\GREEN{\emptyset} \cap \BLUE{\emptyset} = \emptyset\), so by definition of disjoint, \(\GREEN{\emptyset}\) and \(\BLUE{\emptyset}\) are disjoint. But \(\GREEN{\emptyset} = \BLUE{\emptyset}\), so \(\GREEN{\emptyset}\) and \(\BLUE{\emptyset}\) are not distinct.
 \end{proof}
 
 \begin{definition} [Difference sets] \label{def 3.1.27}
-Given two sets \(A\) and \(B\), we \emph{define} the set \(A − B\) or \(A \setminus B\) to be the set \(A\) with any elements of \(B\) removed:
+Given two sets \(A\) and \(B\), we \emph{define} the set \(A - B\) or \(A \setminus B\) to be the set \(A\) with any elements of \(B\) removed:
 \[
 A \setminus B := \{ x \in A : x \notin B \}
 \]
@@ -480,7 +494,7 @@ Let \(A, B, C\) be sets, and let \(X\) be a set containing \(A, B, C\) as subset
 \end{proposition}
 
 \begin{note}
-不知為何書中要用\ ``containing'' 來說\ \(X\) 是\ \(A, B, C\) 的宇集，對這個用詞感到奇怪。
+\(X\) 不一定要是\ \(A, B, C\) 的宇集。我是指\ \(A \cup B \cup C \subsetneq X\) 也可以。
 \end{note}
 
 \begin{remark}\label{remark 3.1.29}
@@ -557,11 +571,11 @@ Let \(x\) be an arbitrary object, then
 \((A \cap B) \cap C = A \cap (B \cap C)\): Let \(x\) be an arbitrary object. Then
 \begin{align*}
          & x \in (A \cap B) \cap C \\
-    \iff & x \in (A \cap B) \land x \in C & \text{by \DEF{3.1.23}} \\
+    \iff & x \in A \cap B \land x \in C & \text{by \DEF{3.1.23}} \\
     \iff & (x \in A \land x \in B) \land x \in C & \text{by \DEF{3.1.23}} \\
     \iff & x \in A \land (x \in B \land x \in C) & \text{by logic} \\
-    \iff & x \in A \land (x \in B \cap C) & \text{by \DEF{3.1.23}} \\
-    \iff & x \in A \cap (x \in B \cap C) & \text{by \DEF{3.1.23}} \\
+    \iff & x \in A \land x \in B \cap C & \text{by \DEF{3.1.23}} \\
+    \iff & x \in A \cap (B \cap C) & \text{by \DEF{3.1.23}} \\
 \end{align*}
 \end{proof}
 
@@ -570,7 +584,7 @@ Let \(x\) be an arbitrary object, then
 \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\): Let \(x\) be an arbitrary object. Then
 \begin{align*}
          & x \in A \cap (B \cup C) \\
-    \iff & x \in A \land x \in (B \cup C) & \text{by \DEF{3.1.23}} \\
+    \iff & x \in A \land x \in B \cup C & \text{by \DEF{3.1.23}} \\
     \iff & x \in A \land (x \in B \lor x \in C) & \text{by \AXM{3.4}} \\
     \iff & (x \in A \land x \in B) \lor (x \in A \land x \in C) & \text{by distributive law of \(\land\), \(\lor\)} \\
     \iff & (x \in A \cap B) \lor (x \in A \land x \in C) & \text{by \DEF{3.1.23}} \\
@@ -581,10 +595,10 @@ Let \(x\) be an arbitrary object, then
 \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\): Let \(x\) be an arbitrary object. Then
 \begin{align*}
          & x \in A \cup (B \cap C) \\
-    \iff & x \in A \lor x \in (B \cap C) & \text{by \AXM{3.4}} \\
+    \iff & x \in A \lor x \in B \cap C & \text{by \AXM{3.4}} \\
     \iff & x \in A \lor (x \in B \land x \in C) & \text{by \DEF{3.1.23}} \\
     \iff & (x \in A \lor x \in B) \land (x \in A \lor x \in C) & \text{by distributive law of \(\land\), \(\lor\)} \\
-    \iff & (x \in A \cup B) \lor (x \in A \lor x \in C) & \text{by \AXM{3.4}} \\
+    \iff & (x \in A \cup B) \land (x \in A \lor x \in C) & \text{by \AXM{3.4}} \\
     \iff & (x \in A \cup B) \land (x \in A \cup C) & \text{by \AXM{3.4}} \\
     \iff & x \in (A \cup B) \cap (A \cup C) & \text{by \DEF{3.1.23}}
 \end{align*}
@@ -596,7 +610,7 @@ Let \(x\) be an arbitrary object, then
 \(A \cup (X \setminus A) = X\): Let \(x\) be an arbitrary object. Then
 \begin{align*}
          & x \in A \cup (X \setminus A) \\
-    \iff & x \in A \lor x \in (X \setminus A) & \text{by \AXM{3.4}} \\
+    \iff & x \in A \lor x \in X \setminus A & \text{by \AXM{3.4}} \\
     \iff & x \in A \lor (x \in X \land x \notin A) & \text{by \DEF{3.1.27}} \\
     \iff & (x \in A \lor x \in X) \land (x \in A \lor x \notin A) & \text{by distributive law of \(\land, \lor\)} \\
     \iff & (x \in A \cup X) \land (x \in A \lor x \notin A) & \text{by \AXM{3.5}} \\
@@ -608,9 +622,9 @@ Let \(x\) be an arbitrary object, then
 \(A \cap (X \setminus A) = \emptyset\): Let \(x\) be an arbitrary object. Then
 \begin{align*}
          & x \in A \cap (X \setminus A) \\
-    \iff & x \in A \land x \in (X \setminus A) & \text{by \DEF{3.1.23}} \\
+    \iff & x \in A \land x \in X \setminus A & \text{by \DEF{3.1.23}} \\
     \iff & x \in A \land (x \in X \land x \notin A) & \text{by \DEF{3.1.27}} \\
-    \iff & (x \in A \land x \in X) \land (x \in A \land x \notin A) & \text{clumsy, but valid, for the sake of duality} \\
+    \iff & (x \in A \land x \in X) \land (x \in A \land x \notin A) & \text{clumsy, but valid, by logic} \\
     \iff & (x \in A \cap X) \land (x \in A \land x \notin A) & \text{by \DEF{3.1.23}} \\
     \iff & (x \in A) \land (x \in A \land x \notin A) & \text{by \PROP{3.1.28}(b)} \\
     \iff & (x \in A) \land (\text{false}) & \text{see the bottom of page 34} \\
@@ -624,12 +638,12 @@ This means given arbitrary object \(x\), \(x \notin A \cap (X \setminus A)\). By
 \(X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B) \): Let \(x\) be an arbitrary object. Then
 \begin{align*}
          & x \in X \setminus (A \cup B) \\
-    \iff & x \in X \land x \notin (A \cup B) & \text{by \DEF{3.1.27}} \\
+    \iff & x \in X \land x \notin A \cup B & \text{by \DEF{3.1.27}} \\
     \iff & x \in X \land \lnot(x \in A \cup B) & \text{by the valid part of informal \DEF{3.1.1}} \\
     \iff & x \in X \land \lnot(x \in A \lor x \in B) & \text{by \AXM{3.4}} \\
     \iff & x \in X \land (\lnot(x \in A) \land \lnot(x \in B)) & \text{by De Morgan law of logic} \\
-    \iff & x \in X \land (x \notin A \land x \notin B) & \text{by \DEF{3.1.1} valid part} \\
-    \iff & (x \in X \land x \notin A) \land (x \in X \land x \notin B) & \text{clumsy, but valid} \\
+    \iff & x \in X \land (x \notin A \land x \notin B) & \text{by \DEF{3.1.1}, valid part} \\
+    \iff & (x \in X \land x \notin A) \land (x \in X \land x \notin B) & \text{clumsy, but valid, by logic} \\
     \iff & x \in (X \setminus A) \land (x \in X \land x \notin B) & \text{by \DEF{3.1.27}} \\
     \iff & x \in (X \setminus A) \land x \in (X \setminus B) & \text{by \DEF{3.1.27}} \\
     \iff & x \in (X \setminus A) \cap (X \setminus B) & \text{by \DEF{3.1.23}}
@@ -642,7 +656,7 @@ This means given arbitrary object \(x\), \(x \notin A \cap (X \setminus A)\). By
     \iff & x \in X \land \lnot(x \in A \cap B) & \text{by the valid part of informal \DEF{3.1.1}} \\
     \iff & x \in X \land \lnot(x \in A \land x \in B) & \text{by \DEF{3.1.23}} \\
     \iff & x \in X \land (\lnot(x \in A) \lor \lnot(x \in B)) & \text{by De Morgan law of logic} \\
-    \iff & x \in X \land (x \notin A \lor x \notin B) & \text{by \DEF{3.1.1} valid part} \\
+    \iff & x \in X \land (x \notin A \lor x \notin B) & \text{by \DEF{3.1.1}, valid part} \\
     \iff & (x \in X \land x \notin A) \lor (x \in X \land x \notin B) & \text{by distributive law of \(\land, \lor\)} \\
     \iff & x \in (X \setminus A) \lor (x \in X \land x \notin B) & \text{by \DEF{3.1.27}} \\
     \iff & x \in (X \setminus A) \lor x \in (X \setminus B) & \text{by \DEF{3.1.27}} \\
@@ -651,20 +665,27 @@ This means given arbitrary object \(x\), \(x \notin A \cap (X \setminus A)\). By
 \end{proof}
 
 \begin{note}
-BTW in essential you can just swap \((\land, \lor)\), \((\cap, \cup)\), (\DEF{3.1.23}, \AXM{3.4}), \((\emptyset, X)\) from the first-part of each proof to get the second-part of each proof, although sometimes the result may be clumsy, but it is valid. This is guaranteed by the \emph{duality}, see \RMK{3.1.30}.
+BTW in essential you can just swap \((\land, \lor)\), \((\cap, \cup)\), (\DEF{3.1.23}, \AXM{3.4}), \((\emptyset, X)\) from the first-part of each proof to get the second-part of each proof.
+Although sometimes the result may be clumsy(some steps can be simplified), but it is valid.
+This is guaranteed by the \emph{duality}, see \RMK{3.1.30}.
 \end{note}
 
 \begin{remark} \label{remark 3.1.30}
-The reader may observe \emph{a certain symmetry} in the above laws between \(\cup\) and \(\cap\), and between \(X\) and \(\emptyset\). This is an example of \href{https://www.wikiwand.com/en/Duality_(mathematics)}{\textbf{duality}} -- two distinct properties or objects being dual to each other. In this case, the duality is manifested by the complementation relation \(A \mapsto X \setminus A \); the de Morgan laws assert that this relation converts unions into intersections and vice versa. (It also interchanges \(X\) and the empty set.) The above laws are collectively known as \textbf{the laws of Boolean algebra}, after the mathematician George Boole (1815–1864), and are also applicable to a number of other objects other than sets; it plays a
-particularly important r\^{o}le in logic.
+The reader may observe \emph{a certain symmetry} in the above laws between \(\cup\) and \(\cap\), and between \(X\) and \(\emptyset\).
+This is an example of \href{https://www.wikiwand.com/en/Duality_(mathematics)}{\textbf{duality}} -- two distinct properties or objects being dual to each other. In this case, the duality is manifested by the complementation relation \(A \mapsto X \setminus A \);
+the de Morgan laws assert that this relation converts unions into intersections and vice versa. (It also interchanges \(X\) and the empty set.)
+The above laws are collectively known as \textbf{the laws of Boolean algebra}, after the mathematician George Boole (1815–1864), and are also applicable to a number of other objects other than sets;
+it plays a particularly important r\^{o}le in logic.
 \end{remark}
 
 \begin{note}
-One of the basic things we wish to do with a set is take each of the objects of that set, and somehow \textbf{transform each such object} into a new object; This is not something we can do directly using only the axioms we already have, so we need a new axiom.
+One of the basic things we wish to do with a set is take each of the objects of that set, and somehow \textbf{transform each such object} into a new object;
+This is not something we can do directly using only the axioms we already have, so we need a new axiom.
 \end{note}
 
 \begin{axiom} [Replacement] \label{axm 3.6}
-Let \(A\) be a set. For any object \(x \in A\), and any object \(y\), suppose we have a statement \(P(x, y)\) pertaining to \(x\) and \(y\), such that for each \(x \in A\) there is \emph{at most one} \(y\) for which \(P(x, y)\) is true. Then there exists a set \( \{y : P(x, y) \text{\ is true for some\ } x \in A \} \), such that for any object \(z\),
+Let \(A\) be a set. For any object \(x \in A\), and any object \(y\), suppose we have a statement \(P(x, y)\) pertaining to \(x\) and \(y\), such that for each \(x \in A\) there is \emph{at most one} \(y\) for which \(P(x, y)\) is true.
+Then there exists a set \( \{y : P(x, y) \text{\ is true for some\ } x \in A \} \), such that for any object \(z\),
 \[
 \MAROON{z} \in \{ y : P(x, y) \text{\ is true for some\ } x \in A \} \iff P(x, \MAROON{z}) \text{\ is true for some \(x \in A\) }.
 \]
@@ -675,7 +696,9 @@ Let \(A\) be a set. For any object \(x \in A\), and any object \(y\), suppose we
 \end{note}
 
 \begin{example} \label{3.1.31}
-Let \(A := \{ 3, 5, 9 \} \), and let \(P(x, y)\) be the statement \(y = x\INC\), i.e., \(y\) is the successor of \(x\). Observe that for every \(x \in A\), there is exactly one \(y\) for which \(P(x, y)\) is true - specifically, the successor of \(x\). Thus the above axiom asserts that the set \( \{y : y = x\INC \text{\ for some \(x \in \{3, 5, 9 \} \) } \} \) exists; in this case, it is clearly the same set as \( \{4, 6, 10 \} \) (why?).
+Let \(A := \{ 3, 5, 9 \} \), and let \(P(x, y)\) be the statement \(y = x\INC\), i.e., \(y\) is the successor of \(x\).
+Observe that for every \(x \in A\), there is exactly one \(y\) for which \(P(x, y)\) is true - specifically, the successor of \(x\).
+Thus the above axiom asserts that the set \( \{y : y = x\INC \text{\ for some \(x \in \{3, 5, 9 \} \) } \} \) exists; in this case, it is clearly the same set as \( \{4, 6, 10 \} \) (why?).
 \end{example}
 
 \begin{note}
@@ -683,7 +706,9 @@ Let \(A := \{ 3, 5, 9 \} \), and let \(P(x, y)\) be the statement \(y = x\INC\),
 \end{note}
 
 \begin{note}
-我不確定是不是我蠢，但是這本書好像目前沒有證明每個自然數的\ successor 是\ unique? 只有\ \AXM{2.4} 說若兩個自然數\ \(x, y\) 不同，則他們的\ successor 也不同。還有\ \LEM{2.2.10}, positive natural number has unique \emph{predecessor}。
+我不確定是不是我蠢，但是這本書好像目前沒有證明每個自然數的\ successor 是\ unique? 只有\ \AXM{2.4} 說若兩個自然數\ \(x, y\) 不同，則他們的\ successor 也不同。
+還有\ \LEM{2.2.10}, positive natural number has unique \emph{predecessor}。
+當然如果把\ successor 看成是\ ``successor function'' 的\ output 的話，那他一定得\ unique，然後\ function 的概念跟皮亞諾公理也沒有相依，應該不會有問題吧...
 \end{note}
 
 \begin{proof} \RED{Warning: I don't know whether this proof is valid.}
@@ -708,7 +733,7 @@ Let \(A = \{3, 5, 9\}\), and let \(P(x, y)\) be the statement \(y = 1\). Then ag
 \end{example}
 
 \begin{note}
-\(P(x, y)\) 是\ \(y = 1\)，這是合法的，只是\ statement 本身跟\ \(x\) 是什麼一點關係都沒有。另外我猜測這個事實可以拿來證明\ \EXEC{3.1.11}。
+\(P(x, y)\) 是\ ``\(y = 1\)''，這是合法的，只是\ statement 本身跟\ \(x\) 是什麼一點關係都沒有。另外我猜測這個事實可以拿來證明\ \EXEC{3.1.11}。
 \end{note}
 
 \begin{note}
@@ -716,7 +741,10 @@ Let \(A = \{3, 5, 9\}\), and let \(P(x, y)\) be the statement \(y = 1\). Then ag
 \[
     \{y : y = f(x) \text{\ for some \(x \in A\)}\}
 \]
-簡寫成\ \( \{f(x): x \in A \} \) 或者\ \( \{f(x) \mid x \in A \} \)。另外 \AXM{3.5} (specification) 跟 \AXM{3.6} (replacement) 可以搭配使用，例如\ \(\{f(x) : x \in A; P(x) \text{\ is true}\} \)，這時候就必須知道哪一段被簡寫；分號右邊是\ specification，分號左邊是\ replacement。而寫成這樣時要先 apply specification 再 apply replacement，例如: \( \{n\INC : n \in \{3, 5, 9\}; n < 6 \} = \{4, 6\} \)，先用\ specification apply \(n < 6\) 到\ \(\{3, 5, 9\}\) 上，變成\  \(\{5, 9\}\)，然後再用\ replacement \(n\INC\) 變成\ \(\{4, 6\}\)。
+簡寫成\ \( \{f(x): x \in A \} \) 或者\ \( \{f(x) \mid x \in A \} \)。
+另外 \AXM{3.5} (specification) 跟\ \AXM{3.6} (replacement) 可以搭配使用，例如\ \(\{f(x) : x \in A; P(x) \text{\ is true}\} \)，這時候就必須知道哪一段被簡寫；
+分號右邊是\ specification，分號左邊是\ replacement。
+而寫成這樣時要先\ apply specification 再\ apply replacement，例如: \( \{n\INC : n \in \{3, 5, 9\}; n < 6 \} = \{4, 6\} \)，先用\ specification apply \(n < 6\) 到\ \(\{3, 5, 9\}\) 上，變成\  \(\{5, 9\}\)，然後再用\ replacement \(n\INC\) 變成\ \(\{4, 6\}\)。
 \end{note}
 
 \begin{axiom} [Infinity] \label{axm 3.7}
@@ -724,7 +752,9 @@ There exists a set \(\SET{N}\), whose elements are called natural numbers, as we
 \end{axiom}
 
 \begin{note}
-所以我們是用\ \AXM{3.7} 直接假設存在一個集合滿足皮亞諾公理要的五個條件的。另外它叫做\ axiom of ``infinity'' 是因為它假設(引入?)了一個最基本的有無限元素的集合。\textbf{注意，我們尚未定義\ finite 跟\ infinite，這要參考\  \SEC{3.6}}。也因為這個公理，我們知道\ \(3, 5, 7\) 是\ objects，所以我們可以用其他公理(e.g. \AXM{3.3}, \AXM{3.4}) 建構出\ \( \{ 3, 5, 7 \}\) 這種集合。
+所以我們是用\ \AXM{3.7} 直接假設存在一個集合滿足皮亞諾公理要的五個條件的。另外它叫做\ axiom of ``infinity'' 是因為它假設(引入?)了一個最基本的有``無限多個''元素的集合。
+\textbf{注意，我們尚未定義\ finite 跟\ infinite，這要參考\  \SEC{3.6}}。
+也因為這個公理，我們知道\ \(3, 5, 7\) 是\ objects，所以我們可以用其他公理(e.g. \AXM{3.3}, \AXM{3.4}) 建構出\ \( \{ 3, 5, 7 \}\) 這種集合。
 \end{note}
 
 \begin{example} \label{example 3.1.33}
@@ -783,17 +813,22 @@ See \PROP{3.1.18}.
 Let \(A, B\) be sets. Show that the three statements \(A \subseteq B\), \(A \cup B = B\), \(A \cap B = A\) are logically equivalent (any one of them implies the other two).
 \end{exercise}
 
-\begin{proof} We prove by circular implication, i.e. \(A \subseteq B \implies A \cup B = B \implies A \cap B = A \implies A \subseteq B\).
+\begin{proof} We prove this by circular implication, i.e. \(A \subseteq B \implies A \cup B = B \implies A \cap B = A \implies A \subseteq B\).
 
-\(A \subseteq B \implies A \cup B = B\): Let \(A, B\) be sets such that \(A \subseteq B\). Then let \(X := B\). Now \(A\) and \(X\) satisfy the supposition in \PROP{3.1.28}, so they satisfy \PROP{3.1.28}(b), that is, \(A \cup X = X\). But \(X := B\), so by substitution(\AXM{a.7.4}), \(A \cup B = B\).
+\(A \subseteq B \implies A \cup B = B\): Let \(A, B\) be sets such that \(A \subseteq B\).
+Then let \(X := B\). Now \(A\) and \(X\) satisfy the supposition in \PROP{3.1.28}, so they satisfy \PROP{3.1.28}(b), that is, \(A \cup X = X\). But \(X := B\), so by substitution(\AXM{a.7.4}), \(A \cup B = B\).
 
 \(A \cup B = B \implies A \cap B = A\): Let \(A, B\) be sets such that \(A \cup B = B\). Let \(x\) be an arbitrary object. Then
 \begin{itemize}
     \item \(A \cap B \subseteq A\): Trivial by \DEF{3.1.23}
-    \item \(A \subseteq A \cap B\): Suppose \(x \in A\) \MAROON{(1)}. We have to prove \(x \in A \cap B\) to conclude \(A \subseteq A \cap B\). Then by logic, \(x \in A \lor x \in B\). Then by \AXM{3.4}, \(x \in A \cup B\). Then since \(A \cup B = B\) by supposition, \(x \in B\) \MAROON{(2)}. Then by \MAROON{(1) (2)} and \DEF{3.1.23}, \(x \in A \cap B\).
+    \item \(A \subseteq A \cap B\): Suppose \(x \in A\) \MAROON{(1)}. We have to prove \(x \in A \cap B\) to conclude \(A \subseteq A \cap B\). Then by \MAROON{(1)} and logic, \(x \in A \lor x \in B\). Then by \AXM{3.4}, \(x \in A \cup B\). Then since \(A \cup B = B\) by supposition, \(x \in B\) \MAROON{(2)}. Then by \MAROON{(1) (2)} and \DEF{3.1.23}, \(x \in A \cap B\).
 \end{itemize}
 
-\(A \cap B = A \implies A \subseteq B\): Let \(A, B\) be sets such that \(A \cap B = A\) and suppose \(x\) is an arbitrary object and \(x \in A\). We have to prove \(x \in B\) to conclude \(A \subseteq B\). Then since \(A \cap B = A\), \(x \in A \cap B\). Then by \DEF{3.1.23}, \(x \in A \land x \in B\). In particular, \(x \in B\).
+\(A \cap B = A \implies A \subseteq B\): Let \(A, B\) be sets such that \(A \cap B = A\) and suppose \(x\) is an arbitrary object and \(x \in A\).
+We have to prove \(x \in B\) to conclude \(A \subseteq B\).
+Then since \(A \cap B = A\), \(x \in A \cap B\).
+Then by \DEF{3.1.23}, \(x \in A \land x \in B\).
+In particular, \(x \in B\).
 \end{proof}
 
 \begin{exercise}\label{exercise 3.1.6}
@@ -836,8 +871,8 @@ Let \(A, B, C\) be sets. Show that \(A \cap B \subseteq A\) and \(A \cap B \subs
             \item \(A \subseteq C \land B \subseteq C \implies A \cup B \subseteq C\): Suppose \(A \subseteq C \land B \subseteq C\). Let \(x\) be an arbitrary object such that \(x \in A \cup B\) \MAROON{(1)}. We have to prove \(x \in C\) to conclude \(A \cup B \subseteq C\). By \MAROON{(1)} and \AXM{3.4}, \(x \in A \lor x \in B\). If \(x \in A\), then since \(A \subseteq C\), \(x \in C\). If \(x \in B\), then and since \(B \subseteq C\), \(x \in C\). In both cases, \(x \in C\).
             \item \(A \cup B \subseteq C \implies A \subseteq C \land B \subseteq C\): Suppose \(A \cup B \subseteq C\). Let \(x\) be an arbitrary object.
             \begin{itemize}
-                \item If \(x \in A\), then by logic, \(x \in A \lor x \in B\), then since \(A \cup B \subseteq C\), \(x \in C\). So we conclude \(A \subseteq C\) \MAROON{(1)}.
-                \item If \(x \in B\), then by logic, \(x \in A \lor x \in B\), then since \(A \cup B \subseteq C\), \(x \in C\). So we conclude \(B \subseteq C\) \MAROON{(2)}.
+                \item If \(x \in A\), then by logic, \(x \in A \lor x \in B\), so by \AXM{3.4}, \(x \in A \cup B\). Since \(A \cup B \subseteq C\), \(x \in C\). So we conclude \(A \subseteq C\) \MAROON{(1)}.
+                \item If \(x \in B\), then by logic, \(x \in A \lor x \in B\), so by \AXM{3.4}, \(x \in A \cup B\). Since \(A \cup B \subseteq C\), \(x \in C\). So we conclude \(B \subseteq C\) \MAROON{(2)}.
             \end{itemize}
             So by \MAROON{(1) (2)}, \(A \subseteq C \land B \subseteq C\).
         \end{itemize}
@@ -848,11 +883,13 @@ Let \(A, B, C\) be sets. Show that \(A \cap B \subseteq A\) and \(A \cap B \subs
 Let \(A\), \(B\) be sets. Prove the \emph{absorption laws} \(A \cap (A \cup B) = A\) and \(A \cup (A \cap B) = A\).
 \end{exercise}
 
-\begin{proof} First, from \EXEC{3.1.7} we have \(A \subseteq A \cup B\) and \(A \cap B \subseteq A\).
+\begin{proof} First, from \EXEC{3.1.7} we have \(A \subseteq A \cup B\) \MAROON{(1)} and \(A \cap B \subseteq A\) \MAROON{(2)}.
 
-\(A \cap (A \cup B) = A\): Let \(X := A \cup B\). Then now \(A, X\) satisfy the supposition of \PROP{3.1.28}, So by \PROP{3.1.28}(b), \(A \cap X = A\), that is, \(A \cap (A \cup B) = A\).
+\(A \cap (A \cup B) = A\): Let \(X := A \cup B\). Then by \MAROON{(1)}, \(A, X\) satisfy the supposition of \PROP{3.1.28}.
+So by \PROP{3.1.28}(b), \(A \cap X = A\), that is, \(A \cap (A \cup B) = A\).
 
-\(A \cup (A \cap B) = A\): Let \(A' := A \cap B\) and \(X := A\). Then \(A', X\) satisfy \(A, X\) in \PROP{3.1.28}. So by \PROP{3.1.28}(b), \(X \cup A' = X\), that is, \(A \cup (A \cap B) = A\).
+\(A \cup (A \cap B) = A\): Let \(A' := A \cap B\) and \(X := A\). Then by \MAROON{(2)}, \(A', X\) satisfy \(A, X\) in \PROP{3.1.28}.
+So by \PROP{3.1.28}(b), \(X \cup A' = X\), that is, \(A \cup (A \cap B) = A\).
 \end{proof}
 
 \begin{exercise}\label{exercise 3.1.9}
@@ -892,8 +929,8 @@ Disjoint:
     \item \((A \setminus B) \cap (A \cap B)\): Let \(x\) be an arbitrary object. Then
         \begin{align*}
              & x \in (A \setminus B) \cap (A \cap B) \\
-        \iff & x \in (A \setminus B) \land x \in (A \cap B) & \text{by \DEF{3.1.23}} \\
-        \iff & (x \in A \land x \notin B) \land x \in (A \cap B) & \text{by \DEF{3.1.27}} \\
+        \iff & x \in A \setminus B \land x \in A \cap B & \text{by \DEF{3.1.23}} \\
+        \iff & (x \in A \land x \notin B) \land x \in A \cap B & \text{by \DEF{3.1.27}} \\
         \iff & (x \in A \land x \notin B) \land (x \in A \land x \in B) & \text{by \DEF{3.1.23}} \\
         \iff & (x \in A \land x \in A) \land (x \notin B \land x \in B) & \text{by \PROP{3.1.28}(e), commutative} \\
         \iff & (x \in A) \land (\text{false}) & \text{by simplifying logic} \\
@@ -904,8 +941,8 @@ Disjoint:
     \item \((A \setminus B) \cap (B \setminus A)\): Let \(x\) be an arbitrary object. Then
         \begin{align*}
              & x \in (A \setminus B) \cap (B \setminus A) \\
-        \iff & x \in (A \setminus B) \land x \in (B \setminus A) & \text{by \DEF{3.1.23}} \\
-        \iff & (x \in A \land x \notin B) \land x \in (B \setminus A) & \text{by \DEF{3.1.27}} \\
+        \iff & x \in A \setminus B \land x \in B \setminus A & \text{by \DEF{3.1.23}} \\
+        \iff & (x \in A \land x \notin B) \land x \in B \setminus A & \text{by \DEF{3.1.27}} \\
         \iff & (x \in A \land x \notin B) \land (x \in B \land x \notin A) & \text{by \DEF{3.1.27}} \\
         \iff & (x \in A \land x \notin A) \land (x \in B \land x \notin B) & \text{by \PROP{3.1.28}(e), commutative} \\
         \iff & (\text{false}) \land (\text{false}) & \text{by simplifying logic} \\
@@ -916,8 +953,8 @@ Disjoint:
     \item \((A \cap B) \cap (B \setminus A)\): We prove \((B \setminus A) \cap (A \cap B) = \emptyset\) and by commutative law the target holds. Let \(x\) be an arbitrary object. Then
         \begin{align*}
              & x \in (B \setminus A) \cap (A \cap B) \\
-        \iff & x \in (B \setminus A) \land x \in (A \cap B) & \text{by \DEF{3.1.23}} \\
-        \iff & (x \in B \land x \notin A) \land x \in (A \cap B) & \text{by \DEF{3.1.27}} \\
+        \iff & x \in B \setminus A \land x \in A \cap B & \text{by \DEF{3.1.23}} \\
+        \iff & (x \in B \land x \notin A) \land x \in A \cap B & \text{by \DEF{3.1.27}} \\
         \iff & (x \in B \land x \notin A) \land (x \in A \land x \in B) & \text{by \DEF{3.1.23}} \\
         \iff & (x \in B \land x \in B) \land (x \notin A \land x \in A) & \text{by \PROP{3.1.28}(e), commutative} \\
         \iff & (x \in B) \land (\text{false}) & \text{by simplifying logic} \\
