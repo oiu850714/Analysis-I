@@ -1,0 +1,451 @@
+\section{Images and inverse images}
+
+\begin{note}
+我覺得這節標題有點爛，因為這節不只講\ image 阿?
+\end{note}
+
+Functions \(f : X \rightarrow Y\) can also takes subsets of \(X\) to subsets of \(Y\).
+
+\begin{definition} [Images of sets] \label{def 3.4.1}
+If \(f : X \rightarrow Y\) is a function from \(X\) to \(Y\), and \(S\) is a subset of \(X\), we define \(f(S)\) to be the set
+\begin{center}
+    \(f(S) := \{ f(x): x \in S \} \)
+\end{center}
+this set is a subset of \(Y\), and is sometimes called the \emph{image} of \(S\) under the map \(f\).
+\end{definition}
+
+We sometimes call \(f(S)\) the \emph{forward image} of \(S\) to distinguish it from the concept of the \emph{inverse image} \(f^{-1}(S)\) of \(S\), which is defined below.
+
+Note that the set \(f(S)\) is well-defined thanks to the axiom of replacement (\AXM{3.6}). One can also define \(f(S)\) using the axiom of specification (\AXM{3.5}) instead of replacement, but we leave this as a
+exercise to the reader.
+
+\begin{note}
+這邊兩個 examples 都是幹話，跳過。
+\end{note}
+
+\begin{additional corollary}
+\(y \in f(S) \iff y = f(x) \text{\ for some\ } x \in S\)
+\end{additional corollary}
+
+\begin{proof}
+
+\(y \in f(S) \implies y = f(x) \text{\ for some\ } x \in S\): this is explicitly stated in \DEF{3.4.1}.
+
+\(y = f(x) \text{\ for some\ } x \in S \implies y \in f(S)\): the hypothesis is the identity of the image set \(f(S)\), so \(y \in f(S)\).
+\end{proof}
+
+\setcounter{theorem}{3}
+\begin{definition}[Inverse images] \label{def 3.4.4}
+If \(U\) is a subset of \(Y\), we define the set \(f^{-1}(U)\) to be the set
+\[
+    f^{-1}(U) := \{x \in X : f(x) \in U\}.
+\]
+In other words, \(f^{-1}(U)\) \textbf{consists of all the elements of \(X\) which map into \(U\)}:
+\[
+    f(x) \in U \iff x \in f^{-1}(U).
+\]
+We call \(f^{-1}(U)\) the \emph{inverse image} of \(U\).
+\end{definition}
+
+\begin{note}
+Note that \(f\) \textbf{does not have to be invertible} in order for \(f^{-1}(U)\) to make sense.
+\end{note}
+
+\begin{note}
+\(U\) 的\ reverse image 就是所有符合以下條件的\ elements x: (1) \(x \in X\) (2) \(f(x) \in U\).
+
+另外\ \(U\) 裡面有些\ elements 一樣可以不被任何的\ \(x\) map 到。可以觀察\ \EXAMPLE{3.4.5} 的\ \( f^{-1}( \{ 1, 2, 3 \} ) \)。
+\end{note}
+
+\begin{example} \label{example 3.4.5}
+If \(f : N \rightarrow N\) is the map \(f(x) = 2x\), then \( f( \{ 1, 2, 3 \} ) = \{ 2, 4, 6 \} \), but \( f^{-1}( \{ 1, 2, 3 \} )= \{ 1 \} \).
+Thus the forward image of \( \{1, 2, 3 \} \) and the inverse image of \( \{ 1, 2, 3 \} \) are quite different sets.
+Also note that \(f(f^{-1}( \{ 1, 2, 3 \} )) \neq \{1, 2, 3\} \), because \( f^{-1}( \{ 1, 2, 3 \} ) = \{1\} \), and \( f( \{1\} ) = \{2\} \neq \{1, 2, 3\} \).
+\end{example}
+
+\begin{example}
+幹話。
+\end{example}
+
+\begin{note}
+In general, the two examples above imply that, given any subset \(U\) of the codomain, \(f(f^{-1}(U))\) may not be equal to \(U\).
+This happens when \(f\) is not onto.
+If \(f\) is not onto, then there exist \(y\) \(f does not map\), then if \(y \in U\), then \(y \notin f(f^{-1}(U))\), so \(U \neq f(f^{-1}(U))\).
+\end{note}
+
+\begin{remark} \label{remark 3.4.7}
+If \(f\) is a \emph{bijective} function, then we have defined \(f^{−1}\) in two slightly different ways, but this is not an issue because both
+definitions are equivalent (\EXEC{3.4.1}).
+\end{remark}
+
+\begin{note}
+我覺得這個\ remark 寫的不夠精準，要搭配\ \EXEC{3.4.1} 一起看；主要是因為 \(f^-1\) 被\ ``overload'' 了，這樣無法知道\ \(f^{-1}\) 代表的是\ \(f\) 的\ inverse function 還是\ \(f\) 的某個\ inverse image。而從\ \EXEC{3.4.1} 就可以知道這邊想討論的是\ \(f\) 的\ inverse image 跟\ \(f^{-1}\) 的\ forward image，「符號上」都寫成\  \(f^{-1}(V)\)，也有各自的定義，但是實際上等價。
+\end{note}
+
+As remarked earlier, functions are not sets.
+However, we do consider functions to be a type of \emph{object}, and in particular we should be able to consider \emph{sets of functions}.
+In particular, we should be able to consider the \textbf{set of all functions from a set \(X\) to a set \(Y\)}.
+To do this we need to introduce another axiom to set theory:
+
+\begin{axiom} [Power set axiom] \label{axm 3.10}
+Let \(X\) and \(Y\) be sets.
+Then there exists a set, denoted \(Y^X\), which consists of all the functions from \(X\) to \(Y\), thus
+\[
+    f \in Y^X \iff (f \text{\ is a function with domain \(X\) and codomain \(Y\)}).
+\]
+\end{axiom}
+
+\begin{example}
+The reason we use the notation \(Y^X\) to denote this set is that if \(Y\) (codomain) has \(n\) elements and \(X\) (domain) has \(m\) elements, then one can show that \(Y^X\) has \(n^m\) elements; see  \PROP{3.6.14}(f).
+\end{example}
+
+\begin{note}
+注意上面的定義又是跟\ \SEC{3.6} 有關的；換句話說那個\ \(n^m\) elements 是\ ``cardinality''。
+\end{note}
+
+\begin{lemma} \label{lem 3.4.9}
+Let \(X\) be a set. Then the set
+\[
+    \{ Y : Y \text{\ is a subset of\ } X \}
+\]
+is a set.
+See \EXEC{3.4.6}
+\end{lemma}
+
+\begin{remark} \label{remark 3.4.10}
+The set \( \{ Y : Y \text{\ is a subset of\ X} \} \) is known as the \emph{power set of \(X\)} and is denoted \(2^X\).
+For instance, if \(a, b, c\) are distinct objects, we have
+\[
+    2^{ \{a,b,c\} } = \{
+        \emptyset,
+        \{a\},
+        \{b\},
+        \{c\},
+        \{a, b\},
+        \{a, c\},
+        \{b, c\},
+        \{a, b, c\}
+    \}.
+\]
+Note that while \( \{a, b, c\} \) has 3 elements, \(2^{ \{a, b , c\} } \) has \(2^3 = 8\) elements.
+This gives a hint as to why we refer to the power set of \(X\) as \(2^X\); we return to this issue in \CH{8}.
+\end{remark}
+
+\begin{axiom} [Union] \label{axm 3.11}
+Let \(A\) be a set, \emph{all of whose elements are themselves sets}.
+Then there exists a set \(\bigcup A\) whose elements are precisely those objects which are \textbf{elements of elements of} \(A\), thus for all object \(x\),
+\[
+    x \in \bigcup A \iff (x \in S \text{\ for some \(S \in A\)}).
+\]
+\end{axiom}
+
+\begin{example}
+幹話。
+\end{example}
+
+The axiom of union, combined with the axiom of pair set(\AXM{3.3}), implies the axiom of pairwise union(\AXM{3.4}) (\EXEC{3.4.8}).
+Another important consequence of this axiom is that if one has some set \(I\), and for every element \(\alpha \in I\) we have some set \(A_{\alpha}\), then we can form the union set \(\bigcup_{\alpha \in I} A_{\alpha}\) by defining
+\[
+    \bigcup_{\alpha \in I} A_{\alpha} := \bigcup \{ A_{\alpha} : \alpha \in I \},
+\]
+which is a set thanks to the axiom of replacement \AXM{3.6} and the axiom of union \AXM{3.11}.
+Thus for instance, if \(I = \{1, 2, 3\} \), \(A_1 := \{2, 3\} \), \(A_2 := \{3, 4\} \), and \(A_3 := \{4, 5\} \), then \(\bigcup_{\alpha \in \{1, 2, 3\}} A_{\alpha} = \{2, 3, 4, 5\} \).
+\setcounter{equation}{1}
+More generally, we see that for any object \(y\),
+\begin{align} \label{formula 3.2}
+    y \in \bigcup_{\alpha \in I} A_{\alpha} \iff (y \in A_{\alpha} \text{\ \textbf{for some} \(\alpha \in I\)}).
+\end{align}
+
+\begin{note}
+In situations like this, we often refer to \(I\) as an \emph{index set}, and the elements \(\alpha\) of this index set as \emph{labels}; the sets \(A_{\alpha}\) are then called a \(family of sets\), and are \emph{indexed} by the labels \(\alpha \in I\).
+\end{note}
+
+Note that if \(I\) was empty, then \(\bigcup_{\alpha \in I} A_{\alpha}\) would automatically also be empty (why?) because if it is not empty, then there exists object \(y\) in it;
+by the identity of \(\bigcup_{\alpha \in I} A_{\alpha}\) above, \(y \in A_{\alpha} \text{\ for some \(\alpha \in I\)}\), and that implies there exists \(\alpha \in I\), which implies \(I\) is not empty, a contradiction.
+
+If the index set \(I\) is non-empty, then we can similarly form intersections of families of sets.
+More specifically, given any non-empty set \(I\), and given an assignment of a set \(A_{\alpha}\) to each \(\alpha \in I\), we can define the \textbf{intersection} \(\bigcap_{\alpha \in I} A_{\alpha} \) by \textbf{first choosing} some element \(\beta \in I\) (which we can do since \(I\) is non-empty), and setting(defining)
+\begin{align}
+    \bigcap_{\alpha \in I} A_{\alpha} := \{x \in A_{\beta} : x \in A_{\alpha} for all \alpha \in I\},
+\end{align}
+which is a set by the axiom of specification \AXM{3.5}.
+This definition may look like it depends on the choice of \(\beta\), but it does not (\EXEC{3.4.9}).
+
+\begin{note}
+這邊會需要先挑出一個\ \(\beta \in I\) 的原因是因為我們必須從一個\textbf{已知是集合}的\ object(i.e. \(A_{\beta}\)) 作\ specification。
+\end{note}
+
+Observe that for any object \(y\),
+\begin{align} \label{formula 3.4}
+    y \in \bigcap_{\alpha \in I} A_{\alpha} \iff (y \in A_{\alpha} \text{\ \textbf{for all} \(\alpha \in I\))}.
+\end{align}
+
+\begin{note}
+The formula \ref{formula 3.4} cannot be derived directly and needs to be proved; again, see \EXEC{3.4.9}。
+\end{note}
+
+\begin{note}
+上面的\ formula \ref{formula 3.4} 去跟\ union 的定義\ \ref{formula 3.2} 比較一下；一個是\ ``for some'' 一個是\ ``for all''。
+\end{note}
+
+\begin{remark}
+The axioms of set theory that we have introduced (\AXM{3.1} - \AXM{3.11}, excluding the dangerous \AXM{3.8}) are known as the \textbf{Zermelo-Fraenkel} axioms of set theory, after Ernest Zermelo (1871– 1953) and Abraham Fraenkel (1891–1965).
+There is one further axiom we will eventually need, the famous \textbf{axiom of choice} (see \SEC{8.4}, \AXM{8.1}), giving rise to the Zermelo-Fraenkel-\textbf{Choice} (ZFC) axioms of set theory,
+but we will not need this axiom for some time.
+\end{remark}
+
+\exercisesection
+
+\begin{exercise} \label{exercise 3.4.1}
+Let \(f : X \to Y\) be a bijective function, and let \(f^{-1} : Y \to X\) be its inverse.
+Let \(V\) be any subset of \(Y\).
+Prove that the forward image of \(V\) under \(f^{-1}\) \textbf{is the same} set as the inverse image of \(V\) under \(f\);
+thus the fact that \emph{both sets are denoted} by \(f^{-1}(V)\) will not lead to any inconsistency.
+\end{exercise}
+
+\begin{proof}
+Let \(A\) be the forward image of \(V\) under \(f^{-1}\), \(B\) be the inverse image of \(V\) under \(f\), we have to show \(A = B\).
+Suppose \(x\) is an arbitrary object, then
+\begin{align*}
+         & x \in A \\
+    \iff & x \in \{ f^{-1}(v) : v \in V \} & \text{by \DEF{3.4.1}} \\
+    \iff & x = f^{-1}(v) \text{\ for some\ } v \in V \\
+    \iff & f(x) = f(f^{-1}(v)) & \text{by apply \(f\) on both sides} \\
+    \iff & f(x) = v & \text{by cancellation law on RHS, \EXEC{3.3.6}} \\
+    \iff & f(x) \in V & \text{since \(v \in V\)} \\
+    \iff & x \in \text{inverse image of \(f\)} & \text{by \DEF{3.4.4}} \\
+    \iff & x \in B.
+\end{align*}
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.2}
+Let \(f : X \to Y\) be a function from one set \(X\) to another set \(Y\), let \(S\) be a subset of \(X\), and let \(U\) be a subset of \(Y\).
+What, in general, can one say about \(f^{-1}(f(S))\) and \(S\)?
+What about \(f(f^{-1}(U))\) and \(U\)?
+\end{exercise}
+
+\begin{proof}
+In general we can say \(S \subseteq f^{-1}(f(S))\) and \(f(f^{-1}(U)) \subseteq U\).
+
+Suppose \(x \in S\), we have to show \(x \in f^{-1}(f(S))\).
+By \DEF{3.4.1}, \(f(x) \in f(S)\), and by \DEF{3.4.4}, \(f(x) \in \BLUE{f(S)} \iff x \in f^{-1}( \BLUE{f(S)} )\), as desired.
+
+Suppose \(y \in f(f^{-1}(U))\), we have to show \(y \in U\).
+By \DEF{3.4.1}, there exists \(x \in f^{-1}(U)\) such that \(y = f(x)\), and by \DEF{3.4.4}, \(x \in f^{-1}(U) \iff f(x) \in U\), that is, \(y \in U\), as desired.
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.3}
+Let \(A\), \(B\) be two subsets of a set \(X\), and let \(f : X \to Y\) be a function.
+Show that \(f(A \cap B) \subseteq f(A) \cap f(B)\), that \(f(A) \setminus f(B) \subseteq f(A \setminus B)\), \(f(A \cup B) = f(A) \cup f(B)\).
+For the first two statements, is it true that the \(\subseteq\) relation can be improved to \(=\)?
+\end{exercise}
+
+\begin{proof} Let \(X, Y, A, B, f\) satisfy the requirements in the description.
+
+\begin{itemize}
+    \item \(f(A \cap B) \subseteq f(A) \cap f(B)\):
+        Suppose \(y \in f(A \cap B)\), we have to show \(y \in f(A) \cap f(B)\).
+        By \DEF{3.4.1}, there exists \(x \in A \cap B\) such that \(f(x) = y\).
+        But by \DEF{3.1.23}, \(x \in A \land x \in B\),
+        and again by \DEF{3.4.1}, \(f(x) \in f(A) \land f(x) \in f(B)\), that is by \DEF{3.1.23}, \(f(x) \in f(A) \cap f(B)\),
+        that is, since \(f(x) = y\), \(y \in f(A) \cap f(B)\), as desired.
+        
+        This \(\subseteq\) relation \textbf{can not} be improved to \(=\).
+        If \(f\) is not one-to-one, e.g. \(y = f(x_1) = f(x_2), x_1 \neq x_2\) but \(A = \{ x_1 \}, B = \{ x_2 \}\),
+        then \(A \cap B = \emptyset\), so \(f(A \cap B) = \emptyset\),
+        but \(f(A) = \{ y \}\) and \(f(B) = \{ y \}\) and \(f(A) \cap f(B) = \{ y \} \neq \emptyset\).
+    \item \(f(A) \setminus f(B) \subseteq f(A \setminus B)\): 
+        Suppose \(y \in f(A) \setminus f(B)\), we have to show \(y \in f(A \setminus B)\).
+        By \DEF{3.1.27}, \(y \in f(A) \land y \notin f(B)\).
+        In particular, \(y \in f(A)\), so by \DEF{3.4.1}, there exists \(x \in A\) \MAROON{(1)} such that \(f(x) = y\) \MAROON{(2)};
+        and in particular \(y \notin f(B)\), so for all \(b \in B\), \(f(b) \neq y\) \MAROON{(3)},
+        that is, by \MAROON{(2)}, for all \(b \in B\), \(f(b) \neq f(x)\), so by \DEF{3.4.1}, \(x \notin B\) \MAROON{(4)}.
+        So by \MAROON{(1) (4)}, and \DEF{3.1.27}, \(x \in A \setminus B\).
+        By \DEF{3.4.1}, \(f(x) \in f(A \setminus B\), that is, \(y \in f(A \setminus B\), as desired.
+        
+        This \(\subseteq\) relation \textbf{can not} be improved to \(=\).
+        If \(f\) is not one-to-one, e.g. \(y = f(x_1) = f(x_2), x_1 \neq x_2\) but \(A = \{ x_1 \}, B = \{ x_2 \}\),
+        then \(f(A) \setminus f(B) = \{ y \} \setminus \{ y \} = \emptyset\),
+        but \(f(A \setminus B) = f( \{ x_1 \} \setminus \{ x_2 \} ) = f( \{ x_1 \}) = \{ y \} \neq \emptyset\).
+    \item \(f(A \cup B) = f(A) \cup f(B)\): Let \(y\) be an arbitrary object. Then
+        \begin{align*}
+                 & y \in f(A \cup B) \\
+            \iff & \exists x \in A \cup B \text{\ s.t.\ } y = f(x) & \text{by \DEF{3.4.1}} \\
+            \iff & x \in A \lor x \in B & \text{by \DEF{3.1.15}} \\
+            \iff & f(x) \in f(A) \lor f(x) \in f(B) & \text{by \AXM{3.4}} \\
+            \iff & f(x) \in f(A) \cup f(B) & \text{by \AXM{3.4}} \\
+            \iff & y \in f(A) \cup f(B) & \text{since \(y = f(x)\)}
+        \end{align*}
+\end{itemize}
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.4}
+Let \(f : X \to Y\) be a function from one set \(X\) to another set \(Y\), and let \(U\), \(V\) be subsets of \(Y\).
+Show that \(f^{-1}(U \cup V) = f^{-1}(U) \cup f^{-1}(V)\) \MAROON{(1)},
+that \(f^{-1}(U \cap V) = f^{-1}(U) \cap f^{-1}(V)\) \MAROON{(2)},
+and that \(f^{-1}(U \setminus V) = f^{-1}(U) \setminus f^{-1}(V)\) \MAROON{(3)}.
+\end{exercise}
+
+\begin{proof} Let \(X, Y, U, V, f\) satisfy the requirements in the description.
+
+\begin{itemize}
+    \item \MAROON{(1)}: Let \(x\) be an arbitrary object. Then
+        \begin{align*}
+                 & x \in f^{-1}(U \cup V) \\
+            \iff & f(x) \in U \cup V & \text{by \DEF{3.4.4}} \\
+            \iff & f(x) \in U \lor f(x) \in V & \text{by \AXM{3.4}} \\
+            \iff & x \in f^{-1}(U) \lor x \in f^{-1}(V) & \text{by \DEF{3.4.4}} \\
+            \iff & x \in f^{-1}(U) \cup f^{-1}(V) & \text{by \AXM{3.4}}
+        \end{align*}
+        By \DEF{3.1.4}, \(f^{-1}(U \cup V) = f^{-1}(U) \cup f^{-1}(V)\)
+    \item \MAROON{(2)}: Let \(x\) be an arbitrary object. Then
+        \begin{align*}
+                 & x \in f^{-1}(U \cap V) \\
+            \iff & f(x) \in U \cap V & \text{by \DEF{3.4.4}} \\
+            \iff & f(x) \in U \land f(x) \in V & \text{by \DEF{3.1.23}} \\
+            \iff & x \in f^{-1}(U) \land x \in f^{-1}(V) & \text{by \DEF{3.4.4}} \\
+            \iff & x \in f^{-1}(U) \cap f^{-1}(V) & \text{by \DEF{3.1.23}}
+        \end{align*}
+        By \DEF{3.1.4}, \(f^{-1}(U \cap V) = f^{-1}(U) \cap f^{-1}(V)\)
+    \item \MAROON{(3)}: Let \(x\) be an arbitrary object. Then
+        \begin{align*}
+                 & x \in f^{-1}(U \setminus V) \\
+            \iff & f(x) \in U \setminus V & \text{by \DEF{3.4.4}} \\
+            \iff & f(x) \in U \land f(x) \notin V & \text{by \DEF{3.1.27}} \\
+            \iff & x \in f^{-1}(U) \land x \notin f^{-1}(V) & \text{by \DEF{3.4.4}} \\
+            \iff & x \in f^{-1}(U) \setminus f^{-1}(V) & \text{by \DEF{3.1.27}}
+        \end{align*}
+        By \DEF{3.1.4}, \(f^{-1}(U \setminus V) = f^{-1}(U) \setminus f^{-1}(V)\)
+\end{itemize}
+
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.5}
+Let \(f : X \to Y\) be a function from one set \(X\) to another set \(Y\).
+Show that \(f(f^{-1}(S)) = S\) for every \(S \subseteq Y\) if and only if \(f\) is \emph{surjective} \MAROON{(1)}.
+Show that \(f^{-1}(f(S)) = S\) for every \(S \subseteq X\) if and only if \(f\) is \emph{injective} \MAROON{(2)}.
+\end{exercise}
+
+\begin{proof}
+In \EXEC{3.4.2} we have shown
+\[\forall S \subseteq Y, f(f^{-1}(S)) \subseteq S\]
+\[\forall S \subseteq X, S \subseteq f^{-1}(f(S))\]
+This implies for \MAROON{(1)}, we only have to show
+\[\forall S \subseteq Y, S \subseteq f(f^{-1}(S)) \iff f \text{\ is surjective \MAROON{(3)}}\]
+For \MAROON{(2)}, we only have to show
+\[\forall S \subseteq X, f^{-1}(f(S)) \subseteq S \iff f \text{\ is injective \MAROON{(4)}}\]
+
+\begin{itemize}
+    \item \MAROON{(3)}:
+        \begin{itemize}
+            \item \(\Longrightarrow\):
+                Suppose \(\forall S \subseteq Y, S \subseteq f(f^{-1}(S))\) \GREEN{(1)}.
+                Suppose for the sake of contradiction that \(f\) is not surjective.
+                Then \(\exists y \in Y\) s.t. \(\forall x \in X, f(x) \neq y\).
+                Now let \(S = \{ y \}\), so of course \(y \in S\).
+                By \DEF{3.4.4}, \(f^{-1}(S) = \emptyset\), so \(f(f^{-1}(S)) = \emptyset\), so \(y \notin f(f^{-1}(S))\).
+                Now we have \(y \in S\) and \(y \notin (f(f^{-1}(S))\), so \(S \not\subseteq f(f^{-1}(S))\), contradicting \GREEN{(1)}.
+                So \(f\) must be surjective.
+            \item \(\Longleftarrow\):
+                Suppose \(f\) is surjective. Let \(S \subseteq Y\), we have to show \(S \subseteq f(f^{-1}(S))\),
+                that is, if \(y \in S\), then \(y \in f(f^{-1}(S))\).
+                So Suppose \(y \in S\). Then since \(f\) is surjective, \(\exists x \in X\) s.t. \(f(x) = y\).
+                By \DEF{3.4.4}, \(x \in \GREEN{f^{-1}(S)}\),
+                and by \DEF{3.4.1}, \(f(x) \in f(\GREEN{f^{-1}(S)})\), that is, \(y \in f(\GREEN{f^{-1}(S)})\).
+        \end{itemize}
+    \item \MAROON{(4)}:
+        \begin{itemize}
+            \item \(\Longrightarrow\):
+                Suppose \(\forall S \subseteq X, f^{-1}(f(S)) \subseteq S\) \GREEN{(1)}.
+                Suppose for the sake of contradiction that \(f\) is not injective.
+                Then \(\exists x_1, x_2 \in X\) s.t. \(x_1 \neq x_2 \land f(x_1) = f(x_2)\).
+                Now let \(S = \{ x_1 \} \), so \(x_{\RED{2}} \notin S\).
+                Clearly \(f(S) = \{ y \}\) s.t. \(y = f(x_1)\),
+                and also clearly by \DEF{3.4.4}, \(f^{-1}(f(S)) = f^{-1}( \{ y \} ) = \{ x_1, x_2 \}\),
+                so \(x_{\RED{2}} \in f^{-1}(f(S))\).
+                So we have \(x_2 \notin S\) but \(x_2 \in f^{-1}(f(S))\),
+                so \(f^{-1}(f(S)) \not\subseteq S\), contradicting \GREEN{(1)},
+                so \(f\) must be injective.
+            \item \(\Longleftarrow\):
+                Suppose \(f\) is injective \GREEN{(1)}.
+                Now for the sake of contradiction, suppose \(\exists S \subseteq X\) s.t. \(f^{-1}(f(S)) \not\subseteq S\) \GREEN{(2)}.
+                Then \(\exists x_1\) s.t. \(x_1 \in f^{-1}(f(S))\) (so \(f(x_1) \in f(S)\)), and \(x_1 \notin S\).
+                But that means \(\exists x_2 \in S\) s.t. \(f(x_1) = f(x_2) \land x_1 \neq x_2\) \GREEN{(3)},
+                (otherwise \(\forall x \in S, f(x) \neq f(x_1) \in S\),
+                which by \DEF{3.4.4} implies \(x_1 \notin f^{-1}(f(S))\)).
+                But \GREEN{(3)} by definition of injective means \(f\) is not injective, contradicting \GREEN{(1)}.
+                So \GREEN{(2)} is false,
+                that is, \(\forall S \subseteq X, f^{-1}(f(S)) \subseteq S\).
+        \end{itemize}
+\end{itemize}
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.6}
+Prove \LEM{3.4.9}.
+(Hint: start with the set \(\{0, 1\}^X\) and apply the replacement axiom \AXM{3.6}, replacing each function \(f\) with the object \(f^{-1}( \{1\} )\).)
+See also \EXEC{3.5.11}.
+\end{exercise}
+
+\begin{proof}
+Suppose \(X\) is a set. We have to find a set \(S\) s.t. every element of \(S\) is a subset of \(X\) and every subset of \(X\) is an element of \(S\).
+By \AXM{3.10}, there exists a set \(\{0, 1\}^X\) which consists of all the functions \(f\) from \(X\) to \(\{0, 1\}\):
+\[
+    f \in \{0, 1\}^X \iff \text{\(f\) is a function with domain \(X\) and codomain \(\{0, 1\}\)}).
+\]
+By \AXM{3.6}, we can replace each \(f \in \{0, 1\}^X\) with \(f^{-1}(\{ 1 \})\), i.e. there exists a set
+\[
+    S = \{ f^{-1}(\{ 1 \}) : f \in \{ 0, 1 \}^X \}.
+\]
+By \DEF{3.4.4}, every element \(\in S\) is a subset of \(X\) since given \(f \in \{0, 1\}^X, f^{-1}(\{ 1 \}) \subseteq X\).
+The last step is to prove every subset of \(X\) is in \(S\), i.e. if \(A \subseteq X\), then \(A \in S\).
+Now given any subset \(A \subseteq X\), we can define a function \(f : X \rightarrow \{0, 1\}\), where
+    \begin{equation*}
+        f(x) =
+        \begin{cases}
+          0, & \text{if}\ x \notin A \\
+          1, & \text{if}\ x \in A
+        \end{cases}
+    \end{equation*}
+and \(f\) is trivially well-defined.
+Then clearly \(f \in \{0, 1\}^X\) and \(f^{-1}(\{ 1 \}) = A\).
+Also by definition of \(S\), \(f^{-1}(\{ 1 \}) \in S\), that is, \(A \in S\).
+\end{proof}
+
+\begin{exercise} \label{exercise 3.4.7}
+Let \(X\), \(Y\) be sets.
+Define a \emph{partial function} from \(X\) to \(Y\) to be any function \(f : X' \to Y'\) whose domain \(X'\) is a subset of \(X\), and whose codomain \(Y'\) is a subset of \(Y\).
+Show that the collection of all partial functions from \(X\) to \(Y\) is itself a set.
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.4.8}
+Show that \AXM{3.4} can be deduced from \AXM{3.1}, \AXM{3.3} and \AXM{3.11}.
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.4.9}
+Show that if \(\beta\) and \(\beta'\) are two elements of a set \(I\), and to each \(\alpha \in I\) we assign a set \(A_{\alpha}\), then
+\[
+    \{x \in A_{\beta} : x \in A_{\alpha} \ \forall\ \alpha \in I\} = \{x \in A_{\beta'} : x \in A_{\alpha} \ \forall\ \alpha \in I\},
+\]
+and so the definition of \(\bigcap_{\alpha \in I} A_{\alpha}\) does not depend on \(\beta\).
+Also explain why \ref{formula 3.4} is true.
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.4.10}
+Suppose that \(I\) and \(J\) are two sets, and for all \(\alpha \in I \cup J\) let \(A_{\alpha}\) be a set.
+Show that \((\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) = \bigcup_{\alpha \in I \cup J} A_{\alpha}\).
+If \(I\) and \(J\) are non-empty, show that \((\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) = \bigcap_{\alpha \in I \cup J} A_{\alpha}\).
+\end{exercise}
+
+\begin{exercise} \label{exercise 3.4.11}
+Let \(X\) be a set, let \(I\) be a non-empty set, and for all \(\alpha \in I\) let \(A_{\alpha}\) be a subset of \(X\).
+Show that
+\[
+    X \setminus \bigcup_{\alpha \in I} A_{\alpha} = \bigcap_{\alpha \in I} (X \setminus A_{\alpha})
+\]
+and
+\[
+    X \setminus \bigcap_{\alpha \in I} A_{\alpha} = \bigcup_{\alpha \in I} (X \setminus A_{\alpha}).
+\]
+This should be compared with de Morgan’s laws in \PROP{3.1.28}
+(although one cannot derive the above identities directly from de Morgan’s laws, as \(I\) could be infinite).
+\end{exercise}
