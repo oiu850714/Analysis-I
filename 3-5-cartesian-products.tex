@@ -1,0 +1,172 @@
+\section{Cartesian products} \label{sec 3.5}
+
+\begin{definition} [Ordered pair] \label{def 3.5.1}
+If \(x\) and \(y\) are any objects (possibly equal), we define the \textbf{ordered pair} \((x, y)\) to be a new \emph{object}, consisting of \(x\) as its \emph{first} component and \(y\) as its \emph{second} component.
+Two ordered pairs \((x, y)\) and \((x', y')\) are considered equal if and only if both their components match, i.e.
+\begin{align} \label{formula 3.5}
+    (x, y) = (x', y') \iff (x = x' \text{\ and\ } y = y').
+\end{align}
+\end{definition}
+
+\begin{note}
+\((3, 5) \neq (5, 3)\) but \(\{ 3, 5 \} = \{ 5, 3 \}\).
+\end{note}
+
+\begin{remark} \label{remark 3.5.2}
+Strictly speaking, this definition is \emph{partly an axiom}, because we have simply \emph{postulated} that given any two objects \(x\) and \(y\), that an object of the form \((x, y)\) \textbf{exists}.
+However, it is possible to \emph{define} an ordered pair using the axioms of set theory in such a way that we do not need any further postulates (see \EXEC{3.5.1}).
+\end{remark}
+
+\begin{remark} \label{remark 3.5.3}
+We have now ``overloaded'' the parenthesis symbols \(()\) once again;
+they now are not only used to denote grouping of operators and arguments of functions, but also to enclose ordered pairs.
+This is usually not a problem in practice as one can still determine what usage the symbols \(()\) were intended for from context.
+\end{remark}
+
+\begin{definition} [Cartesian product] \label{def 3.5.4}
+If \(X\) and \(Y\) are sets, then we define the \emph{Cartesian product} \(X \X Y\) to be the \textbf{collection} of ordered pairs, whose first component lies in \(X\) and second component lies in \(Y\),
+thus
+\[
+    X \X Y = \{ (x, y): x \in X, y \in Y \}
+\]
+or equivalently
+\[
+    a \in (X \X Y ) \iff (a = (x, y) \text{\ for some \(x \in X\) and \(y \in Y\)}).
+\]
+\end{definition}
+
+\begin{remark} \label{remark 3.5.5}
+The definition use the term ``collection''.
+However, one can show that the Cartesian product \(X \X Y\) is indeed a set; see \EXEC{3.5.1}.
+\end{remark}
+
+\begin{example}
+幹話。
+\end{example}
+
+Strictly speaking, \(X \X Y\) and \(Y \X X\) are different sets, although they are very similar.
+For instance, they always have the same number of elements (\EXEC{3.6.5}).
+
+Let \(f : X \X Y \rightarrow Z\) be a function whose \emph{domain \(X \X Y\)} is \emph{a Cartesian product} of two other sets \(X\) and \(Y\).
+Then \(f\) can \textbf{either} be thought of as a function of one variable, mapping the single input of an ordered pair \((x, y)\) in \(X \X Y\) to an output \(f( (x, y) )\)in \(Z\),
+\textbf{or} as a function of two variables, mapping an input \(x \in X\) and another input \(y \in Y\) to a single output \(f(x, y)\) in \(Z\).
+While the two notions are technically different, we will not bother to distinguish the two,
+and think of \(f\) simultaneously as a function of one variable with domain \(X \X Y\)
+and as a function of two variables with domains \(X\) and \(Y\).
+Thus for instance the addition operation \(+\) on the natural numbers can now be re-interpreted as a function \(+ : \SET{N} \X \SET{N} \rightarrow \SET{N}\), defined by \((x, y) \rightarrow x + y\).
+
+One can of course generalize the concept of ordered pairs to ordered
+triples, ordered quadruples, etc:
+
+\begin{definition} [Ordered n-tuple and n-fold Cartesian product] \label{def 3.5.7}
+Let \(n\) be a natural number.
+An ordered \(n\)-tuple \((x_i)_{1 \leq i \leq n} \) (also denoted \( (x_1, ..., x_n) \) ) is a collection of objects \(x_i\),
+one for every natural number \(i\) between \(1\) and \(n\);
+we refer to \(x_i\) as the \(i\)th component of the ordered \(n\)-tuple.
+Two ordered \(n\)-tuples \((x_i)_{1 \leq i \le n}\) and \((y_i)_{1 \leq i \leq n}\) are said to be equal iff \(x_i = y_i\) for all \(1 \leq i \le n\).
+If \((X_i)_{1 \leq i \leq n}\) is an ordered \(n\)-tuple of \emph{sets}, we define there \emph{Cartesian product} \(\prod_{1 \leq i \leq n}X_i\) (also denoted \(\prod_{i=1}^{n}X_i\) or \(X_1 \X ... \X X_n\)) by
+\[
+    \prod_{1 \leq i \leq n} X_i := \{ (x_i)_{1 \leq i \leq n} : x_i \in X_i \text{\ for all \(1 \leq i \leq n\)} \}.
+\]
+\end{definition}
+
+Again, this definition simply \emph{postulates} that an ordered \(n\)-tuple and a Cartesian product \emph{always exist} when needed,
+but using the axioms of set theory one can explicitly construct these objects (\EXEC{3.5.2}).
+
+\begin{remark} \label{remark 3.5.8}
+One can show that \(\prod_{1 \leq i \leq n} X_i\) is indeed a set.
+Indeed, from the power set axiom \AXM{3.10} we can consider the set of all functions \(i \mapsto x_i\) from the \emph{domain} \(\{1 \leq i \leq n\}\) to the codomain \(\bigcup_{1 \leq i \leq n} X_i\),
+and then we can restrict using the axiom of specification \AXM{3.5} to restrict to those functions \(i \mapsto x_i\) for which \(x_i \in X_i\) for all \(1 \leq i \leq n\).
+One can generalize this construction to \emph{infinite} Cartesian products, see \DEF{8.4.1}.
+\end{remark}
+
+\begin{note}
+上面的\ remark，用\ \AXM{3.10} 把想要\ \(n\)-tuple 都挑出來，
+但是會挑到一些不屬於\ \(\prod_{1 \leq i \leq n} X_i\) 內的\ \(n\)-tuple。
+所以再用\ \AXM{3.5} 把那些多餘的\ \(n\)-tuple 拿掉。
+\end{note}
+
+\begin{example}
+The example shows the sets \(X_1 \times X_2 \times X_3\), \((X_1 \times X_2) \times X_3\), and \(X_1 \times (X_2 \times X_3)\) are distinct.
+However, they are clearly very related to each other (for instance, there are obvious bijections between any two of the three sets),
+and it is common in practice to neglect the minor distinctions between these sets and pretend that they are in fact equal.
+Thus a function \(f : X_1 \times X_2 \times X_3 \to Y\) can be thought of as
+a function of one variable \((x_1, x_2, x_3) \in X_1 \times X_2 \times X_3\),
+or as a function of three variables \(x_1 \in X_1\), \(x_2 \in X_2\), \(x_3 \in X_3\),
+or as a function of two variables \(x_1 \in X_1\), \((x_2, x_3) \in X_2 \times X_3\), and so forth;
+we will not bother to distinguish between these different perspectives.
+\end{example}
+
+\begin{remark} \label{remark 3.5.10}
+An ordered \(n\)-tuple \(x_1, ..., x_n\) of objects is also called an \emph{ordered sequence} of \(n\) elements, or a \textbf{finite} sequence for short.
+In \CH{5} we shall also introduce the very useful concept of an \textbf{infinite}
+sequence.
+\end{remark}
+
+\begin{example} \label{example 3.5.11}
+If \(x\) is an object, then \((x)\) is a \(1\)-tuple, which we shall identify with \(x\) itself (even though the two are, strictly speaking, not the same object).
+Then if \(X_1\) is any set, then the Cartesian product \(\prod_{1 \leq i \leq 1} X_i\) is just \(X_1\) (why? \MAROON{(1)}).
+Also, the \emph{empty Cartesian product} \(\prod_{1 \leq i \leq 0} X_i\) gives, not the empty set \(\{\}\), but rather the singleton set \(\{()\}\) whose only element is the \emph{\(0\)-tuple} \(()\), also known as the \emph{empty tuple}.
+\end{example}
+
+\begin{proof} \MAROON{(1)}
+\(\prod_{1 \leq i \leq 1} X_i\) by \DEF{3.5.7} is equal to
+\[
+    \{ (x_i)_{1 \leq i \leq 1} : x_i \in X_i \text{\ for all \(1 \leq i \leq 1\)} \}.
+\]
+that is,
+\[
+    \{ (x_1) : x_1 \in X_1 \}.
+\]
+But we shall identify \((x_1)\) as \(x_1\), so the set is equivalent to
+\[
+    \{ x_1 : x_1 \in X_1 \}.
+\]
+Which is equal to \(X_1\).
+\end{proof}
+
+\begin{note}
+If \(n\) is a natural number, we often write \(X^n\) as shorthand for the \(n\)-fold Cartesian product \(X^n := \prod_{1 \leq i \leq n} X\).
+Thus \(X^1\) is essentially the same set as \(X\) (if we ignore the distinction between an object \(x\) and the \(1\)-tuple \((x)\)), while \(X^2\) is the Cartesian product \(X \times X\).
+The set \(X^0\) is a singleton set \(\{()\}\) (why? because it is just a shorthand of empty Cartesian product).
+\end{note}
+
+We can now generalize the single choice lemma (\LEM{3.1.6}) to allow for multiple (but finite) number of choices.
+
+\begin{lemma} [Finite choice] \label{lem 3.5.12}
+Let \(n \geq 1\) be a natural number, and for each natural number \(1 \leq i \leq n\), let \(X_i\) be a non-empty set.
+Then \emph{there exists an \(n\)-tuple} \((x_i)_{1 \leq i \leq n}\) such that \(x_i \in X_i\) for all \(1 \leq i \leq n\).
+In other words, if each \(X_i\) is non-empty, then the set \(\prod_{1 \leq i \leq n} X_i\) is also non-empty.
+\end{lemma}
+
+\begin{proof}
+We induct on \(n\) (starting with the base case \(n = 1\); the claim is also vacuously true with \(n = 0\), because the hypothesis in \LEM{3.5.12} requires \(n \ge 1\) and therefore is false). When \(n = 1\) the claim follows from \LEM{3.1.6},
+(why? because we identify \(\prod_{1 \leq 1 \leq n} X_1\) as just \(X_1\), see \EXAMPLE{3.5.11}; and by \LEM{3.1.6} we can choose element \(x_1\) from \(X_1\).)
+Now suppose inductively that the claim has already been proven for some \(n\); we will now prove it for \(n\INC\).
+Let \(X_1, ... , X_{n\INC}\) be a collection of nonempty sets.
+By induction hypothesis, we can find an \(n\)-tuple \((x_i)_{1 \leq i \leq n}\) such that \(x_i \in X_i \text{\ for all \(1 \leq i \leq n\)}\).
+Also, since \(X_{n\INC}\) is non-empty, by \LEM{3.1.6} we may find an object \(a\) such that \(a \in X_{n\INC}\).
+If we thus define the \(n\INC\)-tuple \((y_i)_{1 \leq i \leq n\INC}\) by setting \(y_i := x_i\) when \(1 \leq i \leq n\) and \(y_i := a\) when \(i = n\INC\) it is clear that \(y_i \in X_i\) for all \(1 \leq i \leq n\INC\),
+thus closing the induction.
+\end{proof}
+
+\begin{remark} \label{remark 3.5.13}
+It is intuitively plausible that this lemma should be extended to allow for an \emph{infinite} number of choices, but this cannot be done automatically;
+it requires an additional axiom, the \emph{axiom of choice}. See \SEC{8.4}.
+\end{remark}
+
+\exercisesection
+
+\begin{exercise} \label{exercise 3.5.1}
+(a) Suppose we define the ordered pair \((x, y)\) for any objects \(x\) and \(y\) by the formula \((x, y):= \{ \{x\}, \{x, y\} \}\) (thus using several applications of \AXM{3.3}).
+Thus for instance \((1, 2)\) is the set \(\{ \{1\}, \{1, 2\} \}\), \((2, 1)\) is the set \( \{ \{2\}, \{2, 1\} \} \), and \((1, 1)\) is the set \( \{ \{1\}, \{1, 1\} = \{ \{1\}, \{1\} \} = \{ \{1\} \} \).
+Show that such a definition indeed obeys the property \ref{formula 3.5}, and also whenever \(X\) and \(Y\) are sets, the Cartesian product \(X \X Y\) is also a set.
+Thus this definition can be validly used as a definition of an ordered pair.
+
+(b) For an additional challenge, show that the alternate definition \((x, y) := \{x, \{x, y\} \}\) also verifies \ref{formula 3.5} and is thus also an acceptable definition of ordered pair.
+(For this latter task one needs the axiom of regularity \AXM{3.9}, and in particular \EXEC{3.2.2}.)
+
+(c): Show that regardless of the definition of ordered pair, the Cartesian product \(X \X Y\) is a set.
+(Hint: first use the axiom of replacement \AXM{3.6} to show that for any \(x \in X\), the set \(\{ (x, y): y \in Y \}\) is a set, then apply the axioms of replacement and union.).
+\end{exercise}
+

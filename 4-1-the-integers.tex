@@ -1,0 +1,718 @@
+\section{The integers} \label{sec 4.1}
+
+\begin{definition} [Integers] \label{def 4.1.1}
+An integer is an expression of the form \(a \M b\), where \(a\) and \(b\) are natural numbers.
+Two integers are \emph{considered}(defined) to be equal, \(a \M b = c \M d\), if and only if \(a + d = c + b\).
+We let \(\SET{Z}\) denote the set of all integers.
+\end{definition}
+
+\begin{note}
+\DEF{4.1.1} 有一段註解在課本該頁下方，在講述\ \(a \M b\) 這種\ expression 跟集合論還有\ equivalence relation 的關係，可以讀一下。
+之後建構有理數跟實數時也會有對應的\ equivalence relation 出現。
+\end{note}
+
+Thus for instance \(3 \M 5\) is an integer, and is equal to \(2 \M 4\), because \(3 + 4 = 2 + 5\).
+
+This notation is strange looking, and has a few deficiencies; for instance, \(3\) is \emph{not yet an integer}, because it is not of the form \(a \M b\)! We will rectify these problems later(on page 77 of the textbook).
+
+We have to check that the equality in \DEF{4.1.1} is a legitimate notion of equality.
+We need to verify the reflexivity, symmetry, transitivity, and substitution axioms \AXM{a.7.4}.
+Now we first prove the equivalence relation.
+
+\begin{additional corollary} \label{ac 4.1.1}
+The definition of equality on the integers is reflexive, symmetric and transitive.
+\end{additional corollary}
+
+\begin{proof}
+Reflexive: Let \(a \M b\) be an integer where \(a, b\) are natural numbers.
+Then \(\BLUE{a \M b} = \GREEN{a \M b}\) since \(\BLUE{a} + \GREEN{b} = \GREEN{a} + \BLUE{b}\).
+
+Symmetric: Suppose \(a \M b = c \M d\) where \(a, b, c, d\) are natural numbers, we have to show \(c \M d = a \M b\).
+From the supposition \(a \M b = c \M d\) and \DEF{4.1.1}, \(a + d = b + c\), and by the equality and addition of natural numbers, we can get \(b + c = a + d\), and \(c + b = a + d\).
+By \DEF{4.1.1}, \(c + b = a + d \iff c \M d = a \M b\), so \(c \M d = a \M b\), as desired.
+
+Transitive: Suppose \(a \M b = c \M d\) \MAROON{(1)} and \(c \M d = e \M f\) \MAROON{(2)} where \(a, b, c, d, e, f\) are natural numbers,
+we have to show \(a \M b = e \M f\), or equivalently by \DEF{4.1.1}, we have to show \(a + f = e + b\).
+By \DEF{4.1.1}, from \MAROON{(1)} we can get \(a + d = c + b\) \MAROON{(3)}, from \MAROON{(2)} we can get \(c + f = e + d\) \MAROON{(4)}.
+Now add both sides of \MAROON{(3) (4)} we can get \((a + d) + (c + f) = (c + b) + (e + d)\), from which we can get \((a + f) + (c + d) = (e + b) + (c + d)\).
+By cancellation law(\PROP{2.2.6}), we have \(a + f = e + b\), as desired.
+\end{proof}
+
+\begin{note}
+The \AXM{a.7.4} will be showed for each basic operation for integers, such as addition, multiplication, and order.
+More advanced operations will be defined in terms of these basic operations, so automatically satisfy \AXM{a.7.4}
+\end{note}
+
+\begin{definition} [Addition and multiplication] \label{def 4.1.2}
+The \emph{sum} of two integers, \((a \M b) + (c \M d)\), is defined by the formula
+\[
+    (a \M b) + (c \M d) := (a + c) \M (b + d).
+\]
+The \emph{product} of two integers, \((a \M b) \X (c \M d)\), is defined by
+\[
+    (a \M b) \X (c \M d) := (ac + bd) \M (ad + bc).
+\]
+\end{definition}
+
+\begin{note}
+Both integer addition and multiplication are defined by that meaningless placeholder \(\M\) and operations of natural numbers, so, the definition is not circular.
+\end{note}
+
+Thus for instance, \((3 \M 5) + (1 \M 4) = (3 + 1) \M (5 + 4) =  (4 \M 9)\).
+
+Now we show the addition and multiplication of integers satisfy the \AXM{a.7.4}.
+
+\begin{lemma} [Addition and multiplication are well-defined] \label{lem 4.1.3}
+Let \(a, b, a', b', c, d\) be natural numbers.
+If \((a \M b) = (a' \M b')\), then \((a \M b) + (c \M d) = (a' \M b') + (c \M d)\) and \((a \M b) \X (c \M d) = (a' \M b') \X (c \M d)\),
+and also \((c \M d) + (a \M b) = (c \M d) + (a' \M b')\) and \((c \M d) \X (a \M b) = (c \M d) \X (a' \M b')\).
+Thus addition and multiplication are well-defined operations (equal inputs give equal outputs).
+\end{lemma}
+
+\begin{note}
+看起來是要先證明\ operator \textbf{兩邊}都符合替換公理，才可以推導交換律結合律那些性質(列在\ \PROP{4.1.6})。
+第二章自然數的時候沒有這樣推導是因為"所有"的自然數的\ operator 的性質基本上都是從數學歸納法開始推的。
+\end{note}
+
+\begin{proof}
+Suppose \((a \M b) = (a' \M b')\).
+
+\MAROON{(1)}: \((a \M b) + (c \M d) = (a' \M b') + (c \M d)\)
+\begin{align*}
+         & (a \M b) + (c \M d) = (a' \M b') + (c \M d) \\
+    \iff & (a + c) \M (b + d) = (a' + c) \M (b' + d) & \text{by \DEF{4.1.2}} \\
+    \iff & (a + c) + (b' + d) = (a' + c) + (b + d) & \text{by \DEF{4.1.1}} \\
+    \iff & (a + b') + (c + d) = (a' + b) + (c + d) \GREEN{\ (1)} & \text{by properties of natural number} \\
+    \iff & a + b' = a' + b & \text{\(\Rightarrow\) by \PROP{2.2.6}, \(\Leftarrow\) by \AXM{a.7.4}} \\
+    \iff & a \M b = a' \M b' & \text{by \DEF{4.1.1}}
+\end{align*}
+which is true by supposition, so \((a \M b) + (c \M d) = (a' \M b') + (c \M d)\), as desired.
+    
+\MAROON{(2)}: \((a \M b) \X (c \M d) = (a' \M b') \X (c \M d)\)
+\begin{align*}
+         & (a \M b) \X (c \M d) = (a' \M b') \X (c \M d) \\
+    \iff & (ac + bd) \M (ad + bc) = (a'c + b'd) \M (a'd + b'c) & \text{by \DEF{4.1.2}} \\
+    \iff & (ac + bd) + (a'd + b'c) = (a'c + b'd) + (ad + bc) & \text{by \DEF{4.1.1}} \\
+    \iff & ac + b'c + a'd + bd = a'c + bc + ad + b'd & \text{by properties of natural numbers} \\
+    \iff & c(a + b') + d(a' + b) = c(a' + b) + d(a + b') \GREEN{\ (2)} & \text{by \PROP{2.3.4}, distributive}
+\end{align*}
+which is true since \(a + b' = a' + b\), or equivalently by \DEF{4.1.1}, \(a \M b = a' \M b'\), so \((a \M b) \X (c \M d) = (a' \M b') \X (c \M d)\), as desired.
+
+\MAROON{(3)}: \((c \M d) + (a \M b) = (c \M d) + (a' \M b')\)
+\begin{align*}
+         & (c \M d) + (a \M b) = (c \M d) + (a' \M b') \\
+    \iff & (c + a) \M (d + b) = (c + a') \M (d + b') & \text{by \DEF{4.1.2}} \\
+    \iff & (c + a) + (d + b') = (c + a') + (d + b) & \text{by \DEF{4.1.1}} \\
+    \iff & (a + b') + (c + d) = (a' + b) + (c + d) & \text{by properties of natural number}
+\end{align*}
+which is already shown by \GREEN{(1)}, so \((c \M d) + (a \M b) = (c \M d) + (a' \M b')\), as desired.
+
+\MAROON{(4)}: \((c \M d) \X (a \M b) = (c \M d) \X (a' \M b')\)
+\begin{align*}
+         & (c \M d) \X (a \M b) = (c \M d) \X (a' \M b')\\
+    \iff & (ca + db) \M (cb + da) = (ca' + db') \M (cb' + da') & \text{by \DEF{4.1.2}} \\
+    \iff & (ca + db) + (cb' + da') = (ca' + db') + (cb + da) & \text{by \DEF{4.1.1}} \\
+    \iff & ca + cb' + da' + db = ca' + cb + da + db' & \text{by properties of natural numbers} \\
+    \iff & c(a + b') + d(a' + b) = c(a' + b) + d(a + b') & \text{by \PROP{2.3.4}, distributive}
+\end{align*}
+which is already shown by \GREEN{(2)}, so \((c \M d) \X (a \M b) = (c \M d) \X (a' \M b')\), as desired.
+\end{proof}
+
+\begin{note}
+The \emph{integer} \(n \M 0\) \textbf{behave} in the same way as the \emph{natural number} \(n\);
+indeed one can check that \((n \M 0) + (m \M 0) = (n + m) \M 0\), and \( (n \M 0) \X (m \M 0) = nm \M0\).
+\end{note}
+
+\begin{note}
+Furthermore, \((n \M 0)\) is equal to \((m \M 0)\) (if and only if \(n + 0 = m + 0\) by \DEF{4.1.1},) if and only if \(n = m\).
+(The mathematical term for this is that there is an \emph{isomorphism} between the \emph{natural} numbers \(n\) and those \emph{integers of the form} \(n \M 0\).
+Thus we may \emph{identify} the \emph{natural} numbers with \emph{integers} by \textbf{setting \(n \equiv n \M 0\)}; this does not affect our definitions of addition or multiplication or equality since they are consistent with each other(i.e. addition or multiplication \textbf{behave} in the same way).
+And the natural number \(n\) will also be equal to any other integer which is equal to \(n \M 0\),
+for instance (natural number) \(3\) is equal not only to (integer) \(3 \M 0\), but also to (integer) \(4 \M 1\), (integer) \(5 \M 2\), etc.
+\end{note}
+
+\begin{note}
+We can now define incrementation on the \emph{integers} by defining \(x\INC := x+1\) for any \emph{integer} \(x\);
+this is of course consistent with our definition of the increment operation for \emph{natural} numbers.
+However, this is no longer an important operation for us, as it has been now superseded by the more general notion of addition.
+\end{note}
+
+\begin{definition} [Negation of integers] \label{def 4.1.4}
+If \((a \M b)\) is an integer, we \emph{define} the \emph{negation} \( -(a \M b) \) to be the integer \((b \M a)\).
+In particular if \(n = n \M 0\) is a \emph{positive natural} number, we can define its negation \(-n = 0 \M n\).
+\end{definition}
+
+For instance \(-(3 \M 5) = (5 \M 3)\).
+One can check this definition is well-defined (\EXEC{4.1.2}).
+
+\begin{additional corollary} \label{ac 4.1.2}
+The definition of negation on the integers is well-defined.
+\end{additional corollary}
+
+\begin{proof}
+Let \(a, b, a', b'\) be arbitrary natural numbers such that \(a \M b = a' \M b'\), we have to show \(-(a \M b) = -(a' \M b')\).
+Then
+\begin{align*}
+         & -(a \M b) = -(a' \M b') \\
+    \iff & b \M a = b' \M a' & \text{by \DEF{4.1.4}} \\
+    \iff & b + a' = b' + a & \text{by \DEF{4.1.1}} \\
+    \iff & a' + b = b' + a & \text{by properties of natural numbers} \\
+    \iff & a' \M b' = a \M b & \text{by \DEF{4.1.1}} \\
+\end{align*}
+which is true by supposition, so \(-(a \M b) = -(a' \M b')\), as desired.
+Therefore, \DEF{4.1.4} is well-defined.
+\end{proof}
+
+\begin{lemma} [Trichotomy of integers] \label{lem 4.1.5}
+Let \(x\) be an integer.
+Then \emph{exactly one} of the following three statements is true:
+(a) \(x\) is zero;
+(b) \(x\) is equal to a \emph{positive} natural number \(n\);
+or (c) \(x\) is the negation \(-n\) of a \emph{positive} natural number \(n\).
+\end{lemma}
+
+\begin{proof}
+We first show that at least one of (a), (b), (c) is true.
+By definition, \(x = a \M b\) for some natural numbers \(a\), \(b\).
+By trichotomy of natural numbers(\PROP{2.2.13}), We have three cases: \(a > b\), \(a = b\), or \(a < b\).
+
+If \(a > b\) then \(a = b + c\) for some positive natural number \(c\)(by \PROP{2.2.12}(f)),
+which is trivially equivalent to \(a + 0 = b + c\),
+and by \DEF{4.1.1}, is equivalent to \(a \M b = c \M 0\),
+which by the isomorphism of \(c\) and \(c \M 0\), is equal to natural number \(c\), which is positive,
+so \(x = a \M b\) is equal to a positive natural number \MAROON{(1)}, satisfying (b).
+
+If \(a = b\), then \(a \M b = a \M a\), which is by \DEF{4.1.1} trivially equal to \(0 - 0\),
+which by the isomorphism of \(0\) and \(0 \M 0\) is equal to the natural number \(0\).
+So \(a \M b\) is equal to the natural number \(0\), satisfying (a).
+
+If \(a < b\) then \(b > a\), and by reasoning in \MAROON{(1)}, \(b \M a = n\) for some positive natural number \(n\),
+and thus by \DEF{4.1.4}, \(a \M b = -(b \M a)\), which \(= -n\), satisfying (c).
+
+Now we show that no more than one of (a), (b), (c) can hold at a
+time.
+That is, (a), (b) cannot be simultaneously true, and (a), (c) cannot be simultaneously true, and (b), (c) cannot be simultaneously true.
+
+By \DEF{2.2.7} (a), (b) cannot be simultaneously true, otherwise \(x\) is equal to the natural number \(0\) and a positive natural number, contradicting \DEF{2.2.7}.
+
+Suppose (a), (c) are both true, then \(x = 0\) by (a) and also \(x = -n\) for some positive natural number \(n\) \MAROON{(2)},
+So \(0 = -n\).
+By the isomorphism of \(c\) and \(c - 0\) for any natural number \(c\), that can be written as \(0 - 0 = -n\), \(0 - 0 = -(n - 0)\), \(0 - 0 = 0 - n\),
+from which by \DEF{4.1.1} we can get \(0 + n = 0 + 0\), that is, \(n = 0\), that is, \(n\) is not positive \MAROON{(3)}, contradicting \MAROON{(2)},
+so (a), (c) are not both true.
+
+Suppose (b), (c) are both true, then by (b) \(x\) is equal to a positive natural number \(m\), by (c) \(x = -n\) for some positive natural number \(n\), so \(m = -n\).
+By the isomorphism of \(c\) and \(c - 0\) for any natural number \(c\), that can be written as \(m - 0 = -n\), \(m - 0 = -(n - 0)\), \(m - 0 = 0 - n\),
+from which by \DEF{4.1.1} we can get \(m + n = 0 + 0 = 0\). But \(m, n\) are both positive integer, so by \PROP{2.2.8} \(m + n\) is positive, a contradiction.
+So (b), (c) are not true.
+\end{proof}
+
+\begin{note}
+If \(n\) is a \emph{positive} \emph{natural} number, we call \(n\) a \emph{positive} integer and \(-n\) a \emph{negative} integer.
+Thus every integer is positive, zero, or negative, but not more than one of these at a time.
+\end{note}
+
+\begin{note}
+One could well ask why we don’t use \LEM{4.1.5} to \emph{define} the integers;
+i.e., why didn’t we just say an integer is anything which is either a positive natural number, zero, or the negative of a natural number.
+The reason is that if we did so, the rules for adding and multiplying integers would split into many different cases
+(e.g., negative times positive equals negative; negative plus positive is either negative, positive, or zero, depending on which term is larger, etc.)
+and to verify all the properties would end up being much messier.
+\end{note}
+
+We now summarize the algebraic properties of the integers.
+
+\begin{proposition} [Laws of algebra for integers] \label{prop 4.1.6}
+Let \(x, y, z\) be integers.
+Then we have
+\begin{align*}
+          x + y & = y + x \MAROON{\ (1)} \\
+    (x + y) + z & = x + (y + z) \MAROON{\ (2)} \\
+          x + 0 & = 0 + x = x \MAROON{\ (3)} \\
+       x + (-x) & = (-x) + x = 0 \MAROON{\ (4)} \\
+             xy & = yx \MAROON{\ (5)} \\
+          (xy)z & = x(yz) \MAROON{\ (6)} \\
+        x1 = 1x & = x \MAROON{\ (7)} \\
+       x(y + z) & = xy + xz \MAROON{\ (8)} \\
+       (y + z)x & = yx + zx \MAROON{\ (9)}
+\end{align*}
+\end{proposition}
+
+\begin{remark} \label{remark 4.1.7}
+The above set of nine identities have a name; they are asserting that the integers form a \emph{commutative ring}.
+(If one deleted the identity \(xy = yx\), then they would only assert that the integers form a \emph{ring}).
+Note that some of these identities were already proven for the natural numbers, \emph{but this does not automatically mean that they also hold for the integers} because the integers are a larger set than the natural numbers.
+On the other hand, this proposition supersedes many of the propositions derived earlier for natural numbers.
+\end{remark}
+
+\begin{proof}
+The book says you can use \LEM{4.1.5} to prove these identities, but that will split into many many cases depending on whether \(x, y, z\) are zero, positive, or negative.
+This becomes very messy.
+A shorter way is to write \(x =(a \M b), y = (c \M d)\), and \(z = (e \M f)\) for some natural numbers \(a, b, c, d, e, f\), and expand these identities in terms of \(a, b, c, d, e, f\) and \emph{use the algebra of the natural numbers}.
+
+So let \(x =(a \M b), y = (c \M d)\), and \(z = (e \M f)\) for some natural numbers \(a, b, c, d, e, f\).
+
+\MAROON{(1)} \(x + y = y + x\):
+\begin{align*}
+    x + y & = (a \M b) + (c \M d) \\
+          & = (a + c) \M (b + d) & \text{by \DEF{4.1.2}} \\
+          & = (c + a) \M (d + b) & \text{by \PROP{2.2.4}} \\
+          & = (c \M d) + (a \M b) & \text{by \DEF{4.1.2}} \\
+          & = y + x
+\end{align*}
+
+\MAROON{(2)} \((x + y) + z = x + (y + z)\):
+\begin{align*}
+    (x + y) + z & = ((a \M b) + (c \M d)) + (e \M f) \\
+                & = ((a + c) \M (b + d)) + (e \M f) & \text{by \DEF{4.1.2}} \\
+                & = ((a + c) + e) \M ((b + d) + f) & \text{by \DEF{4.1.2}} \\
+                & = (a + (c + e)) \M (b + (d + f)) & \text{by \PROP{2.2.5}} \\
+                & = (a \M b) + ((c + e) \M (d + f)) & \text{by \DEF{4.1.2}} \\
+                & = (a \M b) + ((c \M d) + (e \M f)) & \text{by \DEF{4.1.2}} \\
+                & = x + (y + z)
+\end{align*}
+
+\MAROON{(3)} \(x + 0 = 0 + x = x\):
+By \MAROON{(1)} we have \(x + 0 = 0 + x\), so we only have to show \(x + 0 = x\).
+Then
+\begin{align*}
+    x + 0 & = (a \M b) + 0 \\
+          & = (a \M b) + (0 - 0) & \text{since (natural) \(0 \equiv (0 \M 0)\) (integer)} \\
+          & = (a + 0) \M (b + 0) & \text{by \DEF{4.1.2}} \\
+          & = a \M b & \text{by \LEM{2.2.2}} \\
+          & = x
+\end{align*}
+
+\MAROON{(4)} \(x + (-x) = (-x) + x = 0\):
+By \MAROON{(1)} we have \(x + (-x) = (-x) + x\), so we only have to show \(x + (-x) = 0\).
+Then
+\begin{align*}
+    x + (-x) & = (a \M b) + -(a \M b) \\
+             & = (a \M b) + (b \M a) & \text{by \DEF{4.1.4}} \\
+             & = (a + b) \M (b + a) & \text{by \DEF{4.1.2}} \\
+             & = (a + b) \M (a + b) & \text{by \PROP{2.2.4}, commutative} \\
+             & = (a \M a) + (b \M b) & \text{by \DEF{4.1.2}} \\
+             & = (0 \M 0) + (0 \M 0) & \text{by \DEF{4.1.1}} \\
+             & = 0 + 0 & \text{since (natural) \(0 \equiv (0 \M 0)\) (integer)} \\
+             & = 0 & \text{by \DEF{2.2.1}}
+\end{align*}
+
+\MAROON{(5)} \(xy = yx\):
+\begin{align*}
+    xy & = (a \M b)(c \M d) \\
+       & = (ac + bd) \M (ad + bc) \text{\ \GREEN{(1)}} & \text{by \DEF{4.1.2}}
+\end{align*}
+And 
+\begin{align*}
+    yx & = (c \M d)(a \M b) \\
+       & = (ca + db) \M (cb + da) & \text{by \DEF{4.1.2}} \\
+       & = (ac + bd) \M (ad + bc) & \text{by \PROP{2.2.4}, \PROP{2.2.5}} \\
+       & = \text{\GREEN{(1)}}
+\end{align*}
+So \(xy = yx\).
+
+\MAROON{(6)} \((xy)z = x(yz)\):
+\begin{align*}
+    (xy)z & = ((a \M b)(c \M d))(e \M f) \\
+          & = ((ac + bd) \M (ad + bc))(e \M f) & \text{by \DEF{4.1.2}} \\
+          & = ((ace + bde + adf + bcf) \M (acf + bdf + ade + bce)) \text{\ \GREEN{(2)}} & \text{by \DEF{4.1.2}}
+\end{align*}
+And
+\begin{align*}
+    x(yz) & = (a \M b)((c \M d)(e \M f)) \\
+          & = (a \M b)((ce + df) \M (cf + de)) & \text{by \DEF{4.1.2}} \\
+          & = ((ace + adf + bcf + bde) \M (acf + ade + bce + bdf)) & \text{by \DEF{4.1.2}} \\
+          & = ((ace + bde + adf + bcf) \M (acf + bdf + ade + bce)) \\
+          & = \text{\GREEN{(2)}}
+\end{align*}
+so \((xy)z = x(yz)\)
+
+\MAROON{(7)} \(x1 = 1x = x\):
+Again by \MAROON{(1)}, we only have to show \(x1 = x\).
+\begin{align*}
+    x1 & = (a \M b) \X 1 \\
+       & = (a \M b) \X (1 - 0) & \text{since (natural) \(1 \equiv 1 - 0\) (integer)} \\
+       & = (a1 + b0) \M (a0 + b1) & \text{by \DEF{4.1.2}} \\
+       & = a \M b & \text{by properties of natural numbers} \\
+       & = x
+\end{align*}
+
+\MAROON{(8)} \(x(y + z) = xy + xz\):
+\begin{align*}
+    x(y + z) & = (a \M b)((c \M d) + (e \M f)) \\
+             & = (a \M b)((c + e) \M (d + f)) & \text{by \DEF{4.1.2}} \\
+             & = (a(c + e) + b(d + f)) \M (b(c + e) + a(d + f)) & \text{by \DEF{4.1.2}} \\
+             & = (ac + ae + bd + bf) \M (bc + be + ad + af)) \text{ \GREEN{(4)}} & \text{by \PROP{2.3.4}}
+\end{align*}
+And
+\begin{align*}
+    xy + xz & = (a \M b)(c \M d) + (a \M b)(e \M f) \\
+            & = ((ac + bd) \M (ad + bc)) + ((ae + bf) \M (af + be)) & \text{by \DEF{4.1.2}} \\
+            & = (ac + bd + ae + bf) \M (ad + bc + af + be) & \text{by \DEF{4.1.2}} \\
+            & = \GREEN{(4)}
+\end{align*}
+So \(x(y + z) = xy + xz\).
+
+\MAROON{(9)} \((y + z)x = yx + zx\):
+\begin{align*}
+    (y + z)x & = x(y + z) & \text{by \MAROON{(1)}} \\
+             & = xy + xz & \text{by \MAROON{(8)}} \\
+             & = yx + zx & \text{by \MAROON{(1)}}
+\end{align*}
+\end{proof}
+
+\begin{note}
+仔細觀察\ \PROP{4.1.6}，這些都不需要整數減法的定義(只需要那個\  meaningless placeholder 的定義)。
+\end{note}
+
+\begin{note}
+Below refer to \href{https://github.com/ProFatXuanAll/terence-tao-analysis/blob/33a8568dce2474f82e381dcb1309f9ce685ce2f9/Analysis-I/4-1-the-integers.tex#L320-L358}{ProFatXuanAll's repo}
+\end{note}
+
+\begin{additional corollary} \label{ac 4.1.3}
+Let \(x\) be an integer.
+Then \(-x = (-1)x\).
+\end{additional corollary}
+
+\begin{proof}
+Let \(x = (a \M b)\) where \(a, b\) are natural numbers.
+Then
+\begin{align*}
+    -x & = -(a \M b) \\
+       & = (b \M a) & \text{by \DEF{4.1.4}} \\
+       & = (1b \M 1a) & \text{by \AC{2.3.4}} \\
+       & = (0 + 1b) \M (0 + 1a) & \text{by \DEF{2.2.1}} \\
+       & = (0a + 1b) \M (0b + 1a) & \text{by \LEM{2.3.3}} \\
+       & = (0 \M 1)(a \M b) & \text{by \DEF{4.1.2}} \\
+       & = (-(1 \M 0))(a \M b) & \text{by \DEF{4.1.4}} \\
+       & = (-1)(a \M b) & \text{since (natural number) \(-1 \equiv -1 \M 0\) (integer)} \\
+       & = (-1)x.
+\end{align*}
+\end{proof}
+
+\begin{additional corollary} \label{ac 4.1.4}
+Let \(x\) be an integer.
+Then \(x = -(-x)\).
+\end{additional corollary}
+
+\begin{proof}
+Let \(x = (a \M b)\) where \(a, b\) are natural numbers.
+Then
+\begin{align*}
+    -(-x) & = -(-(a \M b)) \\
+          & = -(b \M a) & \text{by \DEF{4.1.4}} \\
+          & = (a \M b)  & \text{by \DEF{4.1.4}} \\
+          & = x.
+\end{align*}
+\end{proof}
+
+\begin{additional corollary} \label{ac 4.1.5}
+Let \(x, y\) be integers.
+Then \((-x)(-y) = xy\).
+\end{additional corollary}
+
+\begin{proof}
+\begin{align*}
+    (-x)(-y) & = ((-1)x)((-1)y) & \text{by \AC{4.1.3}} \\
+             & = (-1)(x(-1))y & \text{by \PROP{4.1.6}(6))} \\
+             & = (-1)((-1)x)y & \text{by \PROP{4.1.6}(5)} \\
+             & = ((-1)(-1))(xy) & \text{by \PROP{4.1.6}(6)} \\
+             & = (-(-1))(xy) & \text{by \AC{4.1.3}} \\
+             & = 1(xy) & \text{by \AC{4.1.4}} \\
+             & = xy & \text{by \PROP{4.1.6}(7)}
+\end{align*}
+\end{proof}
+
+Finally, we now \textbf{define the operation of subtraction}. See \DEF{4.1.12}.
+
+We do not need to verify the substitution axiom \AXM{a.7.4} for this operation, since we have defined subtraction \emph{in terms of two other operations on integers}, namely \emph{addition} and \emph{negation}, and we have already verified that those
+operations are well-defined(\LEM{4.1.3} and \AC{4.1.2}).
+
+One can easily check now that if \(a\) and \(b\) are \emph{natural numbers} then
+\begin{align*}
+      a - b & = a + (-b) & \text{by \DEF{4.1.12}} \\
+            & = (a \M 0) + (-b) & \text{since (natural) \(a \equiv a \M 0\) (integer)} \\
+            & = (a \M 0) + (-(b \M 0)) & \text{since (natural) \(b \equiv b \M 0\) (integer)} \\
+            & = (a \M 0) + (0 \M b) & \text{by \DEF{4.1.4}} \\
+            & = (a + 0) \M (0 + b) & \text{by \DEF{4.1.2}} \\
+            & = a \M b & \text{trivial}
+\end{align*}
+so \(a \M b\) is just the same thing as \(a - b\).
+Because of this we can now discard the \(\M\) notation, and use the familiar operation of subtraction instead.
+
+\begin{note}
+Someone else (and me) do not quite get this argument. Refer to \href{https://math.stackexchange.com/questions/3976309/terence-taos-definition-of-subtraction-operation-to-build-integers/3976320}{this} or \href{https://www.wikiwand.com/en/Integer#/Construction}{wiki}.
+\end{note}
+
+We can now generalize \LEM{2.3.3} and \CORO{2.3.7} from the \emph{natural} numbers to the \emph{integers}:
+
+\begin{proposition} [Integers have no zero divisors] \label{prop 4.1.8}
+Let \(x\) and \(y\) be integers such that \(xy = 0\).
+Then either \(x = 0\) or \(y = 0\) (or both).
+\end{proposition}
+
+\begin{proof}
+Suppose \(xy = 0\) but both \(x \neq 0\) and \(y \neq 0\).
+By \LEM{4.1.5}, there are four cases:
+
+\MAROON{(1)} both \(x = a,  y = b\) for some positive natural numbers \(a, b\).
+Then by \PROP{2.2.8}, \(xy = ab \neq 0\), a contradiction.
+
+\MAROON{(2)} \(x = a, y = -b\) for some positive natural numbers \(a, b\)
+Then
+\begin{align*}
+    xy & = a \X -b \\
+       & = (a - 0) \X -b & \text{by \(a \equiv a - 0\)} \\
+       & = (a - 0) \X -(b - 0) & \text{by \(b \equiv b - 0\)} \\
+       & = (a - 0) \X (0 - b) & \text{by \DEF{4.1.4}} \\
+       & = (a0 + 0b) - (ab + 00) & \text{by \DEF{4.1.2}} \\
+       & = 0 - ab & \text{by properties of natural numbers} \\
+       & = -(ab - 0) & \text{by \DEF{4.1.4}} \\
+       & = -(ab) & \text{\(ab \equiv ab - 0\)}
+\end{align*}
+So \(xy = -(ab)\), where \(ab\) by \PROP{2.2.8} is a positive natural number.
+So by \LEM{4.1.5}, \(xy \neq 0\), a contradiction.
+
+\MAROON{(3)} \(x = -a, y = b\) for some positive natural numbers \(a, b\).
+But since by \PROP{4.1.6}(5), \(xy = yx\), and \(yx\) falls back to case \MAROON{(2)}, so \(xy = yx \neq 0\), a contradiction.
+
+\MAROON{(4)} \(x = -a, y = -b\) for some positive natural numbers \(a, b\).
+\begin{align*}
+    xy & = -a \X -b \\
+       & = -(a - 0) \X -b & \text{\(a \equiv a - 0\)} \\
+       & = -(a - 0) \X -(b - 0) & \text{\(b \equiv b - 0\)} \\
+       & = (0 - a) \X (0 - b) & \text{by \DEF{4.1.4}} \\
+       & = (00 + ab) - (a0 + 0b) & \text{by \DEF{4.1.2}} \\
+       & = ab - 0 & \text{by properties of natural numbers} \\
+       & = ab & \text{\(ab \equiv ab - 0\)}
+\end{align*}
+So \(xy = ab \neq 0\), a contradiction.
+
+So all cases lead to contradiction, so at least one of \(x\) or \(y\) must be \(0\).
+\end{proof}
+
+\begin{corollary} [Cancellation law for integers] \label{corollary 4.1.9}
+If \(a, b, c\) are integers such that \(ac = bc\) and \(c\) is non-zero, then \(a = b\).
+\end{corollary}
+
+\begin{proof}
+\begin{align*}
+             & ac = bc \\
+    \implies & ac + -(ac) = bc + -(ac) \\
+    \implies & 0 = bc + -(ac) & \text{by \PROP{4.1.6}(4)} \\
+    \implies & 0 = bc + (-1)(ac) & \text{by \AC{4.1.3}} \\
+    \implies & 0 = bc + ((-1)a)c & \text{by \PROP{4.1.6}(6)} \\
+    \implies & 0 = bc + (-a)c & \text{by \AC{4.1.3}} \\
+    \implies & 0 = (b + (-a))c & \text{by \PROP{4.1.6}(9)} \\
+    \implies & 0 = b + (-a) & \text{by \PROP{4.1.8} and \(c \neq 0\)} \\
+    \implies & 0 + a = (b + (-a)) + a \\
+    \implies & a = (b + (-a)) + a & \text{by \PROP{4.1.6}(3)} \\
+    \implies & a = b + ((-a) + a) & \text{by \PROP{4.1.6}(2)} \\
+    \implies & a = b + 0 & \text{by \PROP{4.1.6}(4)} \\
+    \implies & a = b & \text{by \PROP{4.1.6}(3)}
+\end{align*}
+\end{proof}
+
+We now extend the notion of order, which was defined on the natural numbers, to the integers by repeating the definition verbatim:
+
+\begin{definition} [Ordering of the integers] \label{def 4.1.10}
+Let \(n\) and \(m\) be integers.
+We \emph{say} that \(n\) is greater than or equal to \(m\), and write \(n \ge m\) or \(m \le n\), iff we have \(n = m + a\) for some \textbf{natural} number \(a\).
+We say that \(n\) is strictly greater than \(m\), and write \(n > m\) or \(m < n\), iff \(n \ge m\) and \(n \neq m\).
+\end{definition}
+
+\begin{note}
+Clearly this definition is consistent with the notion of order on the \emph{natural} numbers, since we are using the same definition.
+\end{note}
+
+\begin{lemma} [Properties of order] \label{lem 4.1.11}
+Let \(a, b, c\) be integers.
+\begin{enumerate}
+    \item \(a > b\) if and only if \(a - b\) is a positive natural number.
+    \item (Addition preserves order) If \(a > b\), then \(a + c > b+ c\).
+    \item (\emph{Positive} multiplication preserves order) If \(a > b\) and \(c\) is positive, then \(ac > bc\).
+    \item (Negation reverses order) If \(a > b\), then \(-a < -b\).
+    \item (Order is transitive) If \(a > b\) and \(b > c\), then \(a > c\).
+    \item (Order trichotomy) Exactly one of the statements \(a > b\), \(a < b\), or \(a = b\) is true.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}
+\item \MAROON{(1)}
+    \begin{align*}
+             & a > b \\
+        \iff & a \ge b \land a \neq b & \text{by \DEF{4.1.10}} \\
+        \iff & \exists c \in \SET{N}\ a = b + c \land a \neq b \land c \neq 0 & \text{by \DEF{4.1.10}, and \(c \neq 0\) otherwise \(a = b\)} \\
+        \iff & a - b = b + c - b \\
+        \iff & a - b = b + c + (-b) & \text{by \DEF{4.1.12}} \\
+        \iff & a - b = b + (-b) + c & \text{by \PROP{4.1.6}(1)} \\
+        \iff & a - b = 0 + c = c & \text{by \PROP{4.1.6}(4)(3)} \\
+    \end{align*}
+    \(\iff a - b\) is equal to a positive natural number.
+
+\item
+    \begin{align*}
+                 & a > b \\
+        \implies & \exists d \in \SET{N}\ a = b + d \land a \neq b \land d \neq 0 & \text{same argument in \MAROON{(1)}} \\
+        \implies & a + c = b + d + c \\
+        \implies & a + c = b + c + d & \text{by \PROP{4.1.6}(1)} \\
+        \implies & a + c > b + c & \text{by \DEF{4.1.10}}
+    \end{align*}
+
+\item
+    \begin{align*}
+                 & a > b \\
+        \implies & \exists d \in \SET{N}\ a = b + d \land a \neq b \land d \neq 0 & \text{same argument in \MAROON{(1)}} \\
+        \implies & ac = (b + d)c \\
+        \implies & ac = bc + dc & \text{by \PROP{4.1.6}(9)} \\
+        \implies & ac - bc = bc + dc - bc \\
+        \implies & ac - bc = dc & \text{by \PROP{4.1.6}(3)(4), \DEF{4.1.4}}
+    \end{align*}
+    where \(dc\) is a positive natural number because of \LEM{2.3.3}, and both \(d, c\) are equal to a positive natural number.
+    So by \MAROON{(1)}, \(ac > bc\).
+
+\item
+    \begin{align*}
+                 & a > b \\
+        \implies & \exists d \in \SET{N}\ a = b + d \land a \neq b \land d \neq 0 & \text{same argument in \MAROON{(1)}} \\
+        \implies & (-a) = -(b + d) \\
+        \implies & (-a) = (-1)(b + d) & \text{by \AC{4.1.3}} \\
+        \implies & (-a) = (-1)b + (-1)d & \text{by \PROP{4.1.6}(8)} \\
+        \implies & (-a) = (-b) + (-d) & \text{by \AC{4.1.3}} \\
+        \implies & (-a) + d = (-b) + (-d) + d \\
+        \implies & (-a) + d = (-b) + 0 & \text{by \PROP{4.1.6}(4)} \\
+        \implies & (-a) + d = (-b) & \text{by \PROP{4.1.6}(3)} \\
+        \implies & (-a) + d + (-(-a)) = (-b) + (-(-a)) \\
+        \implies & d = (-b) + (-(-a)) & \text{by \PROP{4.1.6}(3)(4)} \\
+        \implies & d = (-b) - (-a) & \text{by \DEF{4.1.12}}
+    \end{align*}
+    So \((-b) - (-a)\) is a positive integer. So by \MAROON{(1)}, \(-b > -a\).
+
+\item (Order is transitive) If \(a > b\) and \(b > c\), then \(a > c\):
+    \begin{align*}
+                 & a > b \land b > c \\
+        \implies & a - b = d_1 \land b - c = d_2 \text{\ where \(d_1, d_2\) is positive} & \text{same argument in \MAROON{(1)}} \\
+        \implies & (a - b) + (b - c) = d_1 + d_2 \\
+        \implies & a + (-b) + b + (-c) = d_1 + d_2 & \text{by \DEF{4.1.12}} \\
+        \implies & a + (-c) = d_1 + d_2 & \text{by \PROP{4.1.6}(3)(4)} \\
+        \implies & a - c = d_1 + d_2 & \text{by \DEF{4.1.12}}
+    \end{align*}
+    where \(d_1 + d_2\) by \PROP{2.2.8} is positive.
+    So \(a - c\) is positive, so by \MAROON{(1)}, \(a > c\).
+
+\item
+    Given any two natural numbers \(a, b\), by \LEM{4.1.5}, \emph{exactly one of} the three cases below is true:
+    \begin{enumerate}
+        \item \(a - b = 0\): then
+            \begin{align*}
+                     & a - b = 0 \\
+                \iff & a - b + b = 0 + b \\
+                \iff & a + (-b) + b = 0 + b & \text{by \DEF{4.1.12}} \\
+                \iff & a = b & \text{by \PROP{4.1.6}(3)(4)}
+            \end{align*}
+            
+            Suppose for the sake of contradiction that \(a > b\) or \(b > a\), then by \MAROON{(1)} \(a - b\) or \(b - a\) is a positive natural number, contradicting \(a - b = 0\).
+        \item \(a - b = n\) where \(n\) is a positive natural number:
+            Then by \MAROON{(1)}, \(a - b\) is equal to a positive natural number if and only if \(a > b\).
+            
+            It is trivial that the supposition of \(a = b\) or \(a < b\) lead to contradiction.
+        \item \(a - b = -n\) where \(n\) is a positive natural number:
+            \begin{align*}
+                     & a - b = -n \\
+                \iff & -(a - b) = -(-n) \\
+                \iff & b - a = -(-n) & \text{by \DEF{4.1.4}} \\
+                \iff & b - a = n & \text{by \AC{4.1.4}} \\
+                \iff & b > a & \text{by \MAROON{(1)}}
+            \end{align*}
+            It is trivial that the supposition of \(a = b\) or \(a > b\) lead to contradiction.
+    \end{enumerate}
+\end{enumerate}
+\end{proof}
+
+\begin{note}
+The book does not label the definition of subtraction of integers, so I define it below.
+\end{note}
+\begin{definition} [on page 79] \label{def 4.1.12}
+We now define the operation of subtraction \(x - y\) of two integers by the formula
+\[
+    x - y := x + (-y)
+\]
+\end{definition}
+
+
+\exercisesection
+
+\begin{exercise} \label{exercise 4.1.1}
+Verify that the definition of equality on the integers is both reflexive and symmetric.
+\end{exercise}
+
+\begin{proof}
+See \AC{4.1.1}.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.2}
+Show that the definition of negation on the integers is well-defined in the sense that if \((a \M b) = (a' \M b')\), then \(-(a \M b) = -(a' \M b')\)
+(so equal integers have equal negations).
+\end{exercise}
+
+\begin{proof}
+See \AC{4.1.2}.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.3}
+Show that \((-1) \X a = -a\) for every integer \(a\).
+\end{exercise}
+
+\begin{proof}
+See \AC{4.1.3}.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.4}
+Prove the remaining identities in \PROP{4.1.6}.
+\end{exercise}
+
+\begin{proof}
+See \PROP{4.1.6}.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.5}
+Prove \PROP{4.1.8}.
+\end{exercise}
+
+\begin{proof}
+See \PROP{4.1.8}.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.6}
+Prove \CORO{4.1.9}.
+\end{exercise}
+
+\begin{proof}
+See \CORO{4.1.9}.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.7}
+Prove \LEM{4.1.11}.
+\end{exercise}
+
+\begin{proof}
+See \LEM{4.1.11}.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.1.8}
+Show that the principle of induction (\AXM{2.5}) does not apply directly to the integers.
+More precisely, give an example of a property \(P(n)\) pertaining to an \emph{integer} \(n\) such that \(P(0)\) is true, and that \(P(n)\) implies \(P(n\INC)\) for all integers \(n\), but that \(P(n)\) is not true for all \emph{integers} \(n\).
+Thus induction is not as useful a tool for dealing with the \emph{integers} as it is with the \emph{natural} numbers.
+(The situation becomes even worse with the rational and real numbers, which we shall define shortly.)
+\end{exercise}
+
+\begin{proof}
+Let \(P(n) := n \text{ is equal to a positive natural number or \(0\)}\).
+    
+Then \(P(0)\) is true.
+    
+Suppose \(P(n)\) is true, then \(n\) is positive or \(0\); if \(n = 0\), and \(n\INC = 1\), which is positive, if \(n\) is positive, then \(n\INC = n + 1\) is positive by \PROP{2.2.8}. So in both cases \(n\INC\) is positive, so \(P(n\INC)\) is true.
+    
+But \(P(-1)\) is false because if \(n = -1\), then by \LEM{4.1.5} \(n\) cannot be equal to \(0\) or a positive natural number.
+\end{proof}
