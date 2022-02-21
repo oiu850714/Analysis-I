@@ -1,0 +1,1019 @@
+\section{Absolute value and exponentiation}
+
+\begin{note}
+In this section, I will not explain the steps derived from the properties of rationals(and integers and natural numbers) below:
+\begin{itemize}
+    \item the definition of operation in \SEC{4.2} is well-defined (so we have reflexivity, symmetricity, transitivity, and substitution).
+    \item For any rationals\(x, y\), if \(x < y\) then \(y < x\) (by \PROP{4.2.9}(b))
+    \item For any rationals, if \(x < y\), then \(-x > y\) (by \EXEC{4.2.6} and \AC{4.2.3})
+    \item Basic algebra derived in \PROP{4.2.4}.
+    \item \AC{4.2.4} to \AC{4.2.8}
+        \begin{itemize}
+            \item positive + positive = positive
+            \item negative + negative = negative
+            \item positive \(\X\) positive = positive
+            \item negative \(\X\) negative = positive
+            \item positive \(\X\) negative = negative
+            \item negative \(\X\) positive = negative
+            \item \(x \X 0 = 0\).
+            \item positive means \(> 0\), negative means \(< 0\); and I will use them interchangeably.
+        \end{itemize}
+\end{itemize}
+\end{note}
+
+\begin{definition} [Absolute value] \label{def 4.3.1}
+If \(x\) is a rational number, the absolute value \(\abs{x}\) of \(x\) is defined as follows.
+If \(x\) is positive, then \(\abs{x} := x\).
+If \(x\) is negative, then \(\abs{x} := -x\).
+If \(x\) is zero, then \(\abs{x} := 0\).
+\end{definition}
+
+\begin{definition} [Distance] \label{def 4.3.2}
+Let \(x\) and \(y\) be rational numbers.
+The quantity \(\abs{x - y}\) is called the \emph{distance} between \(x\) and \(y\) and is sometimes denoted \(d(x, y)\), thus \(d(x, y) := \abs{x - y}\).
+For instance, \(d(3, 5) = 2\).
+\end{definition}
+
+\begin{proposition} [Basic properties of absolute value and distance] \label{prop 4.3.3}
+Let \(x, y, z\) be rational numbers.
+\begin{enumerate}
+    \item \MAROON{(1)} (Non-degeneracy of absolute value)
+        We have \(\abs{x} \ge 0\).
+        Also, \(\abs{x} = 0\) if and only if \(x\) is \(0\).
+    \item \MAROON{(2)} (Triangle inequality for absolute value)
+        We have \(\abs{x + y} \le \abs{x} + \abs{y}\).
+    \item \MAROON{(3)}
+        We have the inequalities \(-y \le x \le y\) if and only if \(y \ge \abs{x}\).
+        In particular, we have \(-\abs{x} \le x \le \abs{x}\).
+    \item \MAROON{(4)} (Multiplicativity of absolute value)
+        We have \(\abs{xy} = \abs{x}\abs{y}\).
+        In particular, \(\abs{-x} = \abs{x}\).
+    \item \MAROON{(5)} (Non-degeneracy of distance)
+        We have \(d(x, y) \ge 0\).
+        Also, \(d(x, y) = 0\) if and only if \(x = y\).
+    \item \MAROON{(6)} (Symmetry of distance)
+        \(d(x, y)= d(y, x)\).
+    \item \MAROON{(7)} (Triangle inequality for distance)
+        \(d(x, z) \le d(x, y) + d(y, z)\).
+\end{enumerate}
+\end{proposition}
+
+\begin{note}
+Currently I don't know the meaning of the wording ``non-\href{https://www.wikiwand.com/en/Degeneracy_(mathematics)}{degeneracy}'' in the \PROP{4.3.3}. Does that mean the absolute value and the distance never \(< 0\)?
+\end{note}
+
+\begin{proof}
+\begin{enumerate}
+    \item
+        Let \(x\) be a rational number.
+        By \PROP{4.2.9}(a), exactly one of \(x > 0, x = 0, x < 0\) is true.
+        \begin{itemize}
+            \item \(x > 0\): then by \DEF{4.3.1}, \(\abs{x} = x > 0\), which by \PROP{4.2.9}(a) implies \(\abs{x}\) cannot \(= 0\) or \(< 0\).
+            \item \(x = 0\): then by \DEF{4.3.1}, \(\abs{x} = x = 0\), and similarly \(\abs{x}\) cannot \(> 0\) or \(< 0\).
+            \item \(x < 0\): then by \DEF{4.3.1}, \(\abs{x} = -x\). But
+                \begin{align*}
+                             & x < 0 \\
+                    \implies & -x > 0 & \text{in the skipped list} \\
+                    \implies & \abs{x} > 0
+                \end{align*}
+                and similarly \(\abs{x}\) cannot \(= 0\) or \(< 0\).
+        \end{itemize}
+        So in all cases, \(\abs{x} \ge 0\).
+        And also in all cases, we have \(x = 0 \implies \abs{x} = 0 \land x \neq 0 \implies \abs{x} \neq 0\), that is, equivalently, \(x = 0 \iff \abs{x} = 0\).
+    \item
+        By \LEM{4.2.7}, We have the following cases:
+        \begin{itemize}
+            \item \(x = 0\) or \(y = 0\):
+                If \(x = 0\), then
+                \begin{align*}
+                    \abs{x + y} & = \abs{0 + y} = \abs{y} \\
+                                & \le \abs{y} & \text{by \DEF{4.2.8}} \\
+                                & = \abs{y} + 0 \\
+                                & \le \abs{y} + \abs{x} & \text{by \MAROON{(1)}}
+                \end{align*}
+                If \(y = 0\), then
+                \begin{align*}
+                    \abs{x + y} & = \abs{x + 0} = \abs{x} \\
+                                & \le \abs{x} & \text{by \DEF{4.2.8}} \\
+                                & = \abs{x} + 0 \\
+                                & \le \abs{x} + \abs{y} & \text{by \MAROON{(1)}}
+                \end{align*}
+            \item \(x\) is positive, \(y\) is positive:
+                Then by \DEF{4.3.1}, \(\abs{x} = x\), \(\abs{y} = y\).
+                And \(x + y\) is also positive, by \DEF{4.3.1}, \(\abs{x + y} = x + y\).
+                So \(\abs{x + y} = x + y = \abs{x} + y = \abs{x} + \abs{y}\).
+                So \(\abs{x + y} = \abs{x} + \abs{y}\).
+                In particular, \(\abs{x + y} \le \abs{x} + \abs{y}\).
+            \item \(x\) is positive, \(y\) is negative:
+                Then by \DEF{4.3.1}, \(\abs{x} = x\), \(\abs{y} = -y\).
+                And by \PROP{4.2.9}(a), exactly one of \(x + y > 0\), \(x + y = 0\), \(x + y < 0\) is true.
+                \begin{itemize}
+                    \item[>>] \(x + y > 0\):
+                        Then by \DEF{4.3.1}, \(\abs{x + y} = x + y\), and
+                        \begin{align*}
+                               & (\abs{x} + \abs{y}) - \abs{x + y} \\
+                             = & x + (-y) - (x + y) \\
+                             = & (-2) \X y & \text{trivial by skipped list} \\
+                        \end{align*}
+                        since both \(-2, y\) are negative, \((-2) \X y\) is positive, so \((\abs{x} + \abs{y}) - \abs{x + y} = -2 \X y\) is positive.
+                        So by \DEF{4.2.8}, \(\abs{x} + \abs{y} > \abs{x + y}\).
+                        In particular, \(\abs{x + y} \le \abs{x} + \abs{y}\).
+                    \item[>>] \(x + y = 0\):
+                        Then by \DEF{4.3.1}, \(\abs{x + y} = 0\), and
+                        \begin{align*}
+                               & (\abs{x} + \abs{y}) - \abs{x + y} \\
+                             = & x + (-y) - 0 \\
+                             = & x + (-y)
+                        \end{align*}
+                        since both \(x, -y\) are positive, \(x + (-y)\) is positive.
+                        So \((\abs{x} + \abs{y}) - \abs{x + y}\) is positive; like previous case, \(\abs{x + y} \le \abs{x} + \abs{y}\).
+                    \item[>>] \(x + y < 0\):
+                        Then by \DEF{4.3.1}, \(\abs{x + y} = -(x + y)\), and
+                        \begin{align*}
+                               & (\abs{x} + \abs{y}) - \abs{x + y} \\
+                             = & x + (-y) - (-(x + y)) \\
+                             = & 2 x & \text{trivial by skipped list} \\
+                        \end{align*}
+                        since both \(2, x\) are positive, \(2x\) is positive.
+                        Like previous case, \(\abs{x + y} \le \abs{x} + \abs{y}\).
+                \end{itemize}
+            \item \(x\) is negative, \(y\) is positive:
+                Since we have \(x + y = y + x\), and \(y + x\) fallbacks to previous case.
+                That is, by the previous case, we have \(\abs{y + x} \le \abs{y} + \abs{x}\).
+                But \(\abs{x + y} = \abs{y + x}\), and \(\abs{x} + \abs{y} = \abs{y} + \abs{x}\), together we have \(\abs{x + y} = \abs{y + x} \le \abs{y} + \abs{x} = \abs{x} + \abs{y}\).
+            \item \(x\) is negative, \(y\) is negative:
+                Then by \DEF{4.3.1}, \(\abs{x} = -x\), \(\abs{y} = -y\).
+                Since \(x, y\) are both negative, \(x + y\) is also negative, so by \DEF{4.3.1}, \(\abs{x + y} = -(x + y)\).
+                So \(\abs{x + y} = -(x + y) = (-x) + (-y) = \abs{x} + (-y) = \abs{x} + \abs{y}\).
+                So \(\abs{x + y} = \abs{x} + \abs{y}\).
+                In particular, \(\abs{x + y} \le \abs{x} + \abs{y}\).
+        \end{itemize}
+        So, in all cases, we have \(\abs{x + y} \le \abs{x} + \abs{y}\).
+    \item
+        \begin{itemize}
+            \item[\(\Longrightarrow\)] Suppose \(-y \le x \le y\). Then
+                \begin{align*}
+                             & -y \le x \le y \\
+                    \implies & \GREEN{-y \le x} \land x \le y \\
+                    \implies & \GREEN{y \ge -x} \land x \le y & \text{trivial by skipped list} \\
+                    \implies & -x \le y \GREEN{ (1)} \land x \le y \GREEN{ (2)} & \text{trivial} \\
+                \end{align*}
+                Suppose \(x\) is positive, then by \DEF{4.3.1}, \(\abs{x} = x\), so by \GREEN{(2)}, \(\abs{x} \le y\).
+                Suppose \(x\) is negative, then by \DEF{4.3.1}, \(\abs{x} = -x\), so by \GREEN{(1)}, \(\abs{x} \le y\).
+                Suppose \(x = 0\), then by \DEF{4.3.1}, \(\abs{x} = 0\), and by \PROP{4.2.9}(a), exactly one of \(y = 0, y > 0, y < 0\) happens.
+                    \begin{itemize}
+                        \item[>>] \(y = 0\): then in particular \(y \ge 0 = \abs{x}\).
+                        \item[>>] \(y > 0\): then in particular \(y \ge 0 = \abs{x}\).
+                        \item[>>] Note that \(y < 0\) contradicts \GREEN{(1)} since \(-x = -0 = 0\), so from \(y < 0\) then we have \(y < -x\), but \GREEN{(1)} says \(y \ge -x\).
+                    \end{itemize}
+                So in all cases, we have \(y \ge \abs{x}\).
+            \item [\(\Longleftarrow\)]
+                Suppose \(y \ge \abs{x}\) \GREEN{(3)}.
+                By \MAROON{(1)}, we have \(y \ge \abs{x} \ge 0\), so \(y \ge 0\) \GREEN{(4)} and \(-y \le 0\) \GREEN{(5)}.
+                Again by \PROP{4.2.9}(a), exactly one of \(x = 0, x > 0, x < 0\) happens.
+                \begin{itemize}
+                    \item[>>] \(x = 0\): then by \GREEN{(4)} \(y \ge x\) and by \GREEN{(5)} \(-y \le x\).
+                    \item[>>] \(x > 0\): then by \DEF{4.3.9} \(\abs{x} = x\) and by \GREEN{(3)} \(y \ge x\), so \(-y \le -x\) \GREEN{(6)};
+                        But since \(x > 0\), we have \(-x < 0\), so together we have \(-x < x\), with \GREEN{(6)} we further have \(-y \le x\).
+                    \item[>>] \(x < 0\): then by \DEF{4.3.9} \(\abs{x} = -x\) and by \GREEN{(3)} \(y \ge = -x\) \GREEN{(7)}, so \(-y \le x\);
+                        But since \(x < 0\), we have \(-x > 0\), so together we have \(x < -x\), with \GREEN{(7)} we further have \(x \le y\).
+                \end{itemize}
+                So in all cases, we have \(y \ge x\) and \(-y \le x\), that is, \(-y \le x \le y\).
+        \end{itemize}
+    \item
+        By \PROP{4.2.9}(a), the combination of \(x, y\) have the following cases:
+        \begin{itemize}
+            \item \(x = 0\) or \(y = 0\):
+                Then \(xy = 0\) by \AC{4.2.7}.
+                So by \DEF{4.3.1}, \(\abs{xy} = 0\).
+                \begin{itemize}
+                    \item[>>] If \(x = 0\), then by \DEF{4.3.1}, \(\abs{x} = 0\) and \(\abs{x}\abs{y} = = 0\abs{y} = 0\).
+                    \item[>>] If \(y = 0\), then by \DEF{4.3.1}, \(\abs{y} = 0\) and \(\abs{x}\abs{y} = = \abs{x}0 = 0\).
+                \end{itemize}
+                So in all cases, \(\abs{x}\abs{y} = 0 = \abs{xy}\).
+            \item \(x > 0\) and \(y > 0\):
+                Then by \DEF{4.3.1}, \(\abs{x} = x\) and \(\abs{y} = y\).
+                And by the skipped list, \(xy > 0\), so by \DEF{4.3.1}, \(\abs{xy} = xy\).
+                So \(\abs{xy} = xy = \abs{x}y = \abs{x}\abs{y}\).
+            \item \(x > 0\) and \(y < 0\):
+                Then by \DEF{4.3.1}, \(\abs{x} = x\) and \(\abs{y} = -y\).
+                And by the skipped list, \(xy < 0\), so by \DEF{4.3.1}, \(\abs{xy} = -(xy)\).
+                So \(\abs{xy} = -(xy) = x(-y) = \abs{x}(-y) = \abs{x}\abs{y}\).
+            \item \(x < 0\) and \(y > 0\):
+                From \PROP{4.2.4}(5), \(xy = yx\), and \(yx\) callbacks to previous case. 
+            \item \(x < 0\) and \(y < 0\):
+                Then by \DEF{4.3.1}, \(\abs{x} = -x\) and \(\abs{y} = -y\).
+                And by the skipped list, \(xy > 0\), so by \DEF{4.3.1}, \(\abs{xy} = xy\).
+                So \(\abs{xy} = xy = (-x)(-y) = \abs{x}(-y) = \abs{x}\abs{y}\).
+        \end{itemize}
+        So in all cases, \(\abs{xy} = \abs{x}\abs{y}\).
+                        
+        In particular let \(y = -1\), then \(\abs{x}\abs{y} = \abs{xy} \implies \abs{x}\abs{-1} = \abs{x \X (-1)} \implies \abs{x} \X 1 = \abs{-x} \implies \abs{x} = \abs{-x}\).
+    \item
+        Since \(x - y\) is a rational number, by \MAROON{(1)}, \(\abs{x - y} \ge 0\), i.e. by \DEF{4.3.2}, \(d(x, y) \ge 0\).
+        
+        In particular,
+        \begin{align*}
+                 & x = y \\
+            \iff & x - y = 0 & \text{trivial} \\
+            \iff & \abs{x - y} = 0 & \text{by \MAROON{(1)}} \\
+            \iff & d(x, y) = 0 & \text{by \DEF{4.3.2}}
+        \end{align*}
+    \item
+        \begin{align*}
+              & d(x, y) \\
+            = & \abs{x - y} & \text{by \DEF{4.3.2}} \\
+            = & \abs{-(x - y)} & \text{by \MAROON{(4)}} \\
+            = & \abs{y - x} & \text{trivial} \\
+            = & d(y, x) & \text{by \DEF{4.3.2}}
+        \end{align*}
+    \item
+        By \DEF{4.3.2}, equivalently we have to show \(\abs{x - z} \le \abs{x - y} + \abs{y - z}\).
+        But
+        \begin{align*}
+            \abs{x - z} & = \abs{x - z + 0} \\
+                        & = \abs{x - z + (y + (-y))} \\
+                        & = \abs{x - y - z + y} \\
+                        & = \abs{(x - y) + (y - z)} & \text{above are trivial by properties of rational} \\
+                        & \le \abs{x - y} + \abs{y - z} & \text{by \MAROON{(2)}}
+        \end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{additional corollary}\label{ac 4.3.1}
+Let \(x, y\) be rational numbers.
+Then \(\abs{x} - \abs{y} \leq \abs*{x + y}\).
+\end{additional corollary}
+
+\begin{proof}
+\begin{align*}
+             & \abs{(x + y) + (-y)} \le \abs{x + y} + \abs{-y} & \text{by \PROP{4.3.3}, but \textbf{tricky}} \\
+    \implies & \abs{x} \le \abs{x + y} + \abs{-y} & \text{trivial} \\
+    \implies & \abs{x} \le \abs{x + y} + \abs{y} & \text{by \PROP{4.3.3}(d)} \\
+    \implies & \abs{x} + (-\abs{y}) \le \abs{x + y} + \abs{y} + (-\abs{y}) & \text{by \PROP{4.2.9}(d)} \\
+    \implies & \abs{x} - \abs{y} \le \abs{x + y} & \text{trivial}
+\end{align*}
+\end{proof}
+
+\begin{note}
+Absolute value is useful for measuring how \emph{``close''} two numbers are.
+Let us make a somewhat artificial definition:
+\end{note}
+
+\begin{definition} [\(\varepsilon\)-closeness] \label{def 4.3.4}
+Let \(\varepsilon > 0\) be a \emph{rational} number, and let \(x, y\) be rational numbers.
+We say that \(y\) is \(\varepsilon\)-close to \(x\) iff we have \(d(y, x) \le \varepsilon\).
+\end{definition}
+
+\begin{remark} \label{remark 4.3.5}
+This definition is not standard in mathematics textbooks; we will use it as ``scaffolding'' to construct the more important notions of \emph{limits} (and of \emph{Cauchy sequences}) later on,
+and once we have those more advanced notions we will discard the notion of \(\varepsilon\)-close.
+\end{remark}
+
+\begin{example} \label {example 4.3.6}
+The numbers \(0.99\) and \(1.01\) are \(0.1\)-close, but they are not \(0.01\)-close, because \(d(0.99, 1.01) = \abs{0.99 - 1.01} = 0.02\) is larger than \(0.01\).
+The numbers \(2\) and \(2\) are \(\varepsilon\)-close for \emph{every positive} \(\varepsilon\).
+\end{example}
+
+\begin{note}
+We do not bother defining a notion of \(\varepsilon\)-close when \(\varepsilon\) is \emph{zero or negative},
+because if \(\varepsilon\) is zero then \(x\) and \(y\) are only \(\varepsilon\)-close when they are equal,
+and when \(\varepsilon\) is negative then \(x\) and \(y\) are never \(\varepsilon\)-close.
+(In any event it is a \emph{long-standing tradition} in analysis that the Greek letters \(\varepsilon, \delta\) should only denote small \emph{positive} numbers.)
+\end{note}
+
+\begin{proposition} \label{prop 4.3.7}
+Let \(x, y, z, w\) be rational numbers.
+\begin{enumerate}
+    \item
+        If \(x = y\), then \(x\) is \(\varepsilon\)-close to \(y\) for \emph{every} \(\varepsilon > 0\).
+        Conversely, if \(x\) is \(\varepsilon\)-close to \(y\) for \emph{every} \(\varepsilon > 0\), then we have \(x = y\).
+    \item
+        Let \(\varepsilon > 0\).
+        If \(x\) is \(\varepsilon\)-close to \(y\), then y is \(\varepsilon\)-close to \(x\).
+    \item
+        Let \(\varepsilon, \delta > 0\).
+        If \(x\) is \(\varepsilon\)-close to \(y\), and \(y\) is \(\delta\)-close to \(z\), then \(x\) and \(z\) are \((\varepsilon + \delta)\)-close.
+    \item
+        Let \(\varepsilon, \delta > 0\).
+        If \(x\) and \(y\) are \(\varepsilon\)-close, and \(z\) and \(w\) are \(\delta\)-close,
+        then \(x + z\) and \(y + w\) are \((\varepsilon + \delta)\)-close, and \(x - z\) and \(y - w\) are \emph{also} \((\varepsilon + \delta)\)-close.
+    \item
+        Let \(\varepsilon > 0\).
+        If \(x\) and \(y\) are \(\varepsilon\)-close, they are also \(\varepsilon'\)-close for every \(\varepsilon' > \varepsilon\).
+    \item
+        Let \(\varepsilon > 0\).
+        If \(y\) and \(z\) are both \(\varepsilon\)-close to \(x\), and \(w\) is \emph{between} \(y\) and \(z\) (i.e., \(y \le w \le z\) or \(z \le w \le y\)),
+        then \(w\) is also \(\varepsilon\)-close to \(x\).
+    \item
+        Let \(\varepsilon > 0\).
+        If \(x\) and \(y\) are \(\varepsilon\)-close, and \(z\) is non-zero, then \(xz\) and \(yz\) are \(\varepsilon\abs{z}\)-close.
+    \item
+        Let \(\varepsilon, \delta > 0\).
+        If \(x\) and \(y\) are \(\varepsilon\)-close, and \(z\) and \(w\) are \(\delta\)-close, then \(xz\) and \(yw\) are \((\varepsilon\abs{z} + \delta\abs{x} + \varepsilon\delta)\)-close.
+\end{enumerate}
+\end{proposition}
+
+\begin{note}
+By \PROP{4.3.7}(b), we can use the wording ``\(x\) and \(y\) are \(\varepsilon\)-close''.
+\end{note}
+
+\begin{proof}
+\begin{enumerate}
+    \item
+        Suppose \(x = y\), then by \PROP{4.3.3}(e), \(d(x, y) = 0\).
+        So given any \emph{positive} rational \(\varepsilon\), \(\varepsilon > 0 = d(x, y)\).
+        By \DEF{4.3.4}, \(x, y\) are \(\varepsilon\)-close.
+        
+        Conversely, suppose \(x, y\) are \(\varepsilon\)-close for \emph{every} \(\varepsilon > 0\) \GREEN{(1)}.
+        For the sake of contradiction, suppose \(x \neq y\).
+        Then by \PROP{4.3.3}(e), \(d(x, y) > 0\).
+        Now let \(\varepsilon' = (0.5) \X d(x, y)\).
+        By \AC{4.2.5}, \(\varepsilon' > 0\), and clearly \(\varepsilon' < d(x, y)\), so by \DEF{4.3.4} \(x, y\) are not \(\varepsilon'\)-close, contradicting \GREEN{(1)}.
+    \item
+        \begin{align*}
+                     & x \text{ is \(\varepsilon\)-close to \(y\)} \\
+            \implies & d(x, y) \le \varepsilon & \text{by \DEF{4.3.4}} \\
+            \implies & d(y, x) \le \varepsilon & \text{by \PROP{4.3.3}(f)} \\
+            \implies & y \text{ is \(\varepsilon\)-close to \(x\)} & \text{by \DEF{4.3.4}}.
+        \end{align*}
+    \item
+        Let \(\varepsilon, \delta > 0\).
+        Suppose \(x\) is \(\varepsilon\)-close to \(y\), and \(y\) is \(\delta\)-close to \(z\).
+        Then by \DEF{4.3.4}, \(d(x, y) \le \varepsilon\), and \(d(y, z) \le \delta\), and clearly(by \PROP{4.2.9}(c)(d)) \(d(x, y) + d(y, z) \le \varepsilon + \delta\) \GREEN{\ (2)}.
+        And by \PROP{4.3.3}(g), \(d(x, z) \le d(x, y) + d(y, z)\) \GREEN{\ (3)}.
+        So by \GREEN{(2) (3)}, \(d(x, z) \le \varepsilon + \delta\).
+        By \DEF{4.3.4}, \(x\) is \((\varepsilon + \delta)\)-close to \(z\).
+    \item
+        Let \(\varepsilon, \delta > 0\).
+        Suppose \(x\) and \(y\) are \(\varepsilon\)-close, and \(z\) and \(w\) are \(\delta\)-close.
+        Then
+        \begin{align*}
+                     & d(y, x) \le \varepsilon \land d(w, z) \le \delta & \text{by \DEF{4.3.4}} \\
+            \implies & \abs{y - x} \le \varepsilon \land \abs{w - z} \le \delta & \text{by \DEF{4.3.2}} \\
+            \implies & \abs{y - x} + \abs{w - z} \le \varepsilon + \delta \GREEN{\ (4)}  & \text{by \PROP{4.2.9}(c)(d)} \\
+            \implies & \abs{(y - x) + (w - z)} \le \varepsilon + \delta & \text{by \PROP{4.3.3}(b)} \\
+            \implies & \abs{(y + w) - (x + z)} \le \varepsilon + \delta & \text{trivial} \\
+            \implies & d(x + z, y + w) \le \varepsilon + \delta & \text{by \DEF{4.3.2}} \\
+            \implies & x + z, y + w \text{\ are \((\varepsilon + \delta)\)-close} & \text{by \DEF{4.3.4}}
+        \end{align*}
+    
+        From \GREEN{(4)},
+        \begin{align*}
+                     & \abs{y - x} + \abs{w - z} \le \varepsilon + \delta \\
+            \implies & \abs{y - x} + \abs{z - w} \le \varepsilon + \delta & \text{by \PROP{4.3.3}(d)} \\
+            \implies & \abs{(y - x) + (z - w)} \le \varepsilon + \delta & \text{by \PROP{4.3.3}(b)} \\
+            \implies & \abs{(-w) + y + (-x) + z} \le \varepsilon + \delta & \text{trivial} \\
+            \implies & \abs{(y - w) - (x - z)} \le \varepsilon + \delta & \text{trivial} \\
+            \implies & d(y - w, x - z) \le \varepsilon + \delta & \text{by \DEF{4.3.2}} \\
+            \implies & x - z, y - w \text{\ are \((\varepsilon + \delta)\)-close} & \text{by \DEF{4.3.4}}
+        \end{align*}
+    \item
+        Let \(\varepsilon > 0\) and suppose \(x\) and \(y\) are \(\varepsilon\)-close.
+        Let \(\varepsilon'\) be a particular but arbitrarily chosen \emph{positive} rationals s.t. \(\varepsilon' > \varepsilon\) \GREEN{(5)}.
+        Then by \DEF{4.3.4}, \(d(x, y) \le \varepsilon\), and with \GREEN{(5)} we have \(d(x, y) \le \varepsilon'\).
+        So by \DEF{4.3.4}, \(x\) and \(y\) are \(\varepsilon'\)-close.
+        Since \(\varepsilon'\) are arbitrarily chosen, so for every \(\varepsilon' > \varepsilon\), \(x\) and \(y\) are \(\varepsilon'\)-close.
+    \item
+        Let \(\varepsilon > 0\).
+        Suppose \(y\) and \(z\) are both \(\varepsilon\)-close to \(x\), and \(w\) is \emph{between} \(y\) and \(z\) (i.e., \(y \le w \le z\) or \(z \le w \le y\)).
+        By \DEF{4.3.4}, \(d(y, x) \le \varepsilon\) and \(d(z, x) \le \varepsilon\).
+        By \DEF{4.3.2}, \(\abs{y - x} \le \varepsilon\) and \(\abs{z - x} \le \varepsilon\).
+        And by \PROP{4.3.3}(c),
+        \[
+            -\varepsilon \le y - x \le \varepsilon \GREEN{\ (6)} \land -\varepsilon \le z - x \le \varepsilon \GREEN{\ (7)}.
+        \]
+        
+        Since \(w\) is  between \(y\) and \(z\), there are two cases:
+        \begin{itemize}
+            \item \(y \le w \le z\):
+                Then
+                \begin{align*}
+                             & y \le w \le z \\
+                    \implies & y - x \le w - x \le z - x & \text{by \PROP{4.2.9}(d)} \\
+                    \implies & -\varepsilon \le w - x \le z - x & \text{by \GREEN{(6)} and \PROP{4.2.9}(c)} \\
+                    \implies & -\varepsilon \le w - x \le \varepsilon & \text{by \GREEN{(7)} and \PROP{4.2.9}(c)} \\
+                    \implies & \abs{w - x} \le \varepsilon & \text{by \PROP{4.3.3}(c)} \\
+                    \implies & d(w, x) \le \varepsilon & \text{by \DEF{4.3.2}} \\
+                \end{align*}
+                By \DEF{4.3.4} \(w\) and \(x\) are \(\varepsilon\)-close.
+            \item \(z \le w \le y\):
+                Then
+                \begin{align*}
+                             & z \le w \le y \\
+                    \implies & z - x \le w - x \le y - x & \text{by \PROP{4.2.9}(d)} \\
+                    \implies & -\varepsilon \le w - x \le y - x & \text{by \GREEN{(7)} and \PROP{4.2.9}(c)} \\
+                    \implies & -\varepsilon \le w - x \le \varepsilon & \text{by \GREEN{(6)} and \PROP{4.2.9}(c)}
+                \end{align*}
+                which have been proved by previous case that \(w\) and \(x\) are \(\varepsilon\)-close.
+        \end{itemize}
+        So in all cases \(w\) and \(x\) are \(\varepsilon\)-close.
+    \item
+        Let \(\varepsilon > 0\).
+        Suppose \(x\) and \(y\) are \(\varepsilon\)-close, and \(z\) is non-zero, we have to show \(xz\) and \(yz\) are \(\varepsilon\abs{z}\)-close.
+        Then
+        \begin{align*}
+                     & x, y \text{\ are \(\varepsilon\)-close} \\
+            \implies & d(x, y) \le \varepsilon & \text{by \DEF{4.3.4}} \\
+            \implies & \abs{x - y} \le \varepsilon & \text{by \DEF{4.3.2}} \\
+            \implies & \abs{x - y}\abs{z} \le \varepsilon\abs{z} & \text{by \PROP{4.3.3}(a) \(\abs{z} > 0\); and by \PROP{4.2.9}(c)} \\
+            \implies & \abs{(x - y)z} \le \varepsilon\abs{z} & \text{by \PROP{4.3.3}(d)} \\
+            \implies & \abs{xz - yz} \le \varepsilon\abs{z} & \text{trivial} \\
+            \implies & d(xz, yz) \le \varepsilon\abs{z} & \text{by \DEF{4.3.2}} \\
+        \end{align*}
+        By \DEF{4.3.4}, \(xz, yz\) are \(\varepsilon\abs{z}\)-close.
+    \item
+        Let \(\varepsilon, \delta > 0\), suppose that \(x\) and \(y\) are \(\varepsilon\)-close, so that by \DEF{4.3.4} \(d(y, x) \le \varepsilon\), i.e. by \DEF{4.3.2} \(\abs{y - x} \le \varepsilon\).
+        Also let \(a := y - x\), then we have \(\abs{a} \le \varepsilon\) and \(y = a + x\).
+        Similarly, if \(z\) and \(w\) are \(\delta\)-close, and we define \(b := w - z\), then \(w = z + b\) and \(\abs{b} \le \delta\).
+        So, since \(y = a + x\) and \(w = z + b\), we have
+        \[
+            yw = (x + a)(z + b) = xz + az + xb + ab.
+        \]
+        Thus
+        \begin{align*}
+            \abs{yw - xz} & = \abs{(xz + az + xb + ab) - xz} \\
+                          & = \abs{az + xb + ab} \\
+                          & \le \abs{az} + \abs{xb} + \abs{ab} & \text{by applying \PROP{4.3.3}(b) \emph{twice}} \\
+                          & = \abs{a}\abs{z} + \abs{x}\abs{b} + \abs{a}\abs{b} & \text{by \PROP{4.3.3}(d)} \\
+                          & \le \varepsilon\abs{z} + \abs{x}\abs{b} + \varepsilon\abs{b} & \text{since \(\abs{a} \le \varepsilon\)} \\
+                          & \le \varepsilon\abs{z} + \abs{x}\delta + \varepsilon\delta & \text{since \(\abs{b} \le \delta\)} \\
+                          & = \varepsilon\abs{z} + \delta\abs{x} + \varepsilon\delta
+        \end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{remark} \label{remark 4.3.8}
+One should compare statements (a)-(c) of \PROP{4.3.7} with the reflexive, symmetric, and transitive axioms of equality.
+It is often useful to think of the notion of ``\(\varepsilon\)-close'' as an \emph{approximate} substitute for that of equality in analysis.
+\end{remark}
+
+\begin{note}
+上面說實際上\ \DEF{4.3.4} \textbf{不是}\ equivalence relation，因為不符合\ transitivity。
+
+另外，可以這樣思考:
+\(x\) 跟自己當然沒有距離(reflexive)；
+\(x\) 到\  \(y\) 的最大距離跟\ \(y\) 到\ \(x\) 的最大距離一樣(transitive)；
+若\ \(x, y\) 最大距離\ \(\varepsilon\)，\(y, z\) 最大距離\ \(\delta\)，則\ \(x, z\) 的最大距離是\ \(\varepsilon + \delta\)(類比於 transitive)。
+\end{note}
+
+\begin{definition} [Exponentiation to a natural number] \label{def 4.3.9}
+Let \(x\) be a rational number.
+To raise \(x\) to the power \(0\), we \emph{define} \(x^0 := 1\);
+in particular we \emph{define} \(0^0 := 1\).
+Now suppose \emph{inductively} that \(x^n\) has been defined for some natural number \(n\), then we define \(x^{n + 1} := x^n \X x\).
+\end{definition}
+
+\begin{note}
+\DEF{4.3.9} is an extension of \DEF{2.3.11}.
+\end{note}
+
+\begin{note}
+\DEF{4.3.9} 雖然跟有理數有關，但他實際上一樣是用數學歸納法來定義給定的有理數的任何自然數次方的。(給定一個有理數，則他的任何次方都被\ \DEF{4.3.9} 定義了。)
+\end{note}
+
+\begin{additional corollary} \label{ac 4.3.2}
+If rational number \(x \neq 0\), then \(x^n \neq 0\) for any natural number \(n\).
+\end{additional corollary}
+\begin{proof}
+We use induction on \(n\).
+
+For \(n = 0\)
+\begin{align*}
+    x^n & = x^0 \\
+        & = 1 & \text{by \DEF{4.3.9}} \\
+        & \neq 0.
+\end{align*}
+
+Suppose for some natural number \(n \ge 0\), \(x^n \neq 0\).
+Then \(x^{n + 1} = x^n \X x\) by \DEF{4.3.9}.
+Since \(x^n \neq 0\) and \(x \neq 0\), By \PROP{4.2.9}(a), there are four combinations of \(x^n\) and \(x\): positive/positive, positive/negative, negative/positive, negative/negative.
+In all cases, by \AC{4.2.5} or \AC{4.2.6}, \(x^n \X x \neq 0\).
+This closes the induction.
+\end{proof}
+
+\begin{proposition} [Properties of exponentiation, I] \label{prop 4.3.10}
+Let \(x, y\) be rational numbers, and let \(n, m\) be natural numbers.
+\begin{enumerate}
+    \item
+        We have \(x^nx^m = x^{n+m}, (x^n)^m = x^{nm}\), and \((xy)^n = x^ny^n\).
+    \item
+        Suppose \(n > 0\). Then we have \(x^n = 0\) if and only if \(x = 0\).
+    \item
+        If \(x \ge y \ge 0\), then \(x^n \ge y^n \ge 0\). If \(x > y \ge 0\) and \(n > 0\), then \(x^n > y^n \ge 0\).
+    \item We have \(\abs{x^n} = \abs{x}^n\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}
+    \item
+        \begin{itemize}
+            \item \(x^nx^m = x^{n+m}\) \GREEN{(1)}:
+                We use induction on \(n\).
+                For \(n = 0\), given any natural number \(m\):
+                \begin{align*}
+                    x^nx^m & = x^0x^m \\
+                           & = 1 \X x^m & \text{by \DEF{4.3.9}} \\
+                           & = x^m & \text{by \PROP{4.2.4}(7)} \\
+                           & = x^{0 + m} & \text{trivial for natural number} \\
+                           & = x^{n + m} & \text{since \(n = 0\)}
+                \end{align*}
+                Suppose inductively that for some \(n \ge 0\), given any natural number \(m\), \(x^nx^m = x^{n+m}\).
+                We have to show \(x^{n+1}x^m = x^{(n+1)+m}\).
+                Then
+                \begin{align*}
+                    x^{n+1}x^m & = (x^n \X x) \X x^m & \text{by \DEF{4.3.9}} \\
+                               & = (x \X x^n) \X x^m & \text{by \PROP{4.2.4}(5)} \\
+                               & = x \X (x^n \X x^m) & \text{by \PROP{4.2.4}(6)} \\
+                               & = x \X x^{n + m} & \text{by inductive hypothesis} \\
+                               & = x^{n + m} \X x & \text{by \PROP{4.2.4}(5)} \\
+                               & = x^{(n + m) + 1} & \text{by \DEF{4.3.9}} \\
+                               & = x^{(n +1) + m} & \text{trivial for natural number}
+                \end{align*}
+                This closes the induction.
+            \item \((x^n)^m = x^{nm}\):
+                We use induction on \(m\). (yes, on \(m\), not on \(n\).)
+                For \(m = 0\), given any natural number \(n\).
+                \begin{align*}
+                    (x^n)^m & = (x^n)^0 \\
+                            & = 1 & \text{by \DEF{4.3.9}} \\
+                            & = x^0 & \text{by \DEF{4.3.9}} \\
+                            & = x^{n \X 0} & \text{trivial for natural number} \\
+                            & = x^{n \X m} & \text{since \(m = 0\)}
+                \end{align*}
+                Suppose inductively that for some \(m \ge 0\), given any natural number \(n\), \((x^n)^m = x^{nm}\).
+                We have to show \((x^n)^{m + 1} = x^{n(m + 1)}\).
+                Then
+                \begin{align*}
+                    (x^n)^{m + 1} & = (x^n)^m \X x^n & \text{by \DEF{4.3.9}} \\
+                                  & = x^{nm} \X x^n & \text{by inductive hypothesis} \\
+                                  & = x^{nm + n} & \text{by \GREEN{(1)}} \\
+                                  & = x^{n(m + 1)} & \text{trivial for natural numer}
+                \end{align*}
+                This close the induction.
+            \item \((xy)^n = x^ny^n\):
+                We use induction on \(n\).
+                For \(n = 0\),
+                \begin{align*}
+                    (xy)^n & = (xy)^0 \\
+                           & = 1 & \text{by \DEF{4.3.9}} \\
+                           & = x^0 & \text{by \DEF{4.3.9}} \\
+                           & = x^0 \X 1 & \text{by \PROP{4.2.4}(7)} \\
+                           & = x^0 \X y^0 & \text{by \DEF{4.3.9}}
+                \end{align*}
+                Suppose inductively that for some \(n \ge 0\), \((xy)^n = x^ny^n\).
+                We have to show \((xy)^{n + 1} = x^{n + 1}y^{n + 1}\).
+                Then
+                \begin{align*}
+                    (xy)^{n + 1} & = (xy)^n \X (xy) & \text{by \DEF{4.3.9}} \\
+                                 & = x^ny^n \X (xy) & \text{by inductive hypothesis} \\
+                                 & = x^n \X x \X y^n \X y & \text{by \PROP{4.2.4}(5)(6)} \\
+                                 & = x^{n + 1} \X y^n \X y & \text{by \DEF{4.3.9}} \\
+                                 & = x^{n + 1} \X y^{n + 1} & \text{by \DEF{4.3.9}}
+                \end{align*}\
+                This closes the induction.
+        \end{itemize}
+    \item
+        Suppose \(n > 0\). Then by \LEM{2.2.10} \(n = m\INC\) for some natural number \(m\).
+        And trivially \(n = m + 1\).
+        And we have
+        \begin{align*}
+            x^n & = x^{m + 1} \\
+                & = x^m \X x & \text{by \DEF{4.3.9}}
+        \end{align*}
+        
+        \begin{itemize}
+            \item[\(\Longrightarrow\)]:
+                Suppose \(x = 0\).
+                Then
+                \begin{align*}
+                    x^n & = x^m \X x \\
+                        & = x^m \X 0 \\
+                        & = 0 & \text{by \AC{4.2.7}}
+                \end{align*}
+            \item[\(\Longleftarrow\)]: 
+                Suppose \(x^n = 0\).
+                Suppose for the sake of contradiction that \(x \neq 0\).
+                But since \(x \neq 0\), by \AC{4.3.2}, \(x^m \neq 0\).
+                So \(x \neq 0\) and \(x^m \neq 0\), so they can be only positive or negative.
+                By \AC{4.2.5} or \AC{4.2.6}, we have \(x^m \X x \neq 0\), that is, \(x^n \neq 0\), a contradiction.
+                So \(x\) must be zero.
+        \end{itemize}
+    \item
+        \begin{itemize}
+            \item
+                Suppose \(x \ge y \ge 0\). We have to show \(x^n \ge y^n \ge 0\).
+            
+                We use induction on \(n\).
+                For \(n = 0\),
+                \begin{align*}
+                             & 1 \ge 1 \ge 0 & \text{trivial} \\
+                    \implies & x^0 \ge y^0 \ge 0 & \text{by \DEF{4.3.9}} \\
+                    \implies & x^n \ge y^n \ge 0 & \text{since \(n = 0\)}
+                \end{align*}
+                Suppose inductively for some natural number \(n \ge 0\), \(x^n \ge y^n \ge 0\).
+                We have to show \(x^{n + 1} \ge y^{n + 1} \ge 0\).
+                Then
+                \begin{align*}
+                             & x^n \ge y^n \ge 0 & \text{by inductive hypothesis} \\
+                    \implies & x^n \X y \ge y^n \X y \ge 0 \X y & \text{by \PROP{4.2.9}(e)} \\
+                    \implies & x^n \X y \ge y^{n + 1} \ge 0 & \text{by \DEF{4.3.9} and simplify} \\
+                    \implies & x^n \X x \ge x^n \X y \ge y^{n + 1} \ge 0 & \text{by \PROP{4.2.9}(e) and \(x \ge y\)} \\
+                    \implies & x^n \X x \ge y^{n + 1} \ge 0 & \text{by \PROP{4.2.9}(c), transitive} \\
+                    \implies & x^{n + 1} \ge y^{n + 1} \ge 0 & \text{by \DEF{4.3.9}}
+                \end{align*}
+                This closes the induction.
+            \item
+                Suppose \(x > y \ge 0\) \emph{and} \(n > 0\). We have to show \(x^n > y^n \ge 0\).
+                There are two cases: \(y = 0\) or \(y > 0\).
+                
+                \(y = 0\): Since \(n > 0\), by (b) of this proposition, \(y^n = 0\) \GREEN{(2)}.
+                In particular, \(y^n \ge 0\) \GREEN{(3)}.
+                And since \(x > y\), that implies \(x \neq 0\), and again by (b), \(x^n \neq 0\) \GREEN{(4)}.
+                So by \GREEN{(2) (4)}, and by the ``more general'' previous case \(x^n \ge y^n \ge 0\), we can conclude \(x^n > y^n\) \GREEN{(5)}.
+                So with \GREEN{(3) (5)}, \(x^n > y^n \ge 0\).
+                
+                \(y > 0\): We use induction on \(n\), with base case \(n = 1\).
+                
+                For \(n = 1\), \(x^n = x^1 = x^0 \X x = 1 \X x = x\), similarly \(y^n = y^1 = y\).
+                And since \(x > y \ge 0\), we have \(x^n > y^n \ge 0\).
+                
+                Suppose \(x^n > y^n \ge 0\) for some natural number \(n \ge 1\).
+                We have to show \(x^{n + 1} > y^{n + 1} \ge 0\).
+                Then
+                \begin{align*}
+                    x^{n + 1} & = x^n \X x & \text{by \DEF{4.3.9}} \\
+                              & > y^n \X x & \text{by inductive hypothesis and \PROP{4.2.9}(e)} \\
+                              & > y^n \X y & \text{since \(x > y\) and \PROP{4.2.9}(e)} \\
+                              & = y^{n + 1} & \text{by \DEF{4.3.9}}
+                \end{align*}
+                And
+                \begin{align*}
+                    y^{n + 1} & = y^n \X y \\
+                              & \ge 0 \X y & \text{by inductive hypothesis and \PROP{4.2.9}(e)} \\
+                              & = 0 & \text{by \AC{4.2.7}}
+                \end{align*}
+                So we have \(x^{n + 1} > y^{n + 1}\) and \(y^{n + 1} \ge 0\).
+                This closes the induction.
+        \end{itemize}
+    \item \(\abs{x^n} = \abs{x}^n\):
+        We use induction on \(n\).
+        For \(n = 0\),
+        \begin{align*}
+            \abs{x^n} & = \abs{x^0} \\
+                      & = \abs{1} & \text{by \DEF{4.3.9}} \\
+                      & = 1 & \text{by \DEF{4.3.2}} \\
+                      & = \abs{x}^0 & \text{by \DEF{4.3.9}} \\
+                      & = \abs{x}^n
+        \end{align*}
+        
+        Suppose inductively \(\abs{x^n} = \abs{x}^n\) for some natural number \(n \ge 0\).
+        We have to show \(\abs{x^{n + 1}} = \abs{x}^{n + 1}\).
+        Then
+        \begin{align*}
+            \abs{x^{n + 1}} & = \abs{x^n \X x} & \text{by \DEF{4.3.9}} \\
+                            & = \abs{x^n} \X \abs{x} & \text{by \PROP{4.3.3}(d)} \\
+                            & = \abs{x}^n \X \abs{x} & \text{by inductive hypothesis} \\
+                            & = \abs{x}^{n + 1} & \text{by \DEF{4.3.9}}
+        \end{align*}
+        This closes the induction.
+\end{enumerate}
+\end{proof}
+
+Now we define exponentiation for \emph{negative} integer exponents.
+
+\begin{definition} [Exponentiation to a negative number] \label{def 4.3.11}
+Let \(x\) be a non-zero rational number.
+Then for any negative integer \(-n\), we define
+\[
+    x^{-n} := 1/x^n.
+\]
+\end{definition}
+
+\begin{note}
+BTW, \DEF{4.3.11} also uses the definition of \emph{quotient}(\DEF{4.2.12}).
+
+(From the web errata) Note that when \(n = 1\), the definition of \(x^{-1}\) provided by \DEF{4.3.11} \emph{coincides with} the reciprocal of \(x\) defined in \DEF{4.2.11}, so there is no incompatibility of \emph{notation}  caused by this new definition.
+Thus for instance \(x^{-3} = 1/x^3 = 1/(x \X x \X x)\).
+We now have \(x^n\) defined for any \emph{integer} \(n\), whether \(n\) is positive, \emph{negative}, or zero.
+\end{note}
+
+\begin{additional corollary} \label{ac 4.3.3}
+Let \(x\) be non-zero rational number.
+Then \(x^m x^{-m} = 1\) for any integer \(m\).
+\end{additional corollary}
+
+\begin{proof}
+\begin{align*}
+    x^m x^{-m} & = x^m (1 / x^m) & \text{by \DEF{4.3.11}} \\
+               & = x^m (1 / (1 \X x^m)) & \text{by \PROP{4.2.4}(7)} \\
+               & = x^m (1 / ((x^m)^0 \X x^m) & \text{by \DEF{4.3.9}} \\
+               & = x^m (1 / ((x^m)^1) & \text{by \DEF{4.3.9}} \\
+               & = x^m ((x^m)^{-1}) & \text{by \DEF{4.3.11}} \\
+               & = 1 & \text{by \PROP{4.2.4}(10)}
+\end{align*}
+And that also implies \(x^{-m} = (x^m)^{-1}\).
+\end{proof}
+
+\begin{additional corollary} \label{ac 4.3.4}
+Given non-zero rational number \(y\), \(\GREEN{1/y^n} = \BLUE{(1/y)^n}\) for any natural number \(n\).
+Furthermore, by \AC{4.3.3}, \(y^{-n} (= \GREEN{1/y^n} \text{ by \DEF{4.3.11}}) = (y^n)^{-1}\), and by \DEF{4.3.11}, \(\BLUE{(1/y)^n} = (y^{-1})^n\). So this corollary will show that given any natural number \(n\), these expression are all equal to each other.
+\end{additional corollary}
+\begin{proof}
+We use induction on \(n\).
+For the base case, we have
+\begin{align*}
+    1/y^0 & = 1/1 & \text{by \DEF{4.3.9}} \\
+          & = 1 & \text{just equivalent} \\
+          & = (1/y)^0 & \text{by \DEF{4.3.9}}
+\end{align*}
+
+Now suppose inductively that \(1/y^n = (1/y)^n\). We must show that \(1/y^{n+1} = (1/y)^{n+1}\).
+Then
+\begin{align*}
+    1/y^{n+1} & =  1 / (y^n y) & \text{by \DEF{4.3.9}} \\
+              & =  (1 \X 1)/ (y^n y) & \text{trivial} \\
+              & = (1/y^n)(1/y) & \text{by \DEF{4.2.2}} \\
+              & = (1/y)^n (1/y) & \text{by inductive hypothesis} \\
+              & = (1/y)^{n+1}. & \text{by \DEF{4.3.9}}
+\end{align*}
+This closes the induction.
+\end{proof}
+
+Exponentiation with \emph{integer} exponents has the following properties (which\emph{supersede} \PROP{4.3.10}):
+
+\begin{proposition} [Properties of exponentiation, II] \label{prop 4.3.12}
+Let \(x, y\) be \textbf{non-zero} rational numbers, and let \(n, m\) be \textbf{integers}.
+\begin{enumerate}
+    \item
+        We have \(x^nx^m = x^{n + m}, (x^n)^m = x^{nm}\), and \((xy)^n = x^ny^n\).
+    \item
+        If \(x \ge y > 0\), then \(x^n \ge y^n > 0\) if \(n\) is positive, and \(0 < x^n \le y^n\) if \(n\) is negative.
+    \item
+        If \(x, y > 0\), \(n \neq 0\), and \(x^n = y^n\), then \(x = y\).
+    \item
+        We have \(\abs{x^n} = \abs{x}^n\).
+\end{enumerate}
+\end{proposition}
+
+\begin{note}
+我不覺得\ \PROP{4.3.12} 可以\ ``supersede'' \PROP{4.3.10}。\PROP{4.3.12} 的前提並沒有更\ general，\(x, y\) 必須是非\ \(0\)。 
+\end{note}
+
+\begin{note}
+Note that the precondition of \PROP{4.3.12}(c) is rigorous, but the result is useful.
+And Hint: induction is not suitable(at least not for negative part) for \PROP{4.3.12}.
+Instead, use \PROP{4.3.10}.
+\end{note}
+
+\begin{proof}
+
+\href{https://taoanalysis.wordpress.com/2020/04/30/exercise-4-3-4/}{Reference}
+
+Instead of proving (a) through (d) are true for all integers, we will separately prove that they are true for all non-negative integers and negative integers.
+
+To do this, throughout this exercise, for the most part we will use \(n, m\) to denote positive or non-negative integers, and \(-n,-m\) to denote negative integers.
+
+For (a):
+\begin{itemize}
+    \item \(x^nx^m = x^{n + m}\):
+        Suppose \(m, n\) are \emph{non-negative} integers. Then by isomorphism of non-negative integers and natural numbers, the statement is guaranteed by \PROP{4.3.10}(a).
+        
+        Next, suppose both \(-n\) and \(-m\) are negative, we have to show \(x^{-n}x^{-m} = x^{(-n) + (-m)} = x^{-n - m}\).
+        First it's trivial that \(n, m\) are positive. And
+        \begin{align*}
+            x^{-n}x^{-m} & = (1/x^n) \X x^{-m} & \text{by \DEF{4.3.11}} \\
+                         & = (1/x^n) \X (1/x^m) & \text{by \DEF{4.3.11}} \\
+                         & = (1 \X 1) / (x^n x^m) & \text{by \DEF{4.2.2}} \\
+                         & = 1 / (x^n x^m) & \text{trivial} \\
+                         & = 1 / x^{n + m} & \text{since \(n, m\) are positive and \PROP{4.3.10}(a)} \\
+                         & = x^{-(n + m)} & \text{by \DEF{4.3.11}} \\
+                         & = x^{-n - m} & \text{trivial}
+        \end{align*}
+        
+        Next suppose \(n\) is non-negative and \(-m\) is negative, we have to show \(x^n x^{-m} = x^{n + (-m)} = x^{n - m}\).
+        Again \(m\) is positive.
+        We have two cases, \(n - m \ge 0\) or \(n - m < 0\).
+        \begin{itemize}
+            \item[>>] \(n - m \ge 0\):
+                Then since \(m\) is positive, we can use \PROP{4.3.10}(a) to get
+                \begin{align*}
+                    x^{n - m}x^m & = x^{(n - m) + m} & \text{by \PROP{4.3.10}(a)} \\
+                                 & = x^n & \text{trivial}
+                \end{align*}
+                So we have \(x^n = x^{n - m}x^m\).
+                Then
+                \begin{align*}
+                             & x^n = x^{n - m}x^m \\
+                    \implies & x^n x^{-m} = (x^{n - m}x^m) x^{-m} & \text{multiply both side by \(x^{-m}\)} \\
+                    \implies & x^n x^{-m} = x^{n - m} (x^m x^{-m}) & \text{by \PROP{4.2.4}(6)} \\
+                    \implies & x^n x^{-m} = x^{n - m} \X 1 & \text{by \AC{4.3.3}} \\
+                    \implies & x^n x^{-m} = x^{n - m} & \text{by \PROP{4.2.4}(7)}
+                \end{align*}
+            \item[>>] \(n - m < 0\):
+                Then \(-(n -m) > 0\), or \(-n + m > 0\).
+                And since \(n\) is also non-negative, we can use \PROP{4.3.10}(a) to get \(x^{-n + m }x^n = x^{(-n + m) + n} = x^m\).
+                Now by \DEF{4.3.11}, \(x^{n-m} = 1 / x^{-(n-m)} = 1 / x^{-n+m}\).
+                Then
+                \begin{align*}
+                             & x^{n-m} = 1 / x^{-n+m} \\
+                    \implies & x^{n-m} \X (1 / x^n) = (1 / x^{-n+m}) \X (1 / x^n) & \text{multiply both side by \(1 / x^n\)} \\
+                    \implies & x^{n-m} \X (1 / x^n) = 1 / (x^{-n+m} x^n) & \text{by \DEF{4.2.2}} \\
+                    \implies & x^{n-m} \X (1 / x^n) = 1 / x^{(-n+m) + n} & \text{\(-n+m, n \ge 0 \land\) by \PROP{4.3.10}(a)} \\
+                    \implies & x^{n-m} \X (1 / x^n) = 1 / x^m & \text{trivial} \\
+                    \implies & x^{n-m} \X (1 / x^n) = x^{-m} & \text{by \DEF{4.3.11}} \\
+                    \implies & x^{n-m} x^{-n} = x^{-m} & \text{by \DEF{4.3.11}} \\
+                    \implies & x^{n-m} x^{-n} \X x^n = x^{-m} x^n & \text{multiply both side by \(x^n\)} \\
+                    \implies & x^{n-m} \X 1 = x^{-m}x^n & \text{by \AC{4.3.3}} \\
+                    \implies & x^{n-m} = x^{-m}x^n & \text{by \PROP{4.2.4}(7)} \\
+                    \implies & x^{n-m} = x^n x^{-m} & \text{by \PROP{4.2.4}(5)} \\
+                \end{align*}
+        \end{itemize}
+        
+        Finally suppose \(-n\) is negative and \(m\) is non-negative.
+        So we have to show \(x^{-n}x^m = x^{-n + m}\).
+        Note that \(x^{-n} x^m = x^m x^{-n}\) \GREEN{(1)} by \PROP{4.2.4}(5) and \(x^{-n+m} = x^{m-n}\) \GREEN{(2)} by \PROP{4.1.6}(1).
+        Since \(m\) is non-negative and \(-n\) is negative, by the previous case, we know that \(x^m x^{-n} = x^{m-n}\) \GREEN{(3)}.
+        So
+        \begin{align*}
+            x^{-n} x^m & = x^m x^{-n} & \text{by \GREEN{(1)}} \\
+                       & = x^{m - n} & \text{by \GREEN{(3)}} \\
+                       & = x^{-n + m} & \text{by \GREEN{(2)}}
+        \end{align*}
+        
+    \item \((x^n)^m = x^{nm}\):
+        First suppose \(n, m \ge 0\); this was shown by \PROP{4.3.10}(a).
+        
+        Next suppose \(-n < 0\) and \(-m < 0\), we must show \((x^{-n})^{-m} = x^{(-n)(-m)}\).
+        Then
+        \begin{align*}
+            (x^{-n})^{-m} & = \frac {1} { (x^{-n})^m } & \text{by \DEF{4.3.11}} \\
+                          & = \frac {1} { (\frac {1} {x^n} )^m} & \text{by \DEF{4.3.11}} \\
+                          & = \frac {1} { (\frac {1} {(x^n)^m} )} & \text{\(n, m \ge 0\) and by \AC{4.3.4}} \\
+                          & = \frac {1} { (\frac {1} {x^{nm}} )} & \text{\(n, m \ge 0\) and by \PROP{4.3.10}(a)} \\
+                          & = \frac {1} { x^{-(nm)} } & \text{by \DEF{4.3.11}} \\
+                          & = x^{nm} & \text{by \DEF{4.3.11}} \\
+                          & = x^{(-n)(-m)} & \text{trivial}
+        \end{align*}
+        
+        Next suppose \(n \ge 0\) and \(-m < 0\), we have to show \((x^{n})^{-m} = x^{(n)(-m)}\).
+        Again \(m > 0\), and we have
+        \begin{align*}
+            (x^n)^{-m} & = \frac1{(x^n)^m} & \text{by \DEF{4.3.11}} \\
+                       & = \frac1{x^{nm}} & \text{\(n, m \ge 0\) and by \PROP{4.3.10}(a)} \\
+                       & = x^{-(nm)} & \text{by \DEF{4.3.11}} \\ 
+                       & = x^{n(-m)} & \text{trivial}.    
+        \end{align*}
+
+        Finally suppose \(-n < 0\) and \(m \geq 0\), we have to show \((x^{-n})^{m} = x^{(-n)(m)}\).
+        Again, \(n > 0\) and we have
+        \begin{align*}
+            (x^{-n})^m & = (\frac1{x^n})^m & \text{by \DEF{4.3.11}} \\
+                       & = \frac1{(x^{n})^m} & \text{\(n, m \ge 0\) and by \AC{4.3.4}} \\
+                       & = \frac1{x^{nm}} & \text{\(n, m \ge 0\) and by \PROP{4.3.10}(a)} \\
+                       & = x^{-nm} & \text{by \DEF{4.3.11}} \\
+                       & = x^{(-n)m} & \text{trivial}
+        \end{align*}
+    \item \((xy)^n = x^ny^n\):
+        If \(n \geq 0\), the result follows from \PROP{4.3.10}(a).
+        If \(-n < 0\), we have to show \((xy)^{-n} = x^{-n}y^{-n}\).
+        Then 
+        \begin{align*}
+            (xy)^{-n} & = \frac1{(xy)^n} & \text{by \DEF{4.3.11}} \\
+                      & = \frac{1 \X 1}{(xy)^n} & \text{trivial} \\
+                      & = \frac{1 \X 1}{x^n y^n} & \text{\(n \ge 0\) and by \PROP{4.3.10}(a)} \\
+                      & = \frac1{x^n} \X \frac1{y^n} & \text{by \DEF{4.2.2}} \\
+                      & = x^{-n} y^{-n}, & \text{by \DEF{4.3.11}}
+        \end{align*}
+        which proves the result.
+\end{itemize}
+
+For (b): Suppose \(x \ge y > 0\).
+\begin{itemize}
+    \item 
+        Suppose \(n\) is positive, we have to show \(x^n \ge y^n > 0\).
+        Then by \PROP{4.3.10}(c), we get \(x^n \ge y^n \ge 0\), and what remains is to show \(y^n > 0\), i.e. we need to show \(y^n \neq 0\).
+        But since \(y > 0\), that implies \(y \neq 0\).
+        And by \PROP{4.3.10}(b), we have \(y^n \neq 0\).
+    \item
+        Now suppose \(-n\) is negative, we have to show \(0 < x^{-n} \le y^{-n}\).
+        Again, \(n\) is positive.
+        And since both \(x, y\) are positive, \(x^{-1}\) and \(y^{-1}\) are also positive, so \(x^{-1} y^{-1}\) are positive, and
+        \begin{align*}
+            x^{-1} y^{-1} & = 1/x \X 1/y & \text{by \DEF{4.3.11}} \\
+                          & = (1 \X 1)/(xy) & \text{by \DEF{4.2.2}} \\
+                          & = 1/(xy) & \text{trivial}
+        \end{align*}
+        So \(1/(xy)\) is positive.
+        
+        And
+        \begin{align*}
+                     & y \le x & \text{by supposition} \\
+            \implies & y \X (1/(xy)) \le x \X (1/(xy)) & \text{by \PROP{4.2.9}(e)} \\
+            \implies & 1/x \le 1/y & \text{skip many steps, but trivial}
+        \end{align*}
+        So we have \(1/y \ge 1/x > 0\) and \(n\) is positive, and they satisfy the previous case, so we get \((1/y)^n \ge (1/x)^n > 0\).
+        By \AC{4.3.4}, that implies \(y^{-n} \ge x^{-n} > 0\).
+    
+
+\end{itemize}
+
+For (c): Suppose \(x, y > 0\), \(n \neq 0\), and \(x^n = y^n\).
+With \PROP{4.2.9}(a) We split \(n \neq 0\) into \(n > 0\) or \(n < 0\) and further suppose \(x \neq y\), that is, \(x > y\) or \(x < y\) to get contradiction.
+\begin{itemize}
+    \item \(n > 0\):
+        If \(x > y\), then we can use the second ``if'' of \PROP{4.3.10}(c) to get \(x^n > y^n\), contradicting \(x^n = y^n\).
+        If \(x < y\), then similarly we can get \(y^n > x^n\), contradicting \(x^n = y^n\).
+        So in all cases, we have contradiction, thus \(x = y\).
+    \item \(n < 0\):
+        Now let \(n' = -n\), then we have \(n' > 0\).
+        Now
+        \begin{align*}
+                     & x^n = y^n \\
+            \implies & x^n (x^{n'}y^{n'}) = y^n (x^{n'}y^{n'}) & \text{multiply both sides by \(x^{n'}y^{n'}\)} \\
+            \implies & (x^n x^{n'})y^{n'} = (y^{n'}y^n) x^{n'} & \text{by \PROP{4.2.4}(5)(6)} \\
+            \implies & x^{n + n'}y^{n'} = y^{n' + n} x^{n'} & \text{by (a) of this proposition} \\
+            \implies & x^{n + (-n)}y^{n'} = y^{(-n) + n} x^{n'} \\
+            \implies & x^0 y^{n'} = y^0 x^{n'} & \text{by \PROP{4.1.6}(4)} \\
+            \implies & 1 \X y^{n'} = 1 \X x^{n'} & \text{by \DEF{4.3.9}} \\
+            \implies & y^{n'} = x^{n'} & \text{by \PROP{4.2.4}(7)}
+        \end{align*}
+        So we have \(x, y > 0\), \(n' > 0\) and \(x^{n'} = y^{n'}\), which satisfy the previous case, so we conclude \(x = y\).
+\end{itemize}
+
+For (d):
+If \(n \ge 0\), then this follows from \PROP{4.3.10}(d).
+So suppose \(n < 0\), then let \(n' = -n\) so that \(n' > 0\).
+Then
+\begin{align*}
+    \abs{x^n} & = \abs{x^{-n'}} & \text{since \(n' = -n\), or \(n = -n'\)} \\
+              & = \abs{(1/x)^{n'}} & \text{by \AC{4.3.4}} \\
+              & = \abs{1/x}^{n'} & \text{since \(n' > 0\), use \PROP{4.3.10}(d)} \\
+              & = \abs{1/x}^{-n} \\
+              & = (1/\abs{x})^{-n} & \text{skip, but \(\abs{1/x} = 1/\abs{x}\) can be proved by splitting into cases} \\
+              & = (\abs{x}^{-1})^{-n} & \text{by \DEF{4.3.11}} \\
+              & = \abs{x}^{(-1)(-n)} & \text{by \PROP{4.3.12}(a)} \\
+              & = \abs{x}^n & \text{trivial}
+\end{align*}
+\end{proof}
+
+\exercisesection
+\begin{exercise} \label{exercise 4.3.1}
+Prove \PROP{4.3.3}.
+\end{exercise}
+
+\begin{proof}
+See \PROP{4.3.3}.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.3.2}
+Prove the remaining claims in \PROP{4.3.7}.
+\end{exercise}
+
+\begin{proof}
+See \PROP{4.3.7}.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.3.3}
+Prove \PROP{4.3.10}.
+\end{exercise}
+
+\begin{proof}
+See \PROP{4.3.10}.
+\end{proof}
+
+\begin{exercise}
+Prove \PROP{4.3.12}.
+\end{exercise}
+
+\begin{proof}
+See \PROP{4.3.12}.
+\end{proof}
+
+\begin{exercise} \label{exercise 4.3.5}
+Prove that \(2^N \geq N\) for all positive integers \(N\).
+\end{exercise}
+
+\begin{proof}
+We use induction on \(N\) with base \(N = 1\).
+
+For \(N = 1\)
+\begin{align*}
+    2^N & = 2^1 \\
+        & = 2^0 \X 2 & \text{by \DEF{4.3.9}} \\
+        & = 1 \X 2 & \text{by \DEF{4.3.9}} \\
+        & = 2 & \text{by \PROP{4.2.4}(7)} \\
+        & \ge 1 = N.
+\end{align*}
+
+Suppose \(2^N \ge N\) for some \(N \ge 1\), we have to show \(2^{N + 1} \ge N + 1\).
+But
+\begin{align*}
+    2^{N + 1} & = 2^N \X 2 & \text{by \DEF{4.3.9}} \\
+              & \ge N \X 2 & \text{by inductive hypothesis} \\
+              & = N + N & \text{trivial} \\
+              & \ge N + 1 & \text{since \(N \ge 1\)}
+\end{align*}
+This closes the induction.
+\end{proof}

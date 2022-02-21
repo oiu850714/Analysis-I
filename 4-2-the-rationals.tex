@@ -463,6 +463,128 @@ From \DEF{4.2.8}, \(x < y\) and \(y > x\) is \emph{not defined} to be equivalent
 It is trivial that \(x > 0\) and \(-x < 0\) for some positive rational number \(x\).
 \end{note}
 
+\begin{note}
+In the proofs of \AC{4.2.4} - \AC{4.2.7}, when we have positive integers, because of the isomorphism between positive integer and natural number, we can use properties of natural numbers(properties of \CH{2}) on these positive integers.
+\end{note}
+
+\begin{additional corollary} \label{ac 4.2.4}
+If \(x\) and \(y\) are two positive rationals, then \(x + y\) is also a positive rational number.
+If \(x\) and \(y\) are two negative rationals, then \(x + y\) is also a negative rational number.
+\end{additional corollary}
+
+\begin{proof}
+Suppose \(x\) and \(y\) are two positive rationals, we have to show \(x + y\) is positive.
+By \DEF{4.2.6} \(x = a / b\) and \(y = c / d\) where \(a, b, c, d\) are \emph{positive} integers.
+Then by \DEF{4.2.2} we have \(x + y = (ad + bc) / bd\).
+By isomorphism and \LEM{2.3.3}, \(ad, bc, bd\) are also positive.
+Since \(ad, bc\) are positive, by isomorphism and \PROP{2.2.8}, \(ad + bc\) and \(bd\) are positive.
+So by \DEF{4.2.6}, \(x + y = (ad + bc) / bd\) is a positive rational number.
+
+Now suppose \(x\) and \(y\) are two negative rationals, we have to show \(x + y\) is negative.
+By \DEF{4.2.6} \(x = (-a) / b\) and \(y = (-c) / d\) where \(a, b, c, d\) are \emph{positive} integers.
+By \DEF{4.2.2} \(x + y = ((-a)d + b(-c)) / bd\).
+And
+\begin{align*}
+      (-a)d + b(-c) & = (-a)d + (-c)b & \text{by \PROP{4.2.4}(5)} \\
+                    & = ((-1)a)d + ((-1)c)b & \text{by \AC{4.2.3}} \\
+                    & = (-1)(ad) + (-1)(cb) & \text{by \PROP{4.2.4}(6)} \\
+                    & = (-1)(ad + cb) & \text{by \PROP{4.2.4}(8)} \\
+                    & = -(ad + cb) & \text{by \AC{4.2.3}} \\
+                    & = -(ad + bc) & \text{by \PROP{4.2.4}(5)}
+\end{align*}
+So we have we have \(x + y = ((-a)d + b(-c)) / bd = (-(ad + bc)) / bd\).
+By the same argument in the previous case, \(ad + bc\) and \(bd\) are positive.
+So by \DEF{4.2.6}, \(x + y = (-(ad + bc)) / bd\) is a negative rational number.
+\end{proof}
+
+\begin{additional corollary} \label{ac 4.2.5}
+Let \(x\) and \(y\) be two rationals.
+If \(x\) and \(y\) are positive, then \(xy\) is positive.
+If \(x\) and \(y\) are negative, then \(xy\) is positive.
+\end{additional corollary}
+
+\begin{proof}
+Suppose \(x\) and \(y\) are two positive rationals, we have to show \(xy\) is a positive rational number.
+By \DEF{4.2.6} \(x = a / b\) and \(y = c / d\) where \(a, b, c, d\) are positive integers.
+By \DEF{4.2.2} \(xy = ac / bd\).
+By isomorphism and \LEM{2.3.2}, \(ac, bd\) are both positive, so by \DEF{4.2.6} \(xy = ac / bd\) is a positive rational number.
+
+Now suppose \(x\) and \(y\) are two negative rationals, we have to show \(xy\) is a positive rational number.
+By \DEF{4.2.6} \(x = (-a) / b\) and \(y = (-c) / d\) where \(a, b, c, d \) are positive integers.
+By \DEF{4.2.2} \(xy = (-a)(-c) / bd\).
+By \AC{4.1.5} \((-a)(-c) = ac\), so \(xy = ac / bd\).
+Again by isomorphism and \LEM{2.3.2}, \(ac, bd\) are both positive, so by \DEF{4.2.6} \(xy = ac / bd\) is a positive rational number.
+\end{proof}
+
+\begin{additional corollary} \label{ac 4.2.6}
+Let \(x\) and \(y\) be two rationals.
+If \(x\) is negative and \(y\) is positive, then \(xy\) is negative.
+If \(x\) is positive and \(y\) is negative, then \(xy\) is negative.
+\end{additional corollary}
+
+\begin{proof}
+By \PROP{4.2.4}(1) we know that \(xy = yx\), thus we only need to show that if \(x\) is negative and \(y\) is positive, then \(xy\) is negative.
+By \DEF{4.2.6} we know that \(x = (-a) / b\) and \(y = c / d\) where \(a, b, c, d\) are positive integers.
+By \DEF{4.2.2}, \(xy = ((-a)c) / bd\).
+By \AC{4.1.3} and \PROP{4.1.6}(6), \((-a)c = ((-1)a)(c) = (-1)(ac) = (ac)\), so \(xy = (-(ac)) / bd\).
+By isomorphism and \LEM{2.3.2}, \(ac, bd\) are both positive, thus by \DEF{4.2.6} \(xy = (-(ac)) / bd\) is a negative rational number.
+\end{proof}
+
+\begin{additional corollary} \label{ac 4.2.7}
+\(x \X 0 = 0\) for any rational number \(x\).
+\end{additional corollary}
+
+\begin{proof}
+\(x = a / b\), where \(a, b\) are integers and \(b \neq 0\).
+Then
+\begin{align*}
+    x \X 0 & = (a / b) \X 0 \\
+           & = (a / b) \X (0 / 1) & \text{since (integer) \(0 \equiv 0 / 1\)} \\
+           & = (a \X 0 / b \X 1) & \text{by \DEF{4.2.2}} \\
+           & = 0 / b & \text{by properties of integer} \\
+           & = 0 & \text{by \AC{4.2.2}} \\
+\end{align*}
+\end{proof}
+
+\begin{additional corollary} \label{ac 4.2.8}
+\(x\) is a positive rational number if and only if \(x > 0\).
+\(x\) is a negative rational number if and only if \(x < 0\).
+\end{additional corollary}
+
+\begin{proof}
+We first show that \(x\) is a positive rational number if and only if \(x > 0\).
+By \DEF{4.2.6} \(x = a / b\) where \(a, b\) are positive integers.
+And
+\begin{align*}
+         & x = a / b \\
+    \iff & x - 0 = a / b - 0 \\
+    \iff & x - 0 = a / b + (-0) & \text{by \DEF{4.2.13}} \\
+    \iff & x - 0 = a / b + ((-1)0) & \text{by \AC{4.2.3}} \\
+    \iff & x - 0 = a / b + 0 & \text{by \AC{4.2.7}} \\
+    \iff & x - 0 = a / b & \text{by \PROP{4.2.4}(3)}
+\end{align*}
+\(\iff x - 0\) is a positive rational.
+By \DEF{4.2.8}, \(x > 0\).
+
+Now we show that \(x\) is a negative rational number if and only if \(x < 0\).
+By \DEF{4.2.6} we know that \(x = (-a) / b\) where \(a, b\) are positive integers.
+Thus
+\begin{align*}
+         & x = (-a) / b \\
+    \iff & x - 0 = (-a) / b - 0 \\
+    \iff & x - 0 = (-a) / b + (-0) & \text{by \DEF{4.2.13}} \\
+    \iff & x - 0 = (-a) / b + ((-1)0) & \text{by \AC{4.2.3}} \\
+    \iff & x - 0 = (-a) / b + 0 & \text{by \AC{4.2.7}} \\
+    \iff & x - 0 = (-a) / b & \text{by \PROP{4.2.4}(3)}
+\end{align*}
+\(\iff x - 0\) is a negative rational.
+By \DEF{4.2.8}, \(x < 0\).
+\end{proof}
+
+\begin{note}
+From now on, since \AC{4.2.8}, I may use ``positive'' and \(> 0\) interchangeably, similarly for ``negative'' and \(< 0\).
+\end{note}
+
 \begin{proposition} [Basic properties of order on the rationals] \label{prop 4.2.9}
 Let \(x, y, z\) be rational numbers.
 Then the following properties hold.
@@ -484,9 +606,10 @@ Then the following properties hold.
 \begin{enumerate}
     \item \MAROON{(1)}
         Given rational numbers \(x, y\), let \(a = x - y\).
-        Then by \LEM{4.2.7}, exactly one of \(a = 0, a < 0, a > 0\) is true.
+        Then by \LEM{4.2.7}, exactly one of \(a = 0\), \(a\) is positive, \(a\) is negative, is true. But by \AC{4.2.8}, \(a\) is positive iff \(a > 0\), and \(a\) is negative iff \(a < 0\).
+        So we can conclude exactly one of \(a = 0\), \(a > 0\), \(a < 0\) is true.
         \begin{itemize}
-            \item If \(a = 0\), then
+            \item \(a = 0\): then
                 \begin{align*}
                          & a = 0 \\
                     \iff & x - y = 0 \\
@@ -495,7 +618,7 @@ Then the following properties hold.
                 \end{align*}
                 Suppose \(x > y\), then by \DEF{4.2.8}, \(x - y\) is positive, i.e. \(a\) is positive, contradicting \(a = 0\) and \LEM{4.2.7}.
                 Suppose \(x < y\), then by \DEF{4.2.8}, \(x - y\) is negative, i.e. \(a\) is negative, contradicting \(a = 0\) and \LEM{4.2.7}.
-            \item If \(a < 0\), then
+            \item \(a < 0\): then
                 \begin{align*}
                          & a < 0 \\
                     \iff & x - y < 0 \\
@@ -504,7 +627,7 @@ Then the following properties hold.
                 \end{align*}
                 Suppose \(x = y\) then trivially we can get \(a = 0\), contradicting \(a < 0\) and \LEM{4.2.7}.
                 Suppose \(x > y\) then trivially we can get \(a > 0\), contradicting \(a < 0\) and \LEM{4.2.7}.
-            \item If \(a > 0\), then
+            \item \(a > 0\): then
                 \begin{align*}
                          & a > 0 \\
                     \iff & x - y > 0 \\
@@ -531,20 +654,20 @@ Then the following properties hold.
         \begin{align*}
                      & x < y \land y < z \\
             \implies & y > x \land z > y & \text{by \MAROON{(2)}} \\
-            \implies & y - x = a \land z - y = b \land a, b > 0 & \text{by \DEF{4.2.8}} \\
+            \implies & y - x = a \land z - y = b \land a, b \text{ is positive} & \text{by \DEF{4.2.8}} \\
             \implies & y + (-x) = a \land z + (-y) = b & \text{by \DEF{4.2.13}} \\
             \implies & y + (-x) + z + (-y) = a + b & \text{add both side} \\
             \implies & z + (-x) + y + (-y) = a + b & \text{by \PROP{4.2.4}(1)(2)} \\
             \implies & z + (-x) = a + b & \text{by \PROP{4.2.4}(3)(4)} \\
             \implies & z - x = a + b & \text{by \DEF{4.2.13}} \\
-            \implies & z - x \text{\ is positive} & \text{it's trivial that \(a + b\) is positive} \\
+            \implies & z - x \text{\ is positive} & \text{by \AC{4.2.4}} \\
             \implies & z > x & \text{by \DEF{4.2.8}} \\
             \implies & x < z & \text{by \MAROON{(2)}}
         \end{align*}
     \item \MAROON{(4)}
         \begin{align*}
                      & x < y \\
-            \implies & x - y = -a, a > 0 & \text{by \DEF{4.2.8}} \\
+            \implies & x - y = -a \land a \text{ is positive} & \text{by \DEF{4.2.8}} \\
             \implies & x - y + 0 = -a & \text{by \PROP{4.2.4}(3)} \\
             \implies & x - y + z + (-z) = -a & \text{by \PROP{4.2.4}(4)} \\
             \implies & x + (-y) + z + (-z) = -a & \text{by \DEF{4.2.13}} \\
@@ -557,8 +680,8 @@ Then the following properties hold.
         \end{align*}
     \item \MAROON{(5)}
         \begin{align*}
-                     & x < y \land z > 0 \\
-            \implies & x - y = -a, a > 0 \\
+                     & x < y \land z \text{ is positive} \\
+            \implies & x - y = -a, a \text{ is positive} \\
             \implies & (x - y)z = (-a)z \\
             \implies & (x + (-y))z = (-a)z & \text{by \DEF{4.2.13}} \\
             \implies & xz + (-y)z = (-a)z & \text{by \PROP{4.2.4}(9)} \\
@@ -566,7 +689,8 @@ Then the following properties hold.
             \implies & xz + (-1)(yz) = (-1)az & \text{by \PROP{4.2.4}(6)} \\
             \implies & xz + (-(yz)) = -(az) & \text{by \AC{4.2.3}} \\
             \implies & xz - yz = -(az) & \text{by \DEF{4.2.13}} \\
-            \implies & xz < yz & \text{by \DEF{4.2.8}, where \(az > 0\) is trivial}
+            \implies & xz < yz & \text{by \DEF{4.2.8}} \\
+                     &         & \text{where \(az\) is positive by \AC{4.2.5}}
         \end{align*}
 \end{enumerate}
 \end{proof}
@@ -577,7 +701,7 @@ they assert that the rationals \(\SET{Q}\) form an \emph{ordered field}.
 It is important to keep in mind that \PROP{4.2.9}(e) only works when \(z\) is \emph{positive}, see \EXEC{4.2.6}.
 \end{remark}
 
-\begin{definition} [Reciprocal] \label{def 4.1.11}
+\begin{definition} [Reciprocal] \label{def 4.2.11}
 If \(x = a \D b\) is a \emph{non-zero} rational (so that \(a, b \neq 0\)) then we define the reciprocal \(x^{-1}\) of \(x\) to be the rational number
 \[
     x^{-1} := b \D a.
@@ -585,7 +709,7 @@ If \(x = a \D b\) is a \emph{non-zero} rational (so that \(a, b \neq 0\)) then w
 \end{definition}
 
 It is easy to check that this operation is consistent with our notion of equality: if two rational numbers \(a \D b\), \(a' \D b'\) are equal, then their reciprocals are also equal.
-\begin{additional corollary} \label{ac 4.2.4}
+\begin{additional corollary} \label{ac 4.2.9}
 The reciprocal operation on rational numbers is well-defined:
 if two rational numbers \(a // b\), \(a' // b'\) are equal, then their reciprocals are also equal.
 We however leave the reciprocal of \(0\) undefined, i.e. when \(a = 0\), we leave the reciprocal of \(a \D b\) undefined.
@@ -605,7 +729,7 @@ Thus, for instance,
 Using this formula, it is easy to see that \(a / b = a \D b\) for every \textbf{integer} \(a\) and every non-zero \textbf{integer} \(b\).
 Thus we can now discard the \(\D\) notation, and use the more customary \(a / b\) instead of \(a \D b\).
 
-\begin{definition} \label{def 4.2.13}
+\begin{definition} [Subtraction] \label{def 4.2.13}
 In a similar spirit, we define \emph{subtraction} on the rationals by the formula
 \[
     x - y := x + (-y),
@@ -655,8 +779,9 @@ Show that if \(x, y, z\) are rational numbers such that \(x < y\) and \(z\) is n
 \end{exercise}
 \begin{proof}
 \begin{align*}
-                 & x < y \land z < 0 \\
-        \implies & x - y = -a \land z - 0 = z = -b \land a, b > 0 & \text{by \DEF{4.2.8}}\\
+                 & x < y \land z \text{ is negative} \\
+        \implies & x < y \land z < 0 & \text{by \AC{4.2.8}} \\
+        \implies & x - y = -a \land z - 0 = z = -b \land a, b \text{ are positive} & \text{by \DEF{4.2.8}}\\
         \implies & (x - y)z = (-a)z \\
         \implies & (x - y)z = (-a)(-b) \\
         \implies & (x + (-y))z = (-a)(-b) & \text{by \DEF{4.2.13}} \\
@@ -665,6 +790,7 @@ Show that if \(x, y, z\) are rational numbers such that \(x < y\) and \(z\) is n
         \implies & xz + (-1)(yz) = (-1)(-1)ab & \text{by \PROP{4.2.4}(5)(6)} \\
         \implies & xz + (-(yz)) = ab & \text{by \AC{4.2.3}} \\
         \implies & xz - yz = ab & \text{by \DEF{4.2.13}} \\
-        \implies & xz > yz & \text{by \DEF{4.2.8}, where \(ab > 0\) is trivial}
+        \implies & xz > yz & \text{by \DEF{4.2.8}, where \(ab\) is positive} \\
+                 &         & \text{by \AC{4.2.5}}
     \end{align*}
 \end{proof}
