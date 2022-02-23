@@ -1,0 +1,199 @@
+\section{Equivalent Cauchy sequence} \label{sec 5.2}
+
+Consider the two Cauchy sequences of rational numbers:
+\[
+    1.4, 1.41, 1.414, 1.4142, 1.41421,...
+\]
+and
+\[
+    1.5, 1.42, 1.415, 1.4143, 1.41422,...
+\]
+\emph{Informally}, both of these sequences seem to be converging to the same number, the square root
+\(\sqrt{2} = 1.41421...\)
+(though this statement is \emph{not yet rigorous} because we have not defined real numbers yet).
+If we are to define the real numbers from the rationals as \emph{limits} of Cauchy sequences, \emph{we have to know when two Cauchy sequences of rationals give the same limit}, \textbf{without} first defining a real number
+(since that would be circular).
+
+\begin{note}
+若你希望用柯西序列的極限來定義實數，那柯西序列的相等的定義就不能跟實數有任何關係，這樣會\ circular。
+\end{note}
+
+\begin{definition} [\(\varepsilon\)-close sequences] \label{def 5.2.1}
+Let \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) be two sequences,
+and let \(\varepsilon > 0\).
+We say that the sequence \((a_n)_{n = 0}^{\infty}\) is \emph{\(\varepsilon\)-close} to \((b_n)_{n = 0}^{\infty}\) iff \(a_n\) is \(\varepsilon\)-close to \(b_n\) for each \(n \in \SET{N}\).
+In other words, the sequence \(a_0, a_1, a_2,...\) is \(\varepsilon\)-close to the sequence \(b_0, b_1, b_2,...\) 
+iff \(\abs{a_n - b_n} \le \varepsilon\) for all \(n = 0, 1, 2,...\).
+\end{definition}
+
+\begin{example} \label{example 5.2.2}
+The two sequences
+\[
+    1, -1, 1, -1, 1,...
+\]
+and
+\[
+    1.1, -1.1, 1.1, -1.1, 1.1,...
+\]
+are \(0.1\)-close to each other.
+(Note however that neither of them are \(0.1\)-steady).
+\end{example}
+
+\begin{definition} [Eventually \(\varepsilon\)-close sequences] \label{def 5.2.3}
+Let \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) be two sequences, and let \(\varepsilon > 0\).
+We say that the sequence \((a_n)_{n = 0}^{\infty}\) is \emph{eventually \(\varepsilon\)-close to} \((b_n)_{n = 0}^{\infty}\)
+iff there exists an \(N \ge 0\) such that the sequences \((a_n)_{n = N}^{\infty}\) and \((b_n)_{n = N}^{\infty}\) are \(\varepsilon\)-close.
+In other words, \(a_0, a_1, a_2,...\) is eventually \(\varepsilon\)-close to \(b_0, b_1, b_2,...\)
+iff there exists an \(N \ge 0\) such that \(\abs{a_n - b_n} \le \varepsilon\) for all \(n \ge N\).
+\end{definition}
+
+\begin{remark} \label{remark 5.2.4}
+Again, the notations for \(\varepsilon\)-close sequences and eventually \(\varepsilon\)-close sequences are not standard in the literature, and we will not use them outside of this section.
+\end{remark}
+
+\begin{example} \label{example 5.2.5}
+Simple example that informally shows
+\[
+    1.1, 1.01, 1.001, 1.0001,...
+\]
+and
+\[
+    0.9, 0.99, 0.999, 0.9999,...
+\]
+are equivalent(see definition below).
+\end{example}
+
+\begin{definition} [Equivalent sequences] \label{def 5.2.6}
+Two sequences \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are \emph{equivalent}
+iff for each \emph{rational} \(\varepsilon > 0\), the sequences \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are eventually \(\varepsilon\)-close.
+In other words, \(a_0, a_1, a_2,...\) and \(b_0, b_1, b_2,...\) are equivalent
+iff for every rational \(\varepsilon > 0\), there exists an \(N \ge 0\) such that \(\abs{a_n - b_n} \le \varepsilon\) for all \(n \ge N\).
+\end{definition}
+
+\begin{remark} \label{remark 5.2.7}
+As with \DEF{5.1.8}, the quantity \(\varepsilon > 0\) is currently restricted to be a positive \emph{rational}, rather than a positive \emph{real}.
+However, we shall eventually see that it makes no difference whether \(\varepsilon\) ranges over the positive rationals or positive reals;
+see \EXEC{6.1.10}.
+\end{remark}
+
+We now prove the sequences in \EXAMPLE{5.2.5} are equivalent rigorously.
+
+\begin{proposition} \label{prop 5.2.8}.
+Let \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) be the sequences
+\(a_n := 1 + 10^{-n}\) and \(b_n = 1 - 10^{-n}\).
+Then the sequences \(a_n, b_n\) are equivalent.
+\end{proposition}
+
+\begin{remark} \label{remark 5.2.9}
+This Proposition, in \emph{decimal notation}, asserts that \(1.0000... = 0.9999...\); see \PROP{B.2.3}.
+\end{remark}
+
+\begin{proof}
+We need to prove that for every \(\varepsilon > 0\), the two sequences \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close to each other.
+So we let \(\varepsilon\) be an arbitrary rational such that \(\varepsilon > 0\).
+We need to find an integer \(N \ge 1\) (where \(1\) is the starting index of the two sequences) such that \((a_n)_{n = N}^{\infty}\) and \((b_n)_{n = N}^{\infty}\) are \(\varepsilon\)-close;
+in other words, we need to find an \(N \ge 1\) such that
+\[
+    \abs{a_n - b_n} \le \varepsilon \text{ for all } n \ge N.
+\]
+However, we have
+\[
+    \abs{a_n - b_n} = \abs{(1 + 10^{-n}) - (1 - 10^{-n})} = 2 \X 10^{-n}.
+\]
+Since \(10^{-n}\) is a \emph{decreasing} function of \(n\) (i.e., \(10^{-m} < 10^{-n}\) whenever \(m > n\);
+this is easily proven by induction),
+and since \(n \ge N\), we have \(2 \X 10^{-n} \le 2 \X 10^{-N}\).
+Thus we have
+\[
+    \abs{a_n - b_n} \le 2 \X 10^{-N} \text{ for all } n \ge N.
+\]
+Thus in order to obtain \(\abs{a_n - b_n} \le \varepsilon\) for all \(n \ge N\), it will be sufficient to choose \(N\) so that \(2 \X 10^{-N} \le \varepsilon\).
+This is easy to do using logarithms, but we have not yet developed logarithms yet, so we will use a cruder
+method.
+First, we observe \(10^N\) is always greater than \(N\) for any \(N \ge 1\) (see \EXEC{4.3.5}).
+Thus \(10^{-N} \le 1/N\), and \(2 \X 10^{-N} \le 2/N\).
+
+Thus to get \(2 \X 10^{-N} \le \varepsilon\), it will suffice to choose \(N\) so that \(2/N \le \varepsilon\), or equivalently that \(N \ge 2/\varepsilon\).
+But by \PROP{4.4.1} since \(2/\varepsilon\) is rational, we can find \(N\) s.t. \(N > 2/\varepsilon\) and in particular \(N \ge 2/\varepsilon\).
+So the two sequences are eventually \(\varepsilon\)-close.
+Since \(\varepsilon\) are arbitrary, for all \(\varepsilon > 0\) the two sequences are eventually \(\varepsilon\)-close.
+By \DEF{5.2.6}, the two sequences are equivalent.
+\end{proof}
+
+
+\exercisesection
+
+\begin{exercise} \label{exercise 5.2.1}
+Show that if \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent sequences of rationals,
+then \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence if and only if \((b_n)_{n = 1}^{\infty}\) is a Cauchy sequence.
+\end{exercise}
+\begin{proof}
+Suppose \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent sequences of rationals.
+\begin{itemize}
+    \item[\(\Longrightarrow\)]:
+        Suppose \((a_n)_{n = 1}^{\infty}\) is Cauchy, we have to show \((b_n)_{n = 1}^{\infty}\) is Cauchy.
+        So, let \(\varepsilon\) be arbitrary rational s.t. \(\varepsilon > 0\), we have to show \((b_n)_{n = 1}^{\infty}\) is eventual \(\varepsilon\)-steady.
+        That is, we have to find a integer \(N \ge 1\), which is the starting index of the two sequences, s.t. \(d(b_j, b_k) \le \varepsilon\) for all \(j, k \ge N\).
+        
+        But by supposition \((a_n)_{n = 1}^{\infty}\) is Cauchy, so we can find a integer \(N_1 \ge 1\) s.t. \(d(a_j, a_k) \le \varepsilon\) for all \(j, k \ge N_1\) \GREEN{(1)}.
+        And also since the two sequences are equivalent, we can find a integer \(N_2 \ge 1\) s.t. \(d(a_i, b_i) \le \varepsilon\) for all \(i \ge N_2\) \GREEN{(2)}.
+        
+        Now let \(N_3 := max(N_1, N_2)\), for all \(i, j \ge N_3\), by \GREEN{(1)} we have \(d(a_i, a_j) \le \varepsilon\) \MAROON{(1)};
+        and by \GREEN{(2)} we have \(d(a_i, b_i) \le \varepsilon\) \MAROON{(2)} and \(d(a_j, b_j) \le \varepsilon)\) \MAROON{(3)}.
+        And by \PROP{4.3.7}(f) and \MAROON{(2)}, we have \(d(a_i, b_i) = d(b_i, a_i)\) \MAROON{(4)}.
+        So by adding both sides of the three inequalities \MAROON{(1) (3) (4)}, we have \(d(b_i, a_i) + d(a_i, a_j) + d(a_j, b_j) \le 3\varepsilon\).
+        But by applying \PROP{4.3.7}(g) twice, we have \(d(b_i, b_j) \le d(b_i, a_i) + d(a_i, a_j) + d(a_j, b_j)\).
+        So by transitivity, we have \(d(b_i, b_j) \le 3\varepsilon\) for all \(i, j \le N_3\).
+        
+        (I do this with purpose and first conclude that the sequence \(b_n\) is \(3\varepsilon\)-steady, because finding \(N\) for \(\varepsilon/3\) in the \emph{beginning} of the proof is somewhat anti-human.)
+        
+        Now let \(\varepsilon' = \varepsilon/3\).
+        Then with the same argument above, we can conclude that we can find \(N_4 \ge 1\) s.t. \(d(b_i, b_j) \le 3\varepsilon'\) for all \(i, j \le N_4\).
+        But \(3\varepsilon' = 3(\varepsilon/3) = \varepsilon\), so we have \(d(b_i, b_j) \le \varepsilon\) for all \(i, j \le N_4\).
+        So by \DEF{5.1.6}, \((b_n)_{n = 1}^{\infty}\) is \(\varepsilon\)-steady.
+        
+        Since \(\varepsilon > 0\) is arbitrary, \((b_n)_{n = 1}^{\infty}\) is eventual \(\varepsilon\)-steady for all \(\varepsilon > 0\).
+        By \DEF{5.1.8}, \((b_n)_{n = 1}^{\infty}\) is Cauchy!
+    \item[\(\Longleftarrow\)]:
+        The proof is similar with previous case, with \(a_{blabla}\) and \(b_{blabla}\) swapped.
+\end{itemize}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.2.2}
+Let \(\varepsilon > 0\).
+Show that if \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close,
+then \((a_n)_{n = 1}^{\infty}\) is bounded if and only if \((b_n)_{n = 1}^{\infty}\) is bounded.
+\end{exercise}
+\begin{proof}
+Let \(\varepsilon > 0\) and suppose \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are eventually \(\varepsilon\)-close.
+\begin{itemize}
+    \item[\(\Longrightarrow\)]
+        Suppose \((a_n)_{n = 1}^{\infty}\) is bounded, we have to show \((b_n)_{n = 1}^{\infty}\) is also bounded.
+
+        Since \((a_n)_{n = 1}^{\infty}\) is bounded, we can find a rational \(M_1 \ge 0\) s.t. \(\abs{a_i} \le M_1\) for all \(i \ge 1\). And since the two sequence are eventually \(\varepsilon\)-close, we can find an integer \(N_1 \ge 1\) s.t. \(d(a_i, b_i) \le \varepsilon\) for all \(i \ge N_1\).
+        
+        Now again like the proof in \LEM{5.1.15}, we split \((b_n)_{n = 1}^{\infty}\) into \((b_n)_{n = 1}^{N_1}\) and \((b_n)_{N_1 + 1}^{\infty}\).
+        By \LEM{5.1.14} the first finite part is bounded.
+        
+        Now let \(M_2 := M_1 + \varepsilon\), we will show that the second part of the sequence, \((b_n)_{n = N_1 + 1}^{\infty}\), is bounded by \(M_2\) and hence is bounded.
+        So given arbitrary index \(i \ge N_1 + 1\):
+        \begin{align*}
+                     & d(a_i, b_i) \le \varepsilon & \text{since the two seq. are even. \(\varepsilon\)-close} \\
+            \implies & d(b_i, a_i) \le \varepsilon & \text{by \PROP{4.3.3}(f)} \\
+            \implies & \abs{b_i - a_i} \le \varepsilon & \text{by \DEF{4.3.2}} \\
+            \implies & M_1 + \abs{b_i - a_i} \le M_1 + \varepsilon & \text{by \PROP{4.2.9}(d)} \\
+            \implies & M_1 + \abs{b_i - a_i} \le M_2 & \text{since \(M_2 = M_1 + \varepsilon\)}\\
+            \implies & \abs{a_i} + \abs{b_i - a_i} \le M_1 + \abs{b_i - a_i} \le M_2 & \text{since \(\abs{a_i} \le M_1\)} \\
+            \implies & \abs{a_i} + \abs{b_i - a_i} \le M_2 & \text{transitive} \\
+            \implies & \abs{a_i + (b_i - a_i)} \le \abs{a_i} + \abs{b_i - a_i} \le M_2 & \text{by \PROP{4.3.3}(b)} \\
+            \implies & \abs{a_i + (b_i - a_i)} \le M_2 & \text{transitive}  \\
+            \implies & \abs{b_i} \le M_2 & \text{trivial} \\
+        \end{align*}
+        Since \(i \ge N_1 + 1\) is arbitrary, so for all \(i \ge N_1 + 1\), \(\abs{b_i} \le M_2\).
+        By \DEF{5.1.12}, \((b_n)_{n = N_1 + 1}^{\infty}\) is bounded by \(M_2\) and hence is bounded.
+
+        So the whole sequence is bounded.
+    \item[\(\Longleftarrow\)]:
+        The proof is similar with previous case, with \(a_{blabla}\) and \(b_{blabla}\) swapped.
+\end{itemize}
+\end{proof}
