@@ -1,0 +1,234 @@
+\section{Cauchy sequences}
+
+\begin{definition} [Sequences]  \label{def 5.1.1}
+Let \(m\) be an integer.
+A sequence \((a_n)_{n = m}^{\infty}\) of \emph{rational} numbers is any function from the set \( \{n \in \SET{Z} : n \ge m\} \) to \(\SET{Q}\),
+i.e., a mapping which assigns to each integer \(n\) greater than or equal to \(m\), a rational number \(a_n\).
+More informally, a sequence \((a_n)_{n = m}^{\infty}\)
+of rational numbers is a collection of rationals \(a_m, a_{m + 1}, a_{m + 2},...\)
+\end{definition}
+
+\begin{example}
+Simple example.
+\end{example}
+
+We want to define the \emph{real} numbers as the \emph{``limits''} of sequences of \emph{rational} numbers.
+To do so, we have to distinguish which sequences of rationals are \emph{convergent} and which ones are not.
+To do this we use the definition of \DEF{4.3.4} \(\varepsilon\)-closeness.
+
+\begin{definition} [\(\varepsilon\)-steadiness] \label{def 5.1.3}
+Let \(\varepsilon > 0\).
+A sequence \((a_n)_{n = 0}^{\infty}\) is said to be \emph{\(\varepsilon\)-steady} iff each pair \(a_j, a_k\) of sequence elements is \(\varepsilon\)-close \emph{for every} natural number \(j, k\).
+In other words, the sequence \(a_0, a_1, a_2,...\) is \(\varepsilon\)-steady iff \(d(a_j, a_k) \le \varepsilon\) for all \(j, k\).
+\end{definition}
+
+\begin{remark} \label{remark 5.1.4}
+This definition is not standard in the literature;
+we will not need it outside of this section;
+similarly for the concept of ``eventual \(\varepsilon\)-steadiness'' below.
+We have defined \(\varepsilon\)-steadiness for sequences whose index starts at \(0\), but clearly we can make a similar notion for sequences whose indices start from any other number:
+a sequence \(a_N, a_{N + 1}, ...\) is \(\varepsilon\)-steady if one has \(d(a_j, a_k) \le \varepsilon\) for all \(j, k \ge N\).
+\end{remark}
+
+\begin{example} \label{example 5.1.5}
+The sequence \(1, 0, 1, 0, 1,...\) is \(1\)-steady, but is not \(1/2\)-steady.
+The sequence \(0.1, 0.01, 0.001, 0.0001,...\) is \(0.1\)-steady, but is not \(0.01\)-steady (why? Because the distance of the first two elements \(d(0.1, 0.01) = 0.09 > 0.01\)).
+The sequence 1, 2, 4, 8, 16,... is not \(\varepsilon\)-steady for any \(\varepsilon\) (why? \MAROON{(1)})
+The sequence 2, 2, 2, 2,... is \(\varepsilon\)-steady for every \(\varepsilon > 0\).
+\end{example}
+
+\begin{proof}
+\MAROON{(1)} Given arbitrary \(\varepsilon\), by \PROP{4.4.1} there exists a natural number \(N\) s.t. \(N > \varepsilon\).
+And by definition of the sequence, \(a_{N + 1} = 2^{N + 1}\), which \(\ge 2(N + 1)\), since \(N + 1\) must be positive and that satisfies \EXEC{4.3.5}.
+And \(2(N + 1) - a_0 = 2N + 2 - a_0 = 2N + 2 - 1 = 2N + 1 > N\), which implies \(2^{N + 1} - a_0 > N\), that is, \(a_{N + 1} - a_0 > N\).
+So we can find the pair \(a_{N + 1}, a_1\) s.t. \(d(a_{N + 1}, a_1) > N > \varepsilon\), so by \DEF{5.1.3}, the sequence is not \(\varepsilon\)-steadiness.
+Since \(\varepsilon\) is arbitrary, for all \(\varepsilon\) the sequence is not \(\varepsilon\)-steady.
+\end{proof}
+
+\begin{note}
+The notion of \(\varepsilon\)-steadiness of a sequence is simple, but does not really capture the \emph{limiting} behavior of a sequence, because it is \emph{too sensitive to the initial members} of the sequence.
+So we need a more robust notion of steadiness that does not care about the initial members of a sequence.
+\end{note}
+
+\begin{definition} [Eventual \(\varepsilon\)-steadiness] \label{def 5.1.6}
+Let \(\varepsilon > 0\).
+A sequence \((a_n)_{n = 0}^{\infty}\) is said to be \emph{eventually \(\varepsilon\)-steady} iff the sequence \(a_N, a_{N + 1}, a_{N + 2},...\) is \(\varepsilon\)-steady \emph{for some} natural number \(N \ge 0\).
+In other words, the sequence \(a_0, a_1, a_2, ...\) is eventually \(\varepsilon\)-steady iff there exists an \(N \ge 0\) such that \(d(a_j, a_k) \le \varepsilon\) for all \(j, k \ge N\).
+\end{definition}
+
+\begin{example} \label{example 5.1.7}
+\raggedright The sequence \(a_1, a_2, ...\) defined by \(a_n := 1/n\), (that is, the sequence \(1, 1/2, 1/3, 1/4,...\)) is not \(0.1\)-steady, but is eventually \(0.1\)-steady, because the sequence \(a_{10}, a_{11}, a_{12}, ...\) (that is, \(1/10, 1/11, 1/12,...\)) is 0.1-steady.
+The sequence \(10, 0, 0, 0, 0, ...\) is not \(\varepsilon\)-steady for any \(\varepsilon\) less than \(10\), but it is eventually \(\varepsilon\)-steady for every \(\varepsilon > 0\) (why? \MAROON{(1)}).
+\end{example}
+
+\begin{proof}
+\MAROON{(1)} The distance of the first two elements of the sequence is \(d(10, 0) = 10\), so every \(\varepsilon < 10\) is less than \(d(10, 0)\).
+But given any \(\varepsilon > 0\), let \(N = 1\), then for every \(j, k \ge N\), \(d(a_i, a_j) = d(0, 0) = 0 < \varepsilon\).
+By \DEF{5.1.6}, the sequence is eventually \(\varepsilon\)-steady.
+Since \(\varepsilon\) is arbitrary, for all \(\varepsilon > 0\) the sequence is eventual \(\varepsilon\)-steady.
+\end{proof}
+
+Now we can finally define the correct notion of what it means for a sequence of rationals to ``want'' to converge.
+
+\begin{definition} [Cauchy sequences] \label{def 5.1.8}
+A sequence \((a_n)_{n = 0}^{\infty}\) of \emph{rational} numbers is said to be a \emph{Cauchy sequence} iff for every rational \(\varepsilon > 0\), the sequence \((a_n)_{n = 0}^{\infty}\) is eventually \(\varepsilon\)-steady.
+In other words, the sequence \(a_0, a_1, a_2,...\) is a Cauchy sequence iff for every \(\varepsilon > 0\), there exists an \(N \ge 0\) such that \(d(a_j, a_k) \le \varepsilon\) for all \(j, k \ge N\).
+\end{definition}
+
+\begin{remark} \label{remark 5.1.9}
+At present, the parameter \(\varepsilon\) is restricted to be a positive \emph{rational};
+we cannot take \(\varepsilon\) to be an arbitrary positive \emph{real} number, because the real numbers have not yet been constructed.
+However, once we do construct the real numbers, we shall see that \DEF{5.1.8} will not change if we require \(\varepsilon\) to be real instead of rational(\PROP{6.1.4}).
+In other words, we will eventually prove that
+\begin{center}
+    (a sequence is eventually \(\varepsilon\)-steady for every \emph{rational} \(\varepsilon > 0\)) if and only if (it is eventually \(\varepsilon'\)-steady for every \emph{real} \(\varepsilon' > 0\)).
+\end{center}
+(See \PROP{6.1.4}.)
+This rather subtle distinction between a rational \(\varepsilon\) and a real \(\varepsilon'\) turns out \emph{not} to be very important in the long run, and the reader is advised not to pay too much attention as to what type of number \(\varepsilon\) should be.
+\end{remark}
+
+\begin{example} [\emph{Informal}] \label{example 5.1.10}
+Consider the sequence \(1.4, 1.41, 1.414, 1.4142,...\) mentioned earlier.
+This sequence is already \(0.1\)-steady.
+If one discards the first element \(1.4\), then the remaining sequence \(1.41, 1.414, 1.4142,...\) is now \(0.01\)-steady, which means that the original sequence was eventually \(0.01\)-steady. 
+Discarding the next element gives the \(0.001\)-steady sequence \(1.414, 1.4142,...\);
+thus the original sequence was eventually \(0.001\)-steady. 
+Continuing in this way it seems plausible that this sequence is in fact \(\varepsilon\)-steady for every \(\varepsilon > 0\), which seems to suggest that this is a Cauchy sequence.
+However, this discussion is not rigorous for several reasons, for instance we have not precisely defined what this sequence \(1.4, 1.41, 1.414, \textbf{...}\) really is.
+An example of a rigorous treatment follows next.
+\end{example}
+
+\begin{note}
+我不確定課本說我們還沒定義\ \(1.4, 1.41, 1.414, ...\) 的意思是指什麼。也許可能是我們目前有的工具只有數學歸納法? 目前只能用數學歸納法(或遞迴，或者公式，嚴格來說還是遞迴)來定義\ sequence，但\ \(1.4, 1.41, 1.414, ...\) 其實跟數學歸納法無關，所以嚴格來說我們根本沒說清楚他是什麼?
+\end{note}
+
+\begin{proposition} \label{prop 5.1.11}
+\sloppy The sequence \(a_1, a_2, a_3,...\) defined by \(a_n := 1/n\) (i.e., the sequence \(1, 1/2, 1/3,...\)) is a Cauchy sequence.
+\end{proposition}
+
+\begin{note}
+Minor: the index is start from \(1\), not from \(0\).
+\end{note}
+
+\begin{proof}
+We have to show that for every \(\varepsilon > 0\), the sequence \(a_1, a_2,...\) is eventually \(\varepsilon\)-steady.
+So let \(\varepsilon > 0\) be \emph{arbitrary}.
+We now have to find a number \(N \ge 1\) such that the sequence \(a_N, a_{N + 1},...\) is \(\varepsilon\)-steady.
+This means that \(d(a_j, a_k) \le \varepsilon\) for every \(j, k \ge N\), i.e.
+\begin{center}
+    \(\abs{1 / j - 1 / k} \le \varepsilon\) for every \(j, k \ge N\).
+\end{center}
+Now since \(j, k \ge N\), we know that
+\begin{align*}
+             & 0 < 1 / j \le 1 / N \land 0 < 1 / k \le 1 / N \\
+    \implies & 0 \le 1 / j \le 1 / N \land 0 \le 1 / k \le 1 / N & \text{in particular by \DEF{4.2.8}} \\
+    \implies & 0 \le 1 / j \le 1 / N \land -(1 / N) \le - (1 / k) \le 0 & \text{by \EXEC{4.2.6}} \\
+    \implies & -(1 / N) \le 1 / j - 1 / k \le 1 / N & \text{by \PROP{4.2.9}(e)} \\
+    \implies & \abs{1 / j - 1 / k} \le 1 / N & \text{by \PROP{4.3.3}(b)}.
+\end{align*}
+So in order to force \(\abs{1 / j - 1 / k}\) to be less than or equal to \(\varepsilon\), it would be sufficient for \(1/N\) to be less than (or equal to) \(\varepsilon\).
+So all we need to do is choose an \(N\) such that \(1 / N\) is less than \(\varepsilon\), or in other words that \(N\) is
+greater than \(1/\varepsilon\).
+But this can be done thanks to \PROP{4.4.1}.
+(\(\varepsilon\) is rational, so \(1/\varepsilon\) is also rational, by \PROP{4.4.1} we can find a natural number \(N > 1/\varepsilon\).)
+\end{proof}
+
+\begin{note}
+As you can see, verifying from first principles (i.e., without using any of the machinery of limits, etc.) that a sequence is a Cauchy sequence requires some effort, even for a sequence as simple as \(1/n\).
+\emph{The part about selecting an \(N\) can be particularly difficult for beginners} - one has to \emph{think in reverse}, working out what conditions on \(N\) would suffice to force the sequence \(a_N, a_{N + 1}, a_{N + 2}, ...\) to be \(\varepsilon\)-steady, and then finding an \(N\) which obeys those conditions.
+Later we will develop some limit laws which allow us to determine when a sequence is Cauchy more easily.
+\end{note}
+
+\begin{note}
+先去想當\ \(N\) 滿足什麼條件時會導致整個\ sequence 是\ \(\varepsilon\)-steady，然後再找出這個\ \(N\)。
+\end{note}
+
+We now relate the notion of a Cauchy sequence to another basic notion, that of a \emph{bounded} sequence.
+
+\begin{definition} [Bounded sequences] \label{def 5.1.12}
+Let \(M \ge 0\) be rational.
+A \emph{finite} sequence \(a_1, a_2, ..., a_n\) is \emph{bounded by} \(M\) iff \(\abs{a_i} \le M\) for all \(1 \le i \le n\).
+An infinite sequence \((a_n)_{n = 1}^{\infty}\) is \emph{bounded by} \(M\) iff \(\abs{a_i} \le M\) for all \(i \ge 1\).
+A sequence is said to be \emph{bounded} iff it is bounded by \(M\) \emph{for some} rational \(M \ge 0\).
+\end{definition}
+
+\begin{example} \label{example 5.1.13}
+The finite sequence \(1, -2, 3, -4\) is bounded (in this case, it is bounded by \(4\), or indeed by any \(M\) greater than or equal to 4).
+But the infinite sequence \(1, -2, 3, -4, 5, -6,...\) is unbounded. (Can you prove this? Use \PROP{4.4.1}.)
+The sequence \(1, -1, 1, -1,...\) is bounded (e.g., by \(1\)), but is \emph{not} a Cauchy sequence(because in particular it's not eventual \(2.1\)-steady).
+\end{example}
+
+\begin{proof}
+For the sake of contradiction, suppose the infinite sequence \(1, -2, 3, -4, 5, -6,...\) is bounded, i.e. bounded by some rational \(M\).
+By \PROP{4.4.1}, we can find a natural number \(N\) s.t. \(N > M\).
+WLOG, if we find \(N = 0\) then we redefine \(N := 1\) to make it positive.
+Then it's clear that \(\abs{a_N} = N > M\), so by \DEF{5.1.12}, the sequence is not bounded by \(M\), a contradiction.
+\end{proof}
+
+\begin{lemma} [Finite sequences are bounded] \label{lem 5.1.14}
+Every finite sequence \(a_1, a_2, ..., a_n\) is bounded.
+\end{lemma}
+
+\begin{proof}
+We prove this by induction on \(n\).
+When \(n = 1\) the arbitrary sequence \(a_1\) is clearly bounded, for if we choose \(M := \abs{a_1}\) then clearly we have \(\abs{a_i} \le M\) for all \(1 \le i \le n\).
+Now suppose that we have already proved the lemma for some \(n \ge 1\);
+that is, any finite sequence with \(n\) elements is bounded;
+we now prove it for \(n + 1\), i.e., we prove every sequence with \(n + 1\) elements \(a_1, a_2, ..., a_{n + 1}\) is bounded.
+So given arbitrary sequence of \(n + 1\) elements \(a_1, a_2, ..., a_n, a_{n + 1}\).
+By the induction hypothesis we know that the first \(n\) elements \(a_1, a_2, ..., a_n\) is bounded by some \(M \le 0\);
+in particular, it must be also bounded by \(M + \abs{a_{n + 1}}\) since \(M + \abs{a_{n + 1}} \ge M\).
+On the other hand, \(a_{n + 1}\) is also bounded by \(\abs{a_{n + 1}}\), so is also bounded by \(M + \abs{a_{n + 1}}\) because the latter \(\ge\) the former.
+Thus \(a_1, a_2, ... , a_n, a_{n + 1}\) is bounded by \(M +  \abs{a_{n + 1}}\), and is hence bounded.
+This closes the induction.
+\end{proof}
+
+\begin{note}
+Note that while this argument shows that every \textbf{finite} sequence is bounded, no matter how long the finite sequence is, it \textbf{does not} say anything about whether an \textbf{infinite} sequence is bounded or not;
+infinity is not a natural number.
+\end{note}
+
+However, we have
+\begin{lemma} [Cauchy sequences are bounded] \label{lem 5.1.15}
+Every Cauchy sequence \((a_n)_{n = 1}^{\infty}\) is bounded.
+\end{lemma}
+
+\begin{proof}
+Let \((a_n)_{n = 1}^{\infty}\) be an arbitrary Cauchy sequence, we have to show it is bounded by some rational \(M \ge 0\).
+
+Now by \DEF{5.1.8}, given any \(\varepsilon > 0\), the sequence is eventually \(\varepsilon\)-steady.
+By \DEF{5.1.6}, that means we can find an index \(N \ge 0\) s.t. \(d(a_j, a_k) \le \varepsilon\) for all \(j, k \ge N\) \MAROON{(1)}.
+Now we split the sequence as the first \(a_1, ..., a_{N}\) and \(a_{N + 1}, ...\).
+
+By \LEM{5.1.14}, the first part is finite, so it's bounded.
+
+For the second part and \MAROON{(1)}, and in particular for the index \(j\) fixed as \(N + 1\), \(d(a_{N + 1}, a_k) \le \varepsilon\) for all \(k \ge N\) \MAROON{(2)}.
+Now let \(M := \abs{a_{N + 1}} + \varepsilon\), we will show that every element \(a_k\) for all \(k \ge N\) is bounded by \(M\), that is, \(\abs{a_k} \le M\).
+Note that \(M = \abs{a_{N + 1}} + \abs{\varepsilon}\) \MAROON{(3)} since \(\varepsilon > 0\).
+So let \(k\) be arbitrary integer s.t. \(k \ge N\).
+Then
+\begin{align*}
+             & d(a_{N + 1}, a_k) \le \varepsilon & \text{by \MAROON{(2)}} \\
+    \implies & \abs{a_{N + 1} - a_k} \le \varepsilon & \text{by \DEF{4.3.2}} \\
+    \implies & \abs{a_{N + 1} - a_k} \le \abs{\varepsilon} & \text{since \(\varepsilon > 0\)} \\
+    \implies & \abs{a_{N + 1}} + \abs{a_{N + 1} - a_k} \le \abs{a_{N + 1}} + \abs{\varepsilon} & \text{by \PROP{4.2.9}(d)} \\
+    \implies & \abs{a_{N + 1}} + \abs{a_{N + 1} - a_k} \le M & \text{by \MAROON{(3)}} \\
+    \implies & \abs{-a_{N + 1}} + \abs{a_{N + 1} - a_k} \le M & \text{by \PROP{4.3.3}(d)} \\
+    \implies & \abs{(-a_{N + 1}) + (a_{N + 1} - a_k)} \le \abs{-a_{N + 1}} + \abs{a_{N + 1} - a_k} \le M & \text{by \PROP{4.3.3}(b)} \\
+    \implies & \abs{(-a_{N + 1}) + (a_{N + 1} - a_k)} \le M & \text{by \PROP{4.2.9}(c), transitive} \\
+    \implies & \abs{-a_k} & \text{by algebra}. \\
+    \implies & \abs{a_k} \le M & \text{by \PROP{4.3.3}(d)}
+\end{align*}
+Since \(k\) is arbitrary, \(\abs{a_k} \le M\) for all \(k \ge N\).
+So the second part of the sequence is bounded by \(M\) and hence is bounded.
+
+So the whole sequence is bounded.
+\end{proof}
+
+\begin{exercise} \label{exercise 5.1.1}
+Prove \LEM{5.1.15}.
+\end{exercise}
+
+\begin{proof}
+See \LEM{5.1.15}.
+\end{proof}
