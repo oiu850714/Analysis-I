@@ -1,0 +1,607 @@
+\section{The construction of the real numbers} \label{sec 5.3}
+
+\begin{definition} [Real numbers] \label{def 5.3.1}
+A \emph{real number} is defined to be an \emph{object} of the \emph{form} \(\LIM_{n \toINF} a_n\),
+where \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence of \emph{rational} numbers.
+Two real numbers \(\LIM_{n \toINF} a_n\) and \(\LIM_{n \toINF} b_n\) are said to be \emph{equal} iff \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent Cauchy sequences.
+The set of all real numbers is denoted \(\SET{R}\).
+\end{definition}
+
+\begin{example} [Informal] \label{example 5.3.2}
+Let \(a_1, a_2, a_3, ...\) denote the sequence
+\[
+    1.4, 1.41, 1.414, 1.4142, 1.41421,...
+\]
+and let \(b_1, b_2, b_3,...\) denote the sequence
+\[
+    1.5, 1.42, 1.415, 1.4143, 1.41422,...
+\]
+then \(\LIM_{n \toINF} a_n\) is a real number, and is \emph{the same} real number as \(\LIM_{n \toINF} b_n\),
+because \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent Cauchy sequences:
+\(\LIM_{n \toINF} a_n = \LIM_{n \toINF} b_n\).
+\end{example}
+\begin{note}
+到目前為止，我們還沒有證明:
+\begin{itemize}
+    \item 這兩個\ sequence 都是\ Cauchy sequences。
+    \item 進一步來說，也無法知道他們對應的\ \LIM\ object 是\ real number。
+    \item 所以也無法知道討論他們是否相等。
+\end{itemize}
+而且開天眼，這整節看完之後我們好像還是不能知道他們是\ Cauchy...。
+\end{note}
+
+\begin{note}
+We will refer to \(\LIM_{n \toINF} a_n\) as the \emph{formal limit} of the sequence \((a_n)_{n = 1}^{\infty}\).
+Later on we will define a genuine notion of limit, and show that the formal limit of a Cauchy sequence is the same as the limit of that sequence;
+after that, we will not need formal limits ever again.
+(The situation is much like what we did with \emph{formal} subtraction \(\M\) and \emph{formal} division \(\D\).)
+\end{note}
+
+\begin{note}
+we need to check that the notion of equality in the definition obeys the first three laws of
+equality:
+\end{note}
+
+\begin{proposition} [Formal limits are well-defined] \label{prop 5.3.3}
+Let \(x = \LIM_{n \toINF} a_n,\ y = \LIM_{n \toINF} b_n\), and \(z = \LIM_{n \toINF} c_n\) be real numbers.
+(This implies the corresponding sequences are Cauchy.)
+Then, with the above \DEF{5.3.1} of equality for real numbers, we have \(x = x\).
+Also, if \(x = y\), then \(y = x\).
+Finally, if \(x = y\) and \(y = z\), then \(x = z\).
+\end{proposition}
+
+\begin{proof}
+Reflexive: Since given \(\varE > 0\), \(\varE > 0 = d(a_n, a_n)\) for all \(n \ge 1\), by \DEF{5.2.6}, \((a_n)_{n = 1}^{\infty}\) and \((a_n)_{n = 1}^{\infty}\) are equivalent.
+And by \DEF{5.3.1}, \(\LIM_{n \toINF} a_n = \LIM_{n \toINF} a_n\), that is, \(x = x\).
+
+Symmetric: Suppose \(x = y\).
+By \DEF{5.3.1}, \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent.
+And by \DEF{5.2.6}, For all \(\varE > 0\), there exists \(N \ge 1\) s.t. for all \(n \ge N\), \(d(a_n, b_n) \le \varE\) \MAROON{(1)}.
+But by \PROP{4.3.3}(f), \(d(a_n, b_n) = d(b_n, a_n)\).
+So with \MAROON{(1)}, we have For all \(\varE > 0\), there exists \(N \ge 1\) s.t. for all \(n \ge N\), \(\MAROON{d(b_n, a_n)} \le \varE\).
+By \DEF{5.2.6}, \((b_n)_{n = 1}^{\infty}\) and \((a_n)_{n = 1}^{\infty}\) are equivalent.
+By \DEF{5.3.1}, \(\LIM_{n \toINF} b_n = \LIM_{n \toINF} b_n\), that is, \(y = x\).
+
+Transitive: Suppose \(x = y\) and \(y = z\).
+By \DEF{5.3.1}, \((a_n)_{n = 1}^{\infty}, (b_n)_{n = 1}^{\infty}\) are equivalent and \((b_n)_{n = 1}^{\infty}, (c_n)_{n = 1}^{\infty}\) are equivalent.
+Now given arbitrary \(\varE > 0 \), so \emph{in particular \(\varE/2 > 0\)}, we have
+\begin{itemize}
+    \item There exists \(N_1 \ge 1\) s.t. for all \(n \ge N_1\), \(d(a_n, b_n) \le \varE/2\) \MAROON{(2)}.
+    \item There exists \(N_2 \ge 1\) s.t. for all \(n \ge N_2\), \(d(b_n, c_n) \le \varE/2\) \MAROON{(3)}.
+\end{itemize}
+Let \(N_3 := max(N_1, N_2)\), then by \MAROON{(2) (3)}, we have for all \(n \ge N_3\), \(d(a_n, b_n) \le \varE/2\) and \(d(b_n, c_n) \le \varE/2\).
+But by \DEF{4.3.4}, that implies \(a_n, b_n\) and \(b_n, c_n\) are \(\varE/2\)-close.
+By \PROP{4.3.7}, we have \(a_n, c_n\) are \(\varE/2 + \varE/2 = \varE\)-close.
+By \DEF{4.3.4}, \(d(a_n, c_n) \le \varE\).
+So for all \(n \ge N_3\), \(d(a_n, c_n) \le \varE\).
+By \DEF{5.2.6}, \((a_n)_{n = 1}^{\infty}, (c_n)_{n = 1}^{\infty}\) are equivalent.
+By \DEF{5.3.1}, \(\LIM_{n \toINF} a_n = \LIM_{n \toINF} c_n\), that is, \(x = z\).
+\end{proof}
+
+\begin{note}
+By \PROP{5.3.3}, we now have well-defined equality between two real numbers.
+Of course, when we define other operations on the reals, \emph{we have to check that they obey the law of substitution} \AXM{a.7.4}:
+two real number inputs which are \emph{equal} should give equal outputs when applied to any operation on the real numbers.
+
+Now we want to define all the usual arithmetic operations on the real numbers, such as addition and multiplication. 
+\end{note}
+
+\begin{definition} [Addition of reals] \label{def 5.3.4} 
+Let \(x = \LIM_{n \toINF} a_n\) and \(y = \LIM_{n \toINF} b_n\) be real numbers.
+Then we \emph{define} the \emph{sum} \(x + y\) to be \(x + y := \LIM_{n \toINF} (a_n + b_n)\).
+\end{definition}
+
+\begin{example} \label{example 5.3.5}
+The sum of \(\LIM_{n \toINF} 1 + 1/n\) and \(\LIM_{n \toINF} 2 + 3 / n\) is \(\LIM_{n \toINF} 3 + 4/n\).
+\end{example}
+
+We now check that \DEF{5.3.4} is valid.
+The first thing we need to do is to confirm that the sum of two real numbers is in fact a real number:
+
+\begin{lemma} [Sum of Cauchy sequences is Cauchy] \label{lem 5.3.6}
+Let \(x = \LIM_{n \toINF} a_n\) and \(y = \LIM_{n \toINF} b_n\) be real numbers.
+Then \(x + y\) is also a real number. (i.e., \((a_n + b_n)_{n = 1}^{\infty}\) is a Cauchy sequence of rationals.)
+\end{lemma}
+
+
+\begin{proof}
+We need to show that for every \(\varE > 0\), the sequence \((a_n + b_n)_{n = 1}^{\infty}\) is eventually \(\varE\)-steady.
+Now from hypothesis and \DEF{5.3.1} we know that \((a_n)_{n = 1}^{\infty}\) is Cauchy and hence by \DEF{5.1.8} is eventually \(\varE\)-steady, and similarly \((b_n)_{n = 1}^{\infty}\) is eventually \(\varE\)-steady;
+but it turns out that this is not quite enough
+(this can be used to imply that \((a_n + b_n)_{n = 1}^{\infty}\) is eventually \(2\varE\)-steady, but that's not what we want).
+So we need to do a little trick, which is to play with the value of \(\varE\).
+
+We know that \((a_n)_{n = 1}^{\infty}\) is eventually \(\delta\)-steady for every value of \(\delta > 0\).
+This implies not only that \((a_n)_{n = 1}^{\infty}\) is eventually \(\varE\)-steady, but it is also eventually \(\varE / 2\)-steady(just in particular let \(\delta = \varE/2\)).
+Similarly, the sequence \((b_n)_{n = 1}^{\infty}\) is also eventually \(\varE / 2\)-steady.
+This will turn out to be enough to conclude that \((a_n + b_n)_{n = 1}^{\infty}\) is eventually \(\varE\)-steady.
+
+Since \((a_n)_{n = 1}^{\infty}\) is eventually \(\varE / 2\)-steady, we know that there exists an \(N \geq 1\) such that \((a_n)_{n = N}^{\infty}\) is \(\varE / 2\)-steady, i.e., \(a_n\) and \(a_m\) are \(\varE / 2\)-close for every \(n, m \geq N\).
+Similarly there exists an \(M \geq 1\) such that \((b_n)_{n = M}^{\infty}\) is \(\varE / 2\)-steady, i.e., \(b_n\) and \(b_m\) are \(\varE / 2\)-close for every \(n, m \geq M\).
+
+Let \(\max(N, M)\) be the larger of \(N\) and \(M\)
+(we know from \PROP{2.2.13} that one has to be greater than or equal to the other).
+If \(n, m \geq \max(N, M)\), then we know that \(a_n\) and \(a_m\) are \(\varE / 2\)-close, and \(b_n\) and \(b_m\) are \(\varE / 2\)-close, and so by \PROP{4.3.7}(d) we see that \(a_n + b_n\) and \(a_m + b_m\) are \(\varE/2 + \varE/2 = \varE\)-close for every \(n, m \geq \max(N, M)\).
+This implies that the sequence \((a_n + b_n)_{n = 1}^{\infty}\) is eventually \(\varE\)-steady, as desired.
+\end{proof}
+
+The other thing we need to check is the axiom of substitution \AXM{a.7.4}:
+if we replace a real number \(x\) by another number \(x'\) \emph{equal} to \(x\),  then we must have \(x' + y = x + y\)
+(and similarly if we substitute \(y\) by another number \(y'\) equal to \(y\)).
+
+\begin{lemma} [Sums of equivalent Cauchy sequences are equivalent]\label{lem 5.3.7}.
+Let \(x = \LIM_{n \toINF} a_n, y = \LIM_{n \toINF} b_n\), and \(x' = \LIM_{n \toINF} a'_n\) be real numbers.
+Suppose that \(x = x'\).
+Then we have \(x + y = x' + y\).
+\end{lemma}
+
+\begin{proof}
+We need to show \(x + y = x' + y\), 
+that is by \DEF{5.3.4} \(\LIM_{n \toINF} (a_n + b_n) = \LIM_{n \toINF} (a'_n + b_n)\), 
+that is by \DEF{5.3.1}, the sequences \((a_n + b_n)_{n = 1}^{\infty}\) and \((a'_n + b_n)_{n = 1}^{\infty}\) are eventually \(\varE\)-close for each \(\varE > 0\) \MAROON{(1)}. 
+But since \(x = x'\), we know that the Cauchy sequences \((a_n)_{n = 1}^{\infty}\) and \((a'_n)_{n = 1}^{\infty}\) are equivalent, by similar definition derivation we know that there is an \(N \ge 1\) such that \((a_n)_{n = N}^{\infty}\) and \((a'_n)_{n = N}^{\infty}\) are \(\varE\)-close,
+i.e., that \(a_n\) and \(a'_n\) are \(\varE\)-close for each \(n \ge N\).
+Since \(b_n\) is of course \(0\)-close to \(b_n\)
+(where we extend the notion of \(\varE\)-closeness(The author seems to mean \DEF{4.3.4}, \(\varE\)-closeness for two numbers) to include \(\varE=0\) in the obvious fashion),
+we thus see from \PROP{4.3.7}(d)
+(extended in the obvious manner to the \(\delta =  0\) case, or extended to cover the \(0\)-close case)
+that \(a_n + b_n\) and \(a'_n + b_n\) are \(\varE + 0 = \varE\)-close for each \(n \ge N\).
+This implies \MAROON{(1)} is true, and we are done.
+\end{proof}
+
+\begin{remark} \label{remark 5.3.8}
+The above lemma verifies the axiom of substitution \AXM{a.7.4} for the ``\(x\)'' variable in \(x + y\),
+but one can similarly prove the \AXM{a.7.4} for the ``\(y\)'' variable.
+(A quick way is to observe from the definition of \(x + y\) that we certainly have \(x + y = y + x\), since \(a_n + b_n\) = \(b_n + a_n\).)
+\end{remark}
+
+We can define multiplication of real numbers in a manner similar to that of addition:
+
+\begin{definition} [Multiplication of reals] \label{def 5.3.9}
+Let \(x = \LIM_{n \toINF} a_n\) and \(y = \LIM_{n \toINF} b_n\) be real numbers.
+Then we \emph{define} the product \(xy\) to be \(xy :=  \LIM_{n \toINF} a_n b_n\).
+\end{definition}
+
+\begin{proposition} [Multiplication is well defined] \label{prop 5.3.10}
+Let \(x = \LIM_{n \toINF} a_n, y = \LIM_{n \toINF} b_n\), and \(x' = \LIM_{n \toINF} a'_n\) be real numbers.
+Then \(xy\) is also a real number.
+Furthermore, if \(x = x'\), then \(xy = x'y\). 
+\end{proposition}
+
+\begin{proof}
+\begin{itemize}
+    \item
+        First we show \(xy\) is real;
+        that is, \((a_n b_n)_{n = 1}^{\infty}\) is Cauchy;
+        that is, for all \(\varE > 0\), there exists \(N \ge 1\) s.t. \(d(a_i b_i, a_j b_j) \le \varE\) for all \(i, j \ge N\).
+        
+        So let \(3 > \varE > 0\). \BLUE{(trick 1)}
+        (The purpose of the upper bound is to make some trick in the latter proof).
+        It's trivial that if \((a_n b_n)_{n = 1}^{\infty}\) is eventually \(\varE\)-close, then given any \(\delta \ge 3\), \((a_n b_n)_{n = 1}^{\infty}\) is also \(\delta\)-close.
+        (By \PROP{4.3.7}(e) and the definition of closeness of the sequences and rational numbers.)
+        So together we can conclude \((a_n b_n)_{n = 1}^{\infty}\) is eventually \(\varE\)-close for all \(\varE > 0\).
+        
+        Since \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are Cauchy, by \LEM{5.1.15} they are bounded by some rational \(M_1, M_2 \ge 0\),
+        that is, \(\abs{a_n} \le M_1\) and \(\abs{b_n} \le M_2\) for all \(n \ge 1\).
+        Now let \(M = max(M_1, M_2, 1)\), and that trivially implies \(\abs{a_n} \le M\) \MAROON{(1)} and \(\abs{b_n} \le M\) \MAROON{(2)} for all \(n \ge 1\).
+        (Note that \(M \ge 1\), this is also used as a trick in the latter proof \BLUE{(trick 2)}).
+        
+        And since \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are Cauchy, there exists \(N_1 \ge 1\) s.t. \(d(a_i , a_j) \le \varE\) for all \(i, j \ge N_1\),
+        and there exists \(N_2 \ge 1\) s.t. \(d(b_i , b_j) \le \varE\) for all \(i, j \ge N_2\).
+        Let \(N = max(N_1, N_2)\), then \(d(a_i , a_j) \le \varE\) and \(d(b_i, b_j)\le \varE\) for all \(i, j \ge N\).
+        And by \PROP{4.3.7}(h), we have \(d(a_i b_i, a_j b_j) \le \varE\abs{b_i} + \varE\abs{a_i} + \varE^2\).
+        And by \MAROON{(1) (2)}
+        \begin{align*}
+                & \varE\abs{b_i} + \varE\abs{a_i} + \varE^2 \\
+            \le &  \varE M + \varE M + \varE^2 \\
+              = & \varE(2M + \varE),
+        \end{align*}
+        so we have \(d(a_i b_i, a_j b_j) \le \varE(2M + \varE)\) for all \(i, j \ge N\) \MAROON{(3)}.
+        
+        \sloppy Now let \(\varE' = \frac{\varE}{3M}\), then by similar argument until \MAROON{(3)},
+        there exists \(N_3 \ge 1\) s.t. for all \(i, j \ge N_3\).
+        \begin{align*}
+            d(a_i b_i, a_j b_j) & \le \varE'(2M + \varE') \\
+                                & = \frac{\varE}{3M}(2M + \frac{\varE}{3M}) \\
+                                & = \frac{2\varE}{3} + \frac{\varE^2}{9M^2} \\
+                                & \le \frac{2\varE}{3} + \frac{\varE^2}{9\X1^2} & \text{since \(M \ge 1\), trick \BLUE{(2)}} \\
+                                & = \frac{2\varE}{3} + \frac{\varE^2}{9} \\
+                                & = \frac{2\varE}{3} + \varE \X \frac{\varE}{9} \\
+                                & \le \frac{2\varE}{3} + 3 \X \frac{\varE}{9} & \text{since \(\varE < 3\), trick \BLUE{(1)}} \\
+                                & = \frac{2\varE}{3} + \frac{\varE}{3} \\
+                                & = \varE
+        \end{align*}
+        By \DEF{5.1.6}, \((a_n b_n)_{n = 1}^{\infty}\) is eventually \(\varE\)-close.
+        Since \(\varE\) is arbitrary between \(0\) and \(3\), \((a_n b_n)_{n = 1}^{\infty}\) is eventually \(\varE\)-close for all \(0 < \varE < 3\),
+        and by the previous discussion it's trivial that \((a_n b_n)_{n = 1}^{\infty}\) is eventually \(\varE\)-close for all \(\varE > 0\).
+        So by \DEF{5.1.8}, \((a_n b_n)_{n = 1}^{\infty}\) is Cauchy.
+    \item
+        Now we prove if \(x = x'\), then \(xy = x'y\).
+        Since \(x = x'\), \((a_n)_{n = 1}^\infty\) and \((a'_n)_{n = 1}^\infty\) are equivalent sequences.
+        Since \((b_n)_{n = 1}^\infty\) is Cauchy, there is some number \(M' \ge 0\) which bounds it.
+        Now let \(M = max(M', 1)\), then it's trivial that \(M\) also bounds \((b_n)_{n = 1}^\infty\) and \(M\) is positive.
+
+        Now let \(\varE > 0\), so in particular \(\varE/M > 0\).
+        Then since \((a_n)_{n=1}^\infty\) and \((a'_n)_{n=1}^\infty\) are equivalent sequences, they are eventually \(\varE/M\)-close.
+        So there exists \(N \ge 1\) s.t. \(a_i, a'_i\) are \(\varE/M\)-close for all \(i \ge N\).
+        And by \PROP{4.3.7}(g), \(a_i b_i, a'_i b_i\) are \((\varE/M)\abs{b_i}\)-close for all \(i \ge N\).
+        But since \(M\) bounds \((b_n)_{n = 1}^\infty\), we have \(\abs{b_i} \le M\), so \((\varE/M)\abs{b_i} \le (\varE/M)M = \varE\).
+        So \(a_i b_i, a'_i b_i\) are \(\varE\)-close for all \(i \ge N\).
+        So \((a_n b_n)_{n = 1}^\infty\) and \((a'_n b_n)_{n = 1}^\infty\) is eventually \(\varE\)-close.
+        Since \(\varE > 0\) is arbitrary, by \DEF{5.2.6} \((a_n b_n)_{n = 1}^\infty\) and \((a'_n b_n)_{n = 1}^\infty\) are equivalent, that is, \(xy = x'y\).
+\end{itemize}
+
+\end{proof}
+
+Of course we can prove a similar substitution rule when \(y\) is replaced by a real number \(y'\) which is equal to \(y\).
+
+\begin{note}
+At this point we \emph{embed the rationals back into the reals}, by equating every \emph{rational} number \(q\) with the \emph{real} number \(\LIM_{n \toINF} q\).
+(That is, \(q \equiv \LIM_{n \toINF} q\).)
+For instance, if \(a_1, a_2, a_3, ...\) is the sequence
+\[
+	0.5, 0.5, 0.5, 0.5, 0.5,...
+\]
+Then we let \(\LIM_{n \toINF} a_n\) equal to \(0.5\).
+
+This embedding is consistent with our definitions of addition and multiplication, since for any rational numbers \(a, b\) we have
+\begin{align*}
+	a + b & = \LIM_{n \toINF} a + \LIM_{n \toINF} b & \text{by equating real and rational} \\
+          & = \LIM_{n \toINF}(a + b) & \text{by \DEF{5.3.4}} \\
+          & = a + b & \text{by equating again}
+\end{align*}
+And
+\begin{align*}
+	ab & = \LIM_{n \toINF} a \X \LIM_{n \toINF} b & \text{by equating} \\
+          & = \LIM_{n \toINF}(ab) & \text{by \DEF{5.3.9}} \\
+          & = ab & \text{by equating}
+\end{align*}
+(Note that the element \(a\) or \(b\) of the formula \(\LIM_{n \toINF} a\) or \(\LIM_{n \toINF} b\) is independent of the index \(n\).)
+
+This means that when one wants to add or multiply two rational numbers \(a, b\) it does \emph{not} matter whether one thinks of these numbers as \emph{rationals} or as the \emph{real} numbers \(\LIM_{n \toINF} a, \LIM_{n \toINF} b\).
+Also, this identification of rational numbers and real numbers is consistent with our definitions of equality(\EXEC{5.3.3}).
+\end{note}
+
+We can now easily define negation \(-x\) for real numbers \(x\) by the formula
+\[
+    -x := (-1) \X x,
+\]
+since \(-1\) is a rational number and is hence real.
+(This definition is dependent on \DEF{5.3.9}, and we give it a label: \DEF{5.3.18}.)
+Note that this is clearly consistent with our \emph{negation for rational} numbers since we have \(-q = (-1) \X q\) (by \AC{4.2.3}) for all rational numbers \(q\).
+Also, from our definitions it is clear (why? see below) that
+\begin{align*}
+      & -(\LIM_{n \toINF} a_n) \\
+    = & (-1) \X (\LIM_{n \toINF} a_n) & \text{by \DEF{5.3.18}, negation} \\
+    = & \LIM_{n \toINF} (-1) \X \LIM_{n \toINF} a_n & \text{by equating rational and real} \\
+    = & \LIM_{n \toINF} (-1) a_n & \text{by \DEF{5.3.9}} \\
+    = & \LIM_{n \toINF} (-a_n)  & \text{by \AC{4.2.3}}
+\end{align*}
+
+Once we have addition and negation, we can define subtraction as usual by
+\[
+    x - y = x + (-y),
+\]
+(We label it as \DEF{5.3.19}.) Note that
+\begin{align*}
+      & \LIM_{n \toINF} a_n - \LIM_{n \toINF} b_n \\
+    = & \LIM_{n \toINF} a_n + (-\LIM_{n \toINF} b_n) & \text{by \DEF{5.3.19}} \\
+    = & \LIM_{n \toINF} a_n + \LIM_{n \toINF} (-b_n) & \text{shown above} \\
+    = & \LIM_{n \toINF} (a_n + (-b_n)) & \text{by \DEF{5.3.4}} \\
+    = & \LIM_{n \toINF} (a_n - b_n) & \text{by \DEF{4.2.13}, subtraction of rationals}
+\end{align*}
+
+We can now easily show that the \emph{real} numbers obey all the usual rules of algebra (\emph{except} perhaps for the laws involving \emph{division}
+(since we currently have not defined the \emph{reciprocal} of the \emph{reals}), which we shall address shortly):
+
+\begin{proposition} \label{prop 5.3.11}
+All the laws of algebra from \PROP{4.1.6} (not \PROP{4.2.4}, not defining division yet) hold not only for the integers, but for the reals as well.
+\end{proposition}
+
+\begin{proof}
+(The proof use the algebra laws of \emph{rationals}.)
+We illustrate this with one such rule: \(x(y + z) = xy + xz\).
+Let \(x = \LIM_{n \toINF} a_n\), \(y = \LIM_{n \toINF} b_n\),
+and \(z = \LIM_{n \toINF} c_n\) be real numbers.
+Then by \DEF{5.3.9}, \(xy = \LIM_{n \toINF} a_n b_n\) and \(xz = \LIM_{n \toINF} a_n c_n\),
+and so by \DEF{5.3.4} \(xy + xz = \LIM_{n \toINF} (a_n b_n + a_n c_n)\).
+A similar line of reasoning shows that \(x(y + z) = \LIM_{n \toINF} a_n (b_n + c_n)\).
+But we already know that \(a_n (b_n + c_n)\) is equal to \(a_n b_n + a_n c_n\) for the \emph{rational} numbers \(a_n, b_n, c_n\), and the claim follows.
+The other laws of algebra are proven similarly.
+\end{proof}
+
+The last basic arithmetic operation we need to define is reciprocation: \(x \to x^{-1}\).
+This one is a little \emph{more subtle}.
+On obvious first guess for how to proceed would be define
+\[
+    (\LIM_{n \toINF} a_n)^{-1} := \LIM_{n \toINF} a^{-1},
+\]
+but there are \emph{a few problems} with this.
+For instance, let \(a_1, a_2, a_3,...\) be the \emph Cauchy sequence
+\[
+    0.1, 0.01, 0.001, 0.0001,...,
+\]
+and let \(x := \LIM_{n \toINF} a_n\).
+Then by this definition, \(x^{-1}\) would be \(\LIM_{n \toINF} b_n\), where \(b_1, b_2, b_3,...\) is the sequence
+\[
+    10, 100, 1000, 10000,...
+\]
+but this is \emph{not} a Cauchy sequence (it isn't even bounded).
+Of course, the problem here is that our original Cauchy sequence \((a_n)_{n = 1}^{\infty}\) was equivalent to the \emph{zero sequence} \((0)_{n = 1}^{\infty}\) (why? \MAROON{(1)}),
+and hence that our real number \(x\) was in fact equal to \(0\).
+So we should only allow the operation of reciprocal \emph{when \(x\) is non-zero}.
+
+\begin{proof}
+\MAROON{(1)} Suppose for the sake of contradiction, \((a_n)_{n = 1}^{\infty}\) was \emph{not} equivalent to \((0)_{n = 1}^{\infty}\).
+Then by \DEF{5.2.6}, there exists \(\varE > 0\) s.t. \textbf{for all \(N \ge 1\)} there exists \(i \ge N\) s.t. \(\abs{a_i - 0} = \abs{a_i} = \abs{10^{-i}} > \varE\), or \(10^{-i} > \varE\), or \(10^i < 1/\varE\).
+But since \(10^x\) an increasing function, and \(i \ge N\), we have \(10^N \le 10^i\), so we have \(10^N \le 1/\varE\).
+And by \EXEC{4.3.5}, we have \(N \le 10^N\), wo we have \(N \le 1/\varE\).
+So we conclude for all \(N \ge 1\), \(N \le 1/\varE\), which contradicts \PROP{4.4.1} that we can always find a natural number \(N\) s.t. \(N \ge 1/\varE\).
+So the two sequences must be equivalent.
+\end{proof}
+
+However, even when we restrict ourselves to non-zero real numbers, we have a slight problem, because a non-zero real number might be the formal limit of a Cauchy sequence which \emph{contains zero elements}.
+For instance, the number \(1\), which is rational and hence real, is the formal limit \(1 = \LIM_{n \toINF} a_n\) of the Cauchy sequence
+\[
+	0, 0.9, 0.99, 0.999, 0.9999,...
+\]
+(It can be proved that \(0, 0.9, 0.99,...\) and \(1, 1, 1, ...\) is equivalent.) but using our naive definition of reciprocal, we \emph{cannot} invert the real number \(1\), because we can’t invert the first element \(0\) of this Cauchy sequence!
+
+To get around these problems we need to \emph{keep our Cauchy sequence away from zero}.
+To do this we first need a definition.
+
+\begin{definition} [Sequences bounded away from zero]  \label{def 5.3.12}
+A sequence \((a_n)_{n = 1}^{\infty}\) of rational numbers is said to be \emph{bounded away from zero} iff there exists a \emph{rational} number \(c > 0\) such that \(\abs{a_n} \ge c\) for all \(n \ge 1\).
+\end{definition}
+
+\begin{example} \label{example 5.3.13}
+The sequence \(1, -1, 1, -1, 1, -1, 1,...\) is bounded away from zero (all the coefficients have absolute value at least 1). 
+But the sequence \(0.1, 0.01, 0.001,...\) is not bounded away from zero(proved by contradiction),
+and neither is \(\textbf{0}, 0.9, 0.99, 0.999, 0.9999,....\)
+The sequence \(10, 100, 1000,...\) is bounded away from zero, but is not bounded.
+\end{example}
+
+We now show that every \emph{non-zero} real number is the formal limit of a Cauchy sequence \emph{bounded away from zero}:
+\begin{lemma} \label{lem 5.3.14}
+Let \(x\) be a \emph{non-zero} real number.
+Then \(x = \LIM_{n \toINF} a_n\) for some Cauchy sequence \((a_n)_{n = 1}^{\infty}\) which is \emph{bounded away from zero}.
+\end{lemma}
+
+\begin{proof}
+Since \(x\) is real, we know that \(x = \LIM_{n \toINF} b_n\) for some Cauchy sequence \((b_n)_{n = 1}^{\infty}\).
+But we are not yet done, because we do not know that \((b_n)_{n = 1}^{\infty}\) is bounded away from zero.
+
+On the other hand, we are given that \(x \ne 0 = \LIM_{n \toINF} 0\), which means that the sequence \((b_n)_{n = 1}^{\infty}\) is \textbf{not} equivalent to \((0)_{n = 1}^{\infty}\).
+Thus by \DEF{5.2.6} the sequence \((b_n)_{n = 1}^{\infty}\) \emph{cannot} be eventually \(\varE\)-close to \((0)_{n = 1}^{\infty}\) for every \(\varE > 0\).
+Therefore we \emph{can find} an \(\varE >  0\) such that \((b_n)_{n = 1}^{\infty}\) is not eventually \(\varE\)-close to \((0)_{n = 1}^{\infty}\).
+
+So let arbitrary \(\varE > 0\).
+Since \((b_n)_{n = 1}^{\infty}\) is Cauchy, it is eventually \(\varE\)-steady.
+Moreover, since \(\varE/2\) also \(> 0\) so \((b_n)_{n = 1}^{\infty}\) is eventually \(\varE/2\)-steady.
+Thus there is an \(N \ge 1\) such that \(\abs{b_n - b_m} \le \varE/2\) for all \(n, m \ge N\) \MAROON{(1)}.
+On the other hand, we cannot have \(\abs{b_n - 0} = \abs{b_n} \le \varE\) for all \(n \ge N\), 
+since this would imply that \((b_n)_{n = 1}^{\infty}\) is eventually \(\varE\)-close to \((0)_{n = 1}^{\infty}\).
+Thus there must be some \(n_0 \ge N\) for which \(\abs{b_{n_0} - 0} = \abs{b_{n_0}} > \varE\) \MAROON{(2)}.
+Now from \MAROON{(1)}, in particular we have \(\abs{b_{n_0} - b_n} \le \varE/2\) for all \(n \ge N\),
+and from the triangle inequality:
+\begin{align*}
+	         & \abs{b_{n_0} - b_n} \le \varE/2 \\
+    \implies & -\abs{b_{n_0} - b_n} \ge -\varE/2 \\
+    \implies & \abs{b_{n_0}} - \abs{b_{n_0} - b_n} \ge \abs{b_{n_0}} - \varE/2 \\
+    \implies & \abs{b_{n_0}} - \abs{b_{n_0} - b_n} \ge \abs{b_{n_0}} - \varE/2 \ge \varE - \varE/2 = \varE/2 & \text{by \MAROON{(2)}}\\
+    \implies & \abs{b_{n_0}} - \abs{b_{n_0} - b_n} \ge \varE/2 \\
+    \implies & \abs{b_{n_0}} - \abs{b_n - b_{n_0}} \ge \varE/2 \\
+    \implies & \abs{b_{n_0} + (b_n - b_{n_0})} \ge \abs{b_{n_0}} - \abs{b_n - b_{n_0}} \ge \varE/2 & \text{by \AC{4.3.1}} \\
+    \implies & \abs{b_{n_0} + (b_n - b_{n_0})} \ge \varE/2 \\
+    \implies & \abs{b_n} \ge \varE/2
+\end{align*}
+So \(\abs{b_n} \ge \varE/2\) for all \(n \ge N\).
+
+This almost proves that \((b_n)_{n = 1}^{\infty}\) is bounded away from zero.
+Actually, what it does is show that \((b_n)_{n = 1}^{\infty}\) is \emph{eventually} bounded away from zero.
+But this is easily fixed, by \emph{defining a new sequence} \(a_n\), by setting \(a_n := \varE/2\) if \(n < N\) and \(a_n := b_n\) if \(n \ge N\).
+Since \(b_n\) is a Cauchy sequence, it is not hard to verify that \(a_n\) is also a Cauchy sequence which is \emph{equivalent} to \(b_n\) (because the two sequences are eventually the same),
+and so \(x = \LIM_{n \toINF} a_n\).
+And since \(\abs{b_n} \ge \varE/2\) for all \(n \ge \textbf{N}\), we know that \(\abs{a_n} \ge \varE/2\) for all \(n \ge \textbf{1}\)
+(splitting into the two cases \(n \ge N\) and \(n < N\) separately).
+Thus we have a Cauchy sequence \(a_n\) which is bounded away from zero (by \(\varE/2\) instead of \(\varE\), but that’s still OK since \(\varE/2 > 0\)) and which has \(x\) as a formal limit, and so we are done.
+\end{proof}
+
+Once a sequence is bounded away from zero, we can take its \emph{reciprocal} without any difficulty:
+
+\begin{lemma} \label{lem 5.3.15}
+Suppose that \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence which is bounded away from zero.
+Then the sequence \((a_n^{-1})_{n = 1}^{\infty}\) is also a Cauchy sequence.
+\end{lemma}
+
+\begin{proof}
+Since \((a_n)_{n = 1}^{\infty}\) is bounded away from zero, by \DEF{5.3.12} we know that there is a \(c > 0\) such that \(\abs{a_n} \ge c\) for all \(n \ge 1\).
+
+Now we need to show that \((a_n^{-1})_{n = 1}^{\infty}\) is eventually \(\varE\)-steady for each \(\varE > 0\).
+Thus let arbitrary \(\varE > 0\);
+our task is now to find an \(N \ge 1\) such that \(\abs{a_n^{-1} - a_m^{-1}} \le \varE\) for all \(n, m \ge N\).
+But
+\begin{align*}
+    \abs{a_n^{-1} - a_m^{-1}} & = \abs{\frac1{a_n} - \frac1{a_m}} \\
+                              & = \abs{\frac{a_m - a_n}{a_n a_m}} \\
+                              & = \frac{\abs{a_m - a_n}}{\abs{a_n a_m}} \\
+                              & = \frac{\abs{a_m - a_n}}{\abs{a_n}\abs{a_m}} \\
+                              & \le \frac{\abs{a_m - a_n}}{c^2} & \text{since \(\abs{a_m}, \abs{a_n} \ge c\)}
+\end{align*}
+and so to make \(\abs{a_n^{-1} - a_m^{-1}}\) less than or equal to
+\(\varE\), it will suffice to make \(\abs{a_m - a_n}\) less than or equal to \(c^2\varE\).
+
+But since \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence, and \(c^2\varE > 0\), we can certainly find an \(N\) such that the sequence \((a_n)_{n = N}^{\infty}\) is \(c^2\varE\)-steady, 
+i.e., \(\abs{a_m - a_n} \le c^2\varE\) for all \(m, n \ge N\).
+By what we have said above, this shows that \(\abs{a_n^{-1} - a_m^{-1}} \le \varE\) for all \(m, n \ge N\), and hence the sequence \((a_n^{-1})_{n = 1}^{\infty}\) is eventually \(\varE\)-steady.
+Since we have proven this for arbitrary \(\varE > 0\), we have that \((a_n^{-1})_{n = 1}^{\infty}\) is a Cauchy sequence, as desired.
+\end{proof}
+
+We are now ready to define reciprocation:
+\begin{definition} [Reciprocals of \emph{real} numbers] \label{def 5.3.16}
+Let \(x\) be a \emph{non-zero} real number.
+Let \((a_n)_{n = 1}^{\infty}\) be a Cauchy sequence bounded away from zero such that \(x = \LIM_{n \toINF} a_n\)
+(such a sequence exists by \LEM{5.3.14}).
+Then we define the reciprocal \(x^{-1}\) by the formula \(x^{-1} := \LIM_{n \toINF} a_n^{-1}\).
+(From \LEM{5.3.15} we know that \(x^{-1}\) is still a real number.)
+\end{definition}
+
+And we need to check that the reciprocals of the two different but \emph{equivalent}(in the sense of \DEF{5.2.6}) Cauchy sequences are still equivalent.
+
+\begin{lemma} [Reciprocation is well defined] \label{lem 5.3.17}
+Let \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) be two Cauchy sequences bounded away from zero such that \(\LIM_{n \toINF} a_n = \LIM_{n \toINF} b_n\)
+(i.e., the two sequences are \emph{equivalent}).
+Then \(\LIM_{n \toINF} a_n^{-1} = \LIM_{n \toINF} b_n^{-1}\).
+\end{lemma}
+
+\begin{proof}
+Consider the following product \(P\) of three real numbers:
+\[
+    P := (\LIM_{n \toINF} a_n^{-1}) \X \BLUE{(\LIM_{n \toINF} a_n)} \X (\LIM_{n \toINF} b_n^{-1}).
+\]
+If we multiply (by \DEF{5.3.9}) this out, we obtain
+\[
+    P = \LIM_{n \toINF} a_n^{-1} a_n b_n^{-1} = \LIM_{n \toINF} b_n^{-1}.
+\]
+On the other hand, since \BLUE{\(\LIM_{n \toINF} a_n = \LIM_{n \toINF} b_n\)}, by \PROP{5.3.10}(multiplication is well-defined), we can write \(P\) in another way as
+\[
+     P = (\LIM_{n \toINF} a_n^{-1}) \X \BLUE{(\LIM_{n \toINF} b_n)} \X (\LIM_{n \toINF} b_n^{-1}).
+\]
+Multiplying things out again, we get
+\[
+    P = \LIM_{n \toINF} a_n^{-1} b_n b_n^{-1} = \LIM_{n \toINF} a_n^{-1}.
+\]
+Comparing our different formulae for \(P\) we see that \(\LIM_{n \toINF} a_n^{-1} = \LIM_{n \toINF} b_n^{-1}\), as desired.
+\end{proof}
+
+Thus reciprocal is well-defined (for each non-zero real number \(x\), we have \emph{exactly one definition of} the reciprocal \(x^{-1}\)).
+
+\begin{note}
+Note it is clear from the definition that \(xx^{-1} = x^{-1}x = 1\) (from the commutative law in \PROP{5.3.11} we only have to show \(xx^{-1} = 1\)):
+\begin{align*}
+    xx^{-1} & = \LIM_{n \toINF} a_n \LIM{n \toINF} a_n^{-1} \\
+            & = \LIM_{n \toINF} a_n a_n^{-1} & \text{by \DEF{5.3.9}} \\
+            & = \LIM_{n \toINF} 1 & \text{by \PROP{4.2.4}(10)} \\
+            & = 1 & \text{by equating real to rational}
+\end{align*}
+Thus with this property, all the \emph{field} axioms (\PROP{4.2.4}) apply to the \emph{reals} as well as to the rationals.
+\end{note}
+
+\begin{note}
+We of course cannot give \(0\) a reciprocal, since \(0\) multiplied by anything gives \(0\), not \(1\). 
+\end{note}
+
+\begin{note}
+Also note that if \(q\) is a non-zero \emph{rational}, and hence equal to the real number \(\LIM_{n \toINF} q\),
+then the reciprocal of \(\LIM_{n \toINF} q\) is \(\LIM_{n \toINF} q^{-1} = q^{-1}\);
+That is,
+\begin{align*}
+    q^{-1} & = (\LIM_{n \toINF} q)^{-1} & \text{by equating rational and real} \\
+           & = \LIM_{n \toINF} q^{-1} & \text{by \DEF{5.3.16}} \\
+           & = q^{-1} & \text{by equating rational and real}
+\end{align*}
+thus the operation of \emph{reciprocal on real} numbers is consistent with the operation of \emph{reciprocal on rational} numbers.
+\end{note}
+
+Once one has reciprocal, one can define \emph{division} \(x/y\) of two real numbers \(x, y\), provided \(y\) is non-zero, by the formula
+\[
+    x/y := x \X y^{-1},
+\]
+just as we did with the rationals. (We label it as \DEF{5.3.20}.)
+In particular, we have the cancellation law (label as \LEM{5.3.21}): if \(x, y, z\) are real numbers such that \(xz = yz\), and \(z\) is non-zero, then by dividing by \(z\) we conclude that \(x = y\).
+Note that this cancellation law does not work when \(z\) is zero.
+
+We now have all four of the basic arithmetic operations on the reals: addition, subtraction, multiplication, and division, with all the usual
+rules of algebra.
+
+\begin{definition} \label{def 5.3.18}
+We define negation \(-x\) for real numbers \(x\) by the formula
+\[
+    -x := (-1) \X x,
+\]
+\end{definition}
+
+\begin{definition} \label{def 5.3.19}
+We define subtraction for real numbers \(x - y\) by the formula
+\[
+    x - y := x + (-y).
+\]
+\end{definition}
+
+\begin{definition} \label{def 5.3.20}
+We define division for real numbers \(x/y\), provided \(y \ne 0\), by the formula
+\[
+    x/y := x \X y^{-1}.
+\]
+\end{definition}
+
+\begin{lemma} [Cancellation law for real number] \label{lem 5.3.21}
+If \(x, y, z\) are real numbers such that \(xz = yz\), and \(z\) is non-zero, then by dividing by \(z\) we conclude that \(x = y\).
+\end{lemma}
+
+\exercisesection
+
+\begin{exercise} \label{exercise 5.3.1}
+Prove \PROP{5.3.3}.
+\end{exercise}
+
+\begin{proof}
+See \PROP{5.3.3}.
+\end{proof}
+
+\begin{exercise} \label{exercise 5.3.2}
+Prove \PROP{5.3.10}.
+\end{exercise}
+
+\begin{proof}
+See \PROP{5.3.10}.
+\end{proof}
+
+\begin{exercise} \label{exercise 5.3.3}
+Let \(a, b\) be \emph{rational} numbers.
+Show that \(a = b\) if and only if \(\LIM_{n \toINF} a = \LIM_{n \toINF} b\)
+(i.e., the Cauchy sequences \(a, a, a, a, ...\) and \(b, b, b, b, ...\) are equivalent if and only if \(a = b\)).
+This allows us to \emph{embed the rational numbers inside the real numbers in a well-defined manner}.
+\end{exercise}
+
+\begin{proof}
+\begin{align*}
+         & a = b \\
+    \iff & a - b = 0 \\
+    \iff & \abs{a - b} = 0 \\
+    \iff & \abs{a - b} < \varE\ \forall \varE > 0 \\
+    \iff & \abs{a - b} < \varE\ \forall \varE > 0, \forall i \ge 1 & \text{just give a dummy index} \\
+    \iff & (a)_{n = 1}^{\infty} = (b)_{n = 1}^{\infty} & \text{by \DEF{5.2.6}} \\
+    \iff & \LIM_{n \toINF} a_n = \LIM_{n \toINF} b_n & \text{by \DEF{5.3.1}}
+\end{align*}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.3.4}
+Let \((a_n)_{n = 0}^{\infty}\) be a sequence of rational numbers which is bounded.
+Let \((b_n)_{n = 0}^{\infty}\) be another sequence of rational numbers which is \emph{equivalent} to \((a_n)_{n = 0}^{\infty}\).
+Show that \((b_n)_{n = 0}^{\infty}\) is also bounded.
+(Hint: use \EXEC{5.2.2}.)
+\end{exercise}
+
+\begin{proof}
+Since \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are equivalent, they are eventually \(\varE\)-closes for all \(\varE > 0\).
+And since \((a_n)_{n = 0}^{\infty}\) is bounded, the conditions in the \EXEC{5.2.2} are satisfied, and by \EXEC{5.2.2}, \((b_n)_{n = 0}^{\infty}\) is bounded.
+\end{proof}
+
+\begin{note}
+若\ seq A 是\ bounded，且\ seq B 等價於\ seq A，則\ seq B 也是\ bounded。
+\end{note}
+
+\begin{exercise} \label{exercise 5.3.5}
+Show that \(\LIM_{n \toINF} 1 / n = 0\).
+\end{exercise}
+
+\begin{proof}
+We have to show \(\LIM_{n \toINF} 1 / n = 0 = \LIM_{n \toINF} 0\).
+Suppose for the sake of contradiction that \(\LIM_{n \toINF} 1 / n \ne \LIM_{n \toINF} 0\).
+Then by \DEF{5.2.6}, There exists \(\varE > 0\), such that \textbf{for all \(N \ge 1\)}, there exists \(i \ge N\) s.t. \(\abs{1/i - 0} > \varE\).
+And \(\abs{1/i - 0} = \abs{1/i}\) is positive, so we have \(1/i > \varE\), or \(i < 1/\varE\).
+But since \(i \ge N\), we have \(N < 1/\varE\).
+So we have for all \(N \ge 1\), \(N < 1/\varE\), which contradicts \PROP{4.4.1} that we can always find a natural number \(N\) s.t. \(N > 1/\varE\).
+So \(\LIM_{n \toINF} 1 / n = 0\).
+\end{proof}
