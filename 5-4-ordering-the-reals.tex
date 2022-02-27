@@ -1,0 +1,576 @@
+\section{Ordering the reals} \label{sec 5.4}
+
+Since a real number \(x\) is just a formal limit of rationals \(a_n\), it is tempting to make the following definition:
+a real number \(x = \LIM{n \toINF} a_n\) is positive if \emph{all of} the \(a_n\) are positive,
+and negative if all of the \(a_n\) are negative (and zero if all of the \(a_n\) are zero).
+However, one soon realizes some problems with this definition. For instance, the sequence \((a_n)_{n = 1}^{\infty}\) defined by \(a_n := 10^{-n}\), thus
+\[
+    0.1, 0.01, 0.001, 0.0001,...
+\]
+consists \emph{entirely of positive} numbers, but this sequence is equivalent to the zero sequence \(0, 0, 0, 0,...\) and thus \(\LIM_{n \toINF} a_n = 0\).
+Thus even though all the rationals were positive, the real formal limit of these rationals was zero rather than positive.
+
+Another example is
+\[
+    0.1, -0.01, 0.001, -0.0001,...;
+\]
+this sequence is a \emph{hybrid} of positive and negative numbers, but again the formal limit is zero.
+
+The trick, as with the reciprocals in the previous section, is to \emph{limit one’s attention to sequences which are bounded away from zero.}.
+
+\begin{definition} \label{def 5.4.1}
+Let \((a_n)_{n = 1}^{\infty}\) be a sequence of rationals.
+We say that this sequence is \emph{positively bounded away} from zero iff we have a positive rational \(c > 0\) such that \(a_n \ge c\) for all \(n \ge 1\)
+(in particular, the sequence is entirely positive).
+The sequence is \emph{negatively bounded away} from zero iff we have a negative rational \(-c < 0\) such that \(a_n \le -c\) for all \(n \ge 1\).
+(in particular, the sequence is entirely negative).
+\end{definition}
+
+\begin{note}
+You can compare \DEF{5.3.12} with \DEF{5.4.1}.
+\end{note}
+
+\begin{example} \label{example 5.4.2}
+The sequence \(1.1, 1.01, 1.001, 1.0001,...\) is positively bounded away from zero (all terms are greater than or equal to \(1\)).
+The sequence \(-1.1, -1.01, -1.001, -1.0001,...\) is negatively bounded away from zero.
+The sequence \(1, -1, 1, -1, 1, -1,...\) is bounded away from zero, but is neither positively bounded away from zero nor negatively bounded away from zero.
+\end{example}
+
+\begin{note}
+It is clear that any sequence which is positively or negatively bounded away from zero, is bounded away from zero.
+Also, a sequence cannot be both positively bounded away from zero and negatively bounded away from zero at the same time
+(or it would contradict with the trichotomy law of \emph{rational} numbers).
+\end{note}
+
+\begin{definition} \label{def 5.4.3}
+A real number \(x\) is \emph{said} to be \emph{positive} iff it can be written as \(x = \LIM_{n \toINF} a_n\) for some Cauchy sequence \((a_n)_{n = 1}^{\infty}\) which is positively bounded away from zero.
+\(x\) is said to be \emph{negative} iff it can be written as \(x = \LIM_{n \toINF} a_n\) for some sequence \((a_n)_{n = 1}^{\infty}\) which is negatively bounded away from zero.
+\end{definition}
+
+\begin{proposition} [Basic properties of positive reals] \label{prop 5.4.4}
+For every real number \(x\), exactly one of the following three statements is true:
+\begin{enumerate}
+    \item \(x\) is zero
+    \item \(x\) is positive
+    \item \(x\) is negative.
+\end{enumerate}
+A real number \(x\) is negative if and only if \(-x\) is positive. 
+If \(x\) and \(y\) are positive, then so are \(x + y\) and \(xy\).
+\end{proposition}
+
+\begin{proof}
+First we show the trichotomy property.
+
+We show given any real \(x\), at least one of \(x = 0\), \(x\) is positive, \(x\) is negative is true.
+If \(x = 0\), then \(x = 0\) of course is true, so we suppose \(x \neq 0\).
+Since \(x \neq 0\), by \LEM{5.3.14} \(x\) is the formal limit of some Cauchy sequence \((a_n)_{n = 1}^{\infty}\) which is bounded away from zero.
+So by \DEF{5.3.12} there exist \(c > 0\) s.t. \(\abs{a_n} \ge c\) for all \(n \ge 1\) \MAROON{(1)}.
+And since \((a_n)_{n = 1}^{\infty}\) is Cauchy, given \(c/2\), there exists \(N \ge 1\) s.t. \(\abs{a_i - a_j} \le c/2\) for all \(i, j \ge N\).
+And in particular for \(j = N\) we have \(\abs{a_i - a_N} \le c/2\) for all \(i \ge N\).
+That is, by \PROP{4.3.3}(c),
+\[
+    -c/2 \le a_i - a_N \le c/2 \text{\ for all\ } i \ge N \MAROON{\ (2)}
+\]
+Now we consider the value of \(a_N\).
+By \MAROON{(1)} we have \(a_N \neq 0\), and by trichotomy law of rationals \(a_N\) is either positive or negative.
+\begin{itemize}
+    \item
+        If \(a_N\) is positive, then \(\abs{a_N} = a_N\).
+        And since \(\abs{a_N} \ge c\), we have \(a_N \ge c\).
+        And with \MAROON{(2)}, we have
+        \begin{align*}
+                     & -c/2 \le a_i - a_N \\
+            \implies & -c/2 \le a_i - a_N \le a_i - c & \text{since \(a_N \ge c\)} \\
+            \implies & -c/2 \le a_i - c \\
+            \implies & -c/2 + c \le a_i - c + c \\
+            \implies & c/2 \le a_i
+        \end{align*}
+        So \(a_i \ge c/2 > 0\) for all \(i \ge N\).
+        This almost shows that \((a_n)_{n = 1}^{\infty}\) is \emph{positively} bounded away from zero.
+        With the similar argument from \LEM{5.3.14} we can define another sequence \((b_n)_{n = 1}^{\infty}\), where if \(n < N\) then we let \(b_n := 2/c\), else we let \(b_n := a_n\).
+        Then it's clear that \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent since they are eventually the same, and the latter is positively bounded away from zero.
+        So \(x\) is also equal to the formal limit of a Cauchy sequence \((b_n)_{n = 1}^{\infty}\) which is positively bounded away from zero, and so by \DEF{5.4.3} is positive.
+    \item
+        If \(a_N\) is negative, then \(\abs{a_N} = -a_N\).
+        And since \(\abs{a_N} \ge c\), we have \(-a_N \ge c\), so \(a_N \le -c\).
+        And with \MAROON{(2)}, we have
+        \begin{align*}
+                     & (a_i - a_N) \le 2/c \\
+            \implies & a_i \le 2/c + a_N \\
+            \implies & a_i \le 2/c + a_N \le 2/c + (-c) & \text{since \(a_N \le -c\)} \\
+            \implies & a_i \le -(2/c)
+        \end{align*}
+        So \(a_i \le -(c/2) < 0\) for all \(i \ge N\).
+        Again, this almost shows that \((a_n)_{n = 1}^{\infty}\) is \emph{negatively} bounded away from zero.
+        With the similar argument from \LEM{5.3.14} we can define another sequence \((b_n)_{n = 1}^{\infty}\), where if \(n < N\) then we let \(b_n := -2/c\), else we let \(b_n := a_n\).
+        Then it's clear that \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent sine they are eventually the same, and the latter is negatively bounded away from zero.
+        So \(x\) is also equal to the formal limit of a Cauchy sequence \((b_n)_{n = 1}^{\infty}\) which is negatively bounded away from zero, and so by \DEF{5.4.3} is negative.
+\end{itemize}
+So in all cases at least one of \(x = 0\), \(x\) is positive, \(x\) is negative is true.
+
+Then we prove at most one of the statement is true.
+That is, (1) \(x = 0\), \(x\) is positive cannot both be true (2) \(x = 0\), \(x\) is negative cannot both be true, and (3) \(x\) is positive and \(x\) is negative cannot both be true.
+Let \(x\) be the formal limit of some Cauchy sequence \((a_n)_{n = 1}^{\infty}\). Then
+\begin{itemize}
+    \item [(1) is true:] Then by \DEF{5.4.3}, \((a_n)_{n = 1}^{\infty}\) is positively bounded away from zero, so trivially is bounded away from zero;
+    and \((a_n)_{n = 1}^{\infty}\) also equals to 0, which is impossible by \DEF{5.3.12}.
+    \item [(2) is true:] Then by \DEF{5.4.3}, \((a_n)_{n = 1}^{\infty}\) is negatively bounded away from zero, so trivially is bounded away from zero, which is impossible by the same argument in the previous case.
+    \item [(3) is true:] Then we have that for some \(c_1 > 0\), \(a_n \ge c_1\) for all \(n \ge 1\) and that for some \(-c_2 < 0\), \(a_n \ge -c_2\) for all \(n \ge 1\).
+    In particular we have \(a_1 > c_1 > 0\) and \(a_1 < c_2 < 0\), which contradicts the trichotomy property for rationals.
+\end{itemize}
+So in all cases, exactly one of the three statements is true.
+
+Now we show \(x\) is negative iff \(-x\) is positive.
+Then \(x\) is negative, iff (by \DEF{5.4.3}) \(x\) is the formal limit of the sequence \((a_n)_{n = 1}^{\infty}\), which is negatively bounded away from zero, iff (by \DEF{5.4.1}) there exists \(-c_1 < 0\) s.t. \(a_i < -c_1\) for all \(i > 1\), iff (by algebra) there exists \(c_1 > 0\) s.t. \(-a_i > c_1\) for all \(i > 1\), iff (by \DEF{5.4.1}) \((-a_n)_{n = 1}^{\infty}\) is positively bounded away from zero, iff (by \DEF{5.3.18}, negation, and \DEF{5.4.3}) \(-x\) is positive.
+
+Now we show if \(x, y\) are positive then \(x + y\) and \(xy\) are positive.
+Suppose \(x, y\) are positive, the by \DEF{5.4.3} \(x, y\) are the formal limit of some Cauchy sequence \((a_n)_{n = 1}^{\infty}\), \((b_n)_{n = 1}^{\infty}\) which are positively bounded away from zero.
+For addition, by \DEF{5.3.4}, \(x + y\) is equal to the formal limit of the Cauchy sequence \((a_n + b_n)_{n = 1}^{\infty}\)
+And by \DEF{5.4.1}, there are \(c_1, c_2 > 0\) s.t. \(a_i \ge c_1\) and \(b_i \ge c_2\) for all \(i \ge 1\).
+Then it's clear that \(a_i + b_i \ge c_1 + c_2\) for all \(i \ge 1\), where \(c_1 + c_2 > 0\).
+So again by \DEF{5.4.1}, \((a_n + b_n)_{n = 1}^{\infty}\) is positively bounded away from zero.
+By \DEF{5.4.3}, \(x + y\) is positive.
+
+Now for multiplication, by \DEF{5.3.9}, \(xy\) is equal to the formal limit of the Cauchy sequence \((a_n b_n)_{n = 1}^{\infty}\)
+And it's clear that \(a_i b_i \ge c_1 c_2\) for all \(i \ge 1\), where \(c_1 c_2 > 0\).
+So again by \DEF{5.4.1}, \((a_n b_n)_{n = 1}^{\infty}\) is positively bounded away from zero.
+By \DEF{5.4.3}, \(xy\) is positive.
+\end{proof}
+
+\begin{note}
+If \(q\) is a positive rational number, then the Cauchy sequence \(q, q, q, ...\) is positively bounded away from zero, and hence \(\LIM_{n \toINF} q = q\) is a positive real number.
+Thus the notion of positivity for \emph{rationals} is \emph{consistent with} that for \emph{reals}.
+Similarly, the notion of negativity for rationals is consistent with that for reals.
+\end{note}
+
+\begin{definition} [Absolute value] \label{def 5.4.5}
+Let \(x\) be a real number.
+We define the absolute value \(\abs{x}\) of \(x\) to equal \(x\) if \(x\) is positive, \(-x\) when \(x\) is negative, and \(0\) when \(x\) is zero.
+\end{definition}
+
+\begin{definition} [Ordering of the real numbers] \label{def 5.4.6}
+Let \(x\) and \(y\) be real numbers.
+We say that \(x\) is greater than \(y\), and write \(x > y\), iff \(x - y\) is a positive real number, and \(x < y\) iff \(x - y\) is a negative real number.
+We define \(x \ge y\) iff \(x > y\) or \(x = y\), and similarly define \(x \le y\).
+\end{definition}
+
+\begin{note}
+With the \emph{consistent behavior} of positivity and negativity between rational and real numbers,
+comparing this with the definition of order on the rationals from \DEF{4.2.8}
+we see that \emph{order on the reals} is consistent with \emph{order on the rationals},
+i.e., if two rational numbers \(q, q'\) are such that \(q\) is less than \(q'\) in the \emph{rational} number system,
+then \(q\) is still less than \(q'\) in the \emph{real} number system,
+and similarly for ``greater than''.
+In the same way we see that the definition of absolute value given here is consistent with that of rationals in \DEF{4.3.1}.
+\end{note}
+
+\begin{proposition} \label{prop 5.4.7}
+All the claims in \PROP{4.2.9} which held for \emph{rationals}, continue to hold for \emph{real} numbers.
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}
+    \item (Order trichotomy) Exactly one of the three statements \(x = y\), \(x < y\), or \(x > y\) is true.
+
+        Let \(a = x - y\). Then by \PROP{5.4.4}, exactly one of \(a = 0\), \(a\) is positive, \(a < 0\) is true.
+        \begin{itemize}
+            \item [>>] \(a = 0\):
+                Then we have \(x - y = 0\), which implies \(x = y\) since \(\SET{R}\) is a field.
+                It's trivial that \(x > y\) or \(x < y\) would contradict \(a = 0\).
+            \item [>>] \(a > 0\):
+                Then we have \(x - y > 0\), which implies \(x > y\) since \(\SET{R}\) is a field.
+                It's trivial that \(x = y\) or \(x < y\) would contradict \(a > 0\).
+            \item [>>] \(a < 0\):
+                Then we have \(x - y < 0\), which implies \(x < y\) since \(\SET{R}\) is a field.
+                It's trivial that \(x > y\) or \(x = y\) would contradict \(a < 0\).
+        \end{itemize}
+        So in all cases, exactly one of the statements is true.
+    \item (Order is \emph{anti-symmetric}) One has \(x < y\) if and only if \(y > x\).
+
+        \begin{align*}
+                 & x < y \\
+            \iff & x - y \text{ is negative} & \text{by \DEF{5.4.6}} \\
+            \iff & -(x - y) \text{ is positive} & \text{by \PROP{5.4.4}} \\
+            \iff & y - x \text{ is positive} & \text{by field algebra} \\
+            \iff & y > x & \text{by \DEF{5.4.6}}
+        \end{align*}
+    \item (Order is transitive) If \(x < y\) and \(y < z\), then \(x < z\).
+
+        \begin{align*}
+                     & x < y \land y < z \\
+            \implies & x - y \text{ is negative} \land y - z \text{ is negative} & \text{by \DEF{5.4.6}} \\
+            \implies & (x - y) + (y - z) \text{ is negative} & \text{by \PROP{5.4.4}} \\
+            \implies & x - z \text{ is negative} & \text{by field algebra} \\
+            \implies & x < z & \text{by \DEF{5.4.6}}
+        \end{align*}
+    \item (Addition preserves order) If \(x < y\), then \(x + z < y + z\).
+
+        \begin{align*}
+                     & x < y \\
+            \implies & x - y \text{ is negative} & \text{by \DEF{5.4.6}} \\
+            \implies & (x - y) + (z - z) \text{ is negative} & \text{by field algebra} \\
+            \implies & (x + z) - (y + z) \text{ is negative} & \text{by field algebra} \\
+            \implies & x + z < y + z & \text{by \DEF{5.4.6}}
+        \end{align*}
+    \item (Positive multiplication preserves order) If \(x < y\) and \(z\) is positive, then \(xz < yz\).
+
+        Suppose we have \(x < y\) and \(z\) a positive real, and want to conclude that \(xz < yz\).
+        Since \(x < y\), \(y - x\) is positive by \DEF{5.4.6}, hence by \PROP{5.4.4} we have \((y - x)z = yz - xz\) is positive, hence by \DEF{5.4.6} \(xz < yz\).
+\end{enumerate}
+\end{proof}
+
+\begin{proposition} \label{prop 5.4.8}
+Let \(x\) be a positive real number.
+Then \(x^{-1}\) is also positive.
+Also, if \(y\) is another positive number and \(x > y\), then \(x^{-1} < y^{-1}\).
+\end{proposition}
+
+\begin{proof}
+Suppose \(x\) is positive, then \(x^{-1}\) cannot be \(0\) since \(x \X 0 = 0\), but \(xx^{-1} = 1\).
+Also, if \(x^{-1}\) is negative, then by \PROP{5.4.4} \(-x^{-1}\) is positive, and
+\begin{align*}
+             & xx^{-1} = 1 \\
+    \implies & -(xx^{-1}) = -1 \\
+    \implies & x(-x^{-1}) = -1 & \text{by field algebra}
+\end{align*}
+which implies the multiplication of positive \(x\) and ``positive'' \(-x^{-1}\) is \(-1\), which is negative, contradicting \PROP{5.4.4}.
+So by trichotomy of reals in \PROP{5.4.4}, \(x^{-1}\) must be positive.
+
+Now suppose \(x > y\) \MAROON{(1)} and let \(y\) be positive \MAROON{(2)} as well.
+Then by previous discussion we know \(x^{-1}\) \MAROON{(3)} and \(y^{-1}\) are also positive.
+Now for the sake of contradiction suppose \(x^{-1} \ge y^{-1}\) \MAROON{(4)}.
+Then by \PROP{5.4.7}(e) using \MAROON{(1)(3)} we have \(xx^{-1} > yx^{-1}\) and using \MAROON{(4)(2)} we have \(x^{-1}y \ge y^{-1}y\), or \(yx^{-1} \ge yy^{-1}\).
+So together we have \(xx^{-1} > yx^{-1} \ge yy^{-1}\), or \(1 > yx^{-1} \ge 1\), or \(1 > 1\), which is impossible.
+So \(x^{-1} < y^{-1}\) must be true.
+\end{proof}
+
+Another application is that the laws of \emph{exponentiation} (with \emph{integer} exponent) (\PROP{4.3.12}) that were previously proven for rationals, are also true for reals;
+see \SEC{5.6}.
+
+We have already seen that the formal limit of positive rationals need not be positive; it could be zero, as the example \(0.1, 0.01, 0.001,...\) showed.
+\textbf{However}, the formal limit of \emph{non-negative} rationals (i.e., rationals that are either positive or zero) is non-negative.
+
+\begin{proposition} [The non-negative reals are \emph{closed}] \label{prop 5.4.9}
+Let \(a_1, a_2, a_3,...\) be a Cauchy sequence of \emph{non-negative} rational numbers.
+Then \(\LIM_{n \toINF} a_n\) is a \emph{non-negative} real number.
+\end{proposition}
+
+\begin{note}
+Eventually, we will see a \emph{better explanation} of this fact: 
+the set of non-negative reals is \emph{closed}, whereas the set of positive reals is \emph{open}. (Currently I'm totally obscured with this.)
+See \SEC{11.4}.
+\end{note}
+
+\begin{proof}
+We argue by contradiction, and suppose that the real number \(x := \LIM_{n \toINF} a_n\) is a \emph{negative} number.
+Then by \DEF{5.4.3}, we have \(x = \LIM_{n \toINF} b_n\) for some Cauchy sequence \((b_n)_{n = 1}^{\infty}\) which is \emph{negatively bounded away} from zero,
+i.e., there is a negative rational \(-c < 0\) such that \(b_n \le -c\) for all \(n \ge 1\).
+On the other hand, we have \(a_n \ge 0\) for all \(n \ge 1\), by hypothesis.
+Thus the numbers \(a_n\) and \(b_n\) are never \(c/2\)-close, since \(c/2 < c \le \abs{a_n - b_n}\).
+Thus the sequences \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are not eventually \(c/2\)-close.
+Since \(c/2 > 0\), this implies that \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are \emph{not equivalent}.
+But this contradicts the fact that both these sequences have \(x\) as their formal limit.
+\end{proof}
+
+\begin{corollary} \label{corollary 5.4.10}
+Let \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) be Cauchy sequences of rationals such that \(a_n \ge b_n\) for all \(n \ge 1\).
+Then \(\LIM_{n \toINF} a_n \ge \LIM_{n \toINF} b_n\).
+\end{corollary}
+
+\begin{proof}
+It's trivial that \(a_n - b_n \ge 0\) for all \(n \ge 1\).
+So by \PROP{5.4.9}, \(\LIM_{n \toINF} (a_n - b_n)\) is non-negative.
+But by \DEF{5.3.19} (subtraction of reals), that implies \(\LIM_{n \toINF} (a_n - b_n) = \LIM_{n \toINF} a_n - \LIM_{n \toINF} b_n\) is non-negative, that is, \(\LIM_{n \toINF} a_n - \LIM_{n \toINF} b_n\) is positive \(\lor \LIM_{n \toINF} a_n = \LIM_{n \toINF} b_n\).
+So by \DEF{5.4.6}, \(\LIM_{n \toINF} a_n \ge \LIM_{n \toINF} b_n\).
+\end{proof}
+
+\begin{remark} \label{remark 5.4.11}
+Note that \CORO{5.4.10} does \emph{not} work if the \(\ge\) signs in the description of \CORO{5.4.10} are replaced by \(>\):
+for instance if \(a_n := 1 + 1 / n\) and \(b_n := 1 - 1/n\), then \(a_n\) is always \emph{strictly} greater than \(b_n\), but the formal limit of \(a_n\) is not greater than the formal limit of \(b_n\), instead they are equal.
+\end{remark}
+
+\begin{note}
+We now define distance \(d(x, y) := \abs{x - y}\) (we label it as \DEF{5.4.16}) just as we did for the rationals.
+In fact, \PROP{4.3.3} and \PROP{4.3.7} hold not only for the rationals, but for the reals; (we label it as \PROP{5.4.17}.)
+the proof is \emph{identical}, since the real numbers obey all the laws of algebra and order that the rationals do.
+\end{note}
+
+We now observe that while positive \emph{real} numbers can be arbitrarily large or small,
+they cannot be larger than all of the positive \emph{integers}, 
+or smaller in magnitude than all of the positive \emph{rationals}:
+\begin{proposition} [Bounding of reals by rationals] \label{prop 5.4.12}
+Let \(x\) be a \emph{positive real} number.
+Then there exists a \emph{positive rational} number \(q\) such that \(q \le x\),
+and there exists a \emph{positive integer} \(N\) such that \(x \le N\).
+\end{proposition}
+
+\begin{proof}
+Since \(x\) is a positive real, by \DEF{5.4.3} it is the formal limit of some Cauchy sequence \((a_n)_{n = 1}^{\infty}\) which is \emph{positively} bounded away from zero.
+Also, since \(a_n\) is Cauchy, by \LEM{5.1.15}, this sequence is bounded.
+Thus we have rationals \(q > 0\) (by ``positively bounded away'') and \(r\) (by ``bounded'') such that \(q \le a_n \le r\) for all \(n \ge 1\).
+But by \PROP{4.4.1} we know that there is some \emph{integer} \(N\) such that \(r \le N\);
+since \(q\) is positive and \(q \le r \le N\), we see that \(N\) is positive.
+Thus \(q \le a_n \le N\) for all \(n \ge 1\).
+Applying \CORO{5.4.10} twice, we obtain that \(\LIM_{n \toINF} q \le \LIM_{n \toINF} a_n \le \LIM_{n \toINF} N\), that is, \(q \le x \le N\), as desired.
+\end{proof}
+
+\begin{note}
+一個正的實數，不管多靠近\ 0，你都能找到一個比它還靠近\ 0 的正有理數。不管它多大，你都能找到一個比它還大的正整數。
+\end{note}
+
+\begin{corollary} [Archimedean property] \label{corollary 5.4.13} 
+Let \(x\) and \(\varE\) be any \emph{positive} \emph{real} numbers.
+Then there exists a positive integer \(M\) such that \(M\varE > x\).
+\end{corollary}
+
+\begin{proof}
+It's trivial that \(x/\varE\) is positive, and hence by \PROP{5.4.12} there exists a positive integer \(N\) such that \(x/\varE \le N\).
+If we set \(M := N + 1\), then \(x/\varE < M\).
+Now multiply by \(\varE\).
+\end{proof}
+
+\begin{note}
+This property is \emph{quite important};
+it says that no matter how large \(x\) is and how small \(\varE\) is, if one keeps adding \(\varE\) to itself, one will eventually
+overtake \(x\).
+\end{note}
+
+\begin{proposition} \label{prop 5.4.14}
+Given any two real numbers \(x < y\), we can find a rational number \(q\) such that \(x < q < y\).
+This is called \href{https://www.youtube.com/watch?v=A9L6YVtoAsQ}{\(\SET{Q}\) is dense in \(\SET{R}\)}.
+\end{proposition}
+
+\begin{proof}
+See \EXEC{5.4.5}.
+\end{proof}
+
+We have now \emph{completed our construction} of the real numbers.
+This number system contains the rationals, and has almost everything that the rational number system has: the arithmetic operations, the laws of algebra, the laws of order.
+\emph{However}, we have not yet demonstrated any advantages that the real numbers have over the rationals;
+so far, even after much effort, \emph{all we have done is shown that they are at least as good as the rational number system}.
+But in the next few sections we show that the real numbers can do more things than rationals:
+for example, we can take square roots in a real number system.
+
+\begin{remark} \label{remark 5.4.15}
+Up until now, we have \emph{not} addressed the fact that real numbers \emph{can} be expressed using the decimal system.
+For instance, the formal limit of
+\[
+    1.4, 1.41, 1.414, 1.4142, 1.41421,...
+\]
+is more conventionally represented as the \emph{decimal} \(1.41421 ...\).
+We will address this in an Appendix B, but for now let us just remark that \emph{there are some subtleties} in the decimal system,
+for instance \(0.9999...\) and \(1.000...\) are in fact the same real number.
+\end{remark}
+
+\begin{definition} [Distance between reals] \label{def 5.4.16}
+We now define distance \(d(x, y) := \abs{x - y}\).
+\end{definition}
+
+\begin{proposition} \label{prop 5.4.17}
+In fact, \PROP{4.3.3} and \PROP{4.3.7} hold not only for the rationals, but for the reals;
+the proof is \emph{identical}, since the real numbers obey all the laws of algebra and order that the rationals do.
+\end{proposition}
+
+\exercisesection
+
+\begin{exercise} \label{exercise 5.4.1}
+Prove \PROP{5.4.4}.
+(Hint: if \(x\) is not zero, and \(x\) is the formal limit of some sequence \((a_n)_{n = 1}^{\infty}\), then this sequence cannot be eventually \(\varE\)-close to the zero sequence \((0)_{n = 1}^{\infty}\) for every single \(\varE > 0\).
+Use this to show that the sequence \((a_n)_{n = 1}^{\infty}\) is eventually either \emph{positively bounded away} from zero or \emph{negatively bounded away} from zero.)
+\end{exercise}
+
+\begin{proof}
+See \PROP{5.4.4}.
+\end{proof}
+
+\begin{exercise} \label{exercise 5.4.2}
+Prove the remaining claims in \PROP{5.4.7}.
+\end{exercise}
+
+\begin{proof}
+See \PROP{5.4.7}.
+\end{proof}
+
+\begin{exercise} \label{exercise 5.4.3}
+Show that for every \emph{real} number \(x\) there is \emph{exactly one integer} \(N\) such that \(N \le x < N + 1\).
+(This integer \(N\) is called the \emph{integer part} of \(x\), and is sometimes denoted \(N = \FLOOR{x})\).
+\end{exercise}
+
+\begin{proof}
+Let \(x\) equal to the formal limit of a Cauchy sequence \((a_n)_{n = 1}^{\infty}\).
+Then given \(\varE = 1/2\), there exists an integer \(N\) s.t. \(\abs{a_i - a_j} \le 1/2\) for all \(i, j \ge N\).
+And in particular fixing \(j = N\), we get \(\abs{a_i - a_N} \le 1/2\) for all \(i \ge N\).
+Then by \PROP{5.4.17} (or \PROP{4.3.3}(c)) we have
+\[
+    -1/2 \le a_i - a_N \le 1/2 \text{ for all } i \ge N.
+\]
+So we have \(a_N - 1/2 \le a_i\) \MAROON{ (1)} and \(a_i \le a_N + 1/2\) \MAROON{(2)} for all \(i \ge N\).
+
+Now we defined another sequence \((b_n)_{n = 1}^{\infty}\) where \(b_n := a_N\) if \(n < N\) and \(b_n := a_n\) if \(n \ge N\).
+Then \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) are equivalent since they are eventually the same
+(similar argument in \LEM{5.3.14}),
+so \(x\) is also the formal limit of \((b_n)_{n = 1}^{\infty}\) \MAROON{(3)}.
+And by definition of \((b_n)_{n = 1}^{\infty}\), from \MAROON{(1)(2)} we have \(a_N - 1/2 \le b_i \le a_N + 1/2\) \emph{for all \(i \ge \BLUE{1}\)} \MAROON{(4)}.
+
+Also, by \PROP{4.4.1} we can find an \emph{unique} integer \(M\) s.t. \(M \le a_N < M + 1\).
+So with \MAROON{(4)} we have \(M - 1/2 \le b_i \le (M + 1) + 1/2\) for all \(i \ge 1\) \MAROON{(5)}.
+
+Since \(M\) is constant, \(M - 1\) and \(M + 2\) are also constant and automatically define Cauchy sequences(that is, \((M)_{n = 1}^{\infty}\) and \((M + 1)_{n = 1}^{\infty}\) are Cauchy).
+So from \MAROON{(3)(5)} and \CORO{5.4.10} we have \(M - 1/2 \le x \le M + 3/2\).
+And it's trivial that we have \(M - 1 < x < M + 2\) \MAROON{(6)}.
+
+Now by trichotomy \PROP{5.4.7}(a), we have the following cases:
+\begin{itemize}
+    \item[>>] \(x < M\):
+        Then from \MAROON{(6)} we have \(M - 1 < x < M\), and in particular \(M - 1 \le x < M\).
+        So we have found an integer \(M' := M - 1\) s.t. \(M' \le x < M' + 1\).
+    \item[>>] \(x = M\):
+        Then we clear have \(M \le x < M + 1\).
+    \item[>>] \(x > M\):
+        Then from \MAROON{(6)} we have \(M < x < M + 2\) \MAROON{(7)}.
+        Again by \PROP{5.4.7}(a) we have the following cases:
+        \begin{itemize}
+            \item[>>] \(x < M + 1\):
+                Then by \MAROON{(7)} we have \(M < x < M + 1\), in particular \(M \le x < M + 1\).
+            \item[>>] \(x \ge M + 1\):
+                Then by \MAROON{(7)} we have \(M + 1 \le x < M + 2\).
+                So we have found an integer \(M' := M + 1\) s.t. \(M' \le x < M' + 1\).
+        \end{itemize}
+\end{itemize}
+So in all cases we have found the integer as desired.
+
+For the uniqueness part, suppose there is another integer \(N'\) s.t. \(N' \le x < N' + 1\) but \(N' \ne N\).
+Then again by \LEM{4.1.11}(f) we must have \(N < N'\) or \(N' < N\):
+\begin{itemize}
+    \item \(N < N'\):
+        \begin{align*}
+                     & N < N' \\
+            \implies & N + 1 \le N' & \text{since \(N, N'\) are integers} \\
+            \implies & x < N + 1 \leq N' \le x \\
+            \implies & x < x
+        \end{align*}
+    \item \(N' < N\):
+        \begin{align*}
+                     & N' < N \\
+            \implies & N' + 1 \le N & \text{since \(N, N'\) are integers} \\
+            \implies & x < N' + 1 \le N \le x \\
+            \implies & x < x
+        \end{align*}
+So we get a contradiction in both cases.
+\end{itemize}
+So the integer as desired is unique.
+\end{proof}
+
+\begin{exercise} \label{exercise 5.4.4}
+Show that for any positive real number \(x > 0\) there exists a positive integer \(N\) such that \(x > 1/N > 0\).
+\end{exercise}
+
+\begin{proof}
+Since \(x > 0\), by \PROP{5.4.8}, \(x^{-1} > 0\), and by \CORO{5.4.13}, for \(\varE = 1\) we can find integer \(N\) s.t. \(N\varE > x^{-1} > 0\);
+But \(N\varE = N \X 1 = N\), so we have \(N > x^{-1} > 0\) \MAROON{(1)}, and trivially \(N^{-1} > 0\) \MAROON{(2)} also.
+Now from \MAROON{(1)}, by \PROP{5.4.8}, we have \(N^{-1} < (x^{-1})^{-1}\), that is, \(N^{-1} < x\).
+Together with \MAROON{(2)} we have \(0 < N^{-1} < x\).
+\end{proof}
+
+\begin{exercise} \label{exercise 5.4.5}
+Prove \PROP{5.4.14}.
+(Hint: use \EXEC{5.4.4}.
+You may also need to argue by contradiction.)
+\end{exercise}
+
+\begin{proof}
+Since \(x < y\) Then by \DEF{5.4.6}, \(y - x\) is a positive \emph{real} number.
+So by \EXEC{5.4.4}, we can find an \emph{integer} \(N\) s.t. \(0 < 1/N < y - x\), so \(y > x + 1/N\) \MAROON{(1)}.
+And given integer(thus real) \(N\) and real \(x\), by \DEF{5.3.9}, \(Nx\) is real.
+So by \EXEC{5.4.3}, there exists integer \(M\) s.t. \(M \le Nx < M + 1\).
+And
+\begin{align*}
+             & M \le Nx < M + 1 \\
+    \implies & \frac{M}{N} \le x < \frac{M + 1}{N} \\
+    \implies & \frac{M}{N} \le x \land x < \frac{M + 1}{N} \\
+    \implies & \BLUE{\frac{M + 1}{N}} \le x + \frac{1}{N} \land x < \BLUE{\frac{M + 1}{N}} \\
+    \implies & x < \BLUE{\frac{M + 1}{N}} \le x + \frac{1}{N} \\
+    \implies & x < \frac{M + 1}{N} \le x + \frac{1}{N} < y & \text{by \MAROON{(1)}} \\
+    \implies & x < \frac{M + 1}{N} < y
+\end{align*}
+Where each step is derived from \PROP{5.4.7}.
+So we have found a rationals \(r := \frac{M + 1}{N}\) s.t. \(x < r < y\), as desired (It's trivial that \(\frac{M + 1}{N}\) \emph{is} rational).
+\end{proof}
+
+\begin{exercise} \label{exercise 5.4.6}.
+Let \(x, y\) be real numbers and let \(\varE > 0\) be a positive real.
+Show that \(\abs{x - y} < \varE\) if and only if \(y - \varE < x < y + \varE\),
+and that \(\abs{x - y} \le \varE\) if and only if \(y - \varE \le x \le y + \varE\).
+\end{exercise}
+
+\begin{proof}
+First from \PROP{5.4.17} (or \PROP{4.3.3}(c), plus another argument that mimics \PROP{4.3.3}(c) but removes the case of \(x = y\) for strict inequality),
+we have \(\abs{x - y} < \varE\) if and only if \(-\varE < x - y < \varE\) \MAROON{(1)},
+and \(\abs{x - y} \le \varE\) if and only if \(-\varE \le x - y \le \varE\) \MAROON{(2)}.
+But from \MAROON{(1)} we have \(-\varE + y < x < \varE + y\) or \(y - \varE < x < y + \varE\);
+and from \MAROON{(2)} we have \(-\varE + y \le x \le \varE + y\) or \(y - \varE \le x \le y + \varE\), as desired.
+\end{proof}
+
+\begin{note}
+\(x, y\) 的距離小於(等於) \(\varE\)，若且唯若\ \(y\) 只比\ \(x\) 多\ \(\varE\) 或少\ \(\varE\)。
+\end{note}
+
+\begin{exercise} \label{exercise 5.4.7}
+Let \(x\) and \(y\) be real numbers.
+Show that (1) \(x \le y + \varE\) for all real numbers \(\varE > 0\) if and only if \(x \le y\).
+Show that (2) \(\abs{x - y} \le \varE\) for all real numbers \(\varE >  0\) if and only if \(x = y\).
+\end{exercise}
+
+\begin{proof}
+First we show (1).
+\begin{itemize}
+    \item[\(\Longrightarrow\)]
+        For the sake of contradiction, suppose \(x \le y + \varE\) for all real numbers \(\varE > 0\) but \(x > y\).
+        Then by \DEF{5.4.6}, \(x - y\) is positive.
+        Also by \PROP{5.4.8}, \(\frac{x - y}{2}\) is also positive.
+        Then in particular let \(\varE = \frac{x - y}{2}\), by supposition we have \(x \le y + \varE\), that is, \(x \le y + \frac{x - y}{2}\).
+        By algebra, we then have \(x - x/2 \le y - y/2\) and \(x/2 \le y/2\), or \(x \le y\), which contradicts the supposition that \(x > y\).
+    \item[\(\Longleftarrow\)]
+        For the sake of contradiction, suppose \(x \le y\) but there exists \(\varE > 0\) s.t. \(x > y + \varE\).
+        Then since \(x \le y\), by \DEF{5.4.6} we have \(x - y\) is zero or negative.
+        But since also \(x - y > \varE > 0\), by \DEF{5.4.6} we also have \(x - y\) is positive, which contradicts \PROP{5.4.7}(a) since \(x - y\) cannot be both positive and non-negative.
+\end{itemize}
+
+Now we show (2).
+\begin{align*}
+         & \abs{x - y} \le \varE\ \forall \varE > 0 \\
+    \iff & y -\varE \le x \le y + \varE\ \forall \varE > 0 &  \text{by \EXEC{5.4.6}} \\
+    \iff & y -\varE \le x \land x \le y + \varE\ \forall \varE > 0 \\
+    \iff & y \le x + \varE \land x \le y + \varE\ \forall \varE > 0 \\
+    \iff & y \le x \land x \le y & \text{by (1)} \\
+    \iff & y = x & \text{trivial}
+\end{align*}
+\end{proof}
+
+\begin{exercise} \label{exercise 5.4.8}
+Let \((a_n)_{n = 1}^{\infty}\) be a Cauchy sequence of rationals, and let \(x\) be a \emph{real} number.
+Show that if \(a_n \le x\) for all \(n \le 1\), then \(\LIM_{n \toINF} a_n \le x\).
+Similarly, show that if \(a_n \ge x\) for all \(n \ge 1\), then \(\LIM_{n \toINF} a_n \ge x\).
+(Hint: prove by contradiction.
+Use \PROP{5.4.14} to find a \emph{rational} between \(\LIM_{n \toINF} a_n\) and \(x\), and then use \PROP{5.4.9} or \CORO{5.4.10}.)
+\end{exercise}
+
+\begin{proof}
+We prove the first statement by contradiction.
+Suppose \(a_n \le x\) for all \(n \ge 1\) \MAROON{(1)}, but \(\LIM_{n \toINF} a_n > x\).
+Then by \PROP{5.4.14}, we can find a \emph{rational} \(r = \LIM_{n \toINF} r\) s.t. \(\LIM_{n \toINF} a_n > \LIM_{n \toINF} r > x\) \MAROON{(2)}.
+Since \(r > x\), with \MAROON{(1)} we have \(a_n \le r\) for all \(n \ge 1\).
+Since \(a_n\) for all \(n \ge 1\) and \(r\) are rational, by \CORO{5.4.10} we have \(\LIM_{n \toINF} a_n \le \LIM_{n \toINF} r\).
+But that contradicts \PROP{5.4.7}(a) since by \MAROON{(2)} we also have \(\LIM_{n \toINF} a_n > \LIM_{n \toINF} r\).
+
+Now We prove the second statement using first statement.
+Suppose \(a_n \ge x\) for all \(n \geq 1\).
+Then We have
+\begin{align*}
+             & a_n \ge x\ \forall n \ge 1 \\
+    \implies & -a_n \le -x\ \forall n \ge 1 & \text{by algebra} \\
+    \implies & \LIM_{n \toINF} -a_n \le -x & \text{from the first statement} \\
+    \implies & -(\LIM_{n \toINF} a_n) \le -x & \text{by \DEF{5.3.18}, negation of reals} \\
+    \implies & \LIM_{n \toINF} a_n \ge x & \text{by algebra}
+\end{align*}
+\end{proof}
