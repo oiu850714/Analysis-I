@@ -1,0 +1,421 @@
+\section{The least upper bound property} \label{sec 5.5}
+
+We now give one of the most basic advantages of the real numbers over the rationals;
+one can take the \emph{least upper bound} \(\sup(E)\) of any subset \(E\) of the real numbers \(\SET{R}\).
+
+\begin{note}
+開天眼，我覺得上一段話有點嘴，又不是每個實數子集合都有最小上界(\THM{5.5.9})。
+\end{note}
+
+\begin{definition} [Upper bound] \label{def 5.5.1}  Let \(E\) be a subset of \(\SET{R}\), and let \(M\) be a real number.
+We say that \(M\) is ``an'' \emph{upper bound} for E, iff we have \(x \le M\) for every element \(x\) in \(E\).
+\end{definition}
+
+\begin{example}
+Simple example.
+\end{example}
+
+\begin{example} \label{example 5.5.3}
+Let \(\SET{R}^+\) be the set of positive reals:
+\(\SET{R}^+ := \{x \in \SET{R} : x > 0\} \).
+Then \(\SET{R}^+\) does \emph{not} have any upper bounds at all.
+\end{example}
+
+\begin{proof}
+Suppose we have an upper bound \(M\) for the set.
+Then by definition for all \(x \in \SET{R}^+, x \le M\), and that implies, \(M > 0\) and \(M + 1 > 0\).
+So by definition of \(\SET{R}^+\), \(M + 1 \in \SET{R}^+\), so we have found a real number \(M + 1 \in \SET{R}^+\) and \(M < M + 1\), which contradicts that \(M\) is an upper bound for \(\SET{R}^+\).
+\end{proof}
+
+\begin{example} \label{example 5.5.4}
+Let \(\emptyset\) be the empty set.
+Then \emph{every} number \(M\) is an upper bound for \(\emptyset\), because \(M\) is greater than ``every element'' of the ``empty'' set
+(this is a vacuously true statement, but still true).
+\end{example}
+
+\begin{note}
+It is clear that if \(M\) is an upper bound of \(E\), then any larger number \(M' \geq M\) is also an upper bound of \(E\).
+On the other hand, it is \emph{not so clear} whether it is also possible for any number \emph{smaller} than \(M\) to also be an upper bound of \(E\).
+\end{note}
+
+\begin{definition} [Least upper bound] \label{definition 5.5.5}
+Let \(E\) be a subset of \(\SET{R}\), and \(M\) be a real number.
+We say that \(M\) is ``a'' least upper bound for \(E\) iff
+\begin{enumerate}
+    \item \(M\) is an upper bound for \(E\), and also
+    \item any other upper bound \(M'\) for \(E\) must be larger than or equal to \(M\).
+\end{enumerate}
+\end{definition}
+
+\begin{note}
+We will prove the least upper bound is \emph{unique}(if exist) (\PROP{5.5.8}).
+\end{note}
+
+\begin{example} \label{example 5.5.6}
+Let \(E\) be the interval \(E := \{x \in \SET{R} : 0 \le x \le 1 \} \).
+Then, as noted before, \(E\) has many upper bounds, indeed every number greater than or equal to \(1\) is an upper bound.
+But only \(1\) is \emph{the} least upper bound;
+all other upper bounds are larger than \(1\).
+\end{example}
+
+\begin{example} \label{example 5.5.7}
+The empty set does not have a least upper bound.
+\end{example}
+
+\begin{proof}
+Suppose not.
+Then we have a least upper bound \(M\) for the empty set.
+And since \(M\) is real, \(M - 1\) is real, by \EXAMPLE{5.5.4}, \(M - 1\) is also an upper bound of the empty set.
+But \(M - 1 < M\), which contradicts that \(M\) is a \emph{least} upper bound for the empty set.
+\end{proof}
+
+\begin{proposition} [Uniqueness of least upper bound] \label{prop 5.5.8}
+Let \(E\) be a subset of \(R\).
+Then \(E\) can have \emph{at most one} least upper bound.
+\end{proposition}
+
+\begin{proof}
+Let \(M_1\) and \(M_2\) be two \emph{least} upper bounds.
+Since \(M_1\) is a \emph{least} upper bound and \(M_2\) is (also just) an upper bound, then by definition of least upper bound we have \(M_2 \ge M_1\).
+Since \(M_2\) is a \emph{least} upper bound and \(M_1\) is (also just) an upper bound, we similarly have \(M_1 \ge M_2\).
+Thus \(M_1 = M_2\).
+Thus there is at most one least upper bound.
+\end{proof}
+
+Now we come to an important(worth calling ``theorem'') property of the real numbers:
+
+\begin{theorem} [Existence of least upper bound] \label{thm 5.5.9}
+Let \(E\) be a nonempty subset of \(\SET{R}\).
+\emph{If} \(E\) has an upper bound, (i.e., \(E\) has some upper bound \(M\)), \emph{then it must have exactly one \emph{least} upper bound}.
+\end{theorem}
+
+\begin{proof}
+This theorem will take quite a bit of effort to prove, and many of the steps will be left as exercises(\EXEC{5.5.2}, \EXEC{5.5.3}, \EXEC{5.5.4}).
+
+Let \(E\) be a non-empty subset of \(R\) with an upper bound \(M\).
+By \PROP{5.5.8}, we know that \(E\) has at most one least upper bound;
+we have to show that \(E\) \emph{has at least one} least upper bound.
+
+Since \(E\) is non-empty, we can choose some element \(x_0\) in \(E\).
+Let \(n\) be arbitrary positive integer(i.e. \(n \ge 1\)).
+We know that \(E\) has an upper bound \(M\).
+Since \(n\) is an integer, so trivially \(1/n\) is rational.
+By the Archimedean property (\CORO{5.4.13}), we can find an integer \(K\) such that \(K \X (1/n) = K/n > M\), and hence \(K/n\) is also an upper bound for \(E\) \MAROON{(1)}.
+Now we consider the value of \(x_0\):
+\begin{itemize}
+    \item [>>] \(x_0 \ge 0\):
+        Then let \(L = -1\), so \(L/n\) is negative, so \(L/n < 0\).
+    \item [>>] \(x_0 < 0\):
+        Then \(-x_0 > 0\), so again by the Archimedean property (\CORO{5.4.13}), we can find an integer \(L'\) s.t. \(L' \X 1/n > -x_0\), or \(-L' \X 1/n < x_0\).
+        So let \(L = -L'\), then we have \(L/n < x_0\).
+\end{itemize}
+So in all cases we can find \(L\) s.t. \(L/n < x_0\).
+That is, we can find an element \(x_0 \in E\) s.t. \(x_0 < L/n\), so \(L/n\) is \emph{not} an upper bound for \(E\).
+But by \MAROON{(1)}, \(K/n\) is an upper bound for \(E\), so \(K/n \ge L/n\), so \(K \ge L\).
+
+Since \(K/n\) is an upper bound for \(E\) and \(L/n\) is not, we can find an integer \(L < m_n \le K\) with the property that \(m_n/n\) \emph{is} an upper bound for \(E\), but \((m_n - 1)/n\) \emph{is not} (see \EXEC{5.5.2}) \MAROON{(2)}.
+In fact, this integer \(m_n\) is unique (\EXEC{5.5.3}).
+We \emph{subscript} \(m_n\) by \(n\) to emphasize the fact that \emph{this integer \(m\) depends on the choice of \(n\).}
+So for any integer \(n \ge 1\), the \emph{mapping} \(m_n\) is unique.
+So by definition of sequence (\DEF{5.1.1}), this gives a well-defined (and unique) sequence \(m_1, m_2, m_3,...\) of integers, and by \MAROON{(2)},
+with each of the \(m_n/n\) being upper bounds(of \(E\)) and each of the \((m_n-1)/n\) not being upper bounds(of \(E\)).
+
+(BTW, the choice of \(K\) and \(L\) are also dependent on \(n\), but we don't use them later, so we do not add subscript on them.)
+
+Now let \(N \ge 1\) be a positive integer, and let \(n, n' \ge N\) be integers.
+So of course \(n, n' \ge 1\), so in particular for \(n\), \(m_n/n\) is an upper bound for \(E\), and for \(n'\), \((m_{n'} - 1)/n'\) is not, so we must have \(m_n/n > (m_{n'} - 1)/n'\)
+\begin{itemize}
+    \item
+        why?
+        Because \((m_{n'} - 1)/n'\) is not an upper bound, we can find another real number \(a \in E\) s.t. \(a > (m_{n'} - 1)/n'\).
+        But \(m_n/n\) is an upper bound for \(E\), so by definition \(m_n/n \ge a\), so we have \(m_n/n \ge a > (m_{n'} - 1)/n'\), so \(m_n/n > (m_{n'} - 1)/n'\).
+\end{itemize}
+And from that we have:
+\begin{align*}
+             & \frac{m_n}{n} > \frac{m_{n'} - 1}{n'} \\
+    \implies & \frac{m_n}{n} - \frac{m_{n'}}{n'} > \frac{-1}{n'} \\
+    \implies & \frac{m_n}{n} - \frac{m_{n'}}{n'} > \frac{-1}{n'} \ge \frac{-1}{N} \MAROON{\ (3)} & \text{since \(n' \ge N\), we have \(1/n' \le 1/N\), and \(-1/n' \ge -1/N\)}
+\end{align*}
+Similarly, since \(m_{n'}/n'\) is an upper bound for \(E\) and \((m_n - 1)/n\)) is not, we have \(m_{n'}/n' > (m_n - 1)/n\), and,
+\begin{align*}
+             & \frac{m_{n'}}{n'} > \frac{m_n - 1}{n} \\
+    \implies & \frac{m_{n'}}{n'} - \frac{m_n}{n} > \frac{-1}{n} \\
+    \implies & -(\frac{m_{n'}}{n'} - \frac{m_n}{n}) < -(\frac{-1}{n}) \\
+    \implies & \frac{m_n}{n} - \frac{m_{n'}}{n'} < \frac{1}{n} \\
+    \implies & \frac{m_n}{n} - \frac{m_{n'}}{n'} < \frac{1}{n} \le \frac{1}{N} \MAROON{\ (4)} & \text{since \(n \ge N\), we have \(1/n \le 1/N\)}
+\end{align*}
+So with \MAROON{(3) (4)} and \PROP{4.3.3}(c)(note that all operand are rationals, so we just use property for rationals)we have
+\[
+    \abs{\frac{m_n}{n} - \frac{m_{n'}}{n'}} \le \frac{1}{N} \text{ for all } n, n' \ge N \ge 1
+\]
+This implies that \((m_n/n)_{n = 1}^{\infty}\) is a Cauchy sequence (\EXEC{5.5.4}).
+So since \((m_n/n)_{n = 1}^{\infty}\) is Cauchy, we can take the formal limit of it and let
+\[
+    S := \LIM_{n \toINF}\frac{m_n}{n}.
+\]
+From \EXEC{5.3.5} we also have \(\LIM_{n \toINF}1/n = 0\), So we can derive that
+\begin{align*}
+    S & = \LIM_{n \toINF}\frac{m_n}{n} \\
+      & = \LIM_{n \toINF}\frac{m_n}{n} - 0 \\
+      & = \LIM_{n \toINF}\frac{m_n}{n} - \LIM_{n \toINF}\frac{1}{n} \\
+      & = \LIM_{n \toINF}\frac{m_n - 1}{n}
+\end{align*}
+
+To finish the proof of the theorem, we need to show that \(S\) is the least upper bound for \(E\).
+First we show that it is an upper bound.
+Let \(x\) be arbitrary element of \(E\).
+Then, \emph{for all} \(n \ge 1\), since \(m_n/n\) is an upper bound for \(E\), we have \(x \le m_n/n\) \emph{for all} \(n \ge 1\).
+Applying \EXEC{5.4.8}, we conclude that \(x \le \LIM_{n \toINF} m_n/n = S\).
+Thus \(S\) is indeed an upper bound for \(E\).
+
+Now we show it is a \emph{least} upper bound.
+Suppose \(y\) is an arbitrary upper bound for \(E\).
+Since \emph{for all} \(n \ge 1\), \((m_n - 1)/n\) is \emph{not} an upper bound, we conclude that \(y \ge (m_n - 1)/n\) for all \(n \ge 1\).
+Applying \EXEC{5.4.8}, we conclude that \(y \ge \LIM_{n \toINF}(m_n - 1)/n = S\).
+Thus the upper bound \(S\) is less than or equal to \emph{every} upper bound of \(E\), and \(S\) is thus a least upper bound of \(E\).
+\end{proof}
+
+\begin{definition}[Supremum]\label{5.5.10}
+Let \(E\) be a subset of the real numbers.
+If \(E\) is non-empty and has some upper bound, we define \(\sup(E)\) to be \emph{the} least upper bound of \(E\)
+(this is well-defined by \THM{5.5.9}).
+We introduce two additional symbols, \(+\infty\) and \(-\infty\).
+If \(E\) is non-empty and \emph{has no} upper bound, we set \(\sup(E) := +\infty\);
+if \(E\) is empty, we set \(\sup(E) := -\infty\).
+We refer to \(\sup(E)\) as the \emph{supremum} of \(E\), and also denote it by \(\sup E\).
+\end{definition}
+
+\begin{remark} \label{remark 5.5.11}
+At present, \(+\infty\) and \(-\infty\) are meaningless symbols; 
+we have no operations on them at present, and none of our results involving \emph{real numbers} apply to \(+\infty\) and \(-\infty\), because these are \emph{not} real numbers.
+In \SEC{6.2} we add \(+\infty\) and \(-\infty\) to the reals to form the \emph{extended real number system}, but this system is not as convenient to work with as the real number system, because many of the laws of algebra break down.
+For instance, it is not a good idea to try to define \(+\infty + -\infty\); setting this equal to 0 causes some problems.
+\end{remark}
+
+Now we give an example of how the least upper bound property is useful.
+
+\begin{proposition} \label{prop 5.5.12}
+There exists a positive \emph{real} number \(x\) such that \(x^2 = 2\).
+\end{proposition}
+
+\begin{remark} \label{remark 5.5.13}
+Comparing \PROP{5.5.12} with \PROP{4.4.4}, we see that certain numbers are real but not rational.
+The proof of this proposition also shows that the rationals \(\SET{Q}\) do not obey the least upper bound property, \emph{otherwise} one could use that property to construct a (\emph{rational} that is) square root of \(2\), which by \PROP{4.4.4} is not possible.
+\end{remark}
+
+\begin{proof}
+Let \(E\) be the set \( \{ y \in \SET{R} : y \ge 0 \text{ and } y^2 < 2 \} \);
+thus \(E\) is the set of all non-negative real numbers whose square is less than \(2\).
+Observe that \(E\) has an upper bound of \(2\) (because if \(y > 2\), then \(y^2 > 4 > 2\) and hence \(y \notin E\)).
+Also, \(E\) is non-empty (for instance, \(1\) is an element of \(E\)).
+Thus by the least upper bound property \THM{5.5.9}, we have a real number \(x := \sup(E)\) which is the least upper bound of \(E\) \MAROON{(1)}.
+Then \(x\) is greater than or equal to \(1\)(since \(1 \in E\)) and less than or equal to \(2\) (since \(2\) is an upper bound for E).
+So \(x\) is positive.
+Now we show that \(x^2 = 2\).
+
+We argue this by contradiction.
+We show that both \(x^2 < 2\) and \(x^2 > 2\) lead to contradictions.
+First suppose that \(x^2 < 2\). Let \(0 < \varE < 1\) be a small number;
+then we have
+\begin{align*}
+    (x + \varE)^2 & = x^2 + 2\varE x + \varE^2 & \text{by algebra} \\
+                  & \le x^2 + 4\varE + \varE^2 & \text{since \(x \le 2\), an upper bound of \(E\)} \\
+                  & \le x^2 + 4\varE + \varE & \text{since \(0 < \varE < 1\), so \(\varE^2 < \varE\) }\\
+                  & = x^2 + 5\varE \MAROON{(2)}
+\end{align*}
+Now from \(x^2 < 2\), we have
+\begin{align*}
+             & x^2 < 2 \\
+    \implies & 0 < 2 - x^2 \\
+    \implies & 0/5 < (2 - x^2)/5 \\
+    \implies & 0 < (2 - x^2)/5
+\end{align*}
+And by \PROP{5.4.14} we can find a rational \(\varE\) s.t. \(0 < \varE < (2 - x^2)/5\), and
+\begin{align*}
+             & 0 < \varE < (2 - x^2)/5 \\
+    \implies & 0 < 5\varE < (2 - x^2) \\
+    \implies & x^2 + 0 < x^2 + 5\varE < 2 \\
+    \implies & x^2 < x^2 + 5\varE < 2 \MAROON{(3)}
+\end{align*}
+So we can choose \(\varE\) s.t. \MAROON{(3)} is true.
+And with the derivation in \MAROON{(2)} we have \((x + \varE)^2 < 2\).
+By construction(definition) of \(E\), this means \(x + \varE \in E\); but this contradicts \MAROON{(1)} that \(x\) is an upper bound of \(E\) since \(x < x + \varE\).
+
+Now suppose that \(x^2 > 2\).
+Let \(0 < \varE < 1\) be a small number;
+then we have
+\begin{align*}
+    (x - \varE)^2 & = x^2 - 2\varE x + \varE^2 & \text{by algebra} \\
+                  & \ge x^2 - 2\varE x & \text{of course} \\
+                  & \ge x^2 - 4\varE \MAROON{(4)} & \text{since \(x \le 2\), an upper bound of \(E\)}
+\end{align*}
+Again, since \(x^2 > 2\), we can choose \(0 < \varE < 1\) such that by \PROP{5.4.14} \(x^2 > 2 + 4\varE > 2\), which implies \(x^2 - 4\varE > 2\), and thus by the derivation in \MAROON{(4)} we have \((x - \varE)^2 > 2\) \MAROON{(5)}.
+But then this implies that \(x - \varE \ge y\) for all \(y \in E\). (Why? If \(x - \varE < y\) then \((x - \varE)^2 < y^2 \le 2\) by construction of \(E\), so \((x - \varE)^2 < 2\), contradicting \MAROON{(5)}.)
+Thus \(x - \varE\) is an upper bound for \(E\), which contradicts the fact that \(x\) is the \emph{least} upper bound of \(E\).
+
+From these two contradictions we see that \(x^2 = 2\), as desired.
+\end{proof}
+
+\begin{note}
+這裡有一個很\ mind=blown 的論述: 若要證明一個實數\ \(r\) 是某集合的\ upper bound，你可以證明所有比\ \(r\) 大的實數都不在這個集合裡。
+\end{note}
+
+\begin{remark} \label{remark 5.5.14}
+In \CH{6} we will use the least upper bound property to develop the theory of limits, which allows us to do many more
+things than just take square roots.
+\end{remark}
+
+\begin{remark} \label{remark 5.5.15}
+We can of course talk about lower bounds, and \emph{greatest lower bounds}, of sets \(E\);
+the greatest lower bound of a set \(E\) is also known as the \emph{infimum} of \(E\) and is denoted \(\inf(E)\) or \(\inf E\).
+Everything we say about suprema has a counterpart for infima;
+we will usually leave such statements to the reader.
+A precise relationship between the two notions is given by \EXEC{5.5.1}.
+See also \SEC{6.2}.
+\end{remark}
+
+\begin{note}
+Supremum means ``highest'' and infimum means ``lowest'', and the plurals are suprema and infima.
+Supremum is to superior, and infimum to inferior, as maximum is to major, and minimum to minor.
+The root words are ``super'', which means ``above'', and ``infer'', which means ``below''
+(this usage only survives in a few rare English words such as ``infernal'', with the Latin prefix ``sub'' having mostly replaced ``infer'' in English).
+\end{note}
+
+\exercisesection
+
+\begin{exercise} \label{exercise 5.5.1}
+Let \(E\) be a subset of the real numbers \(\SET{R}\), and suppose that \(E\) has a least upper bound \(M\) which is a real number, i.e., \(M = \sup(E)\).
+Let \(-E\) be the set \(-E := \{-x : x \in E\} \).
+Show that \(-M\) is the greatest lower bound of \(-E\), i.e., \(-M = \inf(-E)\).
+\end{exercise}
+
+\begin{proof}
+We first show \(-M\) is a lower bound of \(-E\).
+Let arbitrary \(x' \in -E\).
+By construction of \(-E\), \(x' = -x\) for some \(x \in E\).
+So we have \(x \le M\) \MAROON{(1)} since \(M\) is a least upper bound of \(E\).
+And \MAROON{(1)} implies \(-M \le -x\), that is, \(-M \le x'\).
+So for all \(x' \in -E\), \(-M \le x'\), so \(-M\) is a lower bound of \(-E\).
+
+Now we show \(-M\) is a greatest lower bound of \(-E\).
+Suppose not, then there exists another lower bound \(-M'\) of \(-E\) s.t. \(-M' > -M\), which implies \(M' < M\).
+But now given arbitrary \(x \in E\), since \(-x \in -E\), and we have \(-M'\) as a lower bound, we can conclude that \(-x \ge -M'\), which implies \(x \le M'\).
+So for all \(x \in E\), \(x \le M'\), so \(M'\) is also an upper bound of \(E\);
+but \(M' < M\), which contradicts that \(M\) is a least upper bound of \(E\).
+
+It is similar as \PROP{5.5.8} to show the uniqueness of ``the'' greatest lower bound.
+\end{proof}
+
+\begin{exercise} \label{exercise 5.5.2}
+Let \(E\) be a non-empty subset of \(\SET{R}\), let \(n \ge 1\) be an integer, and let \(L < K\) be integers.
+Suppose that \(K/n\) is an upper bound for E, but that \(L/n\) is \emph{not} an upper bound for \(E\).
+Without using \THM{5.5.9}(\emph{otherwise circular}), show that there exists an integer \(L < m \le K\) such that \(m/n\) is an upper bound for \(E\), but that \((m - 1)/n\) is not an upper bound for \(E\).
+(Hint: prove by contradiction, and use induction.
+It may also help to draw a picture of the situation.)
+\end{exercise}
+
+\begin{proof}
+\href{https://taoanalysis.wordpress.com/2020/05/14/exercise-5-5-2/}{Reference}
+
+The statement of the exercise:
+\begin{align*}
+    \forall\ n \in \SET{N} \text{ s.t. } \ge 1 & \\
+             & (\exists L, K \in \SET{Z} \text{ s.t. } L < K \\
+             &  \land K/n \text{ is an upper bound of } E \\
+             &  \land L/n \text{ is not an upper bound of } E) \\
+    \implies & \\
+             & (\exists m \in \SET{Z} \text{ s.t. } L < m \le K \\
+             &  \land\ m/n \text{ is an upper bound of } E \\
+             &  \land\ (m - 1)/n \text{ is not an upper bound of } E).
+\end{align*}
+
+So for the sake of contradiction \BLUE{(1)}: Suppose there exists an integer \(n \ge 1\) s.t. there exist integers \(L < K\) s.t. \(K/n\) is an upper bound of \(E\) but \(L/n\) is not, \emph{but, for the sake of contradiction}, there is no integer \(m\) such that \(L < m \le K\), and \(m/n\) is an upper bound of \(E\) and \((m - 1)/n\) is not an upper bound of \(E\)
+
+We will show by induction on \(j\) that \BLUE{(2)} \((K - j)/n\) is an upper bound for \(E\) for all natural numbers \(j\).
+
+For base case \(j = 0\), \((K - j)/n = (K - 0)/n = K/n\), which is an upper bound of \(E\) by supposition, so the base case is true.
+
+Now suppose inductively for some \(j \ge 0\) we have \((K - j)/n\) is an upper bound for \(E\).
+We have to show \((K - (j + 1))/n\) is also an upper bound for \(E\) \MAROON{(1)}.
+Now by supposition, \(L/n\) is \emph{not} an upper bound of \(E\), so we can find \(x \in E\) s.t. \(L/n < x\).
+But since by inductive hypothesis \((K - j)/n\) is an upper bound for \(E\), \(x \le (K - j)/n\).
+So together we have \(L/n < x \le (K - j)/n\), so \(L/n < (K - j)/n\), so \(L < K - j\) \MAROON{(2)}.
+And since \(j\) is a natural number, i.e. \(j \ge 0\), so \(K - j \le K - 0 = K\), so can further derive that \(L < K - j \le K\).
+Suppose for the sake of contradiction that \MAROON{(1)} is false, i.e. \((K - (j + 1))/n\) is \emph{not} an upper bound of \(E\).
+Then currently we have
+\begin{enumerate}
+    \item[(1)] (by inductive hypothesis) \((K - j)/n\) is an upper bound for \(E\)
+    \item[(2)] (suppose for contradiction) \((K - (j + 1))/n\) is not an upper bound for \(E\) \MAROON{(3)}.
+\end{enumerate}
+Now let \(m := K - j\), then with \MAROON{(2)} we have \(L < m\),
+and replacing \(m\) into above, we have \(m/n\) is an upper bound for \(E\) and \((m - 1)/n\) is not an upper bound for \(E\), which contradicts the very first supposition \BLUE{(1)}.
+So \((K - (j + 1))/n\) must also be an upper bound for \(E\).
+This closes the induction, so \BLUE{(2)} is true.
+In particular, since integers \(L < K\), \(K - L > 0\) i.e. \(K - L\) is a natural number;
+so from \BLUE{(2)} we have \((K - (K - L))/n\) is an upper bound for \(E\), that is, \(L/n\) is an upper bound for \(E\), which is a contradiction!
+So the very first supposition \BLUE{(1)} is false, so the statement of the exercise is true.
+\end{proof}
+
+\begin{exercise} \label{exercise 5.5.3}
+Let \(E\) be a non-empty subset of \(R\), let \(n \ge 1\) be an integer, and let \(m, m'\) be integers with the properties that \(m/n\) and \(m'/n\) are upper bounds for \(E\), but \((m - 1)/n\) and \((m' - 1)/n\) are \emph{not} upper bounds for \(E\).
+Show that \(m = m'\).
+This shows that the integer \(m\) constructed in \EXEC{5.5.2} is \emph{unique}.
+(Hint: again, drawing a picture will be helpful.)
+\end{exercise}
+
+\begin{proof}
+Since \(\frac{m' - 1}{n}\) is \emph{not} an upper bound for \(E\), there exists \(x \in E\) s.t. \(\frac{m' - 1}{n} < x\);
+and since \(\frac{m}{n}\) is an upper bound for \(E\), \(x \le \frac{m}{n}\), so together we have \(\frac{m' - 1}{n} < x \le \frac{m}{n}\), so \(\frac{m' - 1}{n} < \frac{m}{n}\) \MAROON{(1)}.
+Similarly since \(\frac{m - 1}{n}\) is \emph{not} an upper bound for \(E\) and \(\frac{m'}{n}\) is an upper bound for \(E\), we have \(\frac{m - 1}{n} < \frac{m'}{n}\) \MAROON{(2)}.
+And since \(n \ge 1\), by multiplying \(n\) on both sides of \(\MAROON{(1) (2)}\) we have \(m' - 1 < m\) and \(m - 1 < m'\) \MAROON{(3)}.
+But since \(m, m'\) are integer, by similar property of \PROP{2.2.12}(e)(this is for natural numbers, but the property can be proved for integers), from \MAROON{(3)} we have \(m' \le m\) and \(m \le m'\), which implies \(m' = m\).
+\end{proof}
+
+\begin{exercise} \label{exercise 5.5.4}
+Let \(q_1, q_2, q_3,...\) be a sequence of rational numbers with the property that \(\abs{q_n - q_{n'}} \le \frac{1}{M}\) whenever \(M \ge 1\) is an integer and \(n, n' \ge M\) \BLUE{(property 1)}.
+Show that \(q_1, q_2, q_3,...\) is a Cauchy sequence.
+Furthermore, if \(S := \LIM_{n \toINF} q_n\), show that \(\abs{q_M - S} \le \frac{1}{M}\) for every \(M \ge 1\).
+(Hint: use \EXEC{5.4.8}.)
+\end{exercise}
+
+\begin{proof}
+We first show \(q_1, q_2, q_3,...\) is a Cauchy sequence.
+So let arbitrary \(\varE > 0\), we have to show there exists \(N \ge 1\) s.t. \(\abs{q_n - q_{n'}} \ge \varE\) for all \(n, n' \ge N\).
+But from \EXEC{5.4.4}, there exists a positive integer \(N\) s.t. \(\varE > 1/N > 0\) \MAROON{(1)}.
+And from \BLUE{(property 1)} of \(q_1, q_2, q_3,...\), \(\abs{q_n - q_{n'}} \le \frac{1}{N}\) \MAROON{(2)} for all \(n, n' \ge N\).
+So with \MAROON{(1) (2)}, we can conclude that \(\abs{q_n - q_{n'}} \le 1/N < \varE\) for all \(n, n' \ge N\), as desired.
+So the sequence \(q_1, q_2, q_3,...\) is Cauchy.
+
+Now we let \(S\) be the formal limit of the sequence \(q_1, q_2, q_3,...\):
+\[
+    S := \LIM_{n \toINF} q_n.
+\]
+Let arbitrary integer \(M \ge 1\), we have to show \(\abs{q_M - S} \le \frac{1}{M}\);
+Now from \BLUE{(property 1)}, given \(n \ge M\), we have \(\abs{q_M - q_n} \le \frac{1}{M}\).
+By \EXEC{5.4.6} we have \(-\frac{1}{M} \le q_M - q_n \le \frac{1}{M}\).
+Now we define another sequence \((q'_n)_{n = 1}^{\infty}\) that \(q'_n := q_M\) if \(n < M\) else \(q'_n := q_n\).
+Then the sequence \((q_n)_{n = 1}^{\infty}\) and \((q'_n)_{n = 1}^{\infty}\) are equivalent since they are eventually the same(similar argument as \LEM{5.3.14}).
+So \(S\) is also equal to the formal limit of \((q'_n)_{n = 1}^{\infty}\) \MAROON{(3)}, and it's trivial that \(-\frac{1}{M} \le q_M - q'_n \le \frac{1}{M}\) for all \(n \ge 1\)(not from \(M\), but from \(1\)).
+With \EXEC{5.4.8}, that implies \(-\frac{1}{M} \le q_M - \LIM_{n \toINF} (q'_n) \le \frac{1}{M}\).
+That is, by \MAROON{(3)}, \(-\frac{1}{M} \le q_M - S \le \frac{1}{M}\).
+So again by \EXEC{5.4.6}, \(\abs{q_M - S} \le \frac{1}{M}\).
+
+Since \(M \ge 1\) is arbitrary, we have \(\abs{q_M - S} \le \frac{1}{M}\) for all \(M \ge 1\).
+\end{proof}
+
+\begin{note}
+第二個敘述是說，這個序列的第\ \(M\) 項跟這個序列的極限的距離小於\ \(1/M\)。
+\end{note}
+
+\begin{exercise} \label{exercise 5.5.5}
+Establish an analogue of \PROP{5.4.14}, in which ``rational'' is replaced by ``irrational''.
+That is, given any two real numbers \(x < y\), we can find a irrational number \(r\) such that \(x < r < y\).
+\end{exercise}
+
+\begin{proof}
+Let \(x, y\) be arbitrary real numbers s.t. \(x < y\).
+Let \(r = \sqrt{2}\), which is well-defined by \PROP{5.5.12}.
+And since \(x < y\), we have \(x - r < y - r\) (by \PROP{5.4.7}).
+Now by \PROP{5.4.14}, we can find a \emph{rational} \(r'\) s.t. \(x - r < r' < y - r\), so we have \(x < r' + r < y\).
+Then \(r' + r\) must be \emph{irrational}, otherwise if \(r' + r\) is rational, then \((r' + r) - r'\) is also a rational by definition of the \emph{rational} subtraction, so \((r' + r) - r' = r\) is a rational, which is impossible since \(r = \sqrt{2}\). 
+\end{proof}
