@@ -1,0 +1,768 @@
+\section{Convergence and limit laws}
+
+In the previous chapter, we defined the real numbers as \emph{formal limits} of \emph{rational} (Cauchy) sequences, and we then defined various operations on the real numbers.
+However, \emph{unlike} our work in constructing the integers (where we eventually replaced formal differences with actual differences) and rationals (where we eventually replaced formal quotients with actual quotients),
+we never really finished the job of constructing the real numbers, because we never got around to replacing formal limits \(\LIM_{n \toINF} a_n\) with actual limits \(\lim_{n \toINF} a_n\).
+In fact, we \emph{haven’t defined} limits at all yet.
+This will now be rectified.
+
+We begin by repeating much of the machinery of \(\varE\)-close sequences, etc. again
+- but this time, we do it for sequences of \emph{real} numbers, not rational numbers.
+Thus this discussion will \emph{supersede} what we did in the previous chapter.
+
+\begin{definition} [Distance between two real numbers] \label{def 6.1.1}
+Given two real numbers \(x\) and \(y\), we define their distance \(d(x, y)\) to be \(d(x, y):= \abs{x - y}\).
+\end{definition}
+
+\begin{note}
+Clearly \DEF{6.1.1} is consistent with \DEF{4.3.2}.
+Further, \PROP{4.3.3} works just as well for real numbers as it does for rationals, because the real numbers obey all the rules of algebra that the rationals do.
+(In fact this had been discussed in the middle of page 114; it's somewhat redundant.)
+\end{note}
+
+\begin{definition} [\(\varE\)-close real numbers] \label{def 6.1.2}
+Let \(\varE > 0\) be a real number.
+We say that two real numbers \(x, y\) are \(\varE\)-close iff we have \(d(y, x) \le \varE\).
+\end{definition}
+
+\begin{note}
+Again, it is clear that this \DEF{6.1.2} of \(\varE\)-close is consistent with \DEF{4.3.4}.
+\end{note}
+
+\begin{note}
+Now let \((a_n)_{n = m}^\infty\) be a sequence of \emph{real} numbers;
+i.e., we assign a real number \(a_n\) for every integer \(n \geq m\).
+The starting index \(m\) is some integer;
+usually this will be \(1\), but in some cases we will start from some index other than \(1\).
+(The choice of \emph{label} used to index this sequence is unimportant; we could use for instance \((a_k)_{k = m}^{\infty}\) and this would represent exactly the same sequence as \((a_n)_{n = m}^{\infty}\).)
+\end{note}
+
+We can define the notion of a Cauchy sequence in the same manner as before.
+
+\begin{definition} [Cauchy sequences of reals] \label{def 6.1.3}
+(Annoyingly, we actually define three concepts at the same time.)
+Let \(\varE > 0\) be a \emph{real} number.
+A sequence \((a_n)_{n = N}^{\infty}\) of \emph{real} numbers starting at some integer index \(N\) is said to be \emph{\(\varE\)-steady} iff \(a_j\) and \(a_k\) are \(\varE\)-close for every \(j, k \ge N\).
+A sequence \((a_n)_{n = m}^{\infty}\) starting at some integer index \(m\) is said to be \emph{eventually \(\varE\)-steady} iff there exists an \(N \ge m\) such that \((a_n)_{n = N}^{\infty}\) is \(\varE\)-steady.
+We say that \((a_n)_{n = m}^{\infty}\) is a \emph{Cauchy sequence} iff it is eventually \(\varE\)-steady \emph{for every} \(\varE > 0\).
+\end{definition}
+
+\begin{note}
+You can compare \DEF{5.1.3}, \DEF{5.1.6}, \DEF{5.1.8} with \DEF{6.1.3}.
+Note that ``\(\varE\)-close'' in \DEF{6.1.3} is depend on \DEF{6.1.2}, \emph{not} \DEF{4.3.4}.
+
+These definitions are consistent with the corresponding definitions for rational numbers, although \emph{verifying consistency} for Cauchy sequences takes a little bit of care:
+\end{note}
+
+\begin{proposition} \label{prop 6.1.4}
+Let \((a_n)_{n = m}^{\infty}\) be a sequence of \emph{rational} numbers starting at some integer index \(m\).
+Then \((a_n)_{n = m}^{\infty}\) is a Cauchy sequence in the sense of \DEF{5.1.8} if and only if it is a Cauchy sequence in the sense of \DEF{6.1.3}.
+\end{proposition}
+
+\begin{note}
+這邊只要考慮\ sequence of ``rational'' 在新的定義跟舊的定義相容。 我們也不用考慮\ sequence of ``real'' 要\ ``相容'' \DEF{5.1.8}，因為\ \DEF{5.1.8} 根本不\ care sequence of real。
+\end{note}
+
+\begin{proof}
+Suppose first that \((a_n)_{n = m}^{\infty}\) is a Cauchy sequence in the sense of \DEF{6.1.3};
+then it is eventually \(\varE\)-steady for every \emph{real} \(\varE > 0\).
+In particular, given arbitrary rational \(\varE\), since rational is real, by \DEF{6.1.3} \((a_n)_{n = m}^{\infty}\) is eventually \(\varE\)-steady.
+Since rational \(\varE > 0\) is arbitrary, \((a_n)_{n = m}^{\infty}\) is eventually \(\varE\)-steady for every rational \(\varE > 0\).
+which makes it a Cauchy sequence in the sense of \DEF{5.1.8}.
+
+Now suppose that \((a_n)_{n = m}^{\infty}\) is a Cauchy sequence in the sense of \DEF{5.1.8};
+then it is eventually \(\varE\)-steady (in the sense of \DEF{5.1.6}) for every \emph{rational} \(\varE > 0\).
+Now given arbitrary \emph{real} number \(\varE > 0\), then there exists a \emph{rational} \(\varE' > 0\) which is smaller than (or equal to) \(\varE\), by \PROP{5.4.12}.
+Since \(\varE'\) is \emph{rational}, we know that \((a_n)_{n = m}^{\infty}\) is eventually \(\varE'\)-steady(since it is supposed to satisfy \DEF{5.1.8});
+and since \(\varE' < \varE\), this implies that \((a_n)_{n = m}^{\infty}\) is eventually \(\varE\)-steady.
+Since \(\varE\) is an arbitrary positive \emph{real} number, we thus see that \((a_n)_{n = m}^{\infty}\) is a Cauchy sequence in the sense of \DEF{6.1.3}.
+\end{proof}
+
+\begin{note}
+Because of this proposition, we will no longer care about the distinction between \DEF{5.1.8} and \DEF{6.1.3}, and view the concept of a Cauchy sequence as a single unified concept.
+\end{note}
+
+Now we talk about what it means for a sequence of real numbers to \emph{converge} to some limit \(L\).
+
+\begin{definition} [Convergence of sequences] \label{def 6.1.5}
+(Again annoyingly, we actually define three concepts at the same time.)
+Let \(\varE > 0\) be a \emph{real} number, and let \(L\) be a \emph{real} number.
+A sequence \((a_n)_{n = N}^{\infty}\) of real numbers is said to be ``\(\varE\)-close'' to \(L\) iff \(a_n\) is \(\varE\)-close(in the sense of \DEF{6.1.2}) to \(L\) for every \(n \ge N\),
+i.e., we have \(\abs{a_n - L} \le \varE\) for every \(n \ge N\).
+We say that a sequence \((a_n)_{n = m}^{\infty}\) is ``eventually \(\varE\)-close'' to \(L\) iff there exists an \(N \ge m\) such that \((a_n)_{n = N}^{\infty}\) is \(\varE\)-close to \(L\).
+We say that a sequence \((a_n)_{n = m}^{\infty}\) \textbf{converges to} \(L\) iff it is ``eventually \(\varE\)-close'' to \(L\) for every real \(\varE > 0\).
+\end{definition}
+
+\begin{note}
+One can unwrap all the definitions here and write the concept of convergence more directly; see \EXEC{6.1.2}.
+\end{note}
+
+\begin{example} \label{examples 6.1.6}
+The sequence
+\[
+    0.9, 0.99, 0.999, 0.9999,...
+\]
+is \(0.1\)-close to \(1\), but is not \(0.01\)-close to \(1\), because of the first element of the sequence.
+However, it is \emph{eventually} \(0.01\)-close to \(1\).
+In fact, for every real \(\varE > 0\), this sequence is \emph{eventually} \(\varE\)-close to \(1\), hence is \emph{convergent} to \(1\).
+\end{example}
+
+\begin{proposition} [Uniqueness of limits] \label{prop 6.1.7}
+Let \((a_n)_{n = m}^{\infty}\) be a real sequence starting at some integer index \(m\),
+and let \(L \neq L'\) be two distinct real numbers.
+Then it is \emph{not} possible for \((a_n)_{n = m}^{\infty}\) to converge to \(L\) while also converging to \(L'\).
+\end{proposition}
+
+\begin{proof}
+Suppose for sake of contradiction that \((a_n)_{n = m}^{\infty}\) was converging to both \(L\) and \(L'\).
+Let \(\varE = \abs{L - L'}/3\) \MAROON{(*)};
+note that \(\abs{L - L'}\) is positive \MAROON{(**)} since \(L \neq L'\), and hence \(\abs{L - L'}/3\) is positive so \(\varE\) is positive.
+Since \((a_n)_{n = m}^{\infty}\) converges to \(L\), we know that \((a_n)_{n = m}^{\infty}\) is eventually \(\varE\)-close to \(L\);
+thus there is an \(N \ge m\) such that \(d(a_n, L) \le \varE\) for all \(n \ge N\).
+\emph{Similarly}, there is an \(M \ge m\) such that \(d(a_n, L') \le \varE\) for all \(n \ge M\).
+In particular, if we set \(n := \max(N, M)\), then we have \(d(a_n, L) \le \varE\) and \(d(a_n, L') \le \varE\), hence by the triangle inequality \(d(L,L') \le d(L, a_n) + d(a_n, L') \le 2\varE\), which by \MAROON{(*)} is equal to \(2\abs{L - L'}/3\).
+But then we have
+\begin{align*}
+             & d(L, L') = \abs{L - L'} \le 2\abs{L - L'}/3 \\
+    \implies & \abs{L - L'}/3 \le 0 \\
+    \implies & \abs{L - L'} \le 0
+\end{align*}
+which contradicts \MAROON{(**)}.
+Thus it is not possible to converge to both \(L\) and \(L'\).
+\end{proof}
+
+Now that we know limits are unique, we can set up notation to specify them:
+
+\begin{definition} [Limits of sequences] \label{def 6.1.8}
+If a sequence \((a_n)_{n = m}^{\infty}\) converges to some real number \(L\), we say that \((a_n)_{n = m}^{\infty}\) is \emph{convergent} and that its limit is \(L\);
+we write
+\[
+    L = \lim_{n \toINF} a_n
+\]
+to denote this fact.
+If a sequence \((a_n)_{n = m}^{\infty}\) is \emph{not} converging to any real number \(L\), we say that the sequence \((a_n)_{n = m}^{\infty}\) is \emph{divergent} and we leave \(\lim_{n \toINF} a_n\) \emph{undefined}.
+\end{definition}
+
+\begin{note}
+\PROP{6.1.7} ensures that a sequence can have \emph{at most one} limit.
+Thus, if the limit exists, it is a single real number, otherwise
+it is undefined.
+\end{note}
+
+\begin{remark} \label{remark 6.1.9}
+The notation \(\lim_{n \toINF} a_n\) does \emph{not} give any indication about the \emph{starting index} \(m\) of the sequence,
+but the starting index is irrelevant (\EXEC{6.1.3}).
+Thus in the rest of this discussion we shall not be too careful as to where these sequences start, as we shall be mostly focused on their limits.
+\end{remark}
+
+\begin{note}
+We sometimes use the phrase ``\(a_n \to x\) as \(n \to \infty\)'' as an alternate way of writing the statement ``\((a_n)_{n = m}^{\infty}\) converges to \(x\)''.
+Bear in mind, though, that the \emph{individual} statements \(a_n \to x\) and \(n \to \infty\) do not have any rigorous meaning;
+this phrase is just a convention, though of course a very suggestive one.
+\end{note}
+
+\begin{remark} \label{remark 6.1.10}
+The exact choice of letter used to denote the index (in this case \(n\)) is \emph{irrelevant}:
+the phrase \(lim_{n \toINF} a_n\) has exactly the same meaning as \(\lim_{k \toINF} a_k\), for instance.
+Sometimes it will be convenient to change the label of the index to avoid conflicts of notation;
+for instance, we might want to change \(n\) to \(k\) because \(n\) is simultaneously being used for some other purpose, and we want to reduce confusion.
+\end{remark}
+
+\begin{note}
+這邊說要我們去看\ \EXEC{6.1.4} 來比較\ \RMK{6.1.10}，但那個練習感覺沒有直接關聯，該練習在講一個\ sequence 拔掉前面有限項，跟它是否收斂無關。
+\end{note}
+
+\begin{proposition} \label{prop 6.1.11}
+We have \(\lim_{n \toINF} 1/n = 0\).
+\end{proposition}
+
+\begin{note}
+Compare to \EXEC{5.3.5}.
+\end{note}
+
+\begin{proof}
+By \DEF{6.1.8}, we have to show that the sequence \((a_n)_{n = 1}^{\infty}\) converges to \(0\), where \(a_n := 1/n\).
+In other words, by \DEF{6.1.5}, for every \(\varE > 0\), we need to show that the sequence \((a_n)_{n = 1}^{\infty}\) is eventually \(\varE\)-close to \(0\).
+
+So, let \(\varE > 0\) be an arbitrary real number.
+We have to find an \(N\) such that \(\abs{a_n - 0} \le \varE\) for every \(n \ge N\).
+But \(\varE > 0\), and by Archimedean property(\CORO{5.4.13}), we can find an integer \(N\) s.t. \(N\varE > 1\) and
+\begin{align*}
+             & N \varE > 1 \\
+    \implies & N > 1/\varE \\
+    \implies & 1/N < \varE \MAROON{(*)}.
+\end{align*}
+But for all \(n \ge N\), \(1/n \le 1/N\).
+With \MAROON{(*)}, we have \(1/n \le \varE\), and trivially we have \(\abs{1/n - 0} \le \varE\).
+So for all \(n \ge N\), \(\abs{1/n - 0} \le \varE\).
+So by \DEF{6.1.5} \((a_n)_{n = 1}^{\infty}\) is eventually \(\varE\)-close to \(0\).
+Since \(\varE\) was arbitrary, again by \DEF{6.1.5}, \((a_n)_{n = 1}^{\infty}\) converges to \(0\).
+\end{proof}
+
+\begin{proposition} [Convergent sequences are Cauchy] \label{prop 6.1.12}
+Suppose that \((a_n)_{n = m}^{\infty}\) is a \emph{convergent} sequence of real numbers.
+Then \((a_n)_{n = m}^{\infty}\) is also a \emph{Cauchy} sequence.
+\end{proposition}
+
+\begin{proof}
+Suppose \((a_n)_{n = m}^{\infty}\) is a convergent sequence of real numbers.
+By \DEF{6.1.3}, we have to show that given arbitrary \(\varE > 0\), there exists integer \(N \ge m\) s.t. \(d(a_n, a_{n'}) \le \varE\) for all \(n, n' \ge N\).
+
+So let \(\varE > 0\).
+In particular \(\varE/2 > 0\).
+And WLOG, we let \((a_n)_{n = m}^{\infty}\) converge to \(L\) (or \(L = \lim_{n \toINF} a_n\).).
+And by \DEF{6.1.5}, we can find an integer \(N \ge m\) s.t. \(d(a_n, L) \le \varE/2\) for all \(n \ge N\) \MAROON{(*)}.
+So in particular given integer \(n, m' \ge N\):
+\begin{align*}
+             & d(a_n, L) \le \varE/2 \land d(a_{n'}, L) \le \varE/2 & \text{by \MAROON{(*)}} \\
+    \implies & d(a_n, L) + d(a_{n'}, L) \le \varE \\
+    \implies & d(a_n, a_{n'}) \le d(a_n, L) + d(a_{n'}, L) \le \varE & \text{by \PROP{4.3.3}(g)} \\
+    \implies & d(a_n, a_{n'}) \le \varE & \text{simplify}
+\end{align*}
+So by \DEF{6.1.3}, \((a_n)_{n = m}^{\infty}\) is eventually \(\varE\)-steady.
+Since \(\varE > 0\) is arbitrary, \((a_n)_{n = m}^{\infty}\) is eventually-\(\varE\)-steady for all \(\varE > 0\).
+Again by \DEF{6.1.3}, \((a_n)_{n = m}^{\infty}\) is a Cauchy sequence.
+\end{proof}
+
+\begin{example} \label{example 6.1.13}
+The sequence \(1, -1, 1, -1, 1, -1,...\) is not a Cauchy sequence (because it is not eventually \(1\)-steady), and is hence not a
+convergent sequence, by (contrapositive of) \PROP{6.1.12}.
+\end{example}
+
+\begin{remark} \label{remark 6.1.14}
+For a \emph{converse} to \PROP{6.1.12}, see \THM{6.4.18} below.
+\end{remark}
+
+\begin{note}
+開天眼，\THM{6.4.18} (in particular, \PROP{6.1.12} 的\ converse) 是想說實數系是個「完備賦距空間」。
+實數的柯西序列會收斂到實數，但是有理數的柯西序列會跑出有理數\
+(例如, informally, \(1, 1.4, 1.41, 1.414,...\) 會跑去無理數\ \(\sqrt{2}\))。
+\end{note}
+
+Now we show that \emph{formal} limits can be superseded by \emph{actual} limits.
+
+\begin{proposition} [Formal limits are genuine limits] \label{prop 6.1.15}
+Suppose that \((a_n)_{n = 1}^{\infty}\) is a Cauchy sequence of \emph{rational} numbers.
+Then \((a_n)_{n = 1}^{\infty}\) converges to \(\LIM_{n \toINF} a_n\),
+i.e.
+\[
+    \LIM_{n \toINF} a_n = \lim_{n \toINF} a_n.
+\]
+\end{proposition}
+
+\begin{note}
+Similar as \PROP{6.1.4}, we only need to consider the sequence of rationals because the symbol \(\LIM\) in \CH{5} was used only on the sequence of rationals.
+\end{note}
+
+\begin{proof}
+Let \((a_n)_{n = m}^{\infty}\) be a Cauchy sequence of rationals, and write \(L := \LIM_{n \toINF} a_n\).
+We have to show that \((a_n)_{n = m}^{\infty}\) converges to \(L\).
+Let \(\varE > 0\).
+Assume for sake of contradiction that sequence \(a_n\) is \emph{not} eventually \(\varE\)-close to \(L\) \MAROON{(*)}.
+Then by \DEF{6.1.5}, for all \(N \ge m\), there exists an integer \(n \ge N\) s.t. \(d(a_n, L) > \varE\).
+Also since \((a_n)_{n = m}^{\infty}\) is Cauchy, and in particular \(\varE/2 > 0\), there exists an integer \(N_1 \ge m\) s.t. \(d(a_n, a_k) \le \varE/2\) for all \(n, k \ge N_1\) \MAROON{(**)}.
+We preserve this \(N_1\).
+\emph{Again}, since \MAROON{(*)}, in particular for the integer \(N_1 \ge m\), there exists an integer \(N_2 \ge N_1\) s.t. \(d(a_{N_2}, L) > \varE\) \MAROON{(***)}.
+We preserve this \(N_2\).
+Also note that since \(N_2 \ge N_1\), in particular it can be replaced into the free variable \(k\) in \MAROON{(**)} so that we have:
+there exists an integer \(N_1 \ge m\) s.t. \(d(a_n, a_{N_2}) \le \varE/2\) for all \(n \ge N_1\).
+And from \EXEC{5.4.6}, we can rewrite it as the in equality \(-\varE/2 \le a_n - a_{N_2} \le \varE/2\), and hence \(-\varE/2 + a_{N_2} \le a_n \le \varE/2 + a_{N_2}\), for all \(n \ge N_1\) \BLUE{(*)}.
+
+Now we consider the value of \(a_{N_2} - L\):
+Since from \MAROON{(***)}, we know \(a_{N_2} - L \neq 0\), so there are two cases:
+\begin{itemize}
+    \item[>>] \(a_{N_2} - L > 0\). Then
+        \begin{align*}
+            a_{N_2} - L & = \abs{a_{N_2} - L} \\
+                        & = d(a_{N_2}, L) \\
+                        & > \varE & \text{from \MAROON{(***)}}
+        \end{align*}
+        So we have \(\varE < a_{N_2} - L\).
+        And from \BLUE{(*)}, in particular we have \(-\varE/2 + a_{N_2} \le a_n\), for all \(n \ge N_1\).
+        Add both sides of these two inequalities, we have:
+        \begin{align*}
+                     & -\varE/2 + a_{N_2} \le a_n \land \varE < a_{N_2} - L \\
+            \implies & \varE/2 + a_{N_2} < a_n + a_{N_2} - L \\
+            \implies & \varE/2 + L < a_n & \text{for all \(n \ge N_1\).}
+        \end{align*}
+        Now we defined a sequence \((b_n)_{n = 1}^{\infty}\) s.t. \(b_n := a_{n + N_1 - 1}\).
+        Then it's trivial that \(\LIM b_n = \LIM a_n\) and \(\varE/2 + L < b_n\) for all \(n \ge 1\). (If we proved informally, we can just use \EXEC{5.4.8} directly on the sequence \(a_n\)).
+        Then from \EXEC{5.4.8}, we have \(\varE/2 + L < \LIM_{n \toINF} b_n = L\),
+        which implies \(\varE < 0\), a contradiction.
+    \item[>>] \(a_{N_2} - L < 0\). Then
+        \begin{align*}
+            a_{N_2} - L & = -\abs{a_{N_2} - L} \\
+                        & = -d(a_{N_2}, L) \\
+                        & < -\varE & \text{from \MAROON{(***)}}
+        \end{align*}
+        So we have \(\varE < L - a_{N_2}\).
+        And from \BLUE{(*)}, in particular we have \(a_n \le \varE/2 + a_{N_2}\), for all \(n \ge N_1\).
+        Add both sides of these two inequalities, we have:
+        \begin{align*}
+                     & a_n \le \varE/2 + a_{N_2} \land \varE < L - a_{N_2} \\
+            \implies & a_n + \varE < \varE/2 + L \\
+            \implies & a_n < L - \varE/2 & \text{for all \(n \ge N_1\).}
+        \end{align*}
+        Then similarly with the previous case, from \EXEC{5.4.8} we have \(\LIM_{n \toINF} a_n < L - \varE/2\), or \(L < L - \varE/2\), which implies \(\varE < 0\), a contradiction.
+\end{itemize}
+So in all cases we have contradiction, so there is no \(\varE > 0\) s.t. the sequence \(a_n\) is not \(\varE\)-close to \(L\).
+So the sequence \(a_n\) is convergent to \(L\), that is, \(\lim_{n \toINF} a_n = L\), that is, \(\lim_{n \toINF} a_n = \LIM_{n \toINF} a_n\).
+\end{proof}
+
+\begin{definition} [Bounded sequences] \label{def 6.1.16}
+A sequence \((a_n)_{n = m}^{\infty}\) of \emph{real} numbers is \emph{bounded} by a \emph{real} number \(M\) iff we have \(\abs{a_n} \le M\) for all \(n \ge m\).
+We say that \((a_n)_{n = m}^{\infty}\) is bounded iff it is \emph{bounded} by \(M\) for some real number \(M > 0\).
+\end{definition}
+
+\begin{note}
+This definition is consistent with \DEF{5.1.12}; see \EXEC{6.1.7}.
+\end{note}
+
+Recall from \LEM{5.1.15} that every Cauchy sequence of \emph{rational} numbers is bounded.
+An inspection of the proof of that Lemma shows that the same argument works for \emph{real} numbers;
+every Cauchy sequence of real numbers is bounded.
+In particular, from \PROP{6.1.12} we have
+\begin{corollary} \label{corollary 6.1.17}
+Every convergent sequence of real numbers by \PROP{6.1.12} is Cauchy, and Cauchy by the argument above(``real'' version of \LEM{5.1.15}) is bounded.
+So every convergent sequence of real numbers is bounded.
+\end{corollary}
+
+\begin{example} \label{example 6.1.18}
+The sequence \(1, 2, 3, 4, 5,...\) is not bounded, and hence (by contrapositive of \CORO{6.1.17}) is not convergent.
+\end{example}
+
+We can now prove the usual limit laws.
+\begin{theorem} [Limit Laws] \label{thm 6.1.19}
+Let \((a_n)_{n = m}^\infty\) and \((b_n)_{n = m}^\infty\) be convergent sequences of real numbers, and let \(x, y\) be the real numbers \(x := \lim_{n \to \infty} a_n\) and \(y := \lim_{n \to \infty} b_n\).
+\begin{enumerate}
+\item
+    The sequence \((a_n + b_n)_{n = m}^\infty\) converges to \(x + y\);
+    in other words,
+    \[
+        \lim_{n \to \infty} (a_n + b_n) = \lim_{n \to \infty} a_n + \lim_{n \to \infty} b_n.
+    \]
+\item
+    The sequence \((a_n b_n)_{n = m}^\infty\) converges to \(xy\);
+    in other words,
+    \[
+        \lim_{n \to \infty} (a_n b_n) = (\lim_{n \to \infty} a_n)(\lim_{n \to \infty} b_n).
+    \]
+\item
+    For any real number \(c\), the sequence \((c a_n)_{n = m}^\infty\) converges to \(cx\);
+    in other words,
+    \[
+        \lim_{n \to \infty} (c a_n) = c(\lim_{n \to \infty} a_n).
+    \]
+\item
+    The sequence \((a_n - b_n)_{n = m}^\infty\) converges to \(x - y\);
+    in other words,
+    \[
+        \lim_{n \to \infty} (a_n - b_n) = \lim_{n \to \infty} a_n - \lim_{n \to \infty} b_n.
+    \]
+\item
+    Suppose that \(y \neq 0\), and that \(b_n \neq 0\) for all \(n \geq m\).
+    Then the sequence \((b_n^{-1})_{n = m}^\infty\) converges to \(y^{-1}\);
+    in other words,
+    \[
+        \lim_{n \to \infty} b_n^{-1} = (\lim_{n \to \infty} b_n)^{-1}.
+    \]
+\item
+    Suppose that \(y \neq 0\), and that \(b_n \neq 0\) for all \(n \geq m\).
+    Then the sequence \((a_n / b_n)_{n = m}^\infty\) converges to \(x / y\);
+    in other words,
+    \[
+        \lim_{n \to \infty} \frac{a_n}{b_n} = \frac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} b_n}.
+    \]
+\item
+    The sequence \((\max(a_n, b_n))_{n = m}^\infty\) converges to \(\max(x, y)\);
+    in other words,
+    \[
+        \lim_{n \to \infty} \max(a_n, b_n) = \max(\lim_{n \to \infty} a_n, \lim_{n \to \infty} b_n).
+    \]
+\item
+    The sequence \((\min(a_n, b_n))_{n = m}^\infty\) converges to \(\min(x, y)\);
+    in other words,
+    \[
+        \lim_{n \to \infty} \min(a_n, b_n) = \min(\lim_{n \to \infty} a_n, \lim_{n \to \infty} b_n).
+    \]
+\end{enumerate}
+\end{theorem}
+
+\begin{note}
+\begin{enumerate}
+\item 各項相加而成的\ seq 的極限等於兩個\ seq 的極限相加。 
+\item 各項相乘而成的\ seq 的極限等於兩個\ seq 的極限相乘。
+\item 逐項乘以常數而成的\ seq 的極限等於\ seq 的極限乘以該常數。
+\item 各項相減而成的\ seq 的極限等於兩個\ seq 的極限相減。
+\item 若原\ seq 每一項都\ \(!= 0\) 且該\ seq 不會收斂到\ 0，
+則逐項取倒數而成的\ seq 的極限等於原本的\ seq 的極限的倒數。
+\item 若要被當分母的\ seq 每一項都\ \(!= 0\) 且該\ seq 不會收斂到\ 0，則各項相除而成的\ seq 的極限等於兩個\ seq 的極限相除。
+\item 各項取最大值而成的\ seq 的極限等於兩個\ seq 的極限的最大值。
+\item 各項取最小值而成的\ seq 的極限等於兩個\ seq 的極限的最小值。
+\end{enumerate}
+\end{note}
+
+\begin{proof} (a)
+
+Then by \DEF{6.1.5}, we have to show that \(\forall \varE > 0, \exists N \le n\) s.t. \(\abs{(a_i + b_i) - (x + y)} \le \varE\ \forall i \ge N\) \BLUE{(*)}.
+
+So let arbitrary \(\varE > 0\).
+In particular \(\varE/2 > 0\).
+Since \((a_n)_{n = m}^{\infty}\) converges to \(x\), we can find \(N_1 \ge m\) s.t. \(\abs{a_i - x} \le \varE/2\ \forall i \ge N_1\) \MAROON{(1)}.
+Similarly we can find \(N_2 \ge m\) s.t. \(\abs{b_j - y} \le \varE/2\ \forall j \ge N_2\) \MAROON{(2)}.
+Now let \(N = \max(N_1, N_2)\).
+Then from \MAROON{(1)(2)} we have
+\begin{align*}
+             & \abs{a_k - x} \le \varE/2 \land \abs{b_k - y} \le \varE/2\ \forall k \ge N \\
+    \implies & \abs{a_k - x} + \abs{b_k - y} \le \varE/2 + \varE/2 = \varE\ \forall k \ge N \\
+    \implies & \abs{(a_k - x) + (b_k - y)} \le \abs{a_k - x} + \abs{b_k - y} \le \varE\ \forall k \ge N & \text{by \PROP{4.3.3}(b)} \\
+    \implies & \abs{(a_k - x) + (b_k - y)} \le \varE\ \forall k \ge N \\
+    \implies & \abs{(a_k + b_k) - (x + y)} \le \varE\ \forall k \ge N
+\end{align*}
+satisfying \BLUE{(*)} as desired.
+\end{proof}
+
+\begin{proof} (b)
+
+By \DEF{6.1.5} we have to show that \(\forall \varE > 0, \exists N \ge n\) s.t. \(\abs{a_n b_n - xy} \le \varE\) \BLUE{(1)}.
+
+So let arbitrary \(\varE > 0\).
+Since \((a_n)_{n = m}^{\infty}\) converges to \(x\) and \((b_n)_{n = m}^{\infty}\) converges to \(y\), by \CORO{6.1.17}, they are bounded.
+So by \DEF{6.1.16} we can find \(A, B > 0\) s.t. \(\abs{a_n} \le A\) \MAROON{(*1)} and \(\abs{b_n} \le B\) \MAROON{(*2)} for all \(n \ge m\).
+
+And in particular, from \MAROON{(*1)} we have \(x \le A\) \MAROON{(*3)}, otherwise if \(x > A\), then \(x - A > 0\), hence for \(\varE = (x - A)/2 > 0\), given any \(N \ge m\), we just have found \(N\) s.t.
+\begin{align*}
+    \abs{a_n - x} & = \abs{x - a_n} \\
+                  & = \abs{x + (-a_n)} \\
+                  & \ge \abs{x} - \abs{-a_n} & \text{by \AC{4.3.1}} \\
+                  & \ge \abs{x} - \abs{a_n} \\
+                  & \ge x - \abs{a_n} & \text{since \(x > A > 0\)} \\
+                  & \ge x - A & \text{since \(\abs{a_n} \le A\)} \\
+                  & > (x - A)/2 = \varE
+\end{align*}
+which implies \((a_n)_{n = m}^{\infty}\) does \emph{not} converge to \(x\), a contradiction.
+
+Now in particular \(\varE/2A > 0\) and \(\varE/2B > 0\).
+And since \((a_n)_{n = m}^{\infty}\) converges to \(x\) and \((b_n)_{n = m}^{\infty}\) converges to \(y\),
+\(\exists N_1\) s.t. \(\abs{a_i - x} \le \varE/2\RED{B}\) for all \(i \ge N_1\) \MAROON{(**1)}, and \(\exists N_2\) s.t. \(\abs{b_j - y} \le \varE/2\RED{A}\) for all \(j \ge N_2\) \MAROON{(**2)}.
+
+Now let \(N = \max(N_1, N_2)\) then for all \(n \ge N\),
+\begin{align*}
+    \abs{a_n b_n - xy} & = \abs{a_n b_n - xy + x b_n - x b_n}  \\
+                       & = \abs{a_n b_n - x b_n + x b_n - xy} \\
+                       & = \abs{b_n(a_n - x) + x(b_n - y)} \\
+                       & \le \abs{b_n(a_n - x)} + \abs{x(b_n - y)} & \text{by \PROP{4.3.3}(b)} \\
+                       & = \abs{b_n}\abs{a_n - x} + \abs{x}\abs{b_n - y} \\
+                       & \le B \X \varE/2\RED{B} + \abs{x}\abs{b_n - y} & \text{by \MAROON{(*2) (**1)}} \\
+                       & \le \varE/2 + A \X \varE/2\RED{A} & \text{by \MAROON{(*3) (**2)}} \\
+                       & = \varE,
+\end{align*}
+which satisfies \BLUE{(1)}, as desired.
+\end{proof}
+
+\begin{proof} (c)
+For a constant \(c\), \(c = \lim_{n \toINF} b_n\) where \(b_n = c\ \forall n \ge m\) \MAROON{(*)}. So
+\begin{align*}
+    \lim_{n \toINF} c a_n & = \lim_{n \toINF} b_n a_n & \text{by \MAROON{(*)}} \\
+                          & = \lim_{n \toINF} b_n \lim_{n \toINF} a_n & \text{by part (b)} \\
+                          & = cx
+\end{align*}
+\end{proof}
+
+\begin{proof} (d)
+\begin{align*}
+\lim_{n \toINF}(a_n - b_n) & = \lim_{n \toINF}(a_n + (-b_n)) & \text{by algebra} \\
+                           & = \lim_{n \toINF}(a_n + (-1) b_n) & \text{by algebra} \\
+                           & = \lim_{n \toINF} a_n + \lim_{n \toINF}(-1) b_n & \text{by part(a)} \\
+                           & = \lim_{n \toINF} a_n + (-1)\lim_{n \toINF} b_n & \text{by part(c)} \\
+                           & = \lim_{n \toINF} a_n - \lim_{n \toINF} b_n & \text {by algebra}
+\end{align*}
+\end{proof}
+
+\begin{proof} (e)
+From the hint, we first show that \((b_n)_{n = m}^{\infty}\) is bounded away from zero.
+But that is equivalent to \((b_n^{-1})_{n = m}^{\infty}\) is \emph{bounded}:
+Suppose \((b_n)_{n = m}^{\infty}\) is bounded away from zero.
+Then \(\exists M > 0\) s.t. \(\abs{b_n} \ge M\ \forall n \ge m\), which implies \(\frac1{\abs{b_n}} \le \frac1{M}\ \forall n \ge m\).
+But it's trivial that \(\frac1{\abs{b_n}} = \abs{\frac1{b_n}} = \abs{b_n^{-1}}\).
+So we have \(\abs{b_n^{-1}} \le \frac1{M}\ \forall n \ge m\), and by \DEF{6.1.16}, \((b^{-1})_{n = m}^{\infty}\) is bounded.
+Now suppose \((b_n^{-1})_{n = m}^{\infty}\) is bounded.
+Then from \DEF{6.1.16} \(\exists M > 0\) s.t. \(\abs{b^{-1}} \le M\ \forall n \ge m\), which again implies \(\frac1{\abs{b_n}} \le M\ \forall n \ge m\);
+which implies \(\abs{b_n} \ge \frac1{M}\ \forall n \ge m\).
+So we have found \(\frac1{M} > 0\) s.t. \(\abs{b_n} \ge \frac1{M}\ \forall n \ge m\). So \((b_n)_{n = m}^{\infty}\) is bounded away from zero.
+
+Now, we first show \((b_n^{-1})_{n = m}^{\infty}\) is bounded.
+Since \(y \neq 0\), \(\abs{y} > 0\) and \(\abs{y}/2 > 0\).
+Also, since \((b_n)_{n = m}^{\infty}\) converges to \(y\), \(\exists N \ge m\) s.t. \(\abs{b_n - y} \le \abs{y}/2\ \forall n \ge N\).
+But since \(\abs{y} - \abs{b_n} \le \abs{b_n - y}\) (by some absolute value algebra and \AC{4.3.1}), we have \(\abs{y} - \abs{b_n} \le \abs{y}/2\),
+or \(\abs{y}/2 \le \abs{b_n}\), which implies \(2/\abs{y} \ge 1/\abs{b_n} = \abs{1/b_n}\ \forall n \ge N\), or \(\abs{b_n^{-1}} \le 2/\abs{y}\ \forall n \ge N\).
+So currently we have shown \(b_n^{-1}\) is bounded for \(n \ge N\).
+But by \LEM{5.1.14}, the \emph{finite} \((b_n^{-1})_{n = m}^{N - 1}\) is also bounded.
+Let them bounded by \(M_0\).
+Then the whole sequence \((b_n^{-1})_{n = m}^{\infty}\) is bounded by \(\max(\frac{2}{\abs{y}}, M_0)\); label it as \(M\) \MAROON{(*)}.
+
+Now we start the actual proof.
+That is, \(\forall \varE > 0, \exists N \ge m\) s.t. \(\abs{b_n^{-1} - y^{-1}} \le \varE\ \forall n \ge N\).
+So let arbitrary \(\varE > 0\).
+Since \((b_n)_{n = m}^{\infty}\) converges to \(y\), and in particular \(\frac{\varE \abs{y}}{M} > 0\),
+\(\exists N_1 \ge m\) s.t. \(\abs{b_n - y} \le \frac{\varE \abs{y}}{M}\ \forall n \ge N_1\) \MAROON{(**)}.
+Then, given this \(N_1 \ge m\), we have for all \(n \ge N_1\),
+\begin{align*}
+    \abs{b_n^{-1} - y^{-1}} & = \abs{\frac{1}{b_n} - \frac{1}{y}} \\
+                            & = \abs{\frac{y - b_n}{b_n y}} \\
+                            & = \frac{1}{\abs{b_n y}} \abs{y - b_n} & \text{by absolute value algebra} \\
+                            & = \frac{1}{\abs{b_n} \abs{y}} \abs{y - b_n} & \text{by absolute value algebra} \\
+                            & = \abs{\frac{1}{b_n}} \frac{1}{\abs{y}} \abs{y - b_n} & \text{by absolute value algebra} \\
+                            & \le M \frac{1}{\abs{y}} \abs{y - b_n} & \text{by \MAROON{(*)}} \\
+                            & = M \frac{1}{\abs{y}} \abs{b_n - y} & \text{by absolute value algebra} \\
+                            & \le M \frac{1}{\abs{y}} \frac{\varE \abs{y}}{M} & \text{by \MAROON{(**)}} \\
+                            & = \varE,
+\end{align*}
+as desired.
+\end{proof}
+
+\begin{proof}(f)
+\begin{align*}
+\lim_{n \toINF} \frac{a_n}{b_n} & = \lim_{n \toINF} a_n b_n^{-1} & \text{by algebra} \\
+                                & = \lim_{n \toINF} a_n \lim_{n \toINF} b_n^{-1} & \text {by part(b)} \\
+                                & = (\lim_{n \toINF} a_n) (\frac{1}{\lim_{n \toINF} b_n}) & \text {by part(e)} \\
+                                & = \frac{\lim_{n \toINF} a_n}{\lim_{n \toINF} b_n} & \text{of course}
+\end{align*}
+\end{proof}
+
+\begin{proof}(g)
+We split into two cases: \(x \ge y\) and \(x < y\).
+\begin{itemize}
+\item[\(x \ge y\)]: Then \(\max(x, y) = x\).
+    So we have to show \((\max(a_n, b_n))_{n = m}^{\infty}\) converges to \(x\).
+    That is, \(\forall \varE > 0, \exists N \ge m\) s.t. \(\abs{\max(a_n, b_n) - x} \le \varE\ \forall n \ge N\).
+    
+    Sot let arbitrary \(\varE > 0\).
+    Since \((a_n)_{n = m}^{\infty}\) converges to \(x\), \(\exists N_1 \ge m\) s.t. \(\abs{a_n - x} \le \varE\ \forall n \ge N_1\) \MAROON{(*)}.
+    Since \((b_n)_{n = m}^{\infty}\) converges to \(y\), \(\exists N_2 \ge m\) s.t. \(\abs{b_n - y} \le \varE\ \forall n \ge N_2\) \MAROON{(**)}.
+    Now let \(N = \max(N_1, N_2)\).
+    Then with \MAROON{(*)(**)} and \EXEC{5.4.6}, \(-\varE \le a_n - x \le \varE \land -\varE \le b_n - y \le \varE\ \forall n \ge N\),
+    or \(x - \varE \le a_n \le x + \varE \land y -\varE \le b_n \le y + \varE\ \forall n \ge N\) \MAROON{(***)}.
+    
+    But since \(x \ge y\), we have \(x + \varE \ge y + \varE\), so from \MAROON{(***)} we have \(a_n \le x + \varE\) and \(b_n \le y + \varE \le x + \varE\).
+    So both \(a_n, b_n \le x + \varE\), so \(\max(a_n, b_n) \le x + \varE\) \BLUE{(*)}.
+    Also from \MAROON{(***)}, we know \(x - \varE \le a_n\), which \(\le \max(a_n, b_n)\), so we have \(x - \varE \le \max(a_n, b_n)\) \BLUE{(**)}.
+    By \BLUE{(*)(**)} we have \(x - \varE \le \max(a_n, b_n) \le x + \varE\).
+    By \EXEC{5.4.6}, we have \(\abs{\max(a_n, b_n) - x} \le \varE\).
+    So we have found \(N \ge m\) s.t. \(\abs{\max(a_n, b_n) - x} \le \varE\ \forall n \ge N\), as desired.
+\item[\(x < y\)]: Then \(\max(x, y) = y\).
+    So similarly we have to show \(\forall \varE > 0, \exists N \ge m\) s.t. \(\abs{\max(a_n, b_n) - y} \le \varE\ \forall n \ge N\).
+    
+    So let arbitrary \(\varE > 0\).
+    Again, with the same argument up to \MAROON{(***)}, we have \(x - \varE \le a_n \le x + \varE \land y -\varE \le b_n \le y + \varE\ \forall n \ge N\) \MAROON{(****)}.
+    
+    Since \(x < y\), we have \(x + \varE < y + \varE\).
+    So from \MAROON{(****)}, we have \(a_n \le x + \varE < y + \varE\) and \(b_n \le y + \varE\).
+    So both \(a_n, b_n \le y + \varE\), so \(\max(a_n, b_n) \le y + \varE\) \BLUE{(***)}.
+    Also, from \MAROON{(****)}, we have \(y - \varE \le b_n\), which implies \(y - \varE \le \max(a_n, b_n)\) \BLUE{(****)}.
+    So from \BLUE{(***)(****)} we have \(y - \varE \le \max(a_n, b_n) \le y + \varE\).
+    By \EXEC{5.4.6}, we get \(\abs{\max(a_n, b_n) - y} \le \varE\).
+    So we have found \(N \ge m\) s.t. \(\abs{\max(a_n, b_n) - y} \le \varE\ \forall n \ge N\), as desired.
+\end{itemize}
+\end{proof}
+
+\begin{proof}(h)
+First we give a fact that \(\min(a, b) = -\max(-a, -b)\) \BLUE{(*)};
+we split into three cases:
+\begin{itemize}
+    \item[\(a > b\)]: then \(\min(a, b) = b\).
+        Also, \(-a < -b\), so \(\max(-a, -b) = -b\), so \(-\max(-a, -b) = -(-b) = b\).
+    \item[\(a = b\)]: then \(\min(a, b) = b\).
+        Also, \(-a = -b\), so \(\max(-a, -b) = -b\), so \(-\max(-a, -b) = -(-b) = b\).
+    \item[\(a < b\)]: then \(\min(a, b) = a\).
+        Also, \(-a > -b\), so \(\max(-a, -b) = -a\), so \(-\max(-a, -b) = -(-a) = a\).
+\end{itemize}
+So in all cases, LHS = RHS. That is, \(\min(a, b) = -\max(-a, -b)\).
+
+So we have
+\begin{align*}
+    \lim_{n \toINF} \min(a_n, b_n) & = \lim_{n \toINF} -\max(-a_n, -b_n) & \text{by \BLUE{(*)}} \\
+                                   & = -\lim_{n \toINF} \max(-a_n, -b_n) & \text{by part(c)} \\
+                                   & = -\max(\lim_{n \toINF} -a_n, \lim_{n \toINF} -b_n) & \text{by part(g)} \\
+                                   & = -\max(-\lim_{n \toINF} a_n, -\lim_{n \toINF} b_n) & \text{by part(c)} \\
+                                   & = \min(\lim_{n \toINF} a_n, \lim_{n \toINF} b_n) & \text{by \BLUE{(*)}}
+\end{align*}
+\end{proof}
+
+\exercisesection
+
+\begin{exercise} \label{exercise 6.1.1}
+Let \((a_n)_{n = 0}^{\infty}\) be a sequence of real numbers, such that \(a_{n + 1} > a_n\) for each natural number \(n\).
+Prove that whenever \(n\) and \(m\) are natural numbers such that \(m > n\), then we have \(a_m > a_n\).
+(We refer to these sequences as \emph{increasing} sequences.)
+\end{exercise}
+
+\begin{note}
+每一項的下一項都比自己大，則比自己還要後面的任何項都比自己大。
+\end{note}
+
+\begin{proof}
+We prove this by induction.
+
+What we want: Given any natural number \(n\), \(a_{n + k} > a_n\) for any natural number \(k \ge 1\). So let \(n\) be arbitrary natural number.
+
+For base case \(k = 1\), \(a_{n + 1} > a_n\) is guaranteed by the property of the sequence.
+
+Suppose for some natural number \(k \ge 1\), \(a_{n + k} > a_n\);
+we have to show \(a_{(n + 1) + k} > a_n\).
+But again by the property of the sequence we have \(a_{n + k + 1} > a_{n + k}\), or \(a_{(n + 1) + k} > a_{n + k}\).
+With the hypothesis \(a_{n + k} > a_n\), by order transitivity  we have \(a_{(n + 1) + k} > a_n\), as desired.
+This closes the induction.
+
+So given any two natural number \(m > n\), \(m = n + k\) for some positive natural number, so by the statement we have shown, \(a_{n + k} > a_n\), or \(a_m > a_n\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.2}
+Let \((a_n)_{n = m}^{\infty}\) be a sequence of real numbers, and let \(L\) be a real number.
+Show that \((a_n)_{n = m}^{\infty}\) converges to \(L\) if and only if,
+given any real \(\varE > 0\), one can find an \(N \ge m\) such that \(\abs{a_n - L} \le \varE\) for all \(n \ge N\).
+\end{exercise}
+
+\begin{align*}
+         & (a_n)_{n = m}^{\infty} \text{ converges to } L \\
+    \iff & \forall \varE > 0, (a_n)_{n = m}^{\infty} \text{ is eventually } \varE\text{-close to } L & \text{by \DEF{6.1.5}} \\
+    \iff & \forall \varE > 0, \exists N \ge n \text{ s.t. } (a_n)_{n = N}^{\infty} \text{ is } \varE\text{-close to } L & \text{by \DEF{6.1.5}} \\
+    \iff & \forall \varE > 0, \exists N \ge n \text{ s.t. } \abs{a_n - L} \le \varE\ \forall n \ge N & \text{by \DEF{6.1.5}}
+\end{align*}
+
+\begin{exercise} \label{exercise 6.1.3}
+Let \((a_n)_{n = m}^{\infty}\) be a sequence of real numbers, let \(c\) be a real number, and let \(m' \ge m\) be an integer.
+Show that \((a_n)_{n = m}^{\infty}\) converges to \(c\) if and only if \((a_n)_{n = m'}^{\infty}\) converges to \(c\).
+\end{exercise}
+
+\begin{proof}
+Suppose \((a_n)_{n = m}^{\infty}\) converges to \(c\), we have to show \((a_n)_{n = m'}^{\infty}\) converges to \(c\).
+
+So given arbitrary \(\varE > 0\), we have to find an integer \(N \ge m'\) s.t. \(\abs{a_n - c} \le \varE\) for all \(n \ge N\).
+But since \((a_n)_{n = m}^{\infty}\) converges to \(c\), by \DEF{6.1.5}(or unwrapped \EXEC{6.1.2}), we can find an \(N_1 \ge m\) s.t. \(\abs{a_n - c} \le \varE\ \forall n \ge N_1\).
+Now there are two cases: \(m' \ge N_1\) or \(m' < N_1\).
+\begin{itemize}
+    \item[\(m' \ge N_1\)]:
+        Then since \(\abs{a_n - c} \le \varE\ \forall n \ge N_1\), we of course have \(\abs{a_n - c} \le \varE\ \forall n \ge m'\).
+        So by \DEF{6.1.5} \((a_n)_{n = m'}^{\infty}\) is \(\varE\)-close (not just eventually \(\varE\)-close) to \(c\).
+    \item[\(m' < N_1\)]:
+        Then again we have found \(N_1 \ge m'\) s.t. \(\abs{a_n - c} \le \varE\ \forall n \ge N_1\).
+        So by \DEF{6.1.5} \((a_n)_{n = m'}^{\infty}\) is eventually \(\varE\)-close) to \(c\).
+\end{itemize}
+So in all cases, \((a_n)_{n = m'}^{\infty}\) is (eventually) \(\varE\)-close to \(c\).
+Since \(\varE > 0\) is arbitrary, by \DEF{6.1.5} \((a_n)_{n = m'}^{\infty}\) converges to \(c\).
+
+Now suppose \((a_n)_{n = m'}^{\infty}\) converges to \(c\), we have to show \((a_n)_{n = m}^{\infty}\) converges to \(c\).
+So let arbitrary \(\varE > 0\).
+Since \((a_n)_{n = m'}^{\infty}\) converges to \(c\), we can find an integer \(N_2 \ge m'\) s.t. \(\abs{a_n - c} \le \varE\) for all \(n \ge N_2\).
+But since \(m' \ge m\), we have \(N_2 \ge m\).
+So we just also find an integer \(N_2 \ge m\) s.t. \(\abs{a_n - c} \le \varE\) for all \(n \ge N_2\).
+So by \DEF{6.1.5} \((a_n)_{n = m}^{\infty}\) is eventually \(\varE\)-close to \(c\).
+Since \(\varE > 0\) is arbitrary, by \DEF{6.1.5}, \((a_n)_{n = m}^{\infty}\) converges to \(c\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.4}
+Let \((a_n)_{n = m}^{\infty}\) be a sequence of real numbers, let \(c\) be a real number, and let \(k \ge 0\) be a non-negative integer.
+Show that \((a_n)_{n = m}^{\infty}\) converges to \(c\) if and only if \((a_{n + k})_{n = m}^{\infty}\) converges to \(c\).
+\end{exercise}
+
+\begin{proof}
+With some reindexing, we have \BLUE{\((a_{n + k})_{n = m}^{\infty} = (a_n)_{n = m + k}^{\infty}\)}.
+Also since \(m + k \geq m\), by \EXEC{6.1.3} \((a_n)_{n = m}^{\infty}\) converges to \(c\) if and only if \BLUE{\((a_n)_{n = m + k}^{\infty}\)} converges to \(c\).
+Thus \((a_n)_{n = m}^{\infty}\) converges to \(c\) if and only if \BLUE{\((a_{n + k})_{n = m}^{\infty}\)} converges to \(c\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.5}
+Prove \PROP{6.1.12}.
+(Hint: use the triangle inequality, or \PROP{4.3.7}.)
+\end{exercise}
+
+\begin{proof}
+See \PROP{6.1.12}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.6}
+Prove \PROP{6.1.15}, using the following outline.
+Let \((a_n)_{n = m}^{\infty}\) be a Cauchy sequence of rationals, and write \(L := \LIM_{n \toINF} a_n\).
+We have to show that \((a_n)_{n = m}^{\infty}\) converges to \(L\).
+Let \(\varE > 0\).
+Assume for sake of contradiction that sequence an is not eventually \(\varE\)-close to \(L\).
+Use this, and the fact that \((a_n)_{n = m}^{\infty}\) is Cauchy, to show that there is an \(N \ge m\) such that either \(a_n > L + \varE/2\) \emph{for all} \(n \ge N\), or \(a_n < L - \varE/2\) for all \(n \ge N\).
+Then use \EXEC{5.4.8}.
+\end{exercise}
+
+\begin{proof}
+See \PROP{6.1.15}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.7}
+Show that \DEF{6.1.16} is consistent with \DEF{5.1.12}
+(i.e., prove an analogue of \PROP{6.1.4} for bounded sequences instead of Cauchy sequences).
+\end{exercise}
+
+\begin{proof}
+I think the point is, the sequence of \emph{rationals} is bounded by a \emph{real} if and only if the sequence is bounded by a \emph{rational}.
+
+So let \((a_n)_{n = m}^{\infty}\) be a sequence of \emph{rationals}.
+
+Suppose the sequence is bounded by a \emph{real} number \(M\).
+Then by \CORO{5.4.13} for \(\varE = 1\) we can find a positive integer \(N\) s.t. \(N \varE > M\), or \(N \X 1 > M\), or \(N > M\);
+and of course the sequence is bounded by \(N\).
+But \(N\) is integer, so it's \emph{rational}, so we have found a rational by which the sequence if bounded.
+
+Now suppose the sequence is bounded by a \emph{rational} number \(M\).
+Then \(M\) is just also a \emph{real} number, so the sequence is bounded by a real number.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.8}
+Prove \THM{6.1.19}.
+(Hint: you can use some parts of the theorem to prove others, e.g., (b) can be used to prove (c);
+(a), (c) can be used to prove (d);
+and (b), (e) can be used to prove (f).
+The proofs are similar to those of \LEM{5.3.6}, \PROP{5.3.10}, and \LEM{5.3.15}.
+For (e), you may need to first prove the \emph{auxiliary result} that any sequence whose elements are non-zero, and which converges to a non-zero limit, is \emph{bounded away from zero}.)
+\end{exercise}
+
+\begin{proof}
+See \THM{6.1.19}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.9}
+Explain why \THM{6.1.19}(f) fails when the limit of the denominator is \(0\).
+(To repair that problem requires L’\^{H}opital’s rule, see \SEC{10.5}.)
+\end{exercise}
+
+\begin{proof}
+For the sake of contradiction suppose \THM{6.1.19}(f) also works when \((b_n)_{n = m}^{\infty}\) converges to \(0\).
+Then in particular, let \(a_n = b_n := 1/n\) for all \(n \ge m\); we have shown in \EXEC{5.3.5} that both \((a_n)_{n = m}^{\infty}\) and \((b_n)_{n = m}^{\infty}\) converge to \(0\).
+So \(\lim_{n \toINF} \frac{a_n}{b_n} = 1\) since \(\frac{a_n}{b_n} = \frac{\frac{1}{n}}{\frac{1}{n}} = 1\) for all \(n \ge m\).
+But \(\frac{\lim_{n \toINF} a_n}{\lim_n \toINF b_n} = \frac{0}{0}\), which is undefined.
+So the two sides of equation is \emph{not} consistent(and the RHS is even undefined).
+So \THM{6.1.19}(f) cannot be applied when the sequence in the denominator converges to \(0\).
+\end{proof}
+
+\begin{exercise} \label{exercise 6.1.10}
+Show that the concept of equivalent Cauchy sequence, as defined in \DEF{5.2.6}, does not change if \(\varE\) is required to be positive \emph{real} instead of positive \emph{rational}.
+More precisely, if \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are sequences of reals, show that \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are eventually \(\varE\)-close for every \emph{rational} \(\varE > 0\) if and only if they are eventually \(\varE\)-close for every \emph{real} \(\varE > 0\).
+(Hint: modify the proof of \PROP{6.1.4}.)
+\end{exercise}
+
+\begin{note}
+It's mind=blowing that we have not rigorously defined the equivalence between to Cauchy sequences of \emph{real}s.
+What we have defined is that they can converge to some real numbers, and the real number may be the same.
+\end{note}
+
+\begin{proof}
+Let \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) be sequences of reals.
+
+Suppose \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are eventually \(\varE\)-close for every \emph{rational} \(\varE > 0\).
+Now let \(\varE'\) be arbitrary \emph{real} s.t. \(\varE' > 0\).
+Then by \PROP{5.4.12} we can find a \emph{rational} \(\varE\) s.t. \(0 < \varE < \varE'\).
+And by supposition, \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are eventually \(\varE\)-close for this \emph{rational}.
+But since \(\varE < \varE'\), \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are of course eventually \(\varE'\)-close for the real \(\varE'\).
+Since \(\varE' > 0\) is arbitrary, \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are eventually \(\varE\)-close for every \(real > 0\).
+
+Now suppose \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are eventually \(\varE\)-close for every \emph{real} \(\varE > 0\).
+Now given any \emph{rational} \(\varE' > 0\), since \(\varE'\) are also real, by supposition \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are eventually \(\varE'\)-close.
+Since \(\varE' > 0\) is arbitrary, \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are eventually \(\varE\)-close for every \emph{rational} \(\varE > 0\).
+\end{proof}
