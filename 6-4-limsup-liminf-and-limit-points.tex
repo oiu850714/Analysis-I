@@ -1,0 +1,880 @@
+\section{Limsup, Liminf, and limit points} \label{sec 6.4}
+
+Consider the sequence
+\[
+    1.1, -1.01, 1.001, -1.0001, 1.00001,....
+\]
+If one plots this sequence, then one sees (informally, of course) that this sequence does \emph{not} converge;
+\emph{half} the time the sequence is getting close to \(1\), and \emph{half} the time the sequence is getting close to \(-1\), but it is not converging to either of them;
+for instance, it never gets eventually \(1/2\)-close to \(1\), and never gets eventually \(1/2\)-close to \(-1\).
+However, even though \(-1\) and \(+1\) are not quite limits of this sequence, it does seem that \emph{in some vague way they “want” to be limits}.
+To make this notion precise we introduce the notion of a \emph{limit point}.
+
+\begin{definition} [Limit points] \label{def 6.4.1}
+Let \((a_n)_{n = m}^{\infty}\) be a sequence of real numbers, let \(x\) be a real number, and let \(\varE > 0\) be a real number.
+
+\BLUE{(1)} We say that \(x\) is \emph{\(\varE\)-adherent to} \((a_n)_{n = m}^{\infty}\) iff there \emph{exists} an \(n \ge m\) such that \(a_n\) is \(\varE\)-close to \(x\).
+
+\BLUE{(2)} We say that \(x\) is \emph{continually \(\varE\)-adherent} to \((a_n)_{n = m}^{\infty}\) iff it is \(\varE\)-adherent to \((a_n)_{n = \textbf{N}}^{\infty}\) \emph{for every} \(N \ge m\).
+
+\BLUE{(3)} We say that \(x\) is a(i.e. can be many) \emph{limit point} or \emph{adherent point} of \((a_n)_{n = m}^{\infty}\) iff it is continually \(\varE\)-adherent to \((a_n)_{n = m}^{\infty}\) \emph{for every} \(\varE > 0\).
+\end{definition}
+
+\begin{note}
+\(\varE\)-adherent 只要\ sequence "存在"一個\ element 跟該點距離\ \(\varE\) 即可。
+continually \(\varE\)-adherent 則是不管拿掉多少\ sequence 前面的\ elements，剩下的\ sequence 都還是存在\ element 跟該點距離\ \(\varE\)。感覺有點永不放棄。
+limit point 則是不管給我多小的\ \(\varE\)，sequence 都跟該點是\ continually \(\varE\)-adherent。
+\end{note}
+
+\begin{remark} \label{remark 6.4.2}
+The verb ``to adhere'' means much the same as ``to stick to'';
+hence the term ``adhesive''.
+\end{remark}
+
+\begin{additional corollary} \label{ac 6.4.1}
+\emph{Unwrapping} all the definitions, we see that \(x\) is a limit point of \((a_n)_{n = m}^{\infty}\) if, for every \(\varE > 0\) and every \(N \ge m\), there exists an \(n' \ge N\) such that \(\abs{a_{n'} - x} \le \varE\).
+Why?
+\begin{align*}
+             & x \text{ is a limit point of } (a_n)_{n = m}^{\infty} \\
+    \implies & \forall \varE > 0, (a_n)_{n = m}^{\infty} \text{ is continually } \varE \text{-adherent to } (a_n)_{n = m}^{\infty} \text{, by \DEF{6.4.1}(3)} \\
+    \implies & \forall \varE > 0, \forall N \ge m, x \text{ is \(\varE\)-adherent to } (a_n)_{n = \textbf{N}}^{\infty} \text{, by \DEF{6.4.1}(2)} \\
+    \implies & \forall \varE > 0, \forall N \ge m, \exists n' \ge N \text{ s.t. } x \text{ is \(\varE\)-close to \(a_{n'}\), by \DEF{6.4.1}(1)}
+\end{align*}
+\end{additional corollary}
+
+\begin{note}
+Note the difference between a sequence being \(\varE\)-close to \(L\) (which means that \emph{all the elements} of the sequence stay within a distance \(\varE\) of \(L\))
+and \(L\) being \(\varE\)-adherent to the sequence (which \emph{only needs a single element} of the sequence to stay within a distance \(\varE\) of \(L\)).
+Also, for \(L\) to be continually \(\varE\)-adherent to \((a_n)_{n = m}^{\infty}\), it has to be \(\varE\)-adherent to \((a_n)_{n = N}^{\infty}\) \emph{for all} \(N \ge m\),
+whereas for \((a_n)_{n = m}^{\infty}\) to be eventually \(\varE\)-close to \(L\), we only need \((a_n)_{n = N}^{\infty}\) to be \(\varE\)-close to \(L\) \emph{for some} \(N \ge m\).
+Thus there are some subtle differences in \emph{quantifiers} between limits and limit points.
+\end{note}
+
+\begin{note}
+Currently limit points are only defined (in \DEF{6.4.1}) for \emph{finite} real numbers.
+It is also possible to rigorously define the concept of \(+\infty\) or \(-\infty\) being a limit point;
+see \EXEC{6.4.8}.
+\end{note}
+
+\begin{example} \label{example 6.4.3}
+Let \((a_n)_{n = 1}^{\infty}\) denote the sequence
+\[
+    0.9, 0.99, 0.999, 0.9999, 0.99999,....
+\]
+The number \(0.8\) is \(0.1\)-adherent to this sequence, since \(0.8\) is \(0.1\)-close to 0.9, which is a member (the first member) of this sequence.
+However, \(0.8\) is not \emph{continually} \(0.1\)-adherent to this sequence, since once one discards the first element of this sequence there is no member of the sequence to be \(0.1\)-close to \(0.8\).
+In particular, \(0.8\) is not a limit point of this sequence.
+On the other hand, the number \(1\) is \(0.1\)-adherent to this sequence, and in fact \(0.1\) is \emph{continually} \(0.1\)-adherent to this sequence,
+since no matter how many \emph{initial members} of the sequence one discards, there is still \emph{something}(i.e. ``some'') for \(1\) to be \(0.1\)-close to.
+In fact, it is continually \(\varE\)-adherent for every \(\varE > 0\), and is hence a limit point of this sequence.
+\end{example}
+
+\begin{example} \label{example 6.4.4}
+Now consider the sequence
+\[
+    1.1, -1.01, 1.001, -1.0001, 1.00001,....
+\]
+The number \(1\) is \(0.1\)-adherent to this sequence;
+in fact \(1\) is continually \(0.1\)-adherent to this sequence,
+because no matter how many elements of the sequence one discards, there are \emph{some} elements of the sequence that \(1\) is \(0.1\)-close to.
+(As discussed earlier, one does \emph{not} need \emph{all} the elements to be \(0.1\)-close to 1, just \emph{some}; 
+thus \(0.1\)-adherent is weaker than \(0.1\)-close, and continually \(0.1\)-adherent is a different notion from eventually \(0.1\)-close.)
+In fact, for every \(\varE > 0\), the number \(1\) is continually \(\varE\)-adherent to this sequence, and is thus a limit point of this sequence.
+Similarly \(-1\) is a limit point of this sequence;
+however \(0\) is not a limit point of this sequence, since the sequence is not continually \(0.1\)-adherent to \(0\).
+\end{example}
+
+Limits are \emph{of course a special case} of limit points:
+
+\begin{proposition} [Limits are limit points] \label{prop 6.4.5}
+Let \((a_n)_{n = m}^{\infty}\) be a sequence which \emph{converges} to a real number \(c\).
+Then \(c\) is a limit point of \((a_n)_{n = m}^{\infty}\), and in fact it is \emph{the only limit point} of \((a_n)_{n = m}^{\infty}\).
+\end{proposition}
+
+\begin{proof}
+To show \(c\) is a limit point of \((a_n)_{n = m}^{\infty}\), by \AC{6.4.1} we have to show:
+for every \(\varE > 0\) and every \(N \ge m\), there exists \(n' \ge N\) such that \(\abs{a_{n'} - c} \le \varE\).
+
+So let arbitrary \(\varE > 0\) and arbitrary \(N \ge m\).
+We have to find \(n' \ge N\) such that \(\abs{a_{n'} - c} \le \varE\) \BLUE{(1)}.
+
+Since the sequence converges to \(c\), by \DEF{6.1.5} (or \EXEC{6.1.2}),
+there exists \(N' \ge m\) s.t. \(\abs{a_{n'} - c} \le \varE\) \emph{for all} \(n' \ge N'\) \MAROON{(1)}.
+Now there are two cases: \(N' < N\) or \(N' \ge N\).
+
+If \(N' < N\), then in particular we can replace \(n' = N\) into \MAROON{(1)} s.t. \(\abs{a_{N} - c} \le \varE\),
+so we have found \(n' = N \ge N\) s.t. \(\abs{a_{n'} - c} \le \varE\).
+
+If \(N' \ge N\), then in particular we just use \(n' = N'\) into \MAROON{(1)} s.t. \(\abs{a_{N'} - c} \le \varE\),
+so we have found \(n' = N' \ge N\) s.t. \(\abs{a_{n'} - c} \le \varE\).
+
+In all cases, \BLUE{(1)} is satisfied, as desired.
+
+Now we show that \(c\) is the \emph{only} limit point of the sequence.
+For the sake of contradiction suppose \(c' \ne c\) is also a limit point of the sequence.
+
+Then let \(\varE = \abs{c - c'}/2 > 0\).
+\emph{In particular}, \(\abs{c - c'}/\BLUE{3} > 0\).
+Since the sequence converges to \(c\), there exists \(N \ge m\) s.t. \(\abs{a_n - c} \le \abs{c - c'}/\BLUE{3}\) \MAROON{(2)} for all \(n \ge N\).
+And we have for all \(n \ge N\),
+\begin{align*}
+    \abs{c - c'} & = \abs{c - c' + a_n - a_n} \\
+                 & = \abs{(c - a_n) + (a_n - c')} \\
+                 & \le \abs{c - a_n} + \abs{a_n - c'} \\
+                 & = \abs{a_n - c} + \abs{a_n - c'},
+\end{align*}
+which implies \(\abs{a_n - c'} \ge \abs{c - c'} - \abs{a_n - c}\) for all \(n \ge N\).
+And for all \(n \ge N\),
+\begin{align*}
+    \abs{a_n - c'} & \ge \abs{c - c'} - \abs{a_n - c} \\
+                   & \ge \abs{c - c'} - \abs{c - c'}/\BLUE{3} & \text{by \MAROON{(2)}} \\
+                   & = 2\abs{c - c'}/3 \\
+                   & \RED{>} \abs{c - c'}/2 \\
+                   & = \varE.
+\end{align*}
+So for all \(n \ge N\), \(a_n\) is not \(\varE\)-close to \(c'\),
+which implies the sequence is not continually \(\varE\)-adherent to \(c'\),
+which implies \(c'\) is not a limit point of the sequence, a contradiction.
+\end{proof}
+
+Now we will look at two special types of limit points: the limit superior (\(\limsup\)) and limit inferior (\(\liminf\)).
+(\RED{warning}: I think it's too early to say they are limit points;
+by \PROP{6.4.12}(e) they are limit points only if they are finite;
+by \EXEC{6.4.8} they are limit points only if we allow limit points to be infinite.)
+
+\begin{definition} [Limit superior and limit inferior]  \label{def 6.4.6}
+Suppose that \((a_n)_{n = m}^{\infty}\) is a sequence.
+
+\BLUE{(1)}  We define a \emph{new} sequence \((a_N^+)_{N = m}^{\infty}\) by the formula
+\[
+    a_{\textbf{N}}^+ := \sup(a_n)_{n = \textbf{N}}^{\infty}.
+\]
+More informally, \(a_N^+\) is \emph{the supremum of all the elements} in the sequence \textbf{from \(a_N\) onwards}.
+
+\BLUE{(2)} We then define the \emph{limit superior} of the sequence \((a_n)_{n = m}^{\infty}\), denoted \(\limsup_{n \toINF} a_n\), by the formula
+\[
+    \limsup_{n \toINF} a_n := \inf(a_N^+)_{N = m}^{\infty}.
+\]
+
+\BLUE{(3)} Similarly, we can define \(a_N^- := \inf(a_n)_{n = N}^{\infty}\) and \BLUE{(4)} define the \emph{limit inferior} of the sequence \((a_n)_{n = m}^{\infty}\), denoted \(\liminf_{n \toINF} a_n\), by the formula
+\[
+    \liminf_{n \toINF} a_n := \sup(a_N^-)_{N = m}^{\infty}.
+\]
+
+Note that the definition of new sequence in \BLUE{(1)(2)} are \emph{well-defined}, since supremum and infimum are well-defined(i.e. unique; see \DEF{6.2.6}).
+\end{definition}
+
+\begin{note}
+``From \(a_N\) onwards'': 從\ \(a_N\) 開始繼續往下數。
+
+不精確的講，\(\limsup\) 是所有(給定任意\ \(N \ge m\)，從第\ \(N\) 個\ element 開始算的\ sequence 所成的集合的) supremum 所成的集合的\ infimum(不正確但好記的說法: 所有\ sup 裡面最小的那個)。
+
+而\ \(\liminf\) 是所有(給定任意\ \(N \ge m\)，從第\ \(N\) 個\ element 開始算的\ sequence 所成的集合的) infimum 所成的集合的\ supremum(不正確但好記的說法: 所有\ inf 裡面最大的那個)。
+\end{note}
+
+\begin{example} \label{example 6.4.7}
+Let \(a_1, a_2, a_3,...\) denote the sequence
+\[
+    1.1, -1.01, 1.001, -1.0001, 1.00001,....
+\]
+Then \(a_1^+, a_2^+, a_3^+, ...\) is the sequence
+\[
+    1.1, 1.001, 1.001, 1.00001, 1.00001,...
+\]
+Why?
+
+For \(n = 1\), \(1.1\) is \(\sup(a_n)_{n = 1}^{\infty}\), or \(\sup \{1.1, -1.01, 1.001, -1.0001,...\} \).
+
+For \(n = 2\), \(1.001\) is \(\sup(a_n)_{n = 2}^{\infty}\), or \(\sup \{-1.01, 1.001, -1.0001,... \}\).
+
+For \(n = 3\), \(1.001\) is \(\sup(a_n)_{n = 3}^{\infty}\), or \(\sup \{1.001, -1.0001, 1.00001,...\}\).
+
+For \(n = 4\), \(1.00001\) is \(\sup(a_n)_{n=4}^{\infty}\), or \(\sup \{-1.0001, 1.00001, ...\}\).
+
+For \(n = 5\), \(1.00001\) is \(\sup(a_n)_{n = 5}^{\infty}\), or \(\sup \{1.00001, ...\}\).
+
+And the infimum of the sequence \(a_1^+, a_2^+, a_3^+, ...\) is \(1\).
+Hen the \emph{limit superior} of \(a_1, a_2, a_3,...\) is \(1\).
+
+Similarly, \(a_1^-, a_2^-, a_3^- ,...\) is the sequence
+\[
+    -1.01, -1.01, -1.0001, -1.0001, -1.000001,...
+\]
+and the supremum of the sequence \(a_1^-, a_2^-, a_3^- ,...\) is \(-1\).
+Hence the \emph{limit inferior} of \(a_1, a_2, a_3,...\) is \(-1\).
+
+One should compare this with the \emph{supremum} and \emph{infimum} of the sequence, which are \(1.1\) and \(-1.01\) respectively.
+\end{example}
+
+\begin{example} \label{example 6.4.8}
+Trivial.
+\end{example}
+
+\begin{example} \label{example 6.4.9}
+Trivial.
+\end{example}
+
+\begin{example} \label{example 6.4.10}
+Let \(a_1, a_2, a_3,...\) denote the sequence
+\[
+    1, 2, 3, 4, 5, 6,...
+\]
+Then \(a_1^+, a_2^+ ,...\) is the sequence
+\[
+    +\infty, +\infty, +\infty,...
+\]
+so the limit superior (of \(1, 2, 3, 4, 5, 6,...\)) is \(+\infty\).
+Similarly, \(a_1^-, a_2^-, ...\) is the sequence
+\[
+    1, 2, 3, 4, 5,...
+\]
+which has a \emph{supremum} of \(+\infty\).
+So the limit inferior (of \(1, 2, 3, 4, 5, 6,...\)) is also \(+\infty\).
+\end{example}
+
+\begin{remark} \label{remark 6.4.11}
+\sloppy Some authors use the notation \(\overline{\lim}_{n \toINF} a_n\) instead of \(\limsup_{n \toINF} a_n\), and \(\underline{\lim}_{n \toINF} a_n\) instead of \(\liminf_{n \toINF} a_n\).
+Note that the starting index \(m\) of the sequence is irrelevant (see \EXEC{6.4.2}).
+\end{remark}
+
+\begin{note}
+Returning to the piston analogy, imagine a piston at \(+\infty\) moving leftward until it is stopped by the presence of the sequence \(a_1, a_2, \dots\).
+The place it will stop is the \emph{supremum} of \(a_1, a_2, a_3, \dots\), which in our new notation is \(a_1^+\).
+Now let us \emph{remove the first element} \(a_1\) from the sequence;
+this may cause our piston to slip leftward, to a new point \(a_2^+\)
+(though in many cases the piston will not move and \(a_2^+\) will just be the same as \(a_1^+\)).
+Then we remove the second element \(a_2\), causing the piston to slip a little more.
+If we keep doing this the piston will keep slipping, but \emph{there will be some point where it cannot go any further}, and \emph{this is the limit superior of the sequence}.
+A similar analogy can describe the limit inferior of the sequence.
+\end{note}
+
+\begin{additional corollary} [Rigorous proof for piston analogy] \label{ac 6.4.2}
+Given sequence \((a_n)_{n = m}^{\infty}\), and integer \(m_1, m_2\) s.t. \(m_1 \ge m_2 \ge m\).
+Then \(\sup(a_n)_{n = m_1}^{\infty} \le \sup(a_n)_{n = m_2}^{\infty}\).
+Similarly, \(\inf(a_n)_{n = m_1}^{\infty} \ge \inf(a_n)_{n = m_2}^{\infty}\).
+\end{additional corollary}
+
+\begin{proof}
+For the sake of contradiction, suppose \(\sup(a_n)_{n = m_1}^{\infty} > \sup(a_n)_{n = m_2}^{\infty}\) for some \(m_1 \ge m_2 \ge m\).
+Then by \PROP{6.3.6}(1), for all \(n \ge m_2\), \(a_n \le \sup(a_n)_{n = m_2}^{\infty}\);
+in particular, for all \(n \ge m_1\) where \(m_1 \ge m_2\), \(a_n \le \sup(a_n)_{n = m_2}^{\infty}\).
+That is, \(\sup(a_n)_{n = m_2}^{\infty}\) is an upper bound of \(\{a_n : n \ge m_1\}\),
+and \(\sup(a_n)_{n = m_2}^{\infty} < \sup(a_n)_{n = m_1}^{\infty}\),
+which contradicts that \(\sup(a_n)_{n = m_1}^{\infty}\) is the supremum of \(\{a_n : n \ge m_1\}\).
+
+Now for the sake of contradiction, suppose \(\inf(a_n)_{n = m_1}^{\infty} < \inf(a_n)_{n = m_2}^{\infty}\) for some \(m_1 \ge m_2 \ge m\).
+Then by \RMK{6.3.7}(1), for all \(n \ge m_2\), \(a_n \ge \inf(a_n)_{n = m_2}^{\infty}\);
+in particular, for all \(n \ge m_1\) where \(m_1 \ge m_2\), \(a_n \ge \inf(a_n)_{n = m_2}^{\infty}\).
+That is, \(\inf(a_n)_{n = m_2}^{\infty}\) is a lower bound of \(\{a_n : n \ge m_1\}\),
+and \(\inf(a_n)_{n = m_1}^{\infty} < \inf(a_n)_{n = m_2}^{\infty}\),
+which contradicts that \(\inf(a_n)_{n = m_1}^{\infty}\) is the infimum of \(\{a_n : n \ge m_1\}\).
+\end{proof}
+
+We now describe some basic properties of limit superior and limit inferior.
+
+\begin{proposition} \label{prop 6.4.12}
+Let \((a_n)_{n = m}^{\infty}\) be a sequence of real numbers, let \(L^+\) be the \emph{limit superior} of this sequence, and let \(L^-\) be the \emph{limit inferior} of
+this sequence (thus both \(L^+\) and \(L^-\) are \emph{extended} real numbers, because supremum and infimum can be extended real numbers, by \DEF{6.2.6}).
+\begin{enumerate}
+\item For every \(x > L^+\), there exists an \(N \ge m\) such that \(a_n < x\) \emph{for all} \(n \ge N\).
+      (In other words, for every \(x > L^+\), the elements of the sequence \((a_n)_{n = m}^{\infty}\) are \emph{eventually less than} \(x\).)
+      Similarly, for every \(y < L^-\) there exists an \(N \ge m\) such that \(a_n > y\) \emph{for all} \(n \ge N\).
+\item For every \(x < L^+\), and every \(N \ge m\), there exists an \(n \ge N\) such that \(a_n > x\).
+      (In other words, for every \(x < L^+\), the elements of the sequence \((a_n)_{n = m}^{\infty}\) exceed \(x\) \emph{infinitely often}.)
+      Similarly, for every \(y > L^-\) and every \(N \ge m\), there exists an \(n \ge N\) such that \(a_n < y\).
+\item We have \(\inf(a_n)_{n = m}^{\infty} \le L^- \le L^+ \le \sup(a_n)_{n = m}^{\infty}\).
+\item If \(c\) is any \emph{limit point} of \((a_n)_{n = m}^{\infty}\), then we have \(L^- \le c \le L^+\).
+\item If \(L^+\) is finite, then it \emph{is a limit point} of \((a_n)_{n = m}^{\infty}\).
+      Similarly, if \(L^-\) is finite, then it is a limit point of \((a_n)_{n = m}^{\infty}\).
+\item Let \(c\) be a real number.
+      If \((a_n)_{n = m}^{\infty}\) converges to \(c\), then we must have \(L^+ = L^- = c\).
+      Conversely, if \(L^+ = L^- = c\), then \((a_n)_{n = m}^{\infty}\) converges to \(c\).
+\end{enumerate}
+\end{proposition}
+
+\begin{note}
+\begin{enumerate}
+\item 若某個數字比上極限大，則序列最終會永遠比該數字小；若某個數字比下極限小，則序列最終會永遠比該數字大。
+\item 若某數字比上極限小，則不管怎麼丟掉序列前面的項，剩下的序列都還是存在一個項比該數字大(這叫做\ ``infinitely often``)；若某個數字比下極限大，則不管怎麼丟掉序列前面的數字，剩下的序列都還是存在一個項比該數字小。
+\item 序列的最大下界，小於等於下極限，小於等於上極限，小於等於序列的最小上界。
+\item 極限點在下極限跟上極限之間
+\item 若上下極限是有限的，則他們也是極限點。
+\item 數列收斂到某實數，若且唯若上極限跟下極限都等於該實數。
+\end{enumerate}
+\end{note}
+
+\begin{proof}
+\begin{enumerate}
+\item Suppose first that \(x > L^+\).
+      Then by definition(\DEF{6.4.6}(2)) of \(L^+\), we have \(x > \inf(a_N^+)_{N = m}^{\infty}\).
+      By \PROP{6.3.6}(actually, infimum version, \RMK{6.3.7}(3)), there must then exist an integer \(N' \ge m\) such that \(x > a_{N'}^+\).
+      And by \DEF{6.4.6}(1), this means \(x > \sup(a_n)_{n = N'}^{\infty}\).
+      Finally, by \PROP{6.3.6}(2) again, we have \(x > \sup(a_n)_{n = N'}^{\infty} \ge a_n\) for all \(n \ge N'\).
+      So all in all, we have found \(N' \ge m\) s.t. \(x > a_n\), for all \(n \ge N'\), as desired.
+      
+      Now suppose first that \(y < L^-\).
+      Then by definition(\DEF{6.4.6}(4)) of \(L^-\), we have \(y < \sup(a_N^-)_{N = m}^{\infty}\).
+      By \PROP{6.3.6}(3), there must then exist an integer \(N' \ge m\) such that \(y < a_{N'}^-\).
+      And by \DEF{6.4.6}(3), this means \(y < \inf(a_n)_{n = N'}^{\infty}\).
+      Finally, by \RMK{6.3.7}(2) again, we have \(y < \inf(a_n)_{n = N'}^{\infty} \le a_n\) for all \(n \ge N'\).
+      So all in all, we have found \(N' \ge m\) s.t. \(y < a_n\), for all \(n \ge N'\), as desired.
+\item Suppose that \(x < L^+\).
+      Then again by \DEF{6.4.6}(2) we have \(x < \inf(a_N^+)_{N = m}^{\infty}\) \MAROON{(1)}.
+      Then first, by \RMK{6.3.7}(1), we have \(a_N^+ \ge \inf(a_N^+)_{N = m}^{\infty}\) for all \(N \ge m\).
+      \GREEN{Let \(N'\) be arbitrary integer} s.t. \(N' \ge m\).
+      Then in particular \(a_{N'}^+ \ge \inf(a_N^+)_{N = m}^{\infty}\) \MAROON{(2)}.
+      With \MAROON{(1)(2)} we have \(x < a_{N'}^+\).
+      And by \DEF{6.4.6}(1), this means \(x < \sup(a_n)_{n = N'}^{\infty}\).
+      Then by \PROP{6.3.6}(3) again, \GREEN{there must exists} \(n' \ge N'\) s.t. \(a_{n'} > x\), \GREEN{as desired}.
+      
+      Now suppose that \(y > L^-\).
+      Then again by \DEF{6.4.6}(4) we have \(y > \sup(a_N^-)_{N = m}^{\infty}\) \MAROON{(3)}.
+      Then first, by \PROP{6.3.6}(1), we have \(a_N^- \le \sup(a_N^-)_{N = m}^{\infty}\) for all \(N \ge m\).
+      \GREEN{Let \(N'\) be arbitrary integer} s.t. \(N' \ge m\).
+      Then in particular \(a_{N'}^- \le \inf(a_N^+)_{N = m}^{\infty}\) \MAROON{(4)}.
+      With \MAROON{(3)(4)} we have \(y > a_{N'}^-\).
+      And by \DEF{6.4.6}(3), this means \(y > \inf(a_n)_{n = N'}^{\infty}\).
+      Then by \RMK{6.3.7}(3) again, \GREEN{there must exists} \(n' \ge N'\) s.t. \(a_{n'} < y\), \GREEN{as desired}.
+\item We first show that \(\inf(a_n)_{n = m}^{\infty} \le L^-\).
+      Then
+      \begin{align*}
+        L^- & = \sup(a_N^-)_{N = m}^{\infty} & \text{by \DEF{6.4.6}(4)} \\
+            & \ge a_m^- & \text{in particular for \(N = m\), and by \PROP{6.3.6}(1)} \\
+            & = \inf(a_n)_{n = m}^{\infty} & \text{by \DEF{6.4.6}(3) and \(a_m^-\)}
+      \end{align*}
+      
+      Now we show that \(L^+ \le \sup(a_n)_{n = m}^{\infty}\).
+      Then
+      \begin{align*}
+        L^+ & = \inf(a_N^+)_{N = m}^{\infty} & \text{by \DEF{6.4.6}(2)} \\
+            & \ge a_m^+ & \text{in particular for \(N = m\), and by \RMK{6.3.7}(1)} \\
+            & = \sup(a_n)_{n = m}^{\infty} & \text{by \DEF{6.4.6}(1) and \(a_m^+\)}
+      \end{align*}
+      
+      Finally we show that \(L^- \le L^+\).
+      For the sake of contradiction, suppose \(L^+ < L^-\).
+      Then
+      \begin{align*}
+                 & L^+ < L^- \\
+        \implies & \inf(a_N^+)_{N = m}^{\infty} < \sup(a_N^-)_{N = m}^{\infty} & \text{by \DEF{6.4.6}(2)(4)} \\
+        \implies & \exists N_1 \ge m \text{ s.t. } \inf(a_N^+)_{N = m}^{\infty} \le a_{N_1}^+ < \sup(a_N^-)_{N = m}^{\infty} & \text{by \RMK{6.3.7}(3),} \\
+                 & & \text{by replacing \(x = \inf(a_N^+)_{N = m}^{\infty}\),} \\
+                 & & \text{\(y = \sup(a_N^-)_{N = m}^{\infty}\)} \\
+        \implies & a_{N_1}^+ < \sup(a_N^-)_{N = m}^{\infty} & \text{in particular} \\
+        \implies & \exists N_2 \ge m \text{ s.t. } a_{N_1}^+ < a_{N_2}^- \le \sup(a_N^-)_{N = m}^{\infty} & \text{by \PROP{6.3.6}(3),} \\
+                 & & \text{by replacing \(x = \sup(a_N^-)_{N = m}^{\infty}\),} \\
+                 & & \text{\(y = a_{N_1}^+\)} \\
+        \implies & a_{N_1}^+ < a_{N_2}^- & \text{in particular} \\
+        \implies & \sup(a_n)_{n = N_1}^{\infty} < \inf(a_n)_{n = N_2}^{\infty} & \text{by \DEF{6.4.6}(1)(3)} \\
+      \end{align*}
+      Now, \AC{6.4.2}(rigorous piston analogy), let \(N = max(N_1, N_2)\), then we have
+      \[
+        \sup(a_n)_{n = N}^{\infty} \le \sup(a_n)_{n = N_1}^{\infty} < \inf(a_n)_{n = N_2}^{\infty} \le \inf(a_n)_{n = N}^{\infty},
+      \]
+      or \(\sup(a_n)_{n = N}^{\infty} < \inf(a_n)_{n = N}^{\infty}\).
+      But that is impossible! (Since that implies \(a_N \ge \inf(a_n)_{n = N}^{\infty} > \sup(a_n)_{n = N}^{\infty}\), so \(a_N\) is greater than supremum, impossible.)
+      So \(L^- \le L^+\).
+
+      So all in all we have \(\inf(a_n)_{n = m}^{\infty} \le L^- \le L^+ \le \sup(a_n)_{n = m}^{\infty}\).
+\item Suppose \(c\) is any limit point of \((a_n)_{n = m}^{\infty}\).
+
+      We first show that \(L^- \le c\).
+      For the sake of contradiction, suppose \(c < L^-\).
+      So \(L^- - c > 0\), in particular we let \(\varE = (L^- - c)/2 > 0\).
+      Since \(c\) is a limit point, by \DEF{6.4.1}(3) (or unwrapping, \AC{6.4.1}), \(\forall N \ge m, \exists n \ge N\) s.t. \(\abs{a_n - c} \le \varE\),
+      or \(-\varE \le a_n - c \le \varE\), and thus \(a_n \le c + \varE\) \GREEN{(1)}.
+      And since \(L^- - \varE < L^-\), by part(a) there exists \(N' \ge m\) s.t. \(a_{n'} > L^- - \varE\) for all \(n' \ge N'\) \GREEN{(2)}.
+      In particular, given this \(N'\), by \GREEN{(1)} we can find \(n_2 \ge N'\) s.t. \(a_{n_2} \le c + \varE\), and use that \(n_2\) in \GREEN{(2)} we have \(a_{n_2} > L^- - \varE\).
+      Together, we have \(L^- - \varE < a_{n_2} \le c + \varE\), or \(L^- - \varE < c + \varE\).
+      But substitute \(\varE\) back to \((L^- - c)/2\), we then have \(L^- - (L^- - c)/2 < c + (L^- - c)/2\),
+      or \(L^-/2 + 2/c < 2/c + L^-/2\), which is impossible.
+      So it must be true that \(L^- \le c\).
+      
+      Now we show that \(c \le L^+\).
+      For the sake of contradiction, suppose \(c > L^+\).
+      So \(c - L^+ > 0\), in particular we let \(\varE = (c - L^+)/2 > 0\).
+      Since \(c\) is a limit point, by \DEF{6.4.1}(3) (or unwrapping, \AC{6.4.1}), \(\forall N \ge m, \exists n \ge N\) s.t. \(\abs{a_n - c} \le \varE\),
+      or \(-\varE \le a_n - c \le \varE\), and thus \(a_n \ge c - \varE\) \GREEN{(3)}.
+      And since \(L^+ + \varE > L^+\), by part(a) there exists \(N' \ge m\) s.t. \(a_{n'} < L^+ + \varE\) for all \(n' \ge N'\) \GREEN{(4)}.
+      In particular, given this \(N'\), by \GREEN{(3)} we can find \(n_2 \ge N'\) s.t. \(a_{n_2} \ge c - \varE\), and use that \(n_2\) in \GREEN{(4)} we have \(a_{n_2} < L^+ + \varE\).
+      Together, we have \(c - \varE \le a_{n_2} < L^+ + \varE\), or \(c - \varE < L^+ + \varE\).
+      But substitute \(\varE\) back to \((c - L^+)/2\), we then have \(c - (c - L^+)/2 < L^+ + (c - L^+)/2\),
+      or \(2/c + L^+/2 < L^+/2 + 2/c\), which is impossible.
+      So it must be true that \(c \le L^+\).
+
+      So together, we have \(L^- \le c \le L^+\).
+\item We first prove the case for \(L^+\).
+      Suppose \(L^+\) is finite.
+      We have to show that \(L^+\) is a limit point of the sequence.
+
+      So by \DEF{6.4.1}(3)(or unwrapping, \AC{6.4.1}), we have to show for any \(\varE > 0\), and for any \(N \ge m\), there exists \(n \ge N\) s.t. \(\abs{a_n - L^+} \le \varE\).
+      So let arbitrary \(\varE > 0\).
+      And let arbitrary \(N \ge m\).
+      Then since \(L^+\) is finite, \(L^+ + \varE\) is also finite so of course \(L^+ + \varE > L^+\).
+      And by part(a), we can find \(N' \ge m\) s.t. \(L^+ + \varE > a_n\) \emph{for all} \(n \ge N'\).
+      And in particular, given \(\max(N, N')\), \(L^+ + \varE > a_n\) \emph{for all} \(n \ge \max(N, N')\) \GREEN{(5)}.
+      Also, \(L^+ - \varE\) is finite so of course \(L^+ - \varE < L^+\).
+      By part(b), given that \(\max(N, N')\), there exists \(n' \ge \max(N, N')\) s.t. \(a_{n'} > L^+ - \varE\). \GREEN{(6)}.
+      So by \GREEN{(5)(6)}, we have found \(n' \ge \max(N, N')\), which of course \(\ge N\), s.t. \(L^+ - \varE < a_{n'} < L^+ + \varE\),
+      or \(-\varE < a_{n'} - L^+ < \varE\), in particular \(\abs{a_n - L^+} \le \varE\), as desired.
+      
+      Now we prove the case for \(L^-\).
+      Suppose \(L^-\) is finite.
+      We have to show that \(L^-\) is a limit point of the sequence.
+
+      So by \DEF{6.4.1}(3)(or unwrapping, \AC{6.4.1}), we have to show for any \(\varE > 0\), and for any \(N \ge m\), there exists \(n \ge N\) s.t. \(\abs{a_n - L^-} \le \varE\).
+      So let arbitrary \(\varE > 0\).
+      And let arbitrary \(N \ge m\).
+      Then since \(L^-\) is finite, \(L^- - \varE\) is also finite so of course \(L^- - \varE < L^-\).
+      And by part(a), we can find \(N' \ge m\) s.t. \(L^- - \varE < a_n\) \emph{for all} \(n \ge N'\).
+      And in particular, given \(\max(N, N')\), \(L^- - \varE < a_n\) \emph{for all} \(n \ge \max(N, N')\) \GREEN{(7)}.
+      Also, \(L^- + \varE\) is finite so of course \(L^- + \varE > L^-\).
+      By part(b), given that \(\max(N, N')\), there exists \(n' \ge \max(N, N')\) s.t. \(a_{n'} < L^- + \varE\). \GREEN{(8)}.
+      So by \GREEN{(7)(8)}, we have found \(n' \ge \max(N, N')\), which of course \(\ge N\), s.t. \(L^- - \varE < a_{n'} < L^- + \varE\),
+      or \(-\varE < a_{n'} - L^- < \varE\), in particular \(\abs{a_n - L^-} \le \varE\), as desired.
+\item Suppose \((a_n)_{n = m}^{\infty}\) converges to \(c\), we have to show \(L^- = c = L^+\).
+      Now since the sequence converges to \(c\), by \PROP{6.4.5} \(c\) is also a limit point, and \emph{the only limit point}.
+      And by \CORO{6.1.17}, the sequence are bounded, and by \AC{6.3.1}, the supremum/infimum of the sequence are finite.
+      And again, by \AC{6.4.2}(rigorous piston analogy), \emph{\(L^-\) and \(L^+\) are also finite}.
+      So by part(e), \(L^-\) and \(L^+\) are also limit points, together that implies \(L^- = c = L^+\), otherwise the converged sequence has multiple limit points, contradicting \PROP{6.4.5}.
+
+      Now suppose \(L^- = c = L^+\), we have to show the \((a_n)_{n = m}^{\infty}\) converges to \(c\).
+      So let arbitrary \(\varE > 0\).
+      We have to show there exists \(N \ge m\) s.t. \(\abs{a_n - c} \le \varE\) for all \(n \ge N\).
+      Then of course \(c - \varE < c < c + \varE\).
+      And of course \(c < c + \varE\), that is, \(L^+ < L^+ + \varE\).
+      And by part(a), there exists \(N_1 \ge m\) s.t. \(a_n < L^+ + \varE\) for all \(n \ge N_1\) \GREEN{(9)}.
+      And again of course \(c - \varE < c\), that is, \(L^- - \varE < L^-\).
+      And by part(a) again, there exists \(N_2 \ge m\) s.t. \(L^- - \varE < a_n\) for all \(n \ge N_2\) \GREEN{(10)}.
+      Then by \GREEN{(9)(10)}, we have found \(N = \max(N_1, N_2)\) s.t. \(L^- - \varE < a_n < L^+ + \varE\) for all \(n \ge N\).
+      That is, \(c - \varE < a_n < c + \varE\) for all \(n \ge N\).
+      In particular, \(\abs{a_n - c} \le \varE\) for all \(n \ge N\), as desired.
+\end{enumerate}
+\end{proof}
+
+\begin{note}
+Parts (c) and (d) of \PROP{6.4.12} say, in particular, that \(L^+\) is the \emph{largest} limit point of \((a_n)_{n = m}^{\infty}\), and \(L^-\) is the \emph{smallest} limit point
+(providing that \(L^+\) and \(L^-\) are \emph{finite}).
+Part (f) then says that if \(L^+\) and \(L-\) coincide (so there is only \emph{one} limit point), then the sequence in fact \emph{converges}.
+\emph{This gives a way to test if a sequence converges}:
+compute its limit superior and limit inferior, and see if they are equal.
+\end{note}
+
+We now give a basic comparison property of limit superior and limit inferior.
+
+\begin{lemma} [Comparison principle] \label{lem 6.4.13}
+Suppose that \((a_n)_{n = m}^{\infty}\) and \((b_n)_{n = m}^{\infty}\) are two sequences of real numbers such that \(a_n \le b_n\) for all
+\(n \ge m\).
+Then we have the inequalities
+\begin{enumerate}
+    \item \(\sup(a_n)_{n = m}^{\infty} \le \sup(b_n)_{n = m}^{\infty}\)
+    \item \(\inf(a_n)_{n = m}^{\infty} \le \inf(b_n)_{n = m}^{\infty}\)
+    \item \(\limsup_{n \toINF} a_n \le \limsup_{n \toINF} b_n\)
+    \item \(\liminf_{n \toINF} a_n \le \liminf_{n \toINF} b_n\)
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We first show \BLUE{(a)}.
+Suppose for the sake of contradiction that \(\sup(b_n)_{n = m}^{\infty} < \sup(a_n)_{n = m}^{\infty}\).
+Then by \PROP{6.3.6}(3), there exists integer \(n' \ge m\) s.t. \(\sup(b_n)_{n = m}^{\infty} < a_{n'} \le \sup(a_n)_{n = m}^{\infty}\) \MAROON{(1)}.
+But again by \PROP{6.3.6}(1), we have \(b_n \le \sup(b_n)_{n = m}^{\infty}\) for all \(n \ge m\).
+In particular \(b_{n'} \le \sup(b_n)_{n = m}^{\infty}\) \MAROON{(2)}.
+By \MAROON{(1)(2)}, we have \(b_{n'} \le \sup(b_n)_{n = m}^{\infty} < a_{n'}\), in particular \(b_{n'} < a_{n'}\), which contradicts \(a_n \le b_n\) for all \(n \ge m\).
+
+For \BLUE{(b)}, suppose for the sake of contradiction that \(\inf(a_n)_{n = m}^{\infty} > \inf(b_n)_{n = m}^{\infty} \).
+Then by \RMK{6.3.7}(3), there exists integer \(n' \ge m\) s.t. \(\inf(a_n)_{n = m}^{\infty} > b_{n'} > \inf(b_n)_{n = m}^{\infty} \) \MAROON{(3)}.
+But again by \RMK{6.3.7}(1), we have \(a_n \ge \inf(a_n)_{n = m}^{\infty}\) for all \(n \ge m\).
+In particular \(a_{n'} \ge \inf(a_n)_{n = m}^{\infty}\) \MAROON{(4)}.
+By \MAROON{(3)(4)}, we have \(a_{n'} \ge \inf(a_n)_{n = m}^{\infty} > b_{n'}\), in particular \(a_{n'} > b_{n'}\), which contradicts \(a_n \le b_n\) for all \(n \ge m\).
+
+For \BLUE{(c)}, suppose for the sake of contradiction that \(\limsup_{n \toINF} b_n < \limsup_{n \toINF} a_n\).
+Then by \DEF{6.4.6}(2), we have \(\inf (b_N^+)_{N = m}^{\infty} < \inf (a_N^+)_{N = m}^{\infty}\).
+By \RMK{6.3.7}(3), (with \(\inf (b_N^+)_{N = m}^{\infty}\) as \(x\), \(\inf (a_N^+)_{N = m}^{\infty}\) as \(y\),) there exists \(n' \ge m\) s.t. \(\inf (a_N^+)_{N = m}^{\infty} > b_{n'}^+ \ge \inf (b_N^+)_{N = m}^{\infty}\) \MAROON{(5)}.
+But given that \(n' \ge m\), by \RMK{6.3.7}(1) we have \(a_{n'}^+ \ge \inf (a_N^+)_{N = m}^{\infty}\) \MAROON{(6)}.
+So by \MAROON{(5)(6)} we have \(a_{n'}^+ \ge \inf (a_N^+)_{N = m}^{\infty} > b_{n'}^+\), in particular \(a_{n'}^+ > b_{n'}^+\).
+Finally, by \DEF{6.4.6}(1), that implies \(\sup(a_n)_{n = n'}^{\infty} > \sup(b_n)_{n = n'}^{\infty}\).
+But again, since \(n' \ge m\), in particular from the supposition of this lemma, \(a_n \le b_n\) for all \(n \ge n'\).
+And by part(a) we have \(\sup(a_n)_{n = n'}^{\infty} \le \sup(b_n)_{n = n'}^{\infty}\), so we get a contradiction.
+
+For \BLUE{(d)}, suppose for the sake of contradiction that \(\liminf_{n \toINF} b_n < \liminf_{n \toINF} a_n\).
+Then by \DEF{6.4.6}(4), we have \(\sup (b_N^-)_{N = m}^{\infty} < \sup (a_N^-)_{N = m}^{\infty}\).
+By \PROP{6.3.6}(3), (with \(\sup (a_N^-)_{N = m}^{\infty}\) as \(x\), \(\sup (b_N^-)_{N = m}^{\infty}\) as \(y\),) there exists \(n' \ge m\) s.t. \(\sup (b_N^-)_{N = m}^{\infty} < a_{n'}^- \le \sup (a_N^-)_{N = m}^{\infty}\) \MAROON{(7)}.
+But given that \(n' \ge m\), by \PROP{6.3.6}(1) we have \(b_{n'}^- \le \sup (b_N^-)_{N = m}^{\infty}\) \MAROON{(8)}.
+So by \MAROON{(7)(8)} we have \(b_{n'}^- \le \sup (b_N^-)_{N = m}^{\infty} < a_{n'}^-\), in particular \(b_{n'}^- < a_{n'}^-\).
+Finally, by \DEF{6.4.6}(3), that implies \(\inf(b_n)_{n = n'}^{\infty} < \inf(a_n)_{n = n'}^{\infty}\).
+But again, since \(n' \ge m\), in particular from the supposition of this lemma, \(a_n \le b_n\) for all \(n \ge n'\).
+And by part(b) we have \(\inf(a_n)_{n = n'}^{\infty} \le \inf(b_n)_{n = n'}^{\infty}\), so we get a contradiction.
+\end{proof}
+
+\begin{corollary} [Squeeze test] \label{corollary 6.4.14}
+Let \((a_n)_{n = m}^{\infty}\), \((b_n)_{n = m}^{\infty}\), and \((c_n)_{n = m}^{\infty}\) be sequences of real numbers such that
+\[
+    a_n \le b_n \le c_n
+\]
+for all \(n \ge m\).
+Suppose also that \((a_n)_{n = m}^{\infty}\) and \((c_n)_{n = m}^{\infty}\) both converge to the same limit \(L\).
+Then \((b_n)_{n = m}^{\infty}\) is also convergent to \(L\).
+\end{corollary}
+
+\begin{proof}
+\sloppy First, since both \((a_n)_{n = m}^{\infty}\) and \((c_n)_{n = m}^{\infty}\) converge to \(L\), by \PROP{6.4.12},
+we have \(\limsup_{n \toINF} a_n = \liminf_{n \toINF} a_n = L\) and \(\limsup_{n \toINF} c_n = \liminf_{n \toINF} c_n = L\).
+That is, \(\limsup_{n \toINF} a_n = \liminf_{n \toINF} a_n = \limsup_{n \toINF} c_n = \liminf_{n \toINF} c_n = L\).
+
+Then since \(b_n \le c_n\) for all \(n \ge m\), by \LEM{6.4.13}(c) we have \(\limsup_{n \toINF} b_n \le \limsup_{n \toINF} c_n = L\) \MAROON{(1)}.
+And since \(a_n \le b_n\) for all \(n \ge m\), by \LEM{6.4.13}(d) we have \(L = \liminf_{n \toINF} a_n \le \liminf_{n \toINF} b_n\) \MAROON{(2)}.
+
+Also, by \PROP{6.4.12}(C), we have \(\liminf_{n \toINF} b_n \le \limsup_{n \toINF} b_n\) \MAROON{(3)}.
+
+So by \MAROON{(1)(2)(3)}, we have \(L \le \liminf_{n \toINF} b_n \le \limsup_{n \toINF} b_n \le L\),
+which, of course, implies \(\liminf_{n \toINF} b_n = \limsup_{n \toINF} b_n = L\),
+which by \PROP{6.4.12}(f) implies \((b_n)_{n = m}^{\infty}\) converges to \(L\).
+\end{proof}
+
+\begin{example} \label{example 6.4.15}
+We already know (see \PROP{6.1.11}) that \(\lim_{n \toINF} 1/n = 0\).
+By the limit laws (\THM{6.1.19}), this also implies that \(\lim_{n \toINF} 2/n = 0\) and \(\lim_{n \toINF} -2/n = 0\). 
+The \emph{squeeze test then shows that} any sequence \((b_n)_{n = 1}^{\infty}\) for which \(-2/n \le b_n \le 2/n\) for all \(n \ge 1\) is convergent to \(0\).
+For instance, we can use this to show that the sequence \((-1)^n/n + 1/n^2\) converges to zero,
+or that \(2^{-n}\) converges to zero.
+Note one can use induction to show that \(0 \le 2^{-n} \le 1/n\) for all \(n \ge 1\).
+\end{example}
+
+\begin{remark} \label{remark 6.4.16}
+The squeeze test, combined with the limit laws and the principle that monotone bounded sequences always have limits(\PROP{6.3.8}),
+allows one to compute a large number of limits.
+We give some examples in the next chapter.
+\end{remark}
+
+\begin{corollary} [Zero test for sequences] \label{corollary 6.4.17}
+Let \((a_n)_{n = m}^{\infty}\) be a sequence
+of real numbers.
+Then the limit \(\lim_{n \toINF} a_n\) exists and is equal to zero if and only if the limit \(\lim_{n \toINF} \abs{a_n}\) exists and is equal to zero.
+\end{corollary}
+
+\begin{proof}
+Suppose \(\lim_{n \toINF} a_n = 0\). Then
+\begin{align*}
+             & \lim_{n \toINF} a_n = 0 \\
+    \implies & \forall \varE > 0, \exists N \ge m \text{ s.t. } \abs{a_n - 0} \le \varE\ \forall n \ge N \\
+    \implies & \forall \varE > 0, \exists N \ge m \text{ s.t. } \abs{a_n} \le \varE\ \forall n \ge N \\
+    \implies & \forall \varE > 0, \exists N \ge m \text{ s.t. } \abs{\abs{a_n}} \le \varE\ \forall n \ge N & \text{nasty but of course} \\
+    \implies & \forall \varE > 0, \exists N \ge m \text{ s.t. } \abs{\abs{a_n} - 0} \le \varE\ \forall n \ge N \\
+    \implies & \lim_{n \toINF} \abs{a_n} = 0
+\end{align*}
+Now suppose \(\lim_{n \toINF} \abs{a_n} = 0\). Then
+\begin{align*}
+             & \lim_{n \toINF} \abs{a_n} = 0 \\
+    \implies & -1 \X \lim_{n \toINF} \abs{a_n} = -1 \X 0 = 0 \\
+    \implies & \lim_{n \toINF} -\abs{a_n} = 0 & \text{by \THM{6.1.19}(c)}
+\end{align*}
+So we have \(\lim_{n \toINF} \abs{a_n} = \lim_{n \toINF} -\abs{a_n} = 0\). \\
+And (trivially) \(-\abs{a_n} \le a_n \le \abs{a_n}\) for all \(n \ge m\).
+So by squeeze test \CORO{6.4.14}, \(\lim_{n \toINF} a_n = 0\).
+\end{proof}
+
+We close this section with the following \emph{improvement} to \PROP{6.1.12}.
+
+\begin{theorem} [Completeness of the reals] \label{thm 6.4.18}
+A sequence \((a_n)_{n = 1}^{\infty}\) of \textbf{real} numbers is a Cauchy sequence \textbf{if and only if} it is convergent.
+\end{theorem}
+
+\begin{remark} \label{remark 6.4.19}
+Note that while this is very similar in spirit to \PROP{6.1.15}, it is a bit more general, since \PROP{6.1.15} refers to Cauchy sequences of \emph{rationals} instead of real numbers.
+
+(Self note), \PROP{6.1.12} says convergent sequences of \emph{real} are Cauchy, \PROP{6.1.15} says Cauchy sequences of \emph{rational} are convergent.
+So the last piece of the puzzle is ``Cauchy sequences of \emph{real} are also convergent''.
+\end{remark}
+
+\begin{proof}
+\PROP{6.1.12} already tells us that every convergent sequence(of \emph{real}) is Cauchy, so it suffices to show that every Cauchy sequence(of \emph{real}) is convergent.
+
+Let \((a_n)_{n = 1}^{\infty}\) be any Cauchy sequence(of \emph{real} numbers).
+We know from \LEM{5.1.15} (or more precisely, from the extension of this lemma to the \emph{real} numbers, which is proven in exactly the same fashion) that the sequence \((a_n)_{n = 1}^{\infty}\) is bounded;
+So by \AC{6.3.1}, the supremum and infimum of the sequence are finite numbers.
+And by \PROP{6.4.12}(c), this implies that \(L^- := \liminf_{n \toINF} a_n\) and \(L^+ := \limsup_{n \toINF} a_n\) of the sequence are both finite.
+To show that the sequence converges, it will suffice by \PROP{6.4.12}(f) to show that \(L^- = L^+\).
+
+Now let \(\varE > 0\) be any real number.
+Since \((a_n)_{n = 1}^{\infty}\) is a Cauchy
+sequence, it must be eventually \(\varE\)-steady(by \DEF{6.1.3}), so in particular there exists an \(N \ge 1\) such that the sequence \((a_n)_{n = N}^{\infty}\) is \(\varE\)-steady.
+That is(again by \DEF{6.1.3}), \(\abs{a_n - a_{n'}} \le \varE\) for all \(n, n' \ge N\).
+In particular, fix \(n' = N\), we have \(\abs{a_n - a_N} \le \varE\), or \(-\varE \le a_n - a_N \le \varE\), or
+\begin{center}
+    \(a_N - \varE \le a_n \le a_N + \varE\), \emph{for all} \(i \ge N\).
+\end{center}
+Then by \PROP{6.3.6}(2), we have \(\sup(a_n)_{n = N}^{\infty} \le a_N + \varE\), and by \RMK{6.3.7}(2), we have \(a_N - \varE \le \inf(a_n)_{n = N}^{\infty}\).
+But by \PROP{6.4.12}(c), \(\inf(a_n)_{n = N}^{\infty} \le L^- \le L^+ \le \sup(a_n)_{n = N}^{\infty}\), together we have
+\[
+    a_N - \varE \le \inf(a_n)_{n = N}^{\infty} \le L^- \le L^+ \le \sup(a_n)_{n = N}^{\infty} \le a_N + \varE.
+\]
+In particular,
+\[
+    a_N - \varE \le L^- \le L^+ \le a_N + \varE.
+\]
+And that implies \(0 \le L^- - (a_N - \varE) \le L^+ - (a_N - \varE) \le 2\varE\).
+Just for readability, in particular: \(L^+ - (a_N - \varE) \le 2\varE\) and \(L^- - (a_N - \varE) \ge 0\).
+Together that implies \(L^+ - (a_N - \varE) - (L^- - (a_N - \varE)) \le 2\varE - (L^- - (a_N - \varE)) \le 2\varE\).
+Simplifying, we have \(L^+ - L^- \le 2\varE\).
+And by \PROP{6.4.12}(c), \(L^+ \ge L^-\), or \(0 \le L^+ - L^-\), so together we have
+\[
+    0 \le L^+ - L^- \le 2\varE.
+\]
+Since \(\varE > 0\) is arbitrary, this is true for all \(\varE > 0\), and \(L^+\) and \(L^-\) do not depend on \(\varE\);
+so we must therefore have \(L^+ = L^-\).
+(If \(L^+ > L^-\) then we could set \(\varE := (L^+ - L^-)/3\) such that,
+\begin{align*}
+             & L^+ - L^- \le 2\varE \\
+    \implies & L^+ - L^- \le 2(L^+ - L^-)/3 \\
+    \implies & L^+/3 \le L^-/3 \\
+    \implies & L^+ \le L^-
+\end{align*}
+and obtain a contradiction.)
+By \PROP{6.4.12}(f) we thus see that the sequence converges.
+\end{proof}
+
+\begin{remark} \label{remark 6.4.20}
+In the \emph{language of metric spaces} (see \CH{B.2}), \THM{6.4.18} asserts that the real numbers are a \textbf{complete metric space}
+- that they do not contain ``holes'' the same way the rationals do.
+(Certainly the rationals have lots of \emph{Cauchy} sequences \textbf{which do not converge to other rationals};
+take for instance the sequence \(1, 1.4, 1.41, 1.414, 1.4142,...\) which converges to the irrational \(\sqrt{2}\).) This property is \textbf{closely related to the least upper bound property} (\THM{5.5.9}),
+and is one of the principal characteristics which make the real numbers superior to the rational numbers for the purposes of doing analysis
+(taking limits, taking derivatives and integrals, finding zeroes of functions, that kind of thing),
+as we shall see in later chapters.
+\end{remark}
+
+\exercisesection
+
+\begin{exercise} \label{exercise 6.4.1}
+Prove \PROP{6.4.5}.
+\end{exercise}
+
+\begin{proof}
+See \PROP{6.4.5}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.2}
+State and prove analogues of \EXEC{6.1.3} and \EXEC{6.1.4} for limit points, limit superior, and limit inferior.
+
+That is, Let \((a_n)_{n=m}^{\infty}\) be a sequence of real numbers, let \(c\) be a real number, and \(m' \ge m\) be an integer, and \(k \ge 0\) be an non-negative integer. 
+\begin{enumerate}
+\item \(c\) is a limit point of \((a_n)_{n=m}^{\infty}\) if and only if \(c\) is a limit point of \((a_n)_{n=m'}^{\infty}\).
+\item \(\limsup_{n \toINF} a_n = c\) for \((a_n)_{n = m}^{\infty}\) if and only if \(\limsup_{n \toINF} a_n = c\) for \((a_n)_{n = m'}^{\infty}\).
+\item \(\liminf_{n \toINF} a_n = c\) for \((a_n)_{n = m}^{\infty}\) if and only if \(\liminf_{n \toINF} a_n = c\) for \((a_n)_{n = m'}^{\infty}\).
+\item \(c\) is a limit point of \((a_n)_{n = m}^{\infty}\) if and only if \(c\) is a limit point of \((a_{n + k})_{n = m}^{\infty}\).
+\item \(\limsup_{n \toINF} a_n = c\) for \((a_n)_{n = m}^{\infty}\) if and only if \(\limsup_{n \toINF} a_n = c\) for \((a_{n + k})_{n = m}^{\infty}\).
+\item \(\liminf_{n \toINF} a_n = c\) for \((a_n)_{n = m}^{\infty}\) if and only if \(\liminf_{n \toINF} a_n = c\) for \((a_{n + k})_{n = m}^{\infty}\).
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+\begin{enumerate}
+\item
+Suppose \(c\) is a limit point of \((a_n)_{n = m}^{\infty}\).
+By \DEF{6.4.1}(3), (or unwrapping, by \AC{6.4.1}), \(\forall \varE > 0, \forall N \ge m, \exists n \ge N\) s.t. \(\abs{a_n - c} \le \varE\).
+In particular, since \(m' \ge m\),\(\forall \varE > 0, \forall N \ge m'\), where \(m' \ge m\), \(\exists n \ge N\) s.t. \(\abs{a_n - c} \le \varE\).
+Then again by \DEF{6.4.1}(3), \(c\) is a limit point of \((a_n)_{n = m'}^{\infty}\).
+
+Now suppose \(c\) is a limit point of \((a_n)_{n = m'}^{\infty}\).
+So similarly by \DEF{6.4.1}(3), \(\forall \varE > 0, \forall N \ge m', \exists n \ge N\) s.t. \(\abs{a_n - c} \le \varE\) \MAROON{(1)}.
+And since \(m' \ge m\), what we left is showing \(\forall \varE > 0, \forall N'\) s.t. \(m' > N' \ge m, \exists n' \ge N'\) s.t. \(\abs{a_{n'} - c} \le \varE\) \MAROON{(2)}.
+But from \MAROON{(1)}, in particular for \(N = m'\) we can find \(n' \ge N = m'\) s.t. \(\abs{a_{n'} - c} \le \varE\), and that \(n' \ge N'\);
+so we can always find such \(n' \ge N'\) for \MAROON{(2)}, so together we have \(\forall \varE > 0, \forall N \ge m, \exists n \ge N\) s.t. \(\abs{a_n - c} \le \varE\), i.e. \(c\) is a limit point of \((a_n)_{n = m}^{\infty}\).
+
+\item
+We have for all \(m' \ge m\):
+\begin{align*}
+             & m \le m' \\
+    \implies & \sup(a_n)_{n = m}^{\infty} \ge \sup(a_n)_{n = m'}^{\infty} & \text{by \AC{6.4.2}} \\
+    \implies & a_m^+ \ge a_{m'}^+ \MAROON{(3)} & \text{by \DEF{6.4.6}(1)}
+\end{align*}
+And for all \(m' \ge m\):
+\begin{align*}
+             & m \le m' \land a_m^+ \ge a_{m'}^+ \\
+    \implies & \inf(a_N^+)_{N = m}^{\infty} \le \inf(a_N^+)_{N = m'}^{\infty} \land a_m^+ \ge a_{m'}^+ & \text{by \AC{6.4.2}}
+\end{align*}
+Now we claim that \(\inf(a_N^+)_{N = m}^{\infty} = \inf(a_N^+)_{N = m'}^{\infty}\),
+for if \(\inf(a_N^+)_{N = m}^{\infty} < \inf(a_N^+)_{N = m'}^{\infty}\), then there exists \(M\) s.t. \(m \le M < m'\) and \(a_M^+ < a_{m'}^+\).
+(Otherwise \(\inf(a_N^+)_{N = m}^{\infty} < \inf(a_N^+)_{N = m'}^{\infty}\) cannot be true.)
+But by \MAROON{(3)} we have \(a_M^+ \ge a_{m'}^+\), so we have a contradiction.
+So \(\inf(a_N^+)_{N = m}^{\infty} = \inf(a_N^+)_{N = m'}^{\infty}\);
+that is, by \DEF{6.4.6}(2), \(\limsup\) for \((a_n)_{n = m}^{\infty}\) is equal to \(\limsup\) for \((a_n)_{n = m'}^{\infty}\).
+
+\item
+We have for all \(m' \ge m\):
+\begin{align*}
+             & m \le m' \\
+    \implies & \inf(a_n)_{n = m}^{\infty} \le \inf(a_n)_{n = m'}^{\infty} & \text{by \AC{6.4.2}} \\
+    \implies & a_m^- \le a_{m'}^- \MAROON{(4)} & \text{by \DEF{6.4.6}(3)}
+\end{align*}
+And for all \(m' \ge m\):
+\begin{align*}
+             & m \le m' \land a_m^- \le a_{m'}^- \\
+    \implies & \sup(a_N^-)_{N = m}^{\infty} \ge \sup(a_N^-)_{N = m'}^{\infty} \land a_m^- \le a_{m'}^- & \text{by \AC{6.4.2}}
+\end{align*}
+Now we claim that \(\sup(a_N^-)_{N = m}^{\infty} = \sup(a_N^-)_{N = m'}^{\infty}\),
+for if \(\sup(a_N^-)_{N = m}^{\infty} > \sup(a_N^-)_{N = m'}^{\infty}\), then there exists \(M\) s.t. \(m \le M < m'\) and \(a_M^- > a_{m'}^-\).
+(Otherwise \(\sup(a_N^-)_{N = m}^{\infty} > \sup(a_N^-)_{N = m'}^{\infty}\) cannot be true.)
+But by \MAROON{(4)} we have \(a_M^- \le a_{m'}^-\), so we have a contradiction.
+So \(\sup(a_N^-)_{N = m}^{\infty} = \sup(a_N^-)_{N = m'}^{\infty}\);
+that is, by \DEF{6.4.6}(4), \(\liminf\) for \((a_n)_{n = m}^{\infty}\) is equal to \(\liminf\) for \((a_n)_{n = m'}^{\infty}\).
+
+\item
+Since \((a_{n + k})_{n = m}^{\infty} = (a_n)_{n = m + k}^{\infty}\) \MAROON{(5)} so for \(m' = m + k\),
+by part (a) we conclude that \(c\) is a limit point of \((a_n)_{n = m}^{\infty}\)
+(iff \(c\) is a limit point of \((a_n)_{n = m + k}^{\infty}\),)
+iff \(c\) is a limit point of \((a_{n + k})_{n = m}^{\infty}\).
+
+\item
+Again by \MAROON{(5)}, for \(m' = m + k\),
+by part (b) we conclude that \(c\) is the \(\limsup\) for \((a_n)_{n = m}^{\infty}\)
+(iff \(c\) is the \(\limsup\) for\((a_n)_{n = m + k}^{\infty}\),)
+iff \(c\) is the \(\limsup\) for \((a_{n + k})_{n = m}^{\infty}\).
+
+\item
+Again by \MAROON{(5)}, for \(m' = m + k\),
+by part (c) we conclude that \(c\) is the \(\liminf\) for \((a_n)_{n = m}^{\infty}\)
+(iff \(c\) is the \(\liminf\) for\((a_n)_{n = m + k}^{\infty}\),)
+iff \(c\) is the \(\liminf\) for \((a_{n + k})_{n = m}^{\infty}\).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.3}
+Prove parts (c), (d), (e), (f) of \PROP{6.4.12}.
+(Hint: you can use earlier parts of the proposition to prove later ones.)
+\end{exercise}
+
+\begin{proof}
+See \PROP{6.4.12}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.4}
+Prove \LEM{6.4.13}.
+\end{exercise}
+
+\begin{proof}
+See \LEM{6.4.13}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.5}
+Use \LEM{6.4.13} to prove \CORO{6.4.14}.
+\end{exercise}
+
+\begin{proof}
+See \CORO{6.4.14}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.6}
+Give an example of two \emph{bounded} sequences \((a_n)_{n = 1}^{\infty}\) and \((b_n)_{n = 1}^{\infty}\) such that \(a_n < b_n\) for all \(n \ge 1\),
+but that \(\sup(a_n)_{n = 1}^{\infty} \not < \sup(b_n)_{n = 1}^{\infty}\).
+Explain why this does not contradict \LEM{6.4.13}.
+\end{exercise}
+
+\begin{proof}
+Let \(a_n := 1/n\), \(b_n := 2/n\) for all \(n \ge 1\).
+Then \(a_n < b_n\) for all \(n \ge 1\).
+But by what have shown in \EXAMPLE{6.4.15}, \(\lim_{n = 1}^{\infty} (a_n) = \lim_{n = 1}^{\infty} = 0\) so \(\lim_{n = 1}^{\infty} (a_n) \not < \lim_{n = 1}^{\infty}\).
+
+But this does not contradict \LEM{6.4.13}, since the lemma does not say anything for ``strict less than'' relation.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.7}
+Prove \CORO{6.4.17}. Is the corollary still true if we replace zero in the statement of this Corollary by some other number?
+\end{exercise}
+
+\begin{proof}
+See \CORO{6.4.17}.
+Also, zero cannot be replaced by another real number \(c\).
+because given that \(c\), we have a counter example:
+\(\lim_{n \toINF} \abs{c \X (-1)^n)} = \lim_{n \toINF} (\abs{c} \X \abs{(-1)^n}) =  \abs{c}\),
+but \(\lim_{n \toINF} c \X (-1)^n = c \X \lim_{n \toINF} (-1)^n\), which is undefined.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.8}
+Let us say that a sequence \((a_n)_{n = m}^{\infty}\) of real numbers has \(+\infty\) \emph{as a limit point} iff it has no finite upper bound,
+and that it has \(-\infty\) as a limit point iff it has no finite lower bound.
+With this definition, show that \(\limsup_{n \toINF} a_n\) is a limit point of \((a_n)_{n = m}^{\infty}\), and furthermore that it is larger than all the other limit points of \((a_n)_{n = m}^{\infty}\);
+in other words, the limit superior is the largest limit point of a sequence.
+Similarly, show that the limit inferior is the smallest limit point of a sequence.
+(One can use \PROP{6.4.12} in the course of the proof.)
+(\RED{warning}: To prove this exercise, any statements that have been proved \RED{but depend on the limit point in terms of \DEF{6.4.1}(3)} can not be used, or should be used with limitation,
+because the ``limit points'' in these statements are only finite.)
+\end{exercise}
+
+\begin{proof}
+For the case that the sequence is bounded above(below), by \AC{6.3.1}, the supremum(infimum) is finite, so by \PROP{6.4.12}(c), \(L^+\)(\(L^-\)) is finite,
+and by \PROP{6.4.12}(e) we know they are limit points, and by \PROP{6.4.12}(d) we know they are largest and smallest limit points, respectively.
+
+So we only need to show the case when the sequence is not bounded above/below.
+
+Suppose \((a_n)_{n = m}^{\infty}\) has no upper bound, then by definition of this exercise, it has \(+\infty\) as a limit point.
+By \DEF{6.2.3}(b), any limit point, which is a \emph{extended} real number, is less than or equal to \(+\infty\).
+Now what we left is showing \(L^+\) is also \(\ge\) any limit point, including \(+\infty\);
+that is, \(L^+ = +\infty\).
+For the sake of contradiction, suppose \(L^+\) is finite.
+Then \(L^+ + 1\) is also finite, and \(L^+ < L^+ + 1\).
+So, by \PROP{6.4.12}(a), there exists \(N \ge m\) s.t. \(a_n < L^+ + 1\) \emph{for all} \(n \ge N\),
+which implies \(a_n\) \emph{eventually} cannot exceed a finite number \(L^+ + 1\),
+which contradicts that \((a_n)_{n = m}^{\infty}\) has no upper bound!.
+So \(L^+ = +\infty\), so \(L^+ \ge\) any limit points.
+
+Now suppose \((a_n)_{n = m}^{\infty}\) has no lower bound, then by definition of this exercise, it has \(-\infty\) as a limit point.
+By \DEF{6.2.3}(c), any limit point, which is a \emph{extended} real number, is greater than or equal to \(-\infty\).
+Now what we left is showing \(L^-\) is also \(\le\) any limit point, including \(-\infty\);
+that is, \(L^- = -\infty\).
+For the sake of contradiction, suppose \(L^-\) is finite.
+Then \(L^+ - 1\) is also finite, and \(L^- - 1 < L^-\).
+So, by \PROP{6.4.12}(a), there exists \(N \ge m\) s.t. \(L^- - 1 < a_n\) \emph{for all} \(n \ge N\),
+which implies \(a_n\) \emph{eventually} cannot less than a finite number \(L^- - 1\), which contradicts that \((a_n)_{n = m}^{\infty}\) has no lower bound!.
+So \(L^- = -\infty\), so \(L^- \le\) any limit points.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.4.9}
+Using the definition in \EXEC{6.4.8}, construct a sequence \((a_n)_{n = 1}^{\infty}\) which has exactly three limit points, at \(-\infty\), \(0\), and \(+\infty\).
+\end{exercise}
+
+\begin{proof}
+Let
+\begin{equation}
+    a_n =
+    \begin{cases}
+      n, & \text{ if } n = 3k + 1 \text{ for some integer } k \\
+      1/n, & \text{ if } n = 3k + 2 \text{ for some integer } k \\
+      -n, & \text{ if } n = 3k \text{ for some integer } k
+    \end{cases}
+\end{equation}
+Then by basic number theory, the definition is well-defined.
+
+Furthermore, it is trivial to show that \(-\infty, 0, +\infty\) are limit points of this sequence by \DEF{6.4.1} and definition of \EXEC{6.4.8}.
+\end{proof}
+
+\begin{exercise}
+\label{exercise 6.4.10}
+Let \((a_n)_{n = N}^{\infty}\) be a sequence of real numbers, and let \((b_m)_{m = M}^{\infty}\) be another sequence of real numbers such that \emph{each \(b_m\) (may repeat) is a limit point of} \((a_n)_{n = N}^{\infty}\).
+Let \(c\) be a limit point of \((b_m)_{m = M}^{\infty}\).
+Prove that \(c\) is also a limit point of \((a_n)_{n = N}^{\infty}\).
+(In other words, limit points of sequence of limit points of the original sequence are themselves limit points of the original sequence.)
+\end{exercise}
+
+\begin{proof}
+Suppose \(c\) is a limit point of \((b_m)_{m = M}^{\infty}\), we have to show that \(c\) is also a limit point of \((a_n)_{n = N}^{\infty}\).
+That is, by \DEF{6.4.1}, we have to show that \(\forall \varE > 0, \forall N' \ge N, \exists n \ge N'\) s.t. \(\abs{a_n - c} \le \varE\).
+
+So let arbitrary \(\varE > 0\) and arbitrary \(N' \ge N\) \BLUE{(1)}.
+In particular, \(\varE/2 > 0\).
+And since \(c\) is a limit point of \((b_m)_{m = M}^{\infty}\), so again by \DEF{6.4.1}, \(\forall M' \ge M, \exists m \ge M'\) s.t. \(\abs{b_m - c} \le \varE/2\) \MAROON{(1)}.
+We preserve that \(m \ge M'\) for later use.
+In particular \(b_m\) is a limit point of \((a_n)_{n = N}^{\infty}\).
+So again by \DEF{6.4.1}, given the particular \(N' \ge N\) from \BLUE{(1)}, \(\exists n \ge N'\) s.t. \(\abs{a_n - b_m} \le \varE/2\). \MAROON{(2)}
+Again we preserve that \(n \ge N'\) for later use.
+Then we have
+\begin{align*}
+    \abs{a_n - c} & = \abs{a_n - c + b_m - b_m} \\
+                  & = \abs{(a_n - b_m) + (b_m - c)} \\
+                  & \le \abs{a_n - b_m} + \abs{b_m - c} \\
+                  & \le \varE/2 + \varE/2 & \text{by \MAROON{(1)(2)}} \\
+                  & = \varE
+\end{align*}
+So all in all, from the given \(\varE > 0\) and \(N' \ge N\), we have found \(n \ge N'\) s.t. \(\abs{a_n - c} \le \varE\), so by \DEF{6.4.1}, \(c\) is a limit point of \((a_n)_{n = N}^{\infty}\).
+\end{proof}

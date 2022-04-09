@@ -1,0 +1,254 @@
+\section{Suprema and Infima of sequences} \label{sec 6.3}
+
+Having defined the notion of a supremum and infimum of sets of reals, we can now also talk about the supremum and infimum \emph{of sequences}.
+
+\begin{definition} [Sup and inf of sequences] \label{def 6.3.1}
+Let \((a_n)_{n = m}^{\infty}\) be a sequence of real numbers.
+Then we define \(\sup(a_n)_{n = m}^{\infty}\) to be the supremum of the \emph{set} \(\{a_n : n \ge m\}\), and \(\inf(a_n)_{n = m}^{\infty}\) to the infimum of the same set \(\{a_n : n \ge m\}\).
+\end{definition}
+
+\begin{remark} \label{remark 6.3.2}
+The quantities \(\sup(a_n)_{n = m}^{\infty}\) and \(\inf(a_n)_{n = m}^{\infty}\) are sometimes written as \(\sup_{n \ge m} a_n\) and \(\inf_{n \ge m} a_n\) respectively.
+\end{remark}
+
+\begin{example} \label{example 6.3.3}
+Let \(a_n := (-1)^n\); thus \((a_n)_{n=1}^{\infty}\) is the sequence
+\(-1, 1, -1, 1,...\).
+Then the set \(\{a_n : n \ge 1\}\) is just the two-element set \(\{-1, 1\}\), and hence \(\sup(a_n)_{n = m}^{\infty}\) is equal to \(1\).
+Similarly \(\inf(a_n)_{n = m}^{\infty}\) is equal to \(-1\).
+\end{example}
+
+\begin{example} \label{example 6.3.4}
+Let \(a_n := 1/n\); thus \((a_n)_{n = 1}^{\infty}\) is the sequence \(1, 1/2, 1/3,...\).
+Then the set \(\{a_n : n \ge 1\}\) is the \emph{countable}(\RED{warning}) set \(\{1, 1/2, 1/3, 1/4,...\}\).
+Thus \(\sup(a_n)_{n = m}^{\infty} = 1\) and \(\inf_{n \ge m} a_n\) (\EXEC{6.3.1}).
+Notice here that the infimum of the sequence is \emph{not actually a member of} the sequence, though it becomes very close to the sequence \emph{eventually}.
+(So it is a little inaccurate to think of the supremum and infimum as the ``largest element \emph{of} the sequence'' and ``smallest element \emph{of} the sequence'' respectively.)
+\end{example}
+
+\begin{proof}
+The sequence is bounded by \(1\), it's trivial to prove it using induction.
+So the corresponding set \(\{a_n : n \ge 1\}\) of the sequence has an upper bound \(1\).
+So by \DEF{5.5.10}, the supremum is the least upper bound of the set.
+To show that the supremum is equal to \(1\), we can show that any real number \(x < 1\) is not an upper bound of the set.
+But it is of course true because \(1\) belongs to the set.
+
+Now we show the infimum of the sequence is \(0\).
+Again, it's trivial that each element of the sequence is greater than \(0\) using induction.
+So the corresponding set \(\{a_n : n \ge 1\}\) of the sequence has an lower bound \(0\).
+To show that the infimum of the set is equal to \(0\), we can show that any real number \(x > 0\) is not a lower bound of the set.
+But by \EXEC{5.4.4}, given \(x > 0\), we can find a natural number \(n\) s.t. \(1/n < x\), and that is the value of \(a_n\), so we have found an element \(a_n\) in the set s.t. \(x > a_n\), hence \(x\) is not a lower bound of the set.
+\end{proof}
+
+\begin{note}
+\RED{Warning}: the word ``countable'' in \EXAMPLE{6.3.4} is nout defined yet.
+It's defined in \CH{8}.
+\end{note}
+
+\begin{example} \label{example 6.3.5}
+Let \(a_n := n\); thus \((a_n)_{n = 1}^{\infty}\) is the sequence \(1, 2, 3, 4,...\).
+Then the set \(\{a_n : n \ge 1\}\) is just the positive integers \(\{1, 2, 3, 4,...\}\).
+Then \(\sup(a_n)_{n = 1}^{\infty} = +\infty\) and \(\inf(a_n)_{n = 1}^{\infty} = 1\).
+\end{example}
+
+As the last example shows, it is possible for the supremum or infimum of a sequence(of \emph{real} numbers, not \emph{extended real} numbers) to be \(+\infty\) or \(-\infty\).
+
+\begin{additional corollary} \label{ac 6.3.1}
+However, if a sequence \((a_n)_{n = m}^{\infty}\) is
+bounded, say bounded by \(M\), then all the elements \(a_n\) of the sequence lie between \(-M\) and \(M\), so that the set \(\{a_n : n \ge m\}\) has \(M\) as an upper bound and \(-M\) as a lower bound.
+Since this set is clearly non-empty, we can thus conclude that the supremum and infimum of a bounded sequence are \emph{real} numbers (i.e., not \(+\infty\) and \(-\infty\)).
+\end{additional corollary}
+
+\begin{proposition} [Least upper bound property] \label{prop 6.3.6}
+Let \((a_n)_{n = m}^{\infty}\) be a sequence of ``real numbers'', and let \(x\) be the ``extended real number'' \(x := \sup(a_n)_{n = m}^{\infty}\).
+
+\BLUE{(1)} Then we have \(a_n \le x\) for all \(n \ge m\).
+
+\BLUE{(2)} Also, whenever \(M \in \SET{R}^*\) is an upper bound for \(a_n\) (i.e., \(a_n \le M\) for all \(n \ge m\)), we have \(x \le M\).
+
+\BLUE{(3)} Finally, for every ``extended real number'' \(y\) for which \(y < x\), there exists at least one \(n \ge m\) for which \(y < a_n \le x\).
+\end{proposition}
+
+\begin{proof}
+\BLUE{(1)} Given any integer \(n \ge m\), \(a_n\) is of course belong to the set \(\{a_n : n \ge m\}\), and by \THM{6.2.11}(a), \(a_n\) is less than the supremum of the set, i.e. \(a_n \le \sup(a_n)_{n = m}^{\infty}\), i.e. \(a_n \le x\).
+
+\BLUE{(2)} Now, if \(M \in \SET{R}^*\) is an upper bound of the sequence, then \(M\) is of course an upper bound of the corresponding set \(\{a_n : n \ge m\}\).
+And by \THM{6.2.11}(b), the supremum of the set is less than \(M\), i.e. \(\sup(a_n)_{n = m}^{\infty} \le M\), i.e. \(x \le M\).
+
+\BLUE{(3)} For the last statement of the proposition, suppose for the sake of contradiction that there exists an ``extended real number`` \(y\) for which \(y < x\) \MAROON{(1)} and for all integer \(n \ge m\), \(\lnot (y < a_n \le x)\), i.e. \(y \ge a_n \lor a_n > x\).
+First \(a_n > x\) is impossible since \(x\) we have shown from \BLUE{(1)} that \(a_n \le x\).
+But then we have for all integer \(n \ge m\), \(y \ge a_n\). which implies \(y\) is an upper bound of the sequence.
+But by \BLUE{(2)}, that implies \(\sup(a_n)_{n = m}^{\infty} = x \le y\), which contradicts \MAROON{(1)}.
+\end{proof}
+
+\begin{remark} \label{remark 6.3.7}
+There is a corresponding Proposition for infima, but with all the references to order reversed, e.g., all upper bounds should now be lower bounds, etc.
+The proof is exactly the same.
+
+The corresponding Proposition: Let \((a_n)_{n = m}^{\infty}\) be a sequence of ``real numbers'', and let \(x\) be the ``extended real number'' \(x := \inf(a_n)_{n = m}^{\infty}\).
+
+\BLUE{(1)} Then we have \(a_n \ge x\) for all \(n \ge m\).
+
+\BLUE{(2)} Also, whenever \(M \in \SET{R}^*\) is a \emph{lower bound} for \(a_n\) (i.e., \(a_n \ge M\) for all \(n \ge m\)), we have \(x \ge M\).
+
+\BLUE{(3)} Finally, for every ``extended real number`` \(y\) for which \(y > x\), there exists at least one \(n \ge m\) for which \(y > a_n \ge x\).
+\end{remark}
+
+\begin{note}
+In the previous section we saw that all convergent sequences are bounded(by \CORO{6.1.17}).
+It is natural to ask whether the \emph{converse} is true:
+are all bounded sequences convergent?
+The answer is no;
+for instance, the sequence \(1, -1, 1, -1,...\) is bounded, but not Cauchy and hence not convergent(contrapositive of \PROP{6.1.12}).
+However, if we make the sequence \textbf{both bounded and \emph{monotone}} (i.e., increasing or decreasing), then it is true that it must converge.
+\end{note}
+
+\begin{proposition} [Monotone bounded sequences converge] \label{prop 6.3.8}
+Let \((a_n)_{n = m}^{\infty}\) be a sequence of \emph{real} numbers which has some \emph{finite upper bound} \(M \in \SET{R}\), and which is also increasing (i.e., \(a_{n + 1} \ge a_n\) for all \(n \ge m\)).
+Then \((a_n)_{n = m}^{\infty}\) is convergent, and in fact
+\[
+    \lim_{n \toINF} a_n = \sup(a_n)_{n = m}^{\infty} \le M
+\]
+\end{proposition}
+
+\begin{proof}
+First we call the supremum of the sequence \(\alpha := \sup(a_n)_{n = m}^{\infty}\).
+Since the sequence has a ``real''(i.e. finite) number \(M\) as upper bound, by \AC{6.3.1}, \(\alpha\) is a real number.
+And by \PROP{6.3.6}, \(\alpha \le M\).
+Now what we left is to prove the sequence converges to \(\alpha\).
+That is, we have to show given arbitrary \(\varE > 0\), there exists an integer \(N \ge m\) s.t. \(\abs{a_n - \alpha} \le \varE\) for all \(n \ge N\), or equivalently, \(-\varE \le a_n - \alpha \le \varE\), or \(\alpha - \varE \le a_n \le \alpha + \varE\), for all \(n \ge N\).
+
+So let arbitrary \(\varE > 0\).
+Now of course \(\alpha - \varE < \alpha\).
+And by \PROP{6.3.6}, we can find an integer \(N \ge m\) s.t. \(\alpha - \varE < a_N \le \alpha\).
+Also \emph{since the sequence is increasing}, for all \(n \ge N\), \(\alpha - \varE < a_N \le a_n\);
+in particular \(\alpha - \varE \le a_n\) for all \(n \ge N\) \MAROON{(1)}.
+But again by \PROP{6.3.6}, for all \(n \ge N\), \(a_n \le \alpha\) (\(\alpha\) is the supremum of the sequence) \MAROON{(2)}.
+So with \MAROON{(1)(2)} we have \(\alpha - \varE \le a_n \le \alpha\) for all \(n \ge N\), which of course implies \(\alpha - \varE \le a_n \le \alpha + \varE\) for all \(n \ge N\), as desired.
+So the sequence converges to \(\alpha\).
+\end{proof}
+
+\begin{note}
+One can similarly prove that if a sequence \((a_n)_{n = m}^{\infty}\) is bounded \emph{below} and \emph{decreasing} (i.e., \(a_{n + 1} \le a_n)\), then it is convergent, and that the limit is equal to the infimum.
+\end{note}
+
+\begin{additional corollary} \label{ac 6.3.2}
+Let \((a_n)_{n = m}^{\infty}\) be a sequence of \emph{real} numbers which has some \emph{finite lower bound} \(M \in \SET{R}\), and which is also decreasing (i.e., \(a_{n + 1} \leq a_n\) for all \(n \ge m\)).
+Then \((a_n)_{n = m}^\infty\) is convergent, and in fact
+\[
+    \lim_{n \toINF} a_n = \inf(a_n)_{n = m}^\infty \ge M.
+\]
+\end{additional corollary}
+
+\begin{proof} (This proof is just modified from the proof of \PROP{6.3.8}.)
+First we call the infimum of the sequence \(\beta := \inf(a_n)_{n = m}^{\infty}\).
+Since the sequence has a ``real''(i.e. finite) number \(M\) as lower bound, by \AC{6.3.1}, \(\beta\) is also a real number.
+And by \RMK{6.3.7}, \(\beta \ge M\).
+Now what we left is to prove the sequence converges to \(\beta\).
+That is, we have to show given arbitrary \(\varE > 0\), there exists an integer \(N \ge m\) s.t. \(\abs{a_n - \beta} \le \varE\) for all \(n \ge N\), or equivalently, \(-\varE \le a_n - \beta \le \varE\), or \(\beta - \varE \le a_n \le \beta + \varE\), for all \(n \ge N\).
+
+So let arbitrary \(\varE > 0\).
+Now of course \(\beta + \varE > \beta\).
+And by \RMK{6.3.7}, we can find an integer \(N \ge m\) s.t. \(\beta + \varE > a_N \ge \beta\).
+Also \emph{since the sequence is decreasing}, for all \(n \ge N\), \(\beta + \varE > a_N \ge a_n\);
+in particular \(\beta + \varE \ge a_n\) for all \(n \ge N\) \MAROON{(1)}.
+But again by \RMK{6.3.7}, for all \(n \ge N\), \(a_n \ge \beta\) (\(\beta\) is the infimum of the sequence) \MAROON{(2)}.
+So with \MAROON{(1)(2)} we have \(\beta + \varE \ge a_n \ge \beta\) for all \(n \ge N\), which of course implies \(\beta + \varE \ge a_n \ge \beta - \varE\) for all \(n \ge N\), as desired.
+So the sequence converges to \(\beta\).
+\end{proof}
+
+\begin{note}
+A sequence is said to be \emph{monotone} if it is either increasing or decreasing.
+From \PROP{6.3.8} and \CORO{6.1.17} we see that a
+monotone sequence converges if and only if it is bounded.
+(Given monotone sequence, if it converges, then by \CORO{6.1.17}, is bounded(in fact that corollary does not care if it's monotone); if it is bounded, then by \PROP{6.3.8}, it converges.)
+\end{note}
+
+\begin{example} \label{example 6.3.9}
+The sequence \(3, 3.1, 3.14, 3.141, 3.1415,...\) is increasing, and is bounded above by \(4\).
+Hence by \PROP{6.3.8} it must have a limit, which is a real number less than or equal to \(4\).
+\end{example}
+
+\begin{note}
+\PROP{6.3.8} asserts that the limit of a monotone sequence exists, but does not directly say what that limit is.
+Nevertheless, with a little extra work one can often find the limit once one is given that the limit does exist.
+\end{note}
+
+\begin{proposition} \label{prop 6.3.10}
+Let \(0 < x < 1\).
+Then we have \(\lim_{n \toINF} x^n = 0\).
+\end{proposition}
+
+\begin{proof}
+Since \(0 < x < 1\), one can show that the sequence \((x^n)_{n = 1}^{\infty}\) is decreasing (because \(1 < x \implies 1 \X x^n < x \X x^n \implies x^n < x^{n + 1}\)).
+On the other hand, the sequence \((x_n)_{n = 1}^{\infty}\) has a lower bound of 0. (trivial by induction)
+Thus by \AC{6.3.2} (infima version of \PROP{6.3.8}) the sequence \((x_n)_{n = 1}^{\infty}\) converges to some limit \(L\).
+Since \(x^{n + 1} = x \X x^n\), we thus see from the limit laws (\THM{6.1.19}) that
+\begin{align*}
+             & \lim_{n \toINF} x^n = L \\
+    \implies & x \lim_{n \toINF} x^n = x L & \text{by algebra} \\
+    \implies & \lim_{n \toINF} x \X x^n = x L & \text{by \THM{6.1.19}(c)} \\
+    \implies & \lim_{n \toINF} x^{n + 1} = x L
+\end{align*}
+So \((x^{n + 1})_{n = 1}^{\infty}\) converges to \(xL\).
+But the sequence \((x^{n + 1})_{n = 1}^{\infty}\) is just the sequence \((x^n)_{n = 2}^{\infty}\) shifted by one, and so they must have the same limits
+(by \EXEC{6.1.3}, \((x^{n + 1})_{n = 1}^{\infty}\) and \((x^{n + 1})_{n = 2}^{\infty}\) have the same limit;
+and by \EXEC{6.1.4}, \((x^{n + 1})_{n = 2}^{\infty}\) and \((x^n)_{n = 2}^{\infty}\) have the same limit).
+But \((x^n)_{n = 2}^{\infty}\) and \((x^n)_{n = 1}^{\infty}\) also have the same limit(by \EXEC{6.1.3}).
+So all in all, that implies the limit of \((x^{n + 1})_{n = 1}^{\infty}\), which is \(xL\), is equal to the limit of \((x^n)_{n = 1}^{\infty}\), which is \(L\).
+So \(xL = L\), or \(L(x - 1) = 0\).
+Since \(x \neq 1\), \(x - 1 \ne 0\), so \(L\) must be \(0\).
+Thus \((x_n)_{n = 1}^{\infty}\) converges to \(0\).
+\end{proof}
+
+\exercisesection
+
+\begin{exercise} \label{exercise 6.3.1}
+Verify the claim in \EXAMPLE{6.3.4}.
+\end{exercise}
+
+\begin{proof}
+See \EXAMPLE{6.3.4}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.3.2}
+Prove \PROP{6.3.6}. (Hint: use \THM{6.2.11}.)
+\end{exercise}
+
+\begin{proof}
+See \PROP{6.3.6}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.3.3}
+Prove \PROP{6.3.8}.
+(Hint: use Proposition 6.3.6, \emph{together with} the assumption that an is \emph{increasing}, to show that an converges to \(\sup(a_n)_{n = m}^{\infty}\).)
+\end{exercise}
+
+\begin{proof}
+See \PROP{6.3.8}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.3.4}
+Explain why \PROP{6.3.10} fails when \(x > 1\).
+In fact, show that the sequence \((x_n)_{n = 1}^{\infty}\) diverges when \(x > 1\).
+(Hint: prove by contradiction and use the identity \((1/x)^n x^n = 1\) and the limit laws in \THM{6.1.19}.)
+Compare this with the argument in \EXAMPLE{1.2.3}; can you now explain the flaws in the reasoning in that example?
+\end{exercise}
+
+\begin{proof}
+Suppose \((x^n)_{n = 1}^{\infty}\) converges when \(x > 1\) (and hence \(0 < 1/x < 1\)).
+Let it converge to \(L\).
+Then
+\begin{align*}
+    1 & = \lim_{n \toINF} 1 & \text{of course} \\
+      & = \lim_{n \toINF} (1/x)^n x^n & \text{by the identity} \\
+      & = (\lim_{n \toINF} (1/x)^n) \X (\lim_{n \toINF} x^n) & \text{by \THM{6.1.19}(b)} \\
+      & = 0 \X (\lim_{n \toINF} x^n) & \text{since \(0 < 1/x < 1\) and by \PROP{6.3.10}} \\
+      & = 0 \X L \\
+      & = 0,
+\end{align*}
+which is impossible.
+
+The \EXAMPLE{1.2.3} cannot assume the equation \emph{for all} real number \(x\).
+It can assume the equation for \(0 < x < 1\), by \PROP{6.3.10}.
+\end{proof}

@@ -1,0 +1,388 @@
+\section{The Extended real number system} \label{sec 6.2}
+
+To deal with the sequences that does \emph{not} converge, e.g.
+\[
+    1, 2, 3, 4, 5,...
+\]
+\[
+    -1, -2, -3, -4, -5,...
+\]
+\[
+    1, -1, 1, -1, 1, -1,...
+\]
+(, which does not converge to anything but has \(-1\) and \(1\) as ``limit point'')
+\[
+    1, -2, 3, -4, 5, -6,...
+\]
+we need to talk about something called the \emph{extended real number system}.
+
+\begin{definition} [Extended real number system] \label{def 6.2.1}
+The \emph{extended real number system} \(\SET{R}^*\) is the real line \(\SET{R}\) with two additional elements attached, called \(+\infty\) and \(-\infty\).
+These elements are \emph{distinct} from each other and \emph{also distinct} from every real number.
+An extended real number \(x\) is called \emph{finite} iff it is a real number,
+and \emph{infinite} iff it is equal to \(+\infty\) or \(-\infty\).
+(This definition is \emph{not} directly related to the notion of finite and infinite sets in \SEC{3.6}, though it is of course similar in spirit.)
+\end{definition}
+
+\begin{note}
+注意，\(+\infty\) or \(-\infty\) 各自都是「一個」符號，而不是\ \(+\) 作用在\ \(\infty\) 之類的；在\ \DEF{6.2.1} 之下，\(\infty\) 是無意義的東西。這件事情不搞清楚的話，\DEF{6.2.2} 就會感到問號。
+\end{note}
+
+These new symbols, \(+\infty\) and \(-\infty\), at present do not have much meaning, since we have no operations to manipulate them
+(other than equality \(=\) and inequality \(\neq\)).
+Now we place a few operations on the extended real number system.
+
+\begin{definition} [Negation of extended reals] \label{def 6.2.2}
+The operation of negation \(x \to -x\) on \(\SET{R}\), we now extend to \(\SET{R}^*\) by defining \(-(+\infty) := -\infty\) and \(-(-\infty) := +\infty\).
+\end{definition}
+
+Thus every \emph{extended} real number \(x\) has a negation, and \(-(-x)\) is always equal to \(x\) \MAROON{(*)}.
+
+\begin{note}
+\MAROON{(*)} is tricky.
+It does \emph{not} mean \(-(-\infty) = \infty\), in fact \(\infty\) is undefined in \DEF{6.2.1}.
+It in fact means \(-(-(\RED{-\infty})) = \RED{-\infty}\) and \(-(-(\RED{+\infty})) = +\infty\), why?
+\begin{align*}
+    -(-(\RED{-\infty})) & = -(+\infty) & \text{by \DEF{6.2.2}} \\
+                        & = -\infty & \text{by \DEF{6.2.2}}
+\end{align*}
+and
+\begin{align*}
+    -(-(\RED{+\infty})) & = -(-\infty) & \text{by \DEF{6.2.2}} \\
+                        & = +\infty & \text{by \DEF{6.2.2}}
+\end{align*}
+\end{note}
+
+\begin{definition} [Ordering of extended reals] \label{def 6.2.3}
+Let \(x\) and \(y\) be \emph{extended real} numbers.
+We say that \(x \le y\), i.e., \(x\) is less than or equal to \(y\), iff \textbf{one of} the following three statements is true:
+\begin{enumerate}
+    \item \(x\) and \(y\) are \emph{real} numbers, and \(x \le y\) as \emph{real} numbers.
+    \item \(y = +\infty\).
+    \item \(x = -\infty\).
+\end{enumerate}
+We say that \(x < y\) if we have \(x \le y\) and \(x \ne y\).
+We sometimes write \(x < y\) as \(y > x\), and \(x \le y\) as \(y \ge x\).
+\end{definition}
+
+\begin{note}
+注意一下最後一句話；對於\ \(\SET{R}^*\)，我們「又」把\ \(x < y\) 定義成\ \(x \le y \land x \ne y\) 了。
+在這本書裡，自然數跟整數的\ order 也是這樣定義的；但是有理數跟實數就是定義成相減為正數(所以他們的定義相依於正數的定義)。
+另外對於自然數、整數、\(\SET{R}^*\)，\(x < y\) 跟\ \(y > x\) 我們直接定義成是「一樣的」；
+但對於有理數跟實數，\(x < y\) 跟\ \(y > x\) 等價是需要證明的。
+\end{note}
+
+\begin{example} \label{example 6.2.4}
+\(3 \le 5\) (satisfying \DEF{6.2.3}(a)), \(3 < +\infty\) (satisfying (b)), and \(-\infty < +\infty\) (satisfying (b), (c)), but \(3 \not \le -\infty\) (all (a), (b), (c) are not satisfied).
+\end{example}
+
+\begin{proposition} \label{prop 6.2.5}
+Let \(x, y, z\) be \emph{extended real} numbers.
+Then the following statements are true:
+\begin{enumerate}
+    \item (Reflexivity) We have \(x \le x\).
+    \item (Trichotomy) Exactly one of the statements \(x < y\), \(x = y\), or \(x > y\) is true.
+    \item (Transitivity) If \(x \le y\) and \(y \le z\), then \(x \le z\).
+    \item (Negation reverses order) If \(x \le y\), then \(-y \le -x\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We already know the \emph{real numbers} has these properties, so we only need to prove the cases that one of \(x, y, z\) is \(+\infty\) or \(-\infty\).
+
+Reflexivity: if \(x = +\infty\), then by \DEF{6.2.3}(b) \(x \le x\). if \(x = -\infty\), then by \DEF{6.2.3}(c), \(x \le x\), as desired.
+
+Trichotomy: we prove by cases, and in each case we show ``at least'' and ``at most'' one of the trichotomy is true:
+\begin{itemize}
+\item \(x \in \SET{R}\) and \(y \in \SET{R}\): This fallbacks to \PROP{4.2.9}(a).
+\item \(x \in \SET{R}\) and \(y = +\infty\):
+    Then by \DEF{6.2.3}(b), \(x \le y\).
+    Also, \(x \ne y\) since by \DEF{6.2.1} \(+\infty\) is distinct from any real number.
+    Together, by \DEF{6.2.3}, we have \(x < y\), so the ``at least'' part is shown.
+    Now since we have shown \(x \ne y\), we only need to show \(x > y\) is false to show the ``at most'' part.
+    For the sake of contradiction, suppose \(x > y\) is true. Then by \DEF{6.2.3} this means \(y < x\), and in particular \(y \le x\).
+    But \(y \le x\) is false because it satisfies none of the conditions in \DEF{6.2.3}, so we have contradiction.
+\item \(x \in \SET{R}\) and \(y = -\infty\):
+    Then by \DEF{6.2.3}(c), \(y \le x\).
+    Also, \(y \ne x\) since by \DEF{6.2.1} \(-\infty\) is distinct from any real number.
+    Together, by \DEF{6.2.3}, we have \(y < x\), so the ``at least'' part is shown.
+    Now since we have shown \(y \ne x\), we only need to show \(y > x\) is false to show the ``at most'' part.
+    For the sake of contradiction, suppose \(y > x\) is true. Then by \DEF{6.2.3} this means \(x < y\), and in particular \(x \le y\).
+    But \(x \le y\) is false because it satisfies none of the conditions in \DEF{6.2.3}, so we have contradiction.
+\item \(x = +\infty\) and \(y \in \SET{R}\):
+    Then by \DEF{6.2.3}(b), \(y \le x\).
+    Also, \(y \ne x\) since by \DEF{6.2.1} \(+\infty\) is distinct from any real number.
+    Together, by \DEF{6.2.3}, we have \(y < x\), so the ``at least'' part is shown.
+    Now since we have shown \(y \ne x\), we only need to show \(y > x\) is false to show the ``at most'' part.
+    For the sake of contradiction, suppose \(y > x\) is true. Then by \DEF{6.2.3} this means \(x < y\), and in particular \(x \le y\).
+    But \(x \le y\) is false because it satisfies none of the conditions in \DEF{6.2.3}, so we have contradiction.
+\item \(x = +\infty\) and \(y = +\infty\):
+    Then we have \(x = y\), so we cannot have \(x \ne y\) so by \DEF{6.2.3} it is not possible to have \(x < y\) or \(x > y\) since both need \(x \ne y\).
+\item \(x = +\infty\) and \(y = -\infty\):
+    Then by \DEF{6.2.3}(b) or (c), \(y \le x\).
+    Also, \(y \ne x\) since by \DEF{6.2.1} \(+\infty\) and \(-\infty\) are distinct from each other.
+    Together, by \DEF{6.2.3}, we have \(y < x\), so the ``at least'' part is shown.
+    Now since we have shown \(y \ne x\), we only need to show \(y > x\) is false to show the ``at most'' part.
+    For the sake of contradiction, suppose \(y > x\) is true. Then by \DEF{6.2.3} this means \(x < y\), and in particular \(x \le y\).
+    But \(x \le y\) is false because it satisfies none of the conditions in \DEF{6.2.3}, so we have contradiction.
+\item \(x = -\infty\) and \(y \in \SET{R}\):
+    Then by \DEF{6.2.3}(c), \(x \le y\).
+    Also, \(x \ne y\) since by \DEF{6.2.1} \(-\infty\) is distinct from any real number.
+    Together, by \DEF{6.2.3}, we have \(x < y\), so the ``at least'' part is shown.
+    Now since we have shown \(x \ne y\), we only need to show \(x > y\) is false to show the ``at most'' part.
+    For the sake of contradiction, suppose \(x > y\) is true. Then by \DEF{6.2.3} this means \(y < x\), and in particular \(y \le x\).
+    But \(y \le x\) is false because it satisfies none of the conditions in \DEF{6.2.3}, so we have contradiction.
+\item \(x = -\infty\) and \(y = +\infty\):
+    Then by \DEF{6.2.3}(b) or (c), \(x \le y\).
+    Also, \(x \ne y\) since by \DEF{6.2.1} \(+\infty\) and \(-\infty\) are distinct from each other.
+    Together, by \DEF{6.2.3}, we have \(x < y\), so the ``at least'' part is shown.
+    Now since we have shown \(x \ne y\), we only need to show \(x > y\) is false to show the ``at most'' part.
+    For the sake of contradiction, suppose \(x > y\) is true. Then by \DEF{6.2.3} this means \(y < x\), and in particular \(y \le x\).
+    But \(y \le x\) is false because it satisfies none of the conditions in \DEF{6.2.3}, so we have contradiction.
+\item \(x = -\infty\) and \(y = -\infty\):
+    Then we have \(x = y\), so we cannot have \(x \ne y\) so by \DEF{6.2.3} it is not possible to have \(x < y\) or \(x > y\) since both need \(x \ne y\).
+\end{itemize}
+
+Transitivity: Suppose \(x \le y\) and \(y \le z\).
+We split into cases by the value of \(z\):
+\begin{itemize}
+\item \(z = +\infty\):
+    Then by \DEF{6.2.3}(b) we just have \(x \le z\).
+\item \(z = -\infty\):
+    Then since \(y \le z\), and both (a), (b) of \DEF{6.2.3} cannot be satisfied, so (c) must be satisfied, i.e. \(y = -\infty\).
+    Similarly since \(x \le y\), we have \(x = -\infty\).
+    And by \DEF{6.2.3}(c), we have \(x \le z\).
+\item \(z \in \SET{R}\):
+    Then since \(y \le z\), by \DEF{6.2.3}, \(y\) can only be real numbers or \(y = -\infty\). Again we split these into cases:
+    \begin{itemize}
+        \item
+            If \(y \in \SET{R}\), then again since \(x \le y\), \(x\) can only be real numbers or \(x = -\infty\).
+            If \(x \in \SET{R}\), then now all \(x, y, z\) are real numbers and \(x \le y\) and \(y \le z\), so we fallbacks to the transitivity of real numbers, so \(x \le z\).
+            If \(x = -\infty\), then by \DEF{6.2.3}(c), we have \(x \le z\).
+        \item
+            If \(y = -\infty\), then since \(x \le y\) and both (a), (b) of \DEF{6.2.3} cannot be satisfied, (c) must be satisfied, i.e. \(x = -\infty\).
+            So by \DEF{6.2.3}(c), we have \(x \le z\).
+    \end{itemize}
+\end{itemize}
+So in all cases, we have \(x \le z\) as desired.
+
+Negation reverses order: Suppose \(x \le y\), we have to show \(-y \le -x\).
+Since \(x \le y\), we can split into cases according to \DEF{6.2.3}:
+\begin{itemize}
+    \item Both \(x \in \SET{R}\) and \(y \in \SET{R}\):
+        Then it fallbacks to the case of real numbers, so clearly we have \(-y \le -x\).
+    \item \(y = +\infty\):
+        Then by \DEF{6.2.2} \(-y = -\infty\), and by \DEF{6.2.3}(c), \(-y \le -x\).
+    \item \(x = -\infty\):
+        Then by \DEF{6.2.2} \(-x = +\infty\), and by \DEF{6.2.3}(b), \(-y \le -x\).
+\end{itemize}
+So in all cases, we have \(-y \le -x\) as desired.
+\end{proof}
+
+\begin{note}
+One could also introduce other operations on the extended real number system, such as addition, multiplication, etc.
+However, this is somewhat dangerous as \emph{these operations will almost certainly fail to obey the familiar rules of algebra}.
+For instance, to define addition it seems reasonable (given one’s intuitive notion of infinity) to set \(+\infty + 5 = +\infty\) and \(+\infty + 3 = +\infty\), but then this implies that \(+\infty + 5 = +\infty + 3\), while \(5 \neq 3\).
+So things like the cancellation law begin to break down once we try to operate involving infinity.
+To avoid these issues \emph{we shall simply not define any arithmetic operations} on the extended real number system other than negation and order.
+\end{note}
+
+\begin{definition} [Supremum of sets of \emph{extended reals}] \label{def 6.2.6}
+Let \(E\) be a subset of \(\SET{R}^*\).
+Then we define the \emph{supremum} \(\sup(E)\) or \emph{least upper bound} of \(E\) by the following rule.
+\begin{enumerate}
+    \item If \(E\) is \emph{contained} in \(\SET{R}\) (i.e., \(+\infty\) and \(-\infty\) are \emph{not} elements of \(E\)), then we let \(\sup(E)\) be as defined in \DEF{5.5.10}.
+    \item If \(E\) contains \(+\infty\), then we set \(\sup(E) := +\infty\).
+    \item If \(E\) does not contain \(+\infty\) but does contain \(-\infty\), then we set \(\sup(E) := \sup(E \setminus \{-\infty\})\) (which is a subset of \(\SET{R}\) and thus falls under case (a)).
+\end{enumerate}
+We also define the \emph{infimum} \(\inf(E)\) of \(E\) (also known as the \emph{greatest lower bound} of \(E\)) by the formula \(\inf(E) := -\sup(-E)\)
+where \(-E\) is the set \(-E := \{ -x : x \in E \}\).
+\end{definition}
+
+\begin{note}
+Just a reminder, although \DEF{6.2.6}(a) use \DEF{5.5.10}, from that definition if \(E\) (is empty and) has no upper bound, then \(\sup(E)\) is again \(+\infty\).
+\end{note}
+
+\begin{note}
+Note that ``\(-x\)'' in the last sentence used negation of \emph{extended} real numbers, i.e. \DEF{6.2.2}.
+\end{note}
+
+\begin{note}
+Note that \DEF{6.2.6} is \emph{well-defined}, i.e. the supremum is unique.
+For case (a), it fallbacks to \DEF{5.5.10}, which is well defined.
+For case (b), \(\sup(E) := +\infty\), which is also unique.
+For case (c), it again fallbacks to case (a) so is well-defined.
+So it is impossible that \(\sup(E) < \sup(E)\); this fact is used in the proof of \EXAMPLE{6.2.10}.
+\end{note}
+
+\begin{example} \label{example 6.2.7}
+Let \(E\) be the negative integers, \emph{together with} \(-\infty\):
+\[
+    E = \{-1, -2, -3, -4,...\} \cup \{-\infty\}.
+\]
+Then by \DEF{6.2.6}(c), \(\sup(E) = \sup(E \setminus \{-\infty\}) = -1\), while
+\begin{align*}
+    \inf(E) & = -\sup(-E) & \text{by \DEF{6.2.6}} \\
+           & = -(+\infty) & \text{by \DEF{6.2.6}(b)} \\
+           & = -\infty & \text{by \DEF{6.2.2}}
+\end{align*}
+\end{example}
+
+\begin{note}
+Although currently we are discussing the \emph{extended} real numbers, the notation \(\{1, 2, 3, ...\}\) still does \emph{not} contain the \(+\infty\) as member.
+\end{note}
+
+\begin{example} \label{example 6.2.8}
+The set \(\{0.9, 0.99, 0.999, 0.9999,...\}\) has infimum \(0.9\) and supremum \(1\).
+(Indeed this case fallbacks to \DEF{5.5.10}, with the set non-empty and having upper bound.)
+Note that in this case the supremum does \emph{not} actually
+belong to the set, but it is in some sense ``touching the set'' from the right.
+\end{example}
+
+\begin{example} \label{example 6.2.9}
+The set \(\{1, 2, 3, 4, 5 ...\}\) has infimum \(1\) and supremum \(+\infty\). (Indeed this case fallbacks to \DEF{5.5.10}, with the set non-empty and having \emph{no} upper bound.)
+But again, \(+\infty\) does \emph{not} belong to the set.
+\end{example}
+
+\begin{example} \label{example 6.2.10}
+Let \(E\) be the empty set.
+Then \(\sup(E) = -\infty\) and \(\inf(E) = +\infty\) (why?).
+This is the \emph{only case} in which the supremum can be \emph{less than} the infimum (why?).
+\end{example}
+
+\begin{proof}
+Since \(E\) is contained in \(\SET{R}\), by \DEF{6.2.6}, \(\sup(E)\) fallbacks to \DEF{5.5.10}.
+By \DEF{5.5.10}, since \(E\) is empty, in that definition we have \(\sup(E) = -\infty\).
+Now, by \DEF{6.2.6}, it's clear that \(-E := \{ -x : x \in E \}\) is also empty, so again by \DEF{5.5.10}, \(\sup(-E) = -\infty\).
+And by \DEF{6.2.2}, \(-\sup(-E) = +\infty\), that is, by \DEF{6.2.6}, \(\inf(E) = +\infty\).
+
+Now we show that the only case in which the supremum can be less than the infimum is when \(E = \emptyset\).
+Suppose for the sake of contradiction that there exists an non-empty set \(E'\) s.t. \(\sup(E') < \inf(E')\) \MAROON{(1)}.
+
+Since \(E'\) is non-empty, (by \LEM{3.1.6}) we can find element \(x \in E'\).
+And by \THM{6.2.11}, we have \(x \le \sup(E')\) \MAROON{(2)} and \(\inf(E') \le x\) \MAROON{(3)}.
+Then by \MAROON{(1)(2)(3)} we have \(\sup(E') < \inf(E') \le x \le \sup(E')\), in particular \(\sup(E') < \sup(E')\), which is impossible(see the third note of \DEF{6.2.6}).
+\end{proof}
+
+\begin{note}
+The proof above used \THM{6.2.11}, but it's ok because the theorem does not depend on this example.
+\end{note}
+
+\begin{note}
+One can intuitively think of the supremum of \(E\) as follows.
+Imagine the real line with \(+\infty\) ``somehow'' on the far right, and \(-\infty\) on the far left.
+Imagine a \emph{piston} at \(+\infty\) moving leftward until it is stopped by the presence of a set \(E\);
+\emph{the location where it stops is the supremum of \(E\)}.
+Similarly if one imagines a piston at \(-\infty\) moving rightward until it is stopped by the presence of \(E\), the location where it stops is the infimum of \(E\).
+\emph{In the case when \(E\) is the empty set}, \textbf{the pistons pass through each other}, the supremum landing at \(-\infty\) and the infimum landing at \(+\infty\).
+\end{note}
+
+\begin{note}
+我其實不知道作者為什麼用\ ``piston'' 來形容... 感覺應該比較像``子彈''才對...
+\end{note}
+
+The following \emph{theorem} justifies the terminology \sout{``least upper bound''} ``supremum'' and \sout{``greatest lower bound''} ``infimum'':
+
+\begin{note}
+In my opinion the theorem ``justifies'' sup and inf, not LUB and GLB.
+From \DEF{6.2.6}, sup/inf are always defined, but LUB/GLB may not exist.
+\end{note}
+
+\begin{theorem} \label{thm 6.2.11}.
+Let \(E\) be a subset of \(\SET{R}^*\).
+Then the following statements are true.
+\begin{enumerate}
+    \item For every \(x \in E\) we have \(x \le \sup(E)\) and \(x \ge \inf(E)\).
+    \item Suppose that \(M \in \SET{R}^*\) is an upper bound for \(E\), i.e., \(x \le M\) for all \(x \in E\).
+          Then we have \(\sup(E) \le M\).
+    \item Suppose that \(M \in \SET{R}^*\) is a lower bound for \(E\), i.e., \(x \ge M\) for all \(x \in E\).
+          Then we have \(\inf(E) \ge M\).
+\end{enumerate}
+\end{theorem}
+
+\begin{note}
+會需要證明這個定理，i.e. 要確定任意(廣義)實數子集合內所有\ element 小於等於該集合的\ supremum 的原因，我認為是這本書的 ``最小上界''跟\ ``supremum'' 不是等價名詞(去看\ \DEF{5.5.10} 還有 \DEF{6.2.6})；最小上界不一定會存在，但是\ supremum 一定存在(可能是\ \(+\infty\) 或 \(-\infty\))。
+可能要去看看其他分析書是怎麼區分這兩者的。
+\end{note}
+
+\begin{proof}
+\begin{enumerate}
+\item
+    We first show \(\forall x \in E, x \le \sup(E)\) \BLUE{(1)}.
+    There are three cases:
+    \begin{itemize}
+    \item \(E \subseteq \SET{R}\):
+        We further split into two cases: \(E\) is empty or not.
+        If \(E\) is empty, then \BLUE{(1)} is vacuously true.
+        If \(E\) is non-empty \emph{and has an upper bound}, then by \DEF{5.5.10}, \(\sup(E)\) is \emph{the} least upper bound of \(E\), i.e. an upper bound of \(E\), so by definition of upper bound, \BLUE{(1)} is true.
+        If \(E\) is non-empty \emph{but has no upper bound}, then again by \DEF{5.5.10}, \(\sup(E) = +\infty\). And by \DEF{6.2.3}(b), \BLUE{(1)} is true.
+    \item \(E\) contains \(+\infty\):
+        Then by \DEF{6.2.6}, \(\sup(E) = +\infty\).
+        And by \DEF{6.2.3}(b), \BLUE{(1)} is true.
+    \item \(E\) does not contain \(+\infty\) but contains \(-\infty\):
+        Then we consider the value of \(x\): \(x = -\infty\) or \(x\) is a real number.
+        If \(x = -\infty\), then by \DEF{6.2.3}(c), \(x\) is less than any extended real number.
+        In particular, \(x \le \sup(E)\).
+        Now suppose \(x\) is a real number.
+        We first consider \(\sup(E)\).
+        By \DEF{6.2.6}(c), \(\sup(E) = \sup(E \setminus \{-\infty\})\), so we only need to show \(x \le \sup(E \setminus \{-\infty\})\).
+
+        Clearly \(x \in E \setminus \{-\infty\}\) because \(x\) is a real number that belongs to \(E\) \MAROON{(1)}.
+        Again we have two cases: \(E \setminus \{-\infty\}\) has an upper bound or not.
+        If \(E \setminus \{-\infty\}\) has an upper bound, then by \DEF{5.5.10} \(\sup(E \setminus \{-\infty\})\) is the least upper bound, i.e. an upper bound.
+        And by definition of upper bound and \MAROON{(1)}, \(x \le \sup(E \setminus \{-\infty\})\).
+        If \(E \setminus \{-\infty\}\) has no upper bound, then again by \DEF{5.5.10}, \(\sup(E \setminus \{-\infty\}) = +\infty\), and by \DEF{6.2.3}(b), \(x \le \sup(E \setminus \{-\infty\})\).
+        So in all cases, \(x \le \sup(E \setminus \{-\infty\})\), as desired.
+    \end{itemize}
+    Now we show \(\forall x \in E, x \ge \inf(E)\) \BLUE{(2)}.
+    But given any \(x \in E\), by \DEF{6.2.6} we know that \(-x \in -E\), and by the previous case, \(-x \le \sup(-E)\).
+    By \PROP{6.2.5}(d) (negation reverses order), \(x \ge -(\sup(-E))\), that is, by \DEF{6.2.6}, \(x \ge \inf(E)\).
+\item
+    Again we have Three cases:
+    \begin{itemize}
+    \item \(E \subseteq \SET{R}\):
+        There are three cases.
+
+        If \(E\) is empty, then by \DEF{5.5.10}, \(\sup(E) = -\infty\), and by \DEF{6.2.3}(c), \(\sup(E) \le M\).
+        
+        If \(E\) is non-empty and has an upper bound, then by \DEF{5.5.10} \(\sup(E)\) is the least upper bound of \(E\), so for any upper bound \(M\) of \(E\) we have \(\sup(E) \le M\).
+        
+        If \(E\) is non-empty and has no upper bound, then by \DEF{5.5.10}, \(\sup(E) = +\infty\), and \(M\) must equal to \(+\infty\) (otherwise trivially we have contradiction that \(M\) is not an upper bound of \(E\).
+        So by \DEF{6.2.3}(b), we have \(\sup(E) \le M\).
+    \item \(E\) contains \(+\infty\):
+        Then we must have \(+\infty \le M\) since \(M\) is an upper bound of \(E\) (otherwise if \(+\infty > M\) we can find element \(+\infty \in E\) s.t. \(M < +\infty\), contradicting \(M\) is an upper bound of \(E\)).
+        And by \DEF{6.2.6}(b), \(\sup(E) = +\infty\), so together we have \(\sup(E) = +\infty \le M\).
+    \item \(E\) does not contain \(+\infty\) but contains \(-\infty\):
+        Then by \DEF{6.2.6}(c), \(\sup(E) = \sup(E \setminus \{-\infty\})\).
+        So we only have to show \(\sup(E \setminus \{-\infty\}) \le M\).
+        Now we claim that \(M\) is \emph{also} an upper bound of \(E \setminus \{-\infty\})\), since \(E \setminus \{-\infty\} \subseteq E\).
+        Also, since \(E \setminus \{-\infty\}\) is contained in \(\SET{R}\), by the first case and the upper bound \(M\) of this set, we have \(\sup(E \setminus \{-\infty\}) \le M\), as desired.
+    \end{itemize}
+\item
+    Let arbitrary \(y \in -E\), then \(y = -x\) for some \(x \in E\).
+    Since \(x \in E\) and \(M\) is a lower bound of \(E\), we have \(M \le x\), which by \PROP{6.2.5}(d) implies \(-M \ge -x\), or \(-M \ge y\).
+    Since \(y\) is arbitrary, that implies for all \(y \in -E\), \(-M \ge y\), so by definition, \(-M\) is an upper bound of \(-E\).
+    Then by part(b), we have \(\sup(-E) \le -M\), which by \PROP{6.2.5}(d) implies \(-\sup(-E) \ge M\), or by \DEF{6.2.6}, \(\inf(E) \ge M\), as desired.
+\end{enumerate}
+\end{proof}
+
+\exercisesection
+
+\begin{exercise} \label{exercise 6.2.1}
+Prove \PROP{6.2.5}.
+(Hint: you may need \PROP{5.4.7}.)
+\end{exercise}
+
+\begin{proof}
+See \PROP{6.2.5}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.2.2}
+Prove \THM{6.2.11}.
+(Hint: you may need to break into cases depending on whether \(+\infty\) or \(-\infty\) belongs to \(E\).
+You can of course use \DEF{5.5.10}, provided that \emph{\(E\) consists only of real numbers}.)
+\end{exercise}
+
+\begin{proof}
+See \THM{6.2.11}.
+\end{proof}

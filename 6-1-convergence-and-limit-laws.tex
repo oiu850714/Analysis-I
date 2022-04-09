@@ -87,10 +87,10 @@ Now we talk about what it means for a sequence of real numbers to \emph{converge
 \begin{definition} [Convergence of sequences] \label{def 6.1.5}
 (Again annoyingly, we actually define three concepts at the same time.)
 Let \(\varE > 0\) be a \emph{real} number, and let \(L\) be a \emph{real} number.
-A sequence \((a_n)_{n = N}^{\infty}\) of real numbers is said to be ``\(\varE\)-close'' to \(L\) iff \(a_n\) is \(\varE\)-close(in the sense of \DEF{6.1.2}) to \(L\) for every \(n \ge N\),
+\MAROON{DEF(1)} A sequence \((a_n)_{n = N}^{\infty}\) of real numbers is said to be ``\(\varE\)-close'' to \(L\) iff \(a_n\) is \(\varE\)-close(in the sense of \DEF{6.1.2}) to \(L\) for every \(n \ge N\),
 i.e., we have \(\abs{a_n - L} \le \varE\) for every \(n \ge N\).
-We say that a sequence \((a_n)_{n = m}^{\infty}\) is ``eventually \(\varE\)-close'' to \(L\) iff there exists an \(N \ge m\) such that \((a_n)_{n = N}^{\infty}\) is \(\varE\)-close to \(L\).
-We say that a sequence \((a_n)_{n = m}^{\infty}\) \textbf{converges to} \(L\) iff it is ``eventually \(\varE\)-close'' to \(L\) for every real \(\varE > 0\).
+\MAROON{DEF(2)} We say that a sequence \((a_n)_{n = m}^{\infty}\) is ``eventually \(\varE\)-close'' to \(L\) iff there exists an \(N \ge m\) such that \((a_n)_{n = N}^{\infty}\) is \(\varE\)-close to \(L\).
+\MAROON{DEF(3)} We say that a sequence \((a_n)_{n = m}^{\infty}\) \textbf{converges to} \(L\) iff it is ``eventually \(\varE\)-close'' to \(L\) for every real \(\varE > 0\).
 \end{definition}
 
 \begin{note}
@@ -212,7 +212,7 @@ So let \(\varE > 0\).
 In particular \(\varE/2 > 0\).
 And WLOG, we let \((a_n)_{n = m}^{\infty}\) converge to \(L\) (or \(L = \lim_{n \toINF} a_n\).).
 And by \DEF{6.1.5}, we can find an integer \(N \ge m\) s.t. \(d(a_n, L) \le \varE/2\) for all \(n \ge N\) \MAROON{(*)}.
-So in particular given integer \(n, m' \ge N\):
+So in particular given integer \(n, n' \ge N\):
 \begin{align*}
              & d(a_n, L) \le \varE/2 \land d(a_{n'}, L) \le \varE/2 & \text{by \MAROON{(*)}} \\
     \implies & d(a_n, L) + d(a_{n'}, L) \le \varE \\
@@ -430,14 +430,14 @@ So let arbitrary \(\varE > 0\).
 Since \((a_n)_{n = m}^{\infty}\) converges to \(x\) and \((b_n)_{n = m}^{\infty}\) converges to \(y\), by \CORO{6.1.17}, they are bounded.
 So by \DEF{6.1.16} we can find \(A, B > 0\) s.t. \(\abs{a_n} \le A\) \MAROON{(*1)} and \(\abs{b_n} \le B\) \MAROON{(*2)} for all \(n \ge m\).
 
-And in particular, from \MAROON{(*1)} we have \(x \le A\) \MAROON{(*3)}, otherwise if \(x > A\), then \(x - A > 0\), hence for \(\varE = (x - A)/2 > 0\), given any \(N \ge m\), we just have found \(N\) s.t.
+And in particular, from \MAROON{(*1)} we have \(x \le A\) \MAROON{(*3)}, otherwise if \(x > A\), then \(x - A > 0\), hence for \(\varE = (x - A)/2 > 0\), given any \(N \ge m\), we just have found \(N\) s.t. 
 \begin{align*}
-    \abs{a_n - x} & = \abs{x - a_n} \\
-                  & = \abs{x + (-a_n)} \\
-                  & \ge \abs{x} - \abs{-a_n} & \text{by \AC{4.3.1}} \\
-                  & \ge \abs{x} - \abs{a_n} \\
-                  & \ge x - \abs{a_n} & \text{since \(x > A > 0\)} \\
-                  & \ge x - A & \text{since \(\abs{a_n} \le A\)} \\
+    \abs{a_N - x} & = \abs{x - a_N} \\
+                  & = \abs{x + (-a_N)} \\
+                  & \ge \abs{x} - \abs{-a_N} & \text{by \AC{4.3.1}} \\
+                  & \ge \abs{x} - \abs{a_N} \\
+                  & \ge x - \abs{a_N} & \text{since \(x > A > 0\)} \\
+                  & \ge x - A & \text{since by \MAROON{(*1)} \(\abs{a_N} \le A\)} \\
                   & > (x - A)/2 = \varE
 \end{align*}
 which implies \((a_n)_{n = m}^{\infty}\) does \emph{not} converge to \(x\), a contradiction.
@@ -625,9 +625,9 @@ given any real \(\varE > 0\), one can find an \(N \ge m\) such that \(\abs{a_n -
 
 \begin{align*}
          & (a_n)_{n = m}^{\infty} \text{ converges to } L \\
-    \iff & \forall \varE > 0, (a_n)_{n = m}^{\infty} \text{ is eventually } \varE\text{-close to } L & \text{by \DEF{6.1.5}} \\
-    \iff & \forall \varE > 0, \exists N \ge n \text{ s.t. } (a_n)_{n = N}^{\infty} \text{ is } \varE\text{-close to } L & \text{by \DEF{6.1.5}} \\
-    \iff & \forall \varE > 0, \exists N \ge n \text{ s.t. } \abs{a_n - L} \le \varE\ \forall n \ge N & \text{by \DEF{6.1.5}}
+    \iff & \forall \varE > 0, (a_n)_{n = m}^{\infty} \text{ is eventually } \varE\text{-close to } L & \text{by \DEF{6.1.5} \MAROON{DEF(3)}} \\
+    \iff & \forall \varE > 0, \exists N \ge n \text{ s.t. } (a_n)_{n = N}^{\infty} \text{ is } \varE\text{-close to } L & \text{by \DEF{6.1.5} \MAROON{DEF(2)}} \\
+    \iff & \forall \varE > 0, \exists N \ge n \text{ s.t. } \abs{a_n - L} \le \varE\ \forall n \ge N & \text{by \DEF{6.1.2}}
 \end{align*}
 
 \begin{exercise} \label{exercise 6.1.3}
@@ -735,7 +735,7 @@ Explain why \THM{6.1.19}(f) fails when the limit of the denominator is \(0\).
 \begin{proof}
 For the sake of contradiction suppose \THM{6.1.19}(f) also works when \((b_n)_{n = m}^{\infty}\) converges to \(0\).
 Then in particular, let \(a_n = b_n := 1/n\) for all \(n \ge m\); we have shown in \EXEC{5.3.5} that both \((a_n)_{n = m}^{\infty}\) and \((b_n)_{n = m}^{\infty}\) converge to \(0\).
-So \(\lim_{n \toINF} \frac{a_n}{b_n} = 1\) since \(\frac{a_n}{b_n} = \frac{\frac{1}{n}}{\frac{1}{n}} = 1\) for all \(n \ge m\).
+And \(\lim_{n \toINF} \frac{a_n}{b_n} = 1\) since \(\frac{a_n}{b_n} = \frac{\frac{1}{n}}{\frac{1}{n}} = 1\) for all \(n \ge m\).
 But \(\frac{\lim_{n \toINF} a_n}{\lim_n \toINF b_n} = \frac{0}{0}\), which is undefined.
 So the two sides of equation is \emph{not} consistent(and the RHS is even undefined).
 So \THM{6.1.19}(f) cannot be applied when the sequence in the denominator converges to \(0\).
@@ -750,6 +750,7 @@ More precisely, if \((a_n)_{n = 0}^{\infty}\) and \((b_n)_{n = 0}^{\infty}\) are
 \begin{note}
 It's mind=blowing that we have not rigorously defined the equivalence between to Cauchy sequences of \emph{real}s.
 What we have defined is that they can converge to some real numbers, and the real number may be the same.
+But with \EXEC{6.1.10}, the operator in \THM{6.1.19} becomes \emph{well-defined}(i.e. satisfying \AXM{a.7.4}), just replace the \(\LIM\) with \(\lim\) (it's also valid by \PROP{6.1.15}) in the definition of these operator in \CH{5}, i.e. \DEF{5.3.4}, \DEF{5.3.9}, \DEF{5.3.16}.
 \end{note}
 
 \begin{proof}
