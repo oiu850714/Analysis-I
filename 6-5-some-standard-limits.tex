@@ -1,0 +1,169 @@
+\section{Some standard limits} \label{sec 6.5}
+
+\begin{note}
+\RED{WARNING}: TODO: some steps need to refer to lemmas in \SEC{5.6}.
+\end{note}
+
+Armed now with the limit laws(\THM{6.1.19}) and the squeeze test(\CORO{6.4.14}), we can now compute a large number of limits.
+
+A particularly simple limit is that
+\begin{additional corollary} \label{ac 6.5.1}
+The constant sequence \(c, c, c, c, ...\) have
+\begin{center}
+    \(\lim_{n \toINF} c = c\) for any constant \(c\).
+\end{center}
+(But this statement does not require limit law and squeeze test :).
+In fact I have already somewhat used this fact before this section.)
+\end{additional corollary}
+
+\begin{proof}
+Let \((a_n)_{n = 1}^{\infty}\) be a constant sequence where \(a_n = c\) for all \(n \ge 1\).
+Then given arbitrary \(\varE > 0\), we can find \(N = 1\) s.t. \(\abs{a_n - c} = \abs{c - c} = \abs{0} = 0 < \varE\) for all \(n \ge N\).
+So by \DEF{6.1.5}, the sequence converges to \(c\).
+\end{proof}
+
+In \PROP{6.1.11}, we proved that \(\lim_{n \toINF} 1/n = 0\).
+This now implies
+
+\begin{corollary} \label{corollary 6.5.1}
+We have \(\lim_{n \toINF} 1/n^{1/k} = 0\) for every integer \(k \ge 1\).
+\end{corollary}
+
+\begin{proof}
+From \LEM{5.6.6}(e) we know that \(1/n^{1/k}\) is a \emph{decreasing} function of \(n\), while being \emph{bounded below} by \(0\) (by \LEM{5.6.6}(c)).
+By \PROP{6.3.8} (for decreasing sequences instead of increasing sequences) we thus know that this sequence converges to some limit \(L \ge 0\):
+\[
+    L = \lim_{n \toINF} 1/n^{1/k}.
+\]
+Raising this to the \(k^{th}\) power and using the limit laws (or more precisely, \THM{6.1.19}(b) and induction), we obtain
+\[
+    L^k = \lim_{n \toINF} 1/n.
+\]
+By \PROP{6.1.11} we thus have \(L^k = 0\);
+but this means that \(L\) cannot be positive (else \(L^k\) would be positive, by \LEM{5.6.6}(c)), so \(L = 0\), and we are done.
+\end{proof}
+
+Some other basic limits:
+\begin{lemma} \label{lem 6.5.2}
+Let \(x\) be a real number.
+Then the limit \(\lim_{n \toINF} x^n\) exists and is equal to zero when \(\abs{x} < 1\),
+exists and is equal to \(1\) when \(x = 1\),
+and diverges when \(x = -1\) or when \(\abs{x} > 1\).
+\end{lemma}
+
+\begin{proof}
+First we have \(-\abs{x}^n \le x^n \le \abs{x}^n\) for all positive integer \(n\) \MAROON{(1)}.
+This can be proved by \(-\abs{x} \le x \le \abs{x}\) and induction.
+
+Suppose \(\abs{x} < 1\) (that is, \(-1 < x < 1\)); in particular \(0 \le \abs{x} < 1\).
+Then by \PROP{6.3.10}, \(\lim_{n \toINF} \abs{x}^n = 0\).
+Also, by \THM{6.1.19}(c), \(\lim_{n \toINF} -\abs{x}^n = -1 \X \lim_{n \toINF} \abs{x}^n = -1 \X 0 = 0\).
+So by \CORO{6.4.14}, squeeze test, and \MAROON{(1)}, we have \(\lim_{n \toINF} x^n = 0\).
+
+Now suppose \(x = 1\).
+Then we have \(x^n = 1\), a \emph{constant}, for all \(n \ge 1\), by induction.
+So by \AC{6.5.1}, \(\lim_{n \toINF} x^n = 1\).
+
+Now suppose \(x = -1\) or \(\abs{x} > 1\) (that is, \(x \le -1\) or \(x > 1\)).
+If \(x = -1\), then by \EXAMPLE{6.1.13}, \(\lim_{n \toINF} x^n\) does not exist.
+If \(\abs{x} > 1\), we split into two cases:
+\begin{itemize}
+    \item \(x > 1\): Then by \EXEC{6.3.4}, \((x^n)_{n = 1}^{\infty}\) diverges, so \(\lim_{n \toINF} x^n\) does not exist.
+    \item \(x < -1\): Then trivially the sequence is not eventually \(2\)-steady, so is not Cauchy, hence by \THM{6.4.18} \(\lim_{n \toINF} x^n\) does not exist.
+\end{itemize}
+\end{proof}
+
+\begin{lemma} \label{lem 6.5.3}
+For any \(x > 0\), we have \(\lim_{n \toINF} x^{1/n} = 1\).
+\end{lemma}
+
+\begin{proof}
+We first show that for every \(\varE > 0\) and every real number \(M > 0\), there exists an \(n\) such that \(M^{1/n} \le 1 + \varE\) \BLUE{(1)}.
+Since \(1 < 1 + \varE\), we have \(\frac1{1 + \varE} < 1\), and by \LEM{6.5.2}, \(\lim_{n \toINF} (\frac1{1 + \varE})^n = 0\).
+But since \((\frac1{1 + \varE})^n = \frac1{(1 + \varE)^n}\), we have \(\lim_{n \toINF} \frac1{(1 + \varE)^n} = 0\).
+
+Now we defined sequence \((a_n)_{n = 1}^{\infty}\) s.t. \(a_n = \frac1{(1 + \varE)^n}\).
+Then it's trivial that \(\inf(a_n)_{n = 1}^{\infty} = 0\).
+Since \(M > 0\), \(1/M > 0 = \inf(a_n)_{n = 1}^{\infty}\), and by \RMK{6.3.7}(3), there exists \(n \ge 1\) s.t. \(1/M > a_n\).
+That is \(1/M > \frac1{(1 + \varE)^n}\).
+And that implies \(M < (1 + \varE)^n\).
+And by \LEM{5.6.9}(d), we have \(M^{1/n} < ((1 + \varE)^n)^{1/n}\), which by \LEM{5.6.6}(b) is equal to \(1 + \varE\), as desired.
+
+Now we prove the lemma by splitting into cases:
+\begin{itemize}
+\item \(x \ge 1\):
+    Let arbitrary \(\varE > 0\).
+    We have to find \(n \ge 1\) s.t. \(\abs{x^{1/n} - 1} \le \varE\), or \(1 - \varE \le x^{1/n} \le 1 + \varE\).
+    But by \BLUE{(1)}, we can find \(n \ge 1\) s.t. \(x^{1/n} \le 1 + \varE\).
+    Also, since \(x \ge 1\),
+    \begin{align*}
+                 & x \ge 1 \\
+        \implies & x^{1/n} \ge 1^{1/n} = 1 & \text{by \LEM{5.6.6}(d)(e)} \\
+        \implies & x^{1/n} \ge 1 - \varE.
+    \end{align*}
+    So we have found \(n \ge 1\) s.t. \(1 - \varE \le x^{1/n} \le 1 + \varE\), as desired.
+\item \(0 < x < 1\):
+    Then \(1/x > 1\), so by the previous case we have \(\lim_{n \toINF} (1/x)^{1/n} = 1\),
+    which implies \(\lim_{n \toINF} (x^{-1})^{1/n} = 1\), which by \LEM{5.6.9}(b) implies \(\lim_{n \toINF} x^{-1/n} = 1\).
+    But by \THM{6.1.19}(e), we have \(\lim_{n \toINF} (x^{-1/n})^{-1} = 1^{-1} = 1\), which by \LEM{5.6.9}(b) implies \(\lim_{n \toINF} x^{1/n} = 1\), as desired.
+\end{itemize}
+\end{proof}
+
+\begin{note}
+We will derive a few more standard limits later on, once we develop the root and ratio tests(\SEC{7.5}) for series and for sequences.
+\end{note}
+
+\exercisesection
+
+\begin{exercise} \label{exercise 6.5.1}
+\BLUE{(1)} Show that \(\lim_{n \toINF} 1/n^q = 0\) for any \emph{rational} \(q > 0\).
+(Hint: use \CORO{6.5.1} and the limit laws, \THM{6.1.19}.)
+
+\BLUE{(2)} Conclude that the limit \(\lim_{n \toINF} n^q\) does not exist.
+(Hint: argue by contradiction using \THM{6.1.19}(e).)
+\end{exercise}
+
+\begin{proof}
+First we show \BLUE{(1)}.
+Let arbitrary rational \(q = a/b > 0\), where \(a, b\) are positive integers.
+Then by \CORO{6.5.1} we have \(\lim_{n \toINF} 1/n^{1/b} = 0\).
+And with limit laws \THM{6.1.19}(b) and induction, we have \(\lim_{n \toINF} (\frac1{n^{1/b}})^a = 0^a = 0\),
+which implies \(\lim_{n \toINF} \frac{1^a}{(n^{1/b})^a} = 0\),
+which implies \(\lim_{n \toINF} \frac1{(n^{1/b})^a} = 0\),
+which by \DEF{5.6.7} implies \(\lim_{n \toINF} \frac1{n^q} = 0\), as desired.
+
+Now we show \BLUE{(2)}.
+Suppose for sake of contradiction that \(\lim_{n \toINF} n^q\) exists and equals to \(L\).
+Then
+\begin{align*}
+    0 & = L \X 0 \\
+      & = (\lim_{n \toINF} n^q) \X 0 \\
+      & = (\lim_{n \toINF} n^q) \X (\lim_{n \toINF} 1/n^q) & \text{by \BLUE{(1)}} \\
+      & = \lim_{n \toINF} n^q \X 1/n^q & \text{by \THM{6.1.19}(b)} \\
+      & = \lim_{n \toINF} n^q \X (1/n)^q & \text{of course...} \\
+      & = \lim_{n \toINF} (n(1/n))^q & \text{by \LEM{5.6.9}(f)} \\
+      & = \lim_{n \toINF} 1^q \\
+      & = 1^q & \text{by \AC{6.5.1}} \\
+      & = 1,
+\end{align*}
+which is impossible.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.5.2}
+Prove \LEM{6.5.2}.
+(Hint: use \PROP{6.3.10}, \EXEC{6.3.4}, and the squeeze test, \CORO{6.4.14}.)
+\end{exercise}
+
+\begin{proof}
+See \LEM{6.5.2}.
+\end{proof}
+
+\begin{exercise} \label{exercise 6.5.3}
+Prove \LEM{6.5.3}.
+(Hint: you may need to treat the cases \(x \ge 1\) and \(x < 1\) separately.
+You might wish to first use \LEM{6.5.2} to prove the preliminary result that for every \(\varE > 0\) and every real number \(M > 0\), there exists an \(n\) such that \(M^{1/n} \le 1 + \varE\).)
+\end{exercise}
+
+\begin{proof}
+See \LEM{6.5.3}.
+\end{proof}

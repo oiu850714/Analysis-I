@@ -1,0 +1,314 @@
+\section{Real exponentiation, part II} \label{sec 6.7}
+
+In \SEC{5.6} we defined \(x^q\) for all \emph{rational} \(q\) and positive real numbers \(x\), but we have not yet defined \(x^{\alpha}\) when \(\alpha\) is \emph{real}.
+We now rectify this situation \emph{using limits} (in a similar way as to how we defined all the other standard operations on the real numbers).
+First, we need a lemma:
+\begin{lemma} [\emph{Continuity} of exponentiation] \label{lem 6.7.1}
+Let \(x > 0\), and let \(\alpha\) be a real number.
+Let \((q_n)_{n = 1}^{\infty}\) be any sequence of \emph{rational} numbers converging to \(\alpha\).
+Then \((x^{q_n})_{n = 1}^{\infty}\) is also a convergent sequence.
+Furthermore, if \((q'_n)_{n = 1}^{\infty}\) is any other sequence of \emph{rational} numbers converging to \(\alpha\), then \((x^{q'_n})_{n = 1}^{\infty}\) has the same limit as \((x^{q_n})_{n = 1}^{\infty}\)
+\[
+    \lim_{n \toINF} x^{q_n} = \lim_{n \toINF} x^{q'_n}.
+\]
+\end{lemma}
+
+\begin{note}
+若一個\ sequence of rationals 收斂，則給定任一正實數\ \(x\)，以\ \(x\) 為底、且以這個\ sequence 為指數的新的\ sequence 也收斂。
+\end{note}
+
+\begin{proof}
+\RED{WARNING}: Some steps implicitly use \LEM{5.6.9}.
+
+There are three cases: \(x < 1\), \(x = 1\), and \(x > 1\).
+The case \(x = 1\) is rather easy (because then \(x^q = 1\) for all rational \(q\)).
+We first show the case \(x > 1\).
+
+Let us first prove that \((x^{q_n})_{n = 1}^{\infty}\) converges.
+By \THM{6.4.18} it is enough to show that \((x^{q_n})_{n = 1}^{\infty}\) is a Cauchy sequence.
+That is, by \DEF{6.1.3}(3), we have to show that \((x^{q_n})_{n = 1}^{\infty}\) is eventually \(\varE\)-steady for all \(\varE > 0\).
+
+To do this, we need to \emph{estimate the distance} between \(x^{q_n}\) and \(x^{q_m}\) (given any integers \(n, m \ge 1\));
+let us say for the time being that \(q^n \ge q^m\), so that \(x^{q_n} \ge x^{q_m}\) \MAROON{(1)} (since \(x > 1\)).
+We have
+\begin{align*}
+    d(x^{q_n}, x^{q_m}) & = \abs{x^{q_n} - x^{q_m}} \\
+                        & = x^{q_n} - x^{q_m} & \text{by \MAROON{(1)}} \\
+                        & = x^{q_m}(x^{q_n - q_m} - 1) \MAROON{(2)}.
+\end{align*}
+Since \((q_n)_{n = 1}^{\infty}\) is a convergent sequence, (by \CORO{6.1.17}) it has some upper bound \(M\), so we have \(q_m \le M\);
+since \(x > 1\), we have \(x^{q_m} \le x^M\) \MAROON{(3)}.
+Thus continue from \MAROON{(2)}, we have
+\begin{align*}
+    d(x^{q_n}, x^{q_m}) & = x^{q_m}(x^{q_n - q_m} - 1) & \text{by \MAROON{(2)}} \\
+                        & \le x^M(x^{q_n - q_m} - 1). \MAROON{(4)} & \text{by \MAROON{(3)}}
+\end{align*}
+
+Now let arbitrary \(\varE > 0\).
+We know by \LEM{6.5.3} that since the sequence \((x^{1/k})_{k=1}^{\infty}\) converges to \(1\), and \(\varE x^{-M} > 0\), it is eventually \(\varE x^{-M}\)-close to \(1\).
+Thus there exists some \(K \ge 1\) s.t.
+\[
+    \abs{x^{1/K} - 1} \le \varE x^{-M}. \MAROON{(5)}
+\]
+Now since \((q_n)_{n = 1}^{\infty}\) is convergent, it is a Cauchy sequence so is \(1/K\)-steady,
+hence there is an \(N \ge 1\) such that \(q_n\) and \(q_m\) are \(1/K\)-close for all \(n, m \ge N\) \MAROON{(6)}.
+Thus we have for every \(n, m \ge M\), such that \(q^n \ge q^m\) \MAROON{(7)},
+\begin{align*}
+    d(x^{q_n}, x^{q_m}) & \le x^M(x^{q_n - q_m} - 1) & \text{by \MAROON{(4)}} \\
+                        & \le x^M(x^{1/K} - 1) & \text{by \MAROON{(6)(7)}} \\
+                        & \le x^M \varE x^{-M} & \text{by \MAROON{(5)}} \\
+                        & = \varE.
+\end{align*}
+By symmetry we also have this bound when \(n, m \ge N\) \emph{but} \(q_n \le q_m\).
+Since \(\varE > 0\) is arbitrary, the sequence \((x^{q_n})_{n = N}^{\infty}\) is eventually \(\varE\)-steady for all \(\varE > 0\), and is thus a Cauchy sequence as desired.
+This proves the convergence of \((x^{q_n})_{n = 1}^{\infty}\).
+
+Now we prove the second claim.
+It will suffice to show that
+\[
+    \lim_{n \toINF} x^{q_n - q'_n} = 1 \MAROON{(8)},
+\]
+since
+\begin{align*}
+    \lim_{n \toINF} x^{q_n} & = \lim_{n \toINF} x^{q_n - q'_n} x^{q'_n} & \text{by \SEC{5.6}} \\
+                            & = \lim_{n \toINF} x^{q_n - q'_n} \X \lim_{n \toINF} x^{q'_n} \MAROON{(9)}, & \text{by \THM{6.1.19}(c)}.
+\end{align*}
+So So if \(\lim_{n \toINF} x^{q_n - q'_n} = 1\),
+then from \MAROON{(9)} we have \(\lim_{n \toINF} x^{q_n} = \lim_{n \toINF} x^{q'_n}\).
+Define \((r_n)_{n = 1}^{\infty}\) s.t. \(r_n := q_n - q'_n\).
+Then
+\begin{align*}
+    \lim_{n \toINF} r_n & = \lim_{n \toINF} q_n - q'_n \\
+                        & = \lim_{n \toINF} q_n - \lim_{n \toINF} q'_n & \text{by \THM{6.1.19}(d)} \\
+                        & = \alpha - \alpha \\
+                        & = 0 \MAROON{(10)}.
+\end{align*}
+To prove \MAROON{(8)} we have to show that for every \(\varE > 0\), the sequence \((x^{r_n})_{n = 1}^{\infty}\) is eventually \(\varE\)-close to \(1\).
+But again from \LEM{6.5.3} we know that the sequence \((x^{1/k})_{k = 1}^{\infty}\) is eventually \(\varE\)-close to \(1\).
+Also, since \(x > 0\), \(1/x > 0\), so again by \LEM{6.5.3}, \(\lim_{k \toINF} (1/x)^{1/k} = 1\), that is, \(\lim_{k \toINF} x^{-1/k} = 1\).
+So, we know that \((x^{-1/k})_{k = 1}^{\infty}\) is also eventually \(\varE\)-close to \(1\).
+Thus we can find a \(K\) such that \(x^{1/K}\) and \(x^{-1/K}\) are \emph{both} \(\varE\)-close to \(1\).
+But given that \(K\), since by \MAROON{(10)} \((r_n)_{n = 1}^{\infty}\) is convergent to \(0\), it is eventually \(1/K\)-close to 0,
+so we can find \(N \ge 1\) s.t. for all \(n \ge N\), \(-1/K \le r_n \le 1/K\), and thus \(x^{-1/K} \le x^{r_n} \le x^{1/K}\).
+In particular since both \(x^{1/K}\) and \(x^{-1/K}\) are \(\varE\)-close to \(1\), by \PROP{4.3.7}(f) (precisely, real number version, \PROP{5.4.16}) \(x^{r_n}\) is also \(\varE\)-close to \(1\) for all \(n \ge N\), as desired.
+
+Next we show when \(x < 1\) then \((x^{q_n})_{n = 1}^{\infty}\) also converges.
+That is, \((x^{q_n})_{n = 1}^\infty\) is a Cauchy sequence.
+
+To do this, we need to \emph{estimate the distance} between \(x^{q_n}\) and \(x^{q_m}\);
+let us say for the time being that \(q_n \le q_m\), so that \(x^{q_n} \ge x^{q_m}\) (since \(x < 1\)).
+We have
+\[
+    d(x^{q_n}, x^{q_m}) = x^{q_n} - x^{q_m} = x^{q_m} (x^{q_n - q_m} - 1).
+\]
+Since \((q_n)_{n = 1}^{\infty}\) is a convergent sequence, it has some \emph{lower bound} \(M\);
+since \(x < 1\), we have \(x^{q_m} \le x^M\).
+Thus
+\[
+    d(x^{q_n}, x^{q_m}) = \abs{x^{q_n} - x^{q_m}} \le x^M (x^{q_n - q_m} - 1).
+\]
+Now let arbitrary \(\varE > 0\).
+We know by \LEM{6.5.3} that the sequence \((x^{1/K})_{k = 1}^{\infty}\) is eventually \(\varE x^{-M}\)-close to \(1\).
+Thus there exists some \(K \ge 1\) such that
+\[
+    \abs{x^{1/K} - 1} \le \varE x^{-M}.
+\]
+Now since \((q_n)_{n = 1}^{\infty}\) is convergent, it is a Cauchy sequence, and so there is an \(N \ge 1\) such that \(q_n\) and \(q_m\) are \(1/K\)-close for all \(n, m \ge N\).
+Thus we have
+\[
+    d(x^{q_n}, x^{q_m}) \le x^M (x^{q_n - q_m} - 1) \le x^M (x^{1/K} - 1) \le x^M \varE x^{-M} = \varE.
+\]
+for every \(n, m \ge N\) such that \(q_n \le q_m\).
+By symmetry we also have this bound when \(n, m \ge N\) \emph{and} \(q_n \ge q_m\).
+Thus the sequence \((x^{q_n})_{n = 1}^{\infty}\) is \(\varE\)-steady.
+Since \(\varE > 0\) is arbitrary, the sequence \((x^{q_n})_{n = 1}^{\infty}\) is eventually \(\varE\)-steady for all \(\varE > 0\), and is thus a Cauchy sequence as desired.
+This proves the convergence of \((x^{q_n})_{n = 1}^\infty\) when \(x < 1\).
+
+Now we prove the second claim.
+It will suffice to show that
+\[
+    \lim_{n \toINF} x^{q_n - q_n'} = 1,
+\]
+since the claim would then follow from limit laws
+(since \(x^{q_n} = x^{q_n - q_n'} x^{q_n'}\)).
+
+Write \(r_n := q_n - q_n'\);
+by limit laws we know that \((r_n)_{n = 1}^{\infty}\) converges to \(0\).
+We have to show that for every \(\varE > 0\), the sequence \((x^{r_n})_{n = 1}^{\infty}\) is eventually \(\varE\)-close to \(1\).
+But from \LEM{6.5.3} we know that the sequence \((x^{1/K})_{k = 1}^\infty\) is eventually \(\varE\)-close to \(1\).
+Since \(\lim_{k \to \infty} x^{-1/K}\) is also equal to \(1\) by \LEM{6.5.3}, we know that \((x^{-1/K})_{k = 1}^{\infty}\) is also eventually \(\varE\)-close to \(1\).
+Thus we can find a \(K\) such that \(x^{1/K}\) and \(x^{-1/K}\) are \emph{both} \(\varepsilon\)-close to \(1\).
+But given that \(K\), since \((r_n)_{n = 1}^\infty\) is convergent to \(0\), it is eventually \(1/K\)-close to \(0\), so that eventually \(-1/K \le r_n \le 1/K\), and thus since \(x < 1\) we have \(x^{1/K} \le x^{r_n} \le x^{-1/K}\).
+In particular \(x^{r_n}\) is also eventually \(\varE\)-close to \(1\) (by \PROP{4.3.7}(f), or real version, \PROP{5.4.16}), as desired.
+\end{proof}
+
+We may now make the following (well-defined) definition.
+\begin{definition} [Exponentiation to a real exponent] \label{def 6.7.2}
+Let \(x > 0\) be real, and let \(\alpha\) be a \emph{real} number.
+We define the quantity \(x^{\alpha}\) by the formula \(x^{\alpha} = \lim_{n \toINF} x^{q_n}\),
+where \((q_n)_{n = 1}^{\infty}\) is \emph{any} sequence of rational numbers converging to \(\alpha\).
+\end{definition}
+
+\begin{note}
+Let us check that this definition is \emph{well-defined}.
+First of all, given any real number \(\alpha\) we always have at least one sequence \((q_n)_{n = 1}^{\infty}\) of \emph{rational} numbers converging to \(\alpha\),
+by the definition of real numbers (by \DEF{5.3.1}, \(\LIM\), and \PROP{6.1.15}, \(\lim\) can supersede \(\LIM\)).
+Secondly, given \emph{any} such sequence \((q_n)_{n = 1}^{\infty}\), the limit \(\lim_{n \toINF} x^{q_n}\) exists by \LEM{6.7.1}.
+Finally, even though there can be \emph{multiple choices} for the sequence \((q_n)_{n = 1}^{\infty}\), \emph{they all give the same limit} by \LEM{6.7.1}.
+Thus this definition is well-defined.
+\end{note}
+
+\begin{note}
+If \(\alpha\) is not just real but \emph{rational}, i.e., \(\alpha = q\) for some rational \(q\),
+then this definition could in principle be inconsistent with our earlier definition of exponentiation in \SEC{5.6}.
+But in this case \(\alpha\) is clearly the limit of the sequence \((q)_{n = 1}^{\infty}\) (\(\alpha = q = \lim_{n \toINF} q\)), so by \DEF{6.7.2} \(x^{\alpha} = \lim_{n \toINF} x^q\), which is a sequence of constant, so by \AC{6.5.1}, \(= x^q\).
+Thus the new definition of exponentiation is consistent with the old one.
+\end{note}
+
+\begin{proposition} \label{prop 6.7.3}
+All the results of \LEM{5.6.9}, which held for \emph{rational} numbers (exponents), continue to hold for real numbers (exponents).
+\end{proposition}
+
+\begin{proof}
+The idea is to start with \LEM{5.6.9} for \emph{rationals} and then \emph{take limits} to obtain the corresponding results for reals.
+
+So let \(x, y > 0\) be positive reals, and \(q, r\) be \emph{reals}.
+\begin{enumerate}
+\item
+    We have to show \(x^r\) is positive.
+    First (by \DEF{5.3.1} and \PROP{6.1.15}), we can write \(r = \lim_{n \toINF} r_n\) for some Cauchy sequence of rationals \((r_n)_{n = 1}^{\infty}\).
+    Since \((r_n)_{n = m}^{\infty}\) is Cauchy, by \CORO{6.1.17} it's bounded by some \emph{rationals} \(M \ge 0\) (by \LEM{5.1.14}, \DEF{5.1.12}).
+    That is, \(-M \le r_n \le M\) for all \(n \ge 1\) \MAROON{(a1)}.
+    And since \(M\) is rational, by \LEM{5.6.9}(a), \(x^{-M}\) and \(x^{M}\) is positive.
+    Also by \LEM{5.6.9}(e), if \(0 < x < 1\), from \MAROON{(a1)} we have \(0 < x^M \le x^{r_n} \le x^{-M}\) for all \(n \ge 1\);
+    if \(x \ge 1\), from \MAROON{(a1)} we have \(0 < x^{-M} \le x^{r_n} \le x^M\) for all \(n \ge 1\).
+    In all cases, we have \(x^{r_n} > \min(x^M, x^{-M} > 0)\) for all \(n \ge 1\).
+    That is, \((x^{r_n})_{n = 1}^{\infty}\) is positively bounded away from zero, so by \DEF{5.4.1} and \DEF{5.4.3}, \(x^r = \lim_{n \toINF} x^{r_n}\) is positive.
+
+\item
+    First we show \(x^{q + r} = x^q x^r\).
+    Again, by the definition of real numbers (\DEF{5.3.1}, \(\LIM\), and \PROP{6.1.15}, \(\LIM = \lim\)), we can write \(q = \lim_{n \toINF} q_n\) and \(r = \lim_{n \toINF} r_n\) for some sequences \((q_n)_{n = 1}^{\infty}\) and \((r_n)_{n = 1}^{\infty}\) of \emph{rationals}.
+    Then by the limit laws,
+    \begin{align*}
+        q + r & = \lim_{n \toINF} q_n + \lim_{n \toINF} r_n \\
+              & = \lim_{n \toINF} q_n + r_n & \text{by \THM{6.1.19}(a)}
+    \end{align*}
+    And by \DEF{6.7.2}, we have
+    \begin{align*}
+        x^{q + r} & = \lim_{n \toINF} x^{q_n + r_n} & \MAROON{(b1)}; \\
+              x^q & = \lim_{n \toINF} x^{q_n} & \MAROON{(b2)}; \\
+              x^r & = \lim_{n \toINF} x^{r_n} & \MAROON{(b3)}.
+    \end{align*}
+    But by \LEM{5.6.9}(b) (applied to \emph{rational} exponents) we have \(x^{q_n + r_n} = x^{q_n} x^{r_n}\) for all \(n \ge 1\) \MAROON{(b4)}.
+    Thus we have
+    \begin{align*}
+        x^{q + r} & = \lim_{n \toINF} x^{q_n + r_n} & \text{by \MAROON{(b1)}} \\
+                  & = \lim_{n \toINF} x^{q_n} x^{r_n} & \text{by \MAROON{(b4)}} \\
+                  & = \lim_{n \toINF} x^{q_n} \lim_{n \toINF} x^{r_n} & \text{by \THM{6.1.19}(b)} \\
+                  & = x^q \lim_{n \toINF} x^{r_n} & \text{by \MAROON{(b2)}} \\
+                  & = x^q x^r & \text{by \MAROON{(b3)}},
+    \end{align*}
+    as desired.
+    
+    \RED{TODO}: show \((x^q)^r = x^{qr}\).
+
+\item
+    We have to show that \(x^{-r} = 1/x^r\).
+    Again we can let \(r = \lim_{n \toINF} r_n\) \MAROON{(c1)} for some sequence of rationals \((r_n)_{n = 1}^{\infty}\).
+    And by \THM{6.1.19}(c), \(-r = -\lim_{n \toINF} r_n = \lim_{n \toINF} -r_n\) \MAROON{(c2)}.
+    And by part(a) we know that \(x^{-r} > 0\).
+    Also by \LEM{5.6.9}(a) (since \(r_n\) is rational) \(x^{r_n} > 0\) for all \(n \ge 1\), we have \(1/x^{r_n} > 0\) for all \(n \ge 1\) \MAROON{(c3)}.
+    Thus we have
+    \begin{align*}
+        x^{-r} & = \lim_{n \toINF} x^{-r_n} & \text{by \DEF{6.7.2} and \MAROON{(c2)}} \\
+               & = \lim_{n \toINF} 1/x^{r_n} & \text{by \LEM{5.6.9}(c)} \\
+               & = (\lim_{n \toINF} x^{r_n})^{-1} & \text{by \MAROON{(c3)} and \THM{6.1.19}(e)} \\
+               & = (x^r)^{-1} & \text{by \MAROON{(c1)} and \DEF{6.7.2}}\\
+               & = 1/x^r & \text{by \DEF{5.3.16}}
+    \end{align*}
+\item
+    Suppose \(q > 0\), we have to show \(x > y\) if and only if \(x^q > y^q\).
+    Again, we can let \(q = \lim_{n \toINF} q_n\), for some sequence of rationals \((q_n)_{n = 1}^{\infty}\) and the sequence is \emph{bounded away from zero} (\(q_n \ge M > 0\) for all \(n \ge 1\)).
+    So by \DEF{6.7.2}, \(x^q = \lim_{n \toINF} x^{q_n}\), \(y^q = \lim_{n \toINF} y^{q_n}\) \MAROON{(d1)}.
+    
+    Now first, suppose \(x > y\).
+    Since \(x > y\), for all \(n \ge 1\), by \LEM{5.6.9}(d), we have \(x^{q_n} > y^{q_n}\).
+    Then by \LEM{6.4.13}, we have \(\limsup_{n \toINF} x^{q_n} \ge \limsup_{n \toINF} y^{q_n}\).
+    But since by \LEM{6.7.1} \((x^{q_n})_{n = 1}^{\infty}\) and \((y^{q_n})_{n = 1}^{\infty}\) are \emph{convergent} sequence, by multiple applications of \PROP{6.4.12}, that implies \(\lim_{n \toINF} x^{q_n} \ge \lim_{n \toINF} y^{q_n}\).
+    And by \MAROON{(d1)}, we have \(x^q \ge y^q\).
+    
+    Now what we left is to show \(x^q \ne y^q\).
+    For the sake of contradiction, suppose that \(x^q = y^q\).
+    Then \((x^q)^{1/q} = (y^q)^{1/q}\).
+    But by part(b), LHS \(= x^{q \X 1/q} = x\), RHS \(= y^{q \X 1/q} = y\), so we have \(x = y\), which contradicts that \(x > y\).
+    
+    Now suppose \(x^q > y^q\), we have to show that \(x > y\).
+    Again for the sake of contradiction, suppose \(x \le y\), i.e. \(y \ge x\).
+    Then by the previous case we have \(y^q \ge x^q\), which contradicts \(x^q > y^q\).
+    So we must have \(x > y\).
+\item
+    Suppose \(x > 1\).
+    We have to show that \(x^q > x^r\) if and only if \(q > r\).
+    So suppose \(x^q > x^r\), we have to show \(q > r\).
+    Then
+    \begin{align*}
+             & x^q > x^r \\
+        \iff & x^q - x^r > 0 \\
+        \iff & x^r(x^{q - r} - 1) > 0 & \text{using part(b)} \\
+        \iff & x^{q - r} - 1 > 0 & \text{by part(a) and \(x^r > 0\)} \\
+        \iff & x^{q - r} > 1 \MAROON{(e1)}
+    \end{align*}
+    And from \MAROON{(e1)}, clearly \(q \ne r\).
+    So for the sake of contradiction, suppose \(q < r\).
+    Then \(r - q > 0\).
+    Since \(x > 1\), from part(d), we have \(x^{r - q} > 1^{r - q} = 1\).
+    And with \MAROON{(e1)} we have
+    \begin{align*}
+                 & x^{r - q} x^{q - r} > 1 \X 1 = 1 \\
+        \implies & x^{(r - q) + (q - r)} > 1 & \text{by part(b)} \\
+        \implies & x^0 = 1 > 1,
+    \end{align*}
+    which is impossible.
+    So we must have \(q > r\)
+
+    Now suppose \(q > r\), we have to show \(x^q > x^r\).
+    But
+    \begin{align*}
+                 & q > r \\
+        \implies & q - r > 0 \\
+        \implies & x^{q - r} > 1^{q - r} = 1 & \text{since \(x > 1\) and part(d)} \\
+        \implies & x^{q - r} - 1 > 0 \\
+        \implies & x^r(x^{q - r} - 1) > x^r \X 0 = 0 \\
+        \implies & x^q - x^r > 0 & \text{by part(b)} \\
+        \implies & x^q > x^r.
+    \end{align*}
+    
+    Now suppose \(x < 1\).
+    We have to show that \(x^q > x^r\) if and only if \(q < r\).
+    But
+    \begin{align*}
+             & x^q > x^r \\
+        \iff & (x^q)^{-1} < (x^r)^{-1} & \text{by \PROP{5.4.8}} \\
+        \iff & x^{-q} < x^{-r} & \text{by part(b)} \\
+        \iff & (x^{-1})^q < (x^{-1})^r & \text{by part(b)} \\
+        \iff & q < r. & \text{since \(x < 1 \iff x^{-1} > 1\), and by previous case}
+    \end{align*}
+\item
+    \begin{align*}
+        (xy)^q & = \lim_{n \toINF} (xy)^{q_n} & \text{by \DEF{6.7.2}} \\
+               & = \lim_{n \toINF} x^{q_n} y^{q_n} & \text{by \LEM{5.6.9}(f)} \\
+               & = \lim_{n \toINF} x^{q_n} \lim_{n \toINF} y^{q_n} & \text{by \THM{6.1.19}(b)} \\
+               & = x^q y^q & \text{by \DEF{6.7.2}}
+    \end{align*}
+\end{enumerate}
+\end{proof}
+
+\exercisesection
+
+\begin{exercise} \label{exercise 6.7.1}
+Prove the remaining components of \PROP{6.7.3}.
+\end{exercise}
+
+\begin{proof}
+See \PROP{6.7.3}.
+\end{proof}

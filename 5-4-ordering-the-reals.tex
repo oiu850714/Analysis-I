@@ -291,7 +291,7 @@ for instance if \(a_n := 1 + 1 / n\) and \(b_n := 1 - 1/n\), then \(a_n\) is alw
 
 \begin{note}
 We now define distance \(d(x, y) := \abs{x - y}\) (It it actually defined as \DEF{6.1.1}) just as we did for the rationals.
-In fact, \PROP{4.3.3} and \PROP{4.3.7} hold not only for the rationals, but for the reals; (we label it as \PROP{5.4.17}.)
+In fact, \PROP{4.3.3} and \PROP{4.3.7} hold not only for the rationals, but for the reals; (we label it as \PROP{5.4.16}.)
 the proof is \emph{identical}, since the real numbers obey all the laws of algebra and order that the rationals do.
 \end{note}
 
@@ -362,7 +362,7 @@ We will address this in an Appendix B, but for now let us just remark that \emph
 for instance \(0.9999...\) and \(1.000...\) are in fact the same real number.
 \end{remark}
 
-\begin{proposition} \label{prop 5.4.17}
+\begin{proposition} \label{prop 5.4.16}
 In fact, \PROP{4.3.3} and \PROP{4.3.7} hold not only for the rationals, but for the reals;
 the proof is \emph{identical}, since the real numbers obey all the laws of algebra and order that the rationals do.
 \end{proposition}
@@ -396,7 +396,7 @@ Show that for every \emph{real} number \(x\) there is \emph{exactly one integer}
 Let \(x\) equal to the formal limit of a Cauchy sequence \((a_n)_{n = 1}^{\infty}\).
 Then given \(\varE = 1/2\), there exists an integer \(N\) s.t. \(\abs{a_i - a_j} \le 1/2\) for all \(i, j \ge N\).
 And in particular fixing \(j = N\), we get \(\abs{a_i - a_N} \le 1/2\) for all \(i \ge N\).
-Then by \PROP{5.4.17} (or \PROP{4.3.3}(c)) we have
+Then by \PROP{5.4.16} (or \PROP{4.3.3}(c)) we have
 \[
     -1/2 \le a_i - a_N \le 1/2 \text{ for all } i \ge N.
 \]
@@ -500,7 +500,7 @@ and that \(\abs{x - y} \le \varE\) if and only if \(y - \varE \le x \le y + \var
 \end{exercise}
 
 \begin{proof}
-First from \PROP{5.4.17} (or \PROP{4.3.3}(c), plus another argument that mimics \PROP{4.3.3}(c) but removes the case of \(x = y\) for strict inequality),
+First from \PROP{5.4.16} (or \PROP{4.3.3}(c), plus another argument that mimics \PROP{4.3.3}(c) but removes the case of \(x = y\) for strict inequality),
 we have \(\abs{x - y} < \varE\) if and only if \(-\varE < x - y < \varE\) \MAROON{(1)},
 and \(\abs{x - y} \le \varE\) if and only if \(-\varE \le x - y \le \varE\) \MAROON{(2)}.
 But from \MAROON{(1)} we have \(-\varE + y < x < \varE + y\) or \(y - \varE < x < y + \varE\);
